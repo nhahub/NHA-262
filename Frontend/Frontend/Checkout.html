@@ -1,0 +1,162 @@
+<!doctype html>
+<html lang="ar">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Checkout Form </title>
+<link href="CSS/Checkout.css" rel="stylesheet">
+
+</head>
+<body dir="rtl">
+<script src="JS/Checkout.js"
+defer></script>
+<div class="container">
+    <form id="myform" class="card" >
+    <h1>Shipping information</h1>
+        <div class="field">
+            <input type="text" name="fullname" required placeholder=" " style="text-align: left; 
+  direction: ltr;">
+            <label for="fullname">Full Name</label>
+        </div>
+        <div class="field">
+
+            <input type="text" name="email" required placeholder=" "style="text-align: left; 
+  direction: ltr;">
+            <label for="email">Email</label>
+        </div>
+        <div class="row">
+        <div class="field">
+            <input type="tel" name="phone" required placeholder=" "  width ="70%"style="text-align: left; 
+  direction: ltr;">
+            <label for="phone">Phone</label>
+            </div>
+            <div class="error-banner" style = "display:none;">
+  <div class="close-icon">×</div>
+  <div class="message-container">
+    <span class="warning-icon">!</span>
+    <p>حدث خطأ في تحميل البيانات. الرجاء المحاولة لاحقاً.</p>
+  </div>
+</div>
+            <div class="field">
+            <input type="text" name="ZIP" required placeholder=" "style="text-align: left; 
+  direction: ltr;">
+            <label for="phone">ZIP</label>
+            </div>
+            
+            </div>
+              <div class="row" style="display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 16px;">
+        <div class="field">
+            <input type="text" name="mobile" required placeholder=" " width ="50%"style="text-align: left; 
+  direction: ltr;">
+            <label for="phone">Mobile</label>
+            </div>
+            
+            <div class="field">
+        <select name="gender" requiredstyle="text-align: left; 
+  direction: ltr;">
+        <option value="" selected hidden></option>
+        <option value="male"style="text-align: left; 
+  direction: ltr;">Male</option>
+        <option value="female"style="text-align: left; 
+  direction: ltr;">Female</option>
+        </select>
+        
+        </select>
+        <label>Gender</label>
+            </div>
+            
+            </div>
+            <div class="field">
+                <textarea name="address" rows="3" required placeholder=" " style="text-align: left; 
+  direction: ltr;"></textarea>
+                <label for ="address">العنوان</label>
+            </div>
+            
+            <div class="row">
+            <div class="field">
+           <select id="city" required style="text-align: left; 
+  direction: ltr;">
+            <option value="" selected hidden></option>
+            </select>
+            <label>City</label>
+            </div>
+            <div class="field">
+            <select id="country" required style="text-align: left; 
+  direction: ltr;">
+            <option value="" selected hidden ></option>
+            </select>
+            <label>Country</label>
+            </div>
+            </div>
+    <h1 style="margin-top:28px">Payment information</h1>
+    <div class="field">
+        <select name="payment" required style="text-align: left; 
+  direction: ltr;">
+        <option value="" selected hidden></option>
+        <option value="cod">Cash on delivery</option>
+        <option value="card" data-icon="💳">Credit Card</option>
+        <option value="paypal">Paypal </option>
+
+        </select>
+        <label>Payment Method </label>
+    </div>
+<div id="card-info" style="display:none;margin: top 12px ;">
+    <div class="field">
+        <input type="text" name="cardnumber" placeholder=" " style="text-align: left; 
+  direction: ltr;">
+        <label>Card Number</label>
+    </div><div class="field">
+        <input type="text" name="cardname" placeholder=" " style="text-align: left; 
+  direction: ltr;">
+        <label>Card Name</label>
+    </div>
+    <div class="row">
+    <div class="field">
+        <input type="text" name="expiry" placeholder=" "style="text-align: left; 
+  direction: ltr;">
+        <label> Expire Date</label>
+    </div>
+    <div class="field">
+        <input type="text" name="cvc" placeholder=" "style="text-align: left; 
+  direction: ltr;">
+        <label>CVV</label>
+        </div>
+        </div>
+        </div>
+        <div id="paypal" style="display:none; text-align:center; margin-top:20px;">
+   <div class="field">
+     <input type="email" id="paypalEmail" name="paypalEmail" placeholder="you@paypal.com" required width="30px"style="text-align: right; 
+  direction: rtl;">
+      <label for="paypalEmail">Paypal Email</label>
+</div>
+</div>
+<!-- Success notification at top of page -->
+<div id="successNotification" style="
+    display:none;
+    position:fixed;
+    top:20px;
+    left:50%;
+    transform:translateX(-50%);
+    z-index:1000;
+    padding:8px 16px;
+    background:#f0f9f4;
+    color:#059669;
+    font-weight:500;
+    font-size:14px;
+    border-radius:6px;
+    box-shadow:0 2px 8px rgba(0,0,0,0.1);
+    border:1px solid #d1fae5;
+    animation:slideDown 0.3s ease-out;
+    white-space:nowrap;
+  ">
+Data submitted successfully!...✅
+  </div>
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+</div>
+
+
+</body>
+</html>
