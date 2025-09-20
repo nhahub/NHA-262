@@ -2,15 +2,11 @@
 #nullable disable
 using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
-using Microsoft.EntityFrameworkCore;
 
 namespace Backend.Models;
 
 public partial class TblReview
 {
-    [Key]
     public int ReviewId { get; set; }
 
     public int UserId { get; set; }
@@ -19,24 +15,19 @@ public partial class TblReview
 
     public int Rating { get; set; }
 
-    [StringLength(500)]
     public string ReviewText { get; set; }
 
     public int? CreatedBy { get; set; }
 
     public bool IsDeleted { get; set; }
 
-    [Column(TypeName = "datetime")]
     public DateTime CreatedDate { get; set; }
 
     public int? UpdatedBy { get; set; }
 
     public int? DeletedBy { get; set; }
 
-    [Column(TypeName = "datetime")]
     public DateTime? DeletedDate { get; set; }
 
-    [ForeignKey("OrderDetailsId")]
-    [InverseProperty("TblReviews")]
     public virtual TblOrderDetail OrderDetails { get; set; }
 }

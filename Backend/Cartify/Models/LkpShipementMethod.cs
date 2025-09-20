@@ -2,44 +2,32 @@
 #nullable disable
 using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
-using Microsoft.EntityFrameworkCore;
 
 namespace Backend.Models;
 
 public partial class LkpShipementMethod
 {
-    [Key]
     public int ShipementMethodId { get; set; }
 
-    [Required]
-    [StringLength(500)]
     public string Description { get; set; }
 
-    [Required]
-    [StringLength(50)]
     public string Name { get; set; }
 
     public int? Duration { get; set; }
 
-    [Column(TypeName = "decimal(9, 2)")]
     public decimal Fees { get; set; }
 
     public int? CreatedBy { get; set; }
 
     public bool IsDeleted { get; set; }
 
-    [Column(TypeName = "datetime")]
     public DateTime CreatedDate { get; set; }
 
     public int? UpdatedBy { get; set; }
 
     public int? DeletedBy { get; set; }
 
-    [Column(TypeName = "datetime")]
     public DateTime? DeletedDate { get; set; }
 
-    [InverseProperty("ShipmentMethod")]
     public virtual ICollection<TblOrder> TblOrders { get; set; } = new List<TblOrder>();
 }
