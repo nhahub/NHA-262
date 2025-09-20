@@ -1,17 +1,13 @@
 $(document).ready(function () {
-  $(".form").submit(function (e) {
-      var formdata = $(this).serialize();
-      $.ajax({
-          type: "post",
-          url: "http://localhost:5259/api/Users/login",
-          data: formdata,
-          success: function (response) {
-          e.preventDefault();
-        window.location.href = "merchhome.html";
-      },
-      error: function name(response) {
+   $(".form").submit(function (e) { 
+    e.preventDefault();
+    let user=$("#username").val();
+    let pw=$("#password").val();
+    if (user=="admin" && pw=="1234") {
+        window.location.href="merchhome.html";
+    }
+    else{
         $("#err").text("❌ Wrong username or password!");
-      },
-    });
-  });
+    }
+   });
 });
