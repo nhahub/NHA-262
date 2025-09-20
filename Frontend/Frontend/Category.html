@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Category</title>
+    <link rel="shortcut icon" href="Icons/favicon.ico"image="x-icon">
+    <link rel="stylesheet" href="CSS/Category.css">
+</head>
+<body>
+    <header>
+  <div class="PageIcon">
+    <img src="Icons/Untitled-ن2.png" id="image1">
+    <nav>
+      <div class="left">
+        <a href="#">Product</a>
+        <a href="#">Showcase</a>
+        <a href="#">Pricing</a>
+      </div>
+      <div class="right">
+        <a href="#">Feature</a>
+        <a href="#">Blog</a>
+        <a href="#">Support</a>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<main>
+    
+    <aside class="sidebar">
+        <div class="category">
+        <label for="category">Category:</label>
+        <select id="category" name="category">
+        <option value="clothing">Electronics</option>
+        <option value="electronics">Fashion</option>
+        <option value="accessories">Home & Furniture</option>
+        <option value="shoes">Beauty & Personal Care</option>
+        <option value="shoes">Sports & Outdoors</option>
+        <option value="shoes">Groceries & Essentials</option>
+        <option value="shoes">Books & Stationery</option>
+        <option value="shoes">Toys & Kids</option>
+        <option value="shoes">Automotive</option>
+        <option value="shoes">Health & Wellness</option>
+        </select>
+        </div>
+        <div class="price-filter">
+            <input type="range">
+        </div>
+        <div class="rating-filter">
+            <label>Rating:</label>
+            <span class="star" data-value="1">★</span>
+            <span class="star" data-value="2">★</span>
+            <span class="star" data-value="3">★</span>
+            <span class="star" data-value="4">★</span>
+            <span class="star" data-value="5">★</span>
+        </div>
+    </aside>
+
+   <div class="cards-container">
+    <div class="card">
+      <div class="image"><span class="text">This is a chair.</span></div>
+      <span class="title">Cool Chair</span>
+      <span class="price">$100</span>
+    </div>
+
+    <div class="card">
+      <div class="image"><span class="text">This is a table.</span></div>
+      <span class="title">Wooden Table</span>
+      <span class="price">$200</span>
+    </div>
+  </div>
+
+
+
+</main>
+    <script src="JS/Category.js"></script>
+
+</body>
+</html>

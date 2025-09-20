@@ -1,0 +1,238 @@
+:root {
+  --green-1: #2e7d32;
+  --green-2: #43a047;
+  --green-3: #66bb6a;
+  --green-4: #a5d6a7;
+  --green-5: #e8f5e9;
+  --gold: #f4c542;
+  --gray: #ccc;
+}
+
+body {
+  margin: 0;
+  scroll-behavior: smooth;
+  font-family: 'Poppins', sans-serif;
+  background-color: var(--green-5);
+  color: #333;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+header {
+  height: 125px;
+  width: 100%;
+  background: linear-gradient(90deg, black, #111, var(--green-1));
+  color: white;
+}
+
+.PageIcon {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 100%;
+  padding: 0 40px;
+}
+
+.PageIcon img {
+  height: 100px;
+}
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  width: 82.5%;
+}
+
+nav .left,
+nav .right {
+  display: flex;
+  gap: 20px;
+}
+
+nav a {
+  text-decoration: none;
+  border-bottom: 3px solid transparent;
+  color: white;
+  transition: all 0.3s ease;
+  font-weight: bold;
+  font-size: 16px;
+}
+
+nav a:hover {
+  border-bottom: 3px solid var(--green-2);
+  color: var(--green-3);
+}
+
+.sidebar {
+  width: 250px;
+  height: 1000px;
+  padding: 20px;
+  background-color: #fff;
+  border-right: 2px solid var(--green-4);
+  font-family: Arial, sans-serif;
+  border-radius: 0 12px 12px 0;
+}
+
+.category label {
+  font-weight: bold;
+  display: block;
+  margin-bottom: 8px;
+  font-size: 16px;
+  color: var(--green-1);
+}
+
+.category select {
+  width: 100%;
+  padding: 10px;
+  border: 2px solid var(--green-2);
+  border-radius: 6px;
+  background-color: #fff;
+  font-size: 15px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.category select:focus {
+  outline: none;
+  border-color: var(--green-1);
+  box-shadow: 0 0 6px rgba(46, 125, 50, 0.5);
+}
+
+.price-filter {
+  margin-top: 20px;
+}
+
+.price-filter input[type="range"] {
+  width: 100%;
+  cursor: pointer;
+  accent-color: var(--green-2);
+}
+
+.rating-filter {
+  margin-top: 20px;
+}
+
+.rating-filter label {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 15px;
+  font-weight: bold;
+  color: var(--green-1);
+}
+
+/* Stars */
+.stars {
+  display: flex;
+  gap: 5px;
+  cursor: pointer;
+}
+
+.star {
+  font-size: 28px;
+  color: var(--gray);
+  transition: color 0.3s, transform 0.2s;
+}
+
+.star:hover {
+  color: var(--gold);
+  transform: scale(1.2);
+}
+
+.star.active {
+  color: var(--green-1);
+}
+main {
+  display: flex;
+  gap: 20px;              /* مسافة بين الـ sidebar والـ cards */
+  padding: 20px;
+}
+
+/* مكان الكروت */
+.cards-container {
+  flex: 1;                /* ياخد باقي المساحة */
+  display: flex;
+  justify-content: center; /* يخلي الكروت في النص */
+  align-items: flex-start; /* تبدأ من فوق */
+  flex-wrap: wrap;         /* لو في كذا كارد ينزلوا تحت */
+  gap: 20px;
+}
+
+/* From Uiverse.io by dovatgabriel */ 
+.card {
+  position: relative;
+  width: 11.875em;
+  height: 16.5em;
+  box-shadow: 0px 1px 13px rgba(0,0,0,0.1);
+  cursor: pointer;
+  transition: all 120ms;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #fff;
+  padding: 0.5em;
+  padding-bottom: 3.4em;
+}
+
+.card::after {
+  content: "Add to Cart";
+  padding-top: 1.25em;
+  padding-left: 1.25em;
+  position: absolute;
+  left: 0;
+  bottom: -60px;
+  background: #00AC7C;
+  color: #fff;
+  height: 2.5em;
+  width: 90%;
+  transition: all 80ms;
+  font-weight: 600;
+  text-transform: uppercase;
+  opacity: 0;
+}
+
+.card .title {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 0.9em;
+  position: absolute;
+  left: 0.625em;
+  bottom: 1.875em;
+  font-weight: 400;
+  color: #000;
+}
+
+.card .price {
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  font-size: 0.9em;
+  position: absolute;
+  left: 0.625em;
+  bottom: 0.625em;
+  color: #000;
+}
+
+.card:hover::after {
+  bottom: 0;
+  opacity: 1;
+}
+
+.card:active {
+  transform: scale(0.98);
+}
+
+.card:active::after {
+  content: "Added !";
+  height: 3.125em;
+}
+
+.text {
+  max-width: 55px;
+}
+
+.image {
+  background: rgb(241, 241, 241);
+  width: 100%;
+  height: 100%;
+  display: grid;
+  place-items: center;
+}
