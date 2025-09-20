@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="Icons/favicon.ico" type="image/x-icon">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="bootstrap-5.3.8-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.min.css">
+
+    <!-- Bootstrap FileInput CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/kartik-v/bootstrap-fileinput@5.5.0/css/fileinput.min.css">
+    <link rel="stylesheet" href="CSS/merchhome.css">
+
+    <!-- JS Libraries -->
+    <script src="JS/jquery.js"></script>
+    <script src="bootstrap-5.3.8-dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/kartik-v/bootstrap-fileinput@5.5.0/js/fileinput.min.js"></script>
+    <script src="JS/merchant.js"></script>
+
+    <title>Home</title>
+</head>
+
+<body>
+    <!-- HEADER -->
+    <div class="card " id="headerCard">
+        <div class="d-flex justify-content-between align-items-center " id="headerFlex">
+
+            <!-- Logo -->
+            <img src="Icons/Untitled-ن2.png" class="img-fluid rounded-start" alt="Card title" />
+
+            <!-- User Dropdown -->
+            <div class="dropdown">
+                <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown"
+                    aria-expanded="false">Welcome User</button>
+                <ul class="dropdown-menu dropdown-menu-end">
+                    <li><a class="dropdown-item" href="#">Settings</a></li>
+                    <li><a class="dropdown-item" href="#">Switch to user</a></li>
+                    <li><a class="dropdown-item" href="login.html">Sign out</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="container-fluid">
+
+        <!-- NAVIGATION -->
+        <div class="card" id="sidebarNav">
+            <div class="card-body" id="sidebarMenu">
+                <ul class="nav nav-pills flex-column nav-fill ">
+                    <li class="nav-item">
+                        <a class="nav-link active" data-target="Home" aria-current="page" href="#">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" data-target="Orders" href="#">Orders</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" data-target="Products" href="#">Products</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" data-target="Customers" href="#">Customers</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link " data-target="Analytics" href="#">Analytics</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- MAIN CONTENT -->
+        <div class="card" id="mainContentCard">
+
+            <!-- Content dynamically loaded via JS -->
+            <div class="card-body" id="dynamicContentContainer">
+            </div>
+
+
+            <!-- product Wizard  -->
+            <div class="card-body" id="productWizardContainer">
+
+                <!-- STEP 1: Product Basic Info -->
+                <div class="card shadow active" id="productStep1">
+
+                    <!-- STEP 1: Product Basic Info Header -->
+                    <div class="card-header">Add product</div>
+
+                    <!-- STEP 1: Product Basic Info body-->
+                    <div class="card-body active" id="productStep1Body">
+
+                        <div class="row">
+                            <div class="col">
+                                <label for="productName" class="form-label">Product Name</label>
+                                <input type="text" class="form-control" name="productName" id="productName" placeholder="Product Name" />
+                            </div>
+                            <div class="col">
+                                <label for="price" class="form-label">Price</label>
+                                <input type="text" class="form-control" name="price" id="price" placeholder="Price" />
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col">
+                                <label for="description" class="form-label">Description</label>
+                                <input type="text" class="form-control" name="description" id="description" placeholder="Description" />
+                            </div>
+                            <div class="col">
+                                <label for="quantity" class="form-label">Quantity</label>
+                                <input type="text" class="form-control" name="quantity" id="quantity" placeholder="Quantity" />
+                            </div>
+                         </div>
+                    </div>
+
+                    <div class="card-footer">
+                        <button type="button" class="btn btn-primary" id="nextStep1">Next</button>
+                    </div>
+
+                </div>
+
+                <!-- end of 1 -->
+
+
+
+                <!-- STEP 2: Product Images -->
+
+                <div class="card shadow" id="productStep2">
+
+                    <div class="card-header">Add product</div>
+
+                    <div class="card-body" id="productStep2Body">
+
+                        <label for="input-pd" class="form-label" id="aaa">Product Images</label>
+
+                        <input id="input-pd" name="productImages[]" accept="image/*" type="file" multiple>
+
+                    </div>
+
+                    <div class="card-footer">
+
+                        <button type="button" class="btn btn-primary" id="prevStep1">Previous</button>
+
+                        <button type="button" class="btn btn-primary" id="nextStep2">Next</button>
+
+                    </div>
+
+                </div>
+
+                <!-- end of 2 -->
+
+
+
+                <!-- 3 -->
+
+                <div class="card shadow" id="productStep3">
+
+                    <div class="card-header">Add product</div>
+
+                    <div class="card-body" id="productStep3Body">
+
+
+
+                        <div class="row">
+
+                            <div class="col">
+
+                                <label for="category" class="form-label">Category</label>
+
+                                <select class="form-select" name="category" id="category">
+
+                                    <option value="" selected disabled hidden>Choose Category</option>
+
+                                    <option value="electronics">Electronics</option>
+
+                                    <option value="fashion">Fashion</option>
+
+                                    <option value="home-furniture">Home & Furniture</option>
+
+                                    <option value="beauty-care">Beauty & Personal Care</option>
+
+                                    <option value="sports-outdoors">Sports & Outdoors</option>
+
+                                    <option value="groceries">Groceries & Essentials</option>
+
+                                    <option value="books-stationery">Books & Stationery</option>
+
+                                    <option value="toys-kids">Toys & Kids</option>
+
+                                    <option value="automotive">Automotive</option>
+
+                                    <option value="health-wellness">Health & Wellness</option>
+
+                                </select>
+
+                            </div>
+
+
+
+                            <div class="col">
+
+                                <label for="type" class="form-label">Type</label>
+
+                                <select class="form-select" name="type" id="type">
+
+                                    <option value="" selected disabled hidden>Choose Type</option>
+
+                                </select>
+
+                            </div>
+
+                        </div>
+
+
+
+                        <div class="row" id="attributesRow">
+
+
+                        </div>
+
+                    </div>
+
+                    <div class="card-footer">
+
+                        <button type="button" class="btn btn-primary" id="prevStep2">Previous</button>
+
+                        <button type="submit" class="btn btn-primary" id="add">Add</button>
+
+                    </div>
+
+                </div>
+
+                <!-- end of 3 -->
+
+
+
+            </div>
+
+        </div>
+
+    </div>
+
+</body>
+
+</html>
