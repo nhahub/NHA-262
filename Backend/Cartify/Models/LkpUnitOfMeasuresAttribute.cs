@@ -2,15 +2,11 @@
 #nullable disable
 using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
-using Microsoft.EntityFrameworkCore;
 
 namespace Backend.Models;
 
 public partial class LkpUnitOfMeasuresAttribute
 {
-    [Key]
     public int UnitOfMeasurementAttributeId { get; set; }
 
     public int UnitOfMeasureId { get; set; }
@@ -21,21 +17,15 @@ public partial class LkpUnitOfMeasuresAttribute
 
     public bool IsDeleted1 { get; set; }
 
-    [Column(TypeName = "datetime")]
     public DateTime CreatedDate1 { get; set; }
 
     public int? UpdatedBy1 { get; set; }
 
     public int? DeletedBy1 { get; set; }
 
-    [Column(TypeName = "datetime")]
     public DateTime? DeletedDate1 { get; set; }
 
-    [ForeignKey("AttributeId")]
-    [InverseProperty("LkpUnitOfMeasuresAttributes")]
     public virtual LkpAttribute Attribute { get; set; }
 
-    [ForeignKey("UnitOfMeasureId")]
-    [InverseProperty("LkpUnitOfMeasuresAttributes")]
     public virtual LkpUnitOfMeasure UnitOfMeasure { get; set; }
 }

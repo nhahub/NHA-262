@@ -2,45 +2,32 @@
 #nullable disable
 using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
-using Microsoft.EntityFrameworkCore;
 
 namespace Backend.Models;
 
 public partial class TblType
 {
-    [Key]
     public int TypeId { get; set; }
 
     public int CategoryId { get; set; }
 
-    [Required]
-    [StringLength(50)]
     public string TypeName { get; set; }
 
-    [Required]
-    [StringLength(500)]
     public string TypeDescription { get; set; }
 
     public int? CreatedBy { get; set; }
 
     public bool IsDeleted { get; set; }
 
-    [Column(TypeName = "datetime")]
     public DateTime CreatedDate { get; set; }
 
     public int? UpdatedBy { get; set; }
 
     public int? DeletedBy { get; set; }
 
-    [Column(TypeName = "datetime")]
     public DateTime? DeletedDate { get; set; }
 
-    [ForeignKey("CategoryId")]
-    [InverseProperty("TblTypes")]
     public virtual TblCategory Category { get; set; }
 
-    [InverseProperty("Type")]
     public virtual ICollection<TblProduct> TblProducts { get; set; } = new List<TblProduct>();
 }

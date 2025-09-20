@@ -2,33 +2,21 @@
 #nullable disable
 using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
-using Microsoft.EntityFrameworkCore;
 
 namespace Backend.Models;
 
 public partial class TblAdress
 {
-    [Key]
     public int AddressId { get; set; }
 
     public int UserId { get; set; }
 
-    [Required]
-    [StringLength(50)]
     public string City { get; set; }
 
-    [Required]
-    [StringLength(50)]
     public string State { get; set; }
 
-    [Required]
-    [StringLength(50)]
     public string PostalCode { get; set; }
 
-    [Required]
-    [StringLength(50)]
     public string Country { get; set; }
 
     public bool? IsDefault { get; set; }
@@ -37,17 +25,13 @@ public partial class TblAdress
 
     public bool IsDeleted { get; set; }
 
-    [Column(TypeName = "datetime")]
     public DateTime CreatedDate { get; set; }
 
     public int? UpdatedBy { get; set; }
 
     public int? DeletedBy { get; set; }
 
-    [Column(TypeName = "datetime")]
     public DateTime? DeletedDate { get; set; }
 
-    [ForeignKey("UserId")]
-    [InverseProperty("TblAdresses")]
     public virtual TblUser User { get; set; }
 }

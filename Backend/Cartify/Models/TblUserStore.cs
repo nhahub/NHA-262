@@ -2,21 +2,15 @@
 #nullable disable
 using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
-using Microsoft.EntityFrameworkCore;
 
 namespace Backend.Models;
 
-[Table("TblUserStore")]
 public partial class TblUserStore
 {
-    [Key]
     public int UserStorId { get; set; }
 
     public int UserId { get; set; }
 
-    [StringLength(50)]
     public string StoreName { get; set; }
 
     public int CategoryId { get; set; }
@@ -25,20 +19,15 @@ public partial class TblUserStore
 
     public bool IsDeleted { get; set; }
 
-    [Column(TypeName = "datetime")]
     public DateTime CreatedDate { get; set; }
 
     public int? UpdatedBy { get; set; }
 
     public int? DeletedBy { get; set; }
 
-    [Column(TypeName = "datetime")]
     public DateTime? DeletedDate { get; set; }
 
-    [InverseProperty("UserStore")]
     public virtual ICollection<TblProduct> TblProducts { get; set; } = new List<TblProduct>();
 
-    [ForeignKey("UserId")]
-    [InverseProperty("TblUserStores")]
     public virtual TblUser User { get; set; }
 }

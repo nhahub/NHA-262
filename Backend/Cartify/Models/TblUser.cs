@@ -2,48 +2,32 @@
 #nullable disable
 using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
-using Microsoft.EntityFrameworkCore;
 
 namespace Backend.Models;
 
 public partial class TblUser
 {
-    [Key]
     public int UserId { get; set; }
 
-    [Required]
-    [StringLength(50)]
     public string UserName { get; set; }
 
-    [Required]
-    [StringLength(50)]
+    public string FirstName { get; set; }
+
+    public string LastName { get; set; }
+
     public string PasswordHash { get; set; }
 
     public int UserTypeId { get; set; }
 
-    [StringLength(50)]
     public string PermisionLevel { get; set; }
 
-    [Required]
-    [StringLength(150)]
-    [Unicode(false)]
     public string Email { get; set; }
 
-    [Required]
-    [Column("mobile")]
-    [StringLength(50)]
-    [Unicode(false)]
     public string Mobile { get; set; }
 
-    [Required]
-    [StringLength(50)]
-    [Unicode(false)]
     public string BackupMobile { get; set; }
 
-    [Column(TypeName = "datetime")]
-    public DateTime? BirthDate { get; set; }
+    public DateOnly? BirthDate { get; set; }
 
     public bool? Gender { get; set; }
 
@@ -51,23 +35,17 @@ public partial class TblUser
 
     public bool IsDeleted { get; set; }
 
-    [Column(TypeName = "datetime")]
     public DateTime CreatedDate { get; set; }
 
     public int? UpdatedBy { get; set; }
 
     public int? DeletedBy { get; set; }
 
-    [Column(TypeName = "datetime")]
     public DateTime? DeletedDate { get; set; }
 
-    [InverseProperty("User")]
     public virtual ICollection<TblAdress> TblAdresses { get; set; } = new List<TblAdress>();
 
-    [InverseProperty("User")]
     public virtual ICollection<TblUserStore> TblUserStores { get; set; } = new List<TblUserStore>();
 
-    [ForeignKey("UserTypeId")]
-    [InverseProperty("TblUsers")]
     public virtual UserType UserType { get; set; }
 }

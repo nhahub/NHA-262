@@ -2,39 +2,28 @@
 #nullable disable
 using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
-using Microsoft.EntityFrameworkCore;
 
 namespace Backend.Models;
 
-[Table("lkpAttributes")]
 public partial class LkpAttribute
 {
-    [Key]
     public int AttributeId { get; set; }
 
-    [Required]
-    [StringLength(50)]
     public string Name { get; set; }
 
     public int? CreatedBy { get; set; }
 
     public bool IsDeleted { get; set; }
 
-    [Column(TypeName = "datetime")]
     public DateTime CreatedDate { get; set; }
 
     public int? UpdatedBy { get; set; }
 
     public int? DeletedBy { get; set; }
 
-    [Column(TypeName = "datetime")]
     public DateTime? DeletedDate { get; set; }
 
-    [InverseProperty("Attribute")]
     public virtual ICollection<LkpUnitOfMeasuresAttribute> LkpUnitOfMeasuresAttributes { get; set; } = new List<LkpUnitOfMeasuresAttribute>();
 
-    [InverseProperty("Attribute")]
     public virtual ICollection<TblProduct> TblProducts { get; set; } = new List<TblProduct>();
 }
