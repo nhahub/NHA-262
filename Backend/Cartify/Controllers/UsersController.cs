@@ -1,8 +1,6 @@
 ﻿using Backend.DTO;
 using Backend.Models;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using System.Linq;
 
 namespace Backend.Controllers
 {
@@ -62,13 +60,22 @@ namespace Backend.Controllers
 					return Ok();
 
 				}
-				return NotFound("Username or password is incorrect");
 
 			}
 
 			return NotFound("Username or password is incorrect");
 
 
+		}
+		[HttpPost("check")]
+		public IActionResult checkEmail([FromForm] string email)
+		{
+			bool check=_context.TblUsers.Any(u=>u.Email==email);
+			if (check)
+			{
+				return Ok();
+			}
+			return NotFound();
 		}
 
 	}
