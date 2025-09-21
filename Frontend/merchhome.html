@@ -24,9 +24,9 @@
 </head>
 
 <body>
-    <!-- HEADER -->
-    <div class="card " id="headerCard">
-        <div class="d-flex justify-content-between align-items-center " id="headerFlex">
+    <!-- ================= HEADER ================= -->
+    <div class="card" id="headerCard">
+        <div class="d-flex justify-content-between align-items-center" id="headerFlex">
 
             <!-- Logo -->
             <img src="Icons/Untitled-ن2.png" class="img-fluid rounded-start" alt="Card title" />
@@ -46,10 +46,10 @@
 
     <div class="container-fluid">
 
-        <!-- NAVIGATION -->
+        <!-- ================= NAVIGATION ================= -->
         <div class="card" id="sidebarNav">
             <div class="card-body" id="sidebarMenu">
-                <ul class="nav nav-pills flex-column nav-fill ">
+                <ul class="nav nav-pills flex-column nav-fill">
                     <li class="nav-item">
                         <a class="nav-link active" data-target="Home" aria-current="page" href="#">Home</a>
                     </li>
@@ -63,181 +63,140 @@
                         <a class="nav-link" data-target="Customers" href="#">Customers</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link " data-target="Analytics" href="#">Analytics</a>
+                        <a class="nav-link" data-target="Analytics" href="#">Analytics</a>
                     </li>
                 </ul>
             </div>
         </div>
 
-        <!-- MAIN CONTENT -->
+        <!-- ================= MAIN CONTENT ================= -->
         <div class="card" id="mainContentCard">
 
             <!-- Content dynamically loaded via JS -->
-            <div class="card-body" id="dynamicContentContainer">
-            </div>
+            <div class="card-body" id="dynamicContentContainer"></div>
 
-
-            <!-- product Wizard  -->
+            <!-- ================= PRODUCT WIZARD ================= -->
             <div class="card-body" id="productWizardContainer">
 
                 <!-- STEP 1: Product Basic Info -->
                 <div class="card shadow active" id="productStep1">
 
-                    <!-- STEP 1: Product Basic Info Header -->
+                    <!-- STEP 1 Header -->
                     <div class="card-header">Add product</div>
 
-                    <!-- STEP 1: Product Basic Info body-->
+                    <!-- STEP 1 Body -->
                     <div class="card-body active" id="productStep1Body">
-
                         <div class="row">
                             <div class="col">
                                 <label for="productName" class="form-label">Product Name</label>
-                                <input type="text" class="form-control" name="productName" id="productName" placeholder="Product Name" />
+                                <input type="text" class="form-control" name="productName" id="productName"
+                                    placeholder="Product Name" />
                             </div>
                             <div class="col">
                                 <label for="price" class="form-label">Price</label>
-                                <input type="text" class="form-control" name="price" id="price" placeholder="Price" />
+                                <input type="text" class="form-control" name="price" id="price"
+                                    placeholder="Price" />
                             </div>
                         </div>
 
                         <div class="row">
                             <div class="col">
                                 <label for="description" class="form-label">Description</label>
-                                <input type="text" class="form-control" name="description" id="description" placeholder="Description" />
+                                <input type="text" class="form-control" name="description" id="description"
+                                    placeholder="Description" />
                             </div>
                             <div class="col">
                                 <label for="quantity" class="form-label">Quantity</label>
-                                <input type="text" class="form-control" name="quantity" id="quantity" placeholder="Quantity" />
+                                <input type="text" class="form-control" name="quantity" id="quantity"
+                                    placeholder="Quantity" />
                             </div>
-                         </div>
+                        </div>
                     </div>
 
+                    <!-- STEP 1 Footer -->
                     <div class="card-footer">
                         <button type="button" class="btn btn-primary" id="nextStep1">Next</button>
                     </div>
-
                 </div>
-
                 <!-- end of 1 -->
 
-
-
                 <!-- STEP 2: Product Images -->
-
                 <div class="card shadow" id="productStep2">
 
+                    <!-- STEP 2 Header -->
                     <div class="card-header">Add product</div>
 
+                    <!-- STEP 2 Body -->
                     <div class="card-body" id="productStep2Body">
-
                         <label for="input-pd" class="form-label" id="aaa">Product Images</label>
-
                         <input id="input-pd" name="productImages[]" accept="image/*" type="file" multiple>
-
                     </div>
 
+                    <!-- STEP 2 Footer -->
                     <div class="card-footer">
-
                         <button type="button" class="btn btn-primary" id="prevStep1">Previous</button>
-
                         <button type="button" class="btn btn-primary" id="nextStep2">Next</button>
-
                     </div>
-
                 </div>
-
                 <!-- end of 2 -->
 
-
-
-                <!-- 3 -->
-
+                <!-- STEP 3: Product Category & Type -->
                 <div class="card shadow" id="productStep3">
 
+                    <!-- STEP 3 Header -->
                     <div class="card-header">Add product</div>
 
+                    <!-- STEP 3 Body -->
                     <div class="card-body" id="productStep3Body">
-
-
-
                         <div class="row">
 
+                            <!-- Category Selection -->
                             <div class="col">
-
                                 <label for="category" class="form-label">Category</label>
-
                                 <select class="form-select" name="category" id="category">
-
                                     <option value="" selected disabled hidden>Choose Category</option>
-
                                     <option value="electronics">Electronics</option>
-
                                     <option value="fashion">Fashion</option>
-
                                     <option value="home-furniture">Home & Furniture</option>
-
                                     <option value="beauty-care">Beauty & Personal Care</option>
-
                                     <option value="sports-outdoors">Sports & Outdoors</option>
-
                                     <option value="groceries">Groceries & Essentials</option>
-
                                     <option value="books-stationery">Books & Stationery</option>
-
                                     <option value="toys-kids">Toys & Kids</option>
-
                                     <option value="automotive">Automotive</option>
-
                                     <option value="health-wellness">Health & Wellness</option>
-
                                 </select>
-
                             </div>
 
-
-
+                            <!-- Type Selection (depends on category) -->
                             <div class="col">
-
                                 <label for="type" class="form-label">Type</label>
-
                                 <select class="form-select" name="type" id="type">
-
                                     <option value="" selected disabled hidden>Choose Type</option>
-
                                 </select>
-
                             </div>
-
                         </div>
 
-
-
-                        <div class="row" id="attributesRow">
-
-
-                        </div>
-
+                        <!-- Dynamic Attributes Row -->
+                        <div class="row" id="attributesRow"></div>
                     </div>
 
+                    <!-- STEP 3 Footer -->
                     <div class="card-footer">
-
                         <button type="button" class="btn btn-primary" id="prevStep2">Previous</button>
-
                         <button type="submit" class="btn btn-primary" id="add">Add</button>
-
                     </div>
-
                 </div>
-
                 <!-- end of 3 -->
 
-
-
             </div>
+            <!-- ===== END PRODUCT WIZARD ===== -->
 
         </div>
+        <!-- ===== END MAIN CONTENT ===== -->
 
     </div>
+    <!-- ===== END CONTAINER ===== -->
 
 </body>
 
