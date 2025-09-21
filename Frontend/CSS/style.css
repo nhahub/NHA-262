@@ -1,19 +1,25 @@
+/* ================================= */
+/* Global Reset                      */
+/* ================================= */
 body {
     margin: 0px;
-    background-color: rgb(249, 233, 233);
     scroll-behavior: smooth;
 }
 
+/* ================================= */
+/* Header Section                    */
+/* ================================= */
 .headerr {
     display: flex;
     justify-content: space-between;
     height: 80px;
-    background-color: #c3cbbd;
+    background-color: #ceffd0;
     padding-right: 35px;
-
-
 }
 
+/* ================================= */
+/* Page Icon / Navigation            */
+/* ================================= */
 .PageIcon {
     display: flex;
 }
@@ -36,7 +42,6 @@ body {
 .PageIcon ul li {
     display: flex;
     text-decoration: none;
-
 }
 
 .PageIcon ul li a {
@@ -51,14 +56,17 @@ body {
 }
 
 .PageIcon ul li a:hover {
-    border-bottom: 3px solid white;
+    border-bottom: 3px solid #65a834;
 }
-.Login{
+
+/* ================================= */
+/* Login Section                     */
+/* ================================= */
+.Login {
     display: flex;
     align-items: center;
     gap: 15px;
 }
-
 
 .startforfree {
     display: flex;
@@ -71,7 +79,6 @@ body {
     font-weight: bold;
     font-size: 16px;
     font-family: 'Poppins', sans-serif;
-
 }
 
 .startforfree:hover {
@@ -79,44 +86,51 @@ body {
     color: white;
 }
 
-    .LOGIN {
-        
-        color: #65a834;
-        font-weight: bold;
-        font-size: 16px;
-            text-decoration: none;
-
-        font-family: 'Poppins', sans-serif;
-        border-bottom: 3px solid transparent;
-        transition: all 0.3s;
-        padding-top: 5px;
-
-    }
+.LOGIN {
+    color: #65a834;
+    font-weight: bold;
+    font-size: 16px;
+    text-decoration: none;
+    font-family: 'Poppins', sans-serif;
+    border-bottom: 3px solid transparent;
+    transition: all 0.3s;
+    padding-top: 5px;
+}
 
 .LOGIN:hover {
-    border-bottom: 3px solid white;
+    border-bottom: 3px solid #65a834;
 }
-#cart{
-    height:30px;
+
+/* ================================= */
+/* Cart Icon                         */
+/* ================================= */
+#cart {
+    height: 30px;
 }
-.middle{
+
+/* ================================= */
+/* Middle / Search Bar Section       */
+/* ================================= */
+.middle {
     display: flex;
     flex: 1;
     justify-content: center;
     align-items: center;
 }
-#searchBar{
+
+#searchBar {
     height: 35%;
     width: 65%;
-        border-radius: 5px;
-        outline: none;
-        border: none;
-
-        transition: all 0.3s ease;
+    border-radius: 5px;
+    outline: none;
+    border: none;
+    transition: all 0.3s ease;
 }
-#searchBar:hover{
+
+#searchBar:hover {
     box-shadow: 0px 0px 8px #4CAF50;
 }
-#searchBar:focus{
+
+#searchBar:focus {
     box-shadow: 0px 0px 20px #4CAF50;
 }

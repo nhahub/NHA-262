@@ -2,77 +2,112 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="icon" href="Icons/favicon.ico" type="image/x-icon">
-  <link rel="stylesheet" href="CSS/loginstyle.css">
-  <script src="JS/jquery.js"></script>
-  <script src="JS/loginScript.js"></script>
-  <title>Login</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Favicon -->
+    <link rel="icon" href="Icons/favicon.ico" type="image/x-icon">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="CSS/loginstyle.css">
+
+    <!-- JS Libraries -->
+    <script src="JS/jquery.js"></script>
+    <script src="JS/loginScript.js"></script>
+
+    <title>Login</title>
 </head>
 
 <body>
-  <div class="container">
-    <header>
-      <a href="index.html"><img src="Icons/Untitled-1green.png"></a>
-      <section>
-        <h2>Login</h2>
-      </section>
-    </header>
-    <div class="erorr">
-      <p id="err"></p>
+    <!-- ================= CONTAINER ================= -->
+    <div class="container">
+
+        <!-- ================= HEADER ================= -->
+        <header>
+            <!-- Logo -->
+            <a href="index.html">
+                <img src="Icons/Untitled-1green.png" alt="Logo">
+            </a>
+
+            <!-- Page Title -->
+            <section>
+                <h2>Login</h2>
+            </section>
+        </header>
+
+        <!-- ================= ERROR MESSAGE ================= -->
+        <div class="erorr">
+            <p id="err"></p>
+        </div>
+
+        <!-- ================= STEP 1: LOGIN FORM ================= -->
+        <form class="form active" id="step1">
+
+            <!-- Username -->
+            <input type="text" id="username" name="username" placeholder="username" class="in">
+
+            <!-- Password -->
+            <input type="password" id="password" name="password" placeholder="Password" class="in">
+
+            <!-- Remember Me & Forget Password -->
+            <div class="remember-and-forget">
+                <div class="left">
+                    <input type="checkbox" id="rememberMe" name="remember">
+                    <label for="rememberMe">Remember me</label>
+                </div>
+                <a href="#" id="frgt">Forget password?</a>
+            </div>
+
+            <!-- Login Button -->
+            <input type="submit" value="Log in" id="btn" class="btn-custom">
+
+            <!-- Divider -->
+            <div class="orr">
+                <hr>or
+                <hr>
+            </div>
+
+            <!-- Register Button -->
+            <a href="register.html" class="regg">
+                <input type="button" value="Start for free" class="btn-custom">
+            </a>
+
+        </form>
+
+        <!-- ================= STEP 2: FORGOT PASSWORD ================= -->
+        <form class="form" id="step2">
+
+            <!-- Email -->
+            <input type="text" placeholder="Email" id="email" name="email" class="in">
+
+            <!-- Send Password Button -->
+            <input type="submit" value="send password" id="sendpw" class="btn-custom">
+
+            <!-- Hidden Button -->
+            <input type="submit" value="" id="hidd" class="btn-custom">
+
+        </form>
+
+        <!-- ================= STEP 3: RESET PASSWORD ================= -->
+        <form class="form" id="step3">
+
+            <!-- Code -->
+            <input type="text" placeholder="Code" id="Code" name="Code" class="in">
+
+            <!-- New Password -->
+            <input type="password" placeholder="Password" id="password1" name="password" class="in">
+
+            <!-- Confirm Password -->
+            <input type="password" placeholder="Confirm password" id="password2" name="password2" class="in">
+
+            <!-- Confirm Button -->
+            <input type="submit" value="Confirm" id="confirm" class="btn-custom">
+
+        </form>
 
     </div>
-    <form class="form active" id="step1">
-      <!-- Email -->
-      <input type="text" id="username" name="username" placeholder="username" class="in">
+    <!-- ===== END CONTAINER ===== -->
 
-      <!-- Password -->
-      <input type="password" id="password" name="password" placeholder="Password" class="in">
-
-      <!-- Remember & Forget -->
-      <div class="remember-and-forget">
-        <div class="left">
-          <input type="checkbox" id="rememberMe" name="remember">
-          <label for="rememberMe">Remember me</label>
-        </div>
-        <a href="#" id="frgt">Forget password?</a>
-      </div>
-
-      <!-- Login button -->
-      <input type="submit" value="Log in" id="btn" class="in">
-
-      <!-- Divider -->
-      <div class="orr">
-        <hr>or
-        <hr>
-      </div>
-
-      <!-- Register -->
-      <a href="register.html" class="regg">
-        <input type="button" value="Start for free" class="reg in">
-      </a>
-    </form>
-    <form class="form" id="step2">
-  
-      <input type="text" placeholder="Email" id="email" name="email" class="in" >
-      <input type="submit" value="send password" id="sendpw" class="in">
-      <input type="submit" value="" id="hidd" class="in">
-  
-  
-    </form>
-<form class="form" id="step3">
-  <input type="text" placeholder="Code" id="Code" name="Code" class="in">
-  <input type="password" placeholder="Password" id="password1" name="password" class="in">
-  <input type="password" placeholder="Confirm password" id="password2" name="password2" class="in">
-  <input type="submit" value="Confirm" id="confirm" class="in">
-</form>
-
-  </div>
-
-  <script>
-
-  </script>
 </body>
 
 </html>
