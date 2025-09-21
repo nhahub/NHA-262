@@ -16,34 +16,37 @@
 
   .container {
     background-color: #fff;
-    height: 500px;
+    height: auto;
     width: 300px;
     border-radius: 15px;
     padding: 15px;
     box-shadow: 1px 1px 5px 5px rgb(180, 170, 170);
   }
-
   header {
     display: flex;
     height: 50px;
     border-radius: 5px;
     
   }
-
+  
   header img {
     display: flex;
     height: 100%;
   }
-
+  
   .form {
-    display: flex;
+    display: none;
     width: 100%;
     height: 100%;
     flex-direction: column;
     gap: 30px;
   }
+  .active{
+    display: flex;
+  }
+.in {
+      background-color: #f1fcea;
 
-  .form input {
     border-radius: 5px;
     border: none;
     height: 40px;
@@ -54,19 +57,21 @@
     transition: all 0.3s ease;
     outline: none;
   }
-  .form input:hover {
+  .in:hover {
   box-shadow: 0 0 3px #4CAF50; 
 }
 
-.form input:focus {
+.in:focus {
   box-shadow: 0 0 8px #4CAF50;
 }
 
   #username,
-  #password {
+  #password,#email {
     background-color: #f1fcea;
   }
-
+#hidd{
+  visibility: hidden;
+}
   .form input::placeholder {
     font-family: "Poppins", sans-serif;
     padding-left: 5px;
@@ -82,7 +87,7 @@
     margin-right: 50px;
   }
 
-  #btn {
+  #btn,#sendpw,#confirm{
     background-color: #65a834;
     color: white;
     font-family: "Poppins", sans-serif;
@@ -92,7 +97,7 @@
     cursor: pointer;
   }
 
-  #btn:hover {
+  #btn,#sendpw:hover {
     filter: brightness(115%);
   }
 
