@@ -21,12 +21,11 @@
                 <section><h2>Signup</h2></section>
             </header>
 
-            <form class="FORM" method="post">
+            <form class="FORM">
 
                 <div class="step active" id="step1">
-                    <input type="text" class="User" placeholder="Email" id="email" name="email">
-                    <input type="text" class="User" placeholder="Username" id="Username" name="Username">
-                    <input type="password" class="User" placeholder="Password" id="pw1" name="password">
+                    <input type="text" class="User" placeholder="Email" id="email">
+                    <input type="password" class="User" placeholder="Password" id="pw1">
                     <input type="password" class="User" placeholder="Confirm password" id="pw2">
                     <p id="err"></p>
                     <button type="button" class="next">Next</button>
@@ -36,10 +35,10 @@
                 </div>
 
                 <div class="step" id="step2">
-                <input type="text" class="User" placeholder="First Name" name="firstName">
-                <input type="text" class="User" placeholder="Last Name" name="lastName">
-                <input type="text" class="User" id="datepicker" placeholder="Birth of date" name="birthDate">
-                <input type="tel" class="User" id="telephone" placeholder="Telephone" name="telephone">
+                <input type="text" class="User" placeholder="First Name">
+                <input type="text" class="User" placeholder="Last Name">
+                <input type="text" class="User" id="datepicker" placeholder="Birth of date">
+                <input type="tel" class="User" placeholder="" id="telephone" >
 
                 <div class="gend">
                     <input type="radio" name="gender" id="malegen" value="Male">
@@ -54,18 +53,16 @@
                 </div>
 
                 <div class="step" id="step3">
-                <input type="text" class="User" placeholder="Street Address" name="streetAddress">
-                <input type="text" class="User" placeholder="City" name="city">
-                <input type="text" class="User" placeholder="State" name="state">
-                <input type="text" class="User" placeholder="ZIP Code" name="zipCode">
-                <input type="text" class="User" placeholder="Country" name="country">
-
-                <select id="AddressType" name="addressType">
-                <option value="">Select Address Type</option>
-                <option value="Home">Home</option>
-                <option value="Office">Office</option>
-                 </select>
-
+                                    <input type="text" class="User" placeholder="Street Address">
+                <input type="text" class="User" placeholder="City">
+                <input type="text" class="User" placeholder="State">
+                <input type="text" class="User" placeholder="ZIP Code">
+                <input type="text" class="User" placeholder="Country">
+                <select name="Address Type" id="AddressType">
+                    <option value="">Select Address Type</option>
+                    <option value="Home">Home</option>
+                    <option value="Office">Office</option>
+                </select>
 
                     <button type="button" class="prev">Back</button>
                     <input type="submit" value="Start for free" class="btn">
