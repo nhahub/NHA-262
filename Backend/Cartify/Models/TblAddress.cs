@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 namespace Backend.Models;
 
-public partial class TblAdress
+public partial class TblAddress
 {
     public int AddressId { get; set; }
 

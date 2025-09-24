@@ -23,7 +23,7 @@ public partial class LkpAttribute
 
     public DateTime? DeletedDate { get; set; }
 
-    public virtual ICollection<LkpUnitOfMeasuresAttribute> LkpUnitOfMeasuresAttributes { get; set; } = new List<LkpUnitOfMeasuresAttribute>();
+    public virtual ICollection<LkpAttributesProduct> LkpAttributesProducts { get; set; } = new List<LkpAttributesProduct>();
 
-    public virtual ICollection<TblProduct> TblProducts { get; set; } = new List<TblProduct>();
+    public virtual ICollection<LkpUnitMeasuresAttribute> LkpUnitMeasuresAttributes { get; set; } = new List<LkpUnitMeasuresAttribute>();
 }

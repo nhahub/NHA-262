@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
+
     <!-- Favicon -->
     <link rel="icon" href="Icons/favicon.ico" type="image/x-icon">
 
@@ -30,7 +30,7 @@
         <header>
             <a href="index.html"><img src="Icons/Untitled-1green.png"></a>
             <section>
-                <h2>Signup</h2>
+                <h2 id="tagg"></h2>
             </section>
         </header>
 
@@ -39,19 +39,18 @@
 
             <!-- Step 1: Email & Password -->
             <div class="step active" id="step1">
-                <input type="text" class="User" placeholder="Email" id="email">
-                <input type="password" class="User" placeholder="Password" id="pw1">
-                <input type="password" class="User" placeholder="Confirm password" id="pw2">
-                
-                <!-- Error Message -->
+                <input type="text" class="User" placeholder="Email" name="Email" id="email">
+                <input type="text" class="User" placeholder="Username" name="UserName" id="username">
+                <input type="password" class="User" placeholder="Password" name="Password" id="pw1">
+                <input type="password" class="User" placeholder="Confirm password" name="ConfirmPassword" id="pw2">
+
                 <p id="err"></p>
 
-                <!-- Navigation Buttons -->
-                <button type="button" class="next">Next</button>
+                <button type="button" class="next" id="next1">Next</button>
 
-                <!-- Already have account -->
                 <div class="orr">
-                    <hr>already have account<hr>
+                    <hr>already have account
+                    <hr>
                 </div>
                 <a href="login.html" class="regg">
                     <input type="button" value="Login" class="reg">
@@ -60,43 +59,34 @@
 
             <!-- Step 2: Personal Information -->
             <div class="step" id="step2">
-                <input type="text" class="User" placeholder="First Name">
-                <input type="text" class="User" placeholder="Last Name">
-                <input type="text" class="User" id="datepicker" placeholder="Birth of date">
-                <input type="tel" class="User" placeholder="" id="telephone">
+                <input type="text" class="User" placeholder="First Name" name="FirstName" id="FName">
+                <input type="text" class="User" placeholder="Last Name" name="LastName" id="LName">
+                <input type="text" class="User" placeholder="Birth of date" name="BirthDate" id="datepicker">
+                <input type="tel" class="User" placeholder="" name="Telephone" id="telephone">
 
-                <!-- Gender Selection -->
                 <div class="gend">
-                    <input type="radio" name="gender" id="malegen" value="Male">
+                    <input type="radio" name="Gender" id="malegen" value="Male">
                     <label for="malegen">Male</label>
-                    <input type="radio" name="gender" id="femalegen" value="Female">
+                    <input type="radio" name="Gender" id="femalegen" value="Female">
                     <label for="femalegen">Female</label>
                 </div>
+                <p id="err2"></p>
 
-                <!-- Navigation Buttons -->
                 <div class="btns">
-                    <button type="button" class="prev">Back</button>
-                    <button type="button" class="next">Next</button>
+                    <button type="button" class="prev" id="prev1">Back</button>
+                    <button type="button" class="next" id="next2">Next</button>
                 </div>
             </div>
 
             <!-- Step 3: Address Information -->
             <div class="step" id="step3">
-                <input type="text" class="User" placeholder="Street Address">
-                <input type="text" class="User" placeholder="City">
-                <input type="text" class="User" placeholder="State">
-                <input type="text" class="User" placeholder="ZIP Code">
-                <input type="text" class="User" placeholder="Country">
+                <input type="text" class="User" placeholder="Street Address" name="Street">
+                <input type="text" class="User" placeholder="City" name="City">
+                <input type="text" class="User" placeholder="State" name="State">
+                <input type="text" class="User" placeholder="ZIP Code" name="ZipCode">
+                <input type="text" class="User" placeholder="Country" name="Country">
 
-                <!-- Address Type Dropdown -->
-                <select name="Address Type" id="AddressType">
-                    <option value="">Select Address Type</option>
-                    <option value="Home">Home</option>
-                    <option value="Office">Office</option>
-                </select>
-
-                <!-- Navigation Buttons -->
-                <button type="button" class="prev">Back</button>
+                <button type="button" class="prev" id="prev2">Back</button>
                 <input type="submit" value="Start for free" class="btn">
             </div>
 
@@ -109,4 +99,5 @@
     <script src="JS/regScript.js"></script>
 
 </body>
+
 </html>

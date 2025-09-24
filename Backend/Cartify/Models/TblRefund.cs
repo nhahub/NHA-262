@@ -11,6 +11,8 @@ public partial class TblRefund
 
     public int OrderDetailId { get; set; }
 
+    public string RefundStatues { get; set; }
+
     public decimal RefundAmount { get; set; }
 
     public string Description { get; set; }

@@ -64,7 +64,7 @@ $(document).ready(function () {
     dataform = $("#step2").serialize();
     $.ajax({
       type: "post",
-      url: "http://localhost:5259/api/Users/check", // Check email API
+      url: "http://localhost:5259/api/Users/CheckEmail", // Check email API
       data: dataform,
       success: function (response) {
         // Move from Step2 → Step3
