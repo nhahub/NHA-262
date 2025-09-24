@@ -7,7 +7,7 @@ namespace Backend.Models;
 
 public partial class TblProduct
 {
-    public int PtoductId { get; set; }
+    public int ProductId { get; set; }
 
     public int TypeId { get; set; }
 
@@ -18,8 +18,6 @@ public partial class TblProduct
     public string ProductName { get; set; }
 
     public string ProductDescription { get; set; }
-
-    public decimal Price { get; set; }
 
     public int? CreatedBy { get; set; }
 
@@ -33,13 +31,13 @@ public partial class TblProduct
 
     public DateTime? DeletedDate { get; set; }
 
-    public virtual LkpAttribute Attribute { get; set; }
-
-    public virtual ICollection<TblInventory> TblInventories { get; set; } = new List<TblInventory>();
+    public virtual ICollection<LkpAttributesProduct> LkpAttributesProducts { get; set; } = new List<LkpAttributesProduct>();
 
     public virtual ICollection<TblOrderDetail> TblOrderDetails { get; set; } = new List<TblOrderDetail>();
 
     public virtual ICollection<TblProductImage> TblProductImages { get; set; } = new List<TblProductImage>();
+
+    public virtual TblProductsDetail TblProductsDetail { get; set; }
 
     public virtual TblType Type { get; set; }
 

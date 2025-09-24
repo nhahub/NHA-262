@@ -1,10 +1,10 @@
 ﻿{
-   "CodeGenerationMode": 4,
+   "CodeGenerationMode": 5,
    "ContextClassName": "EcommerceDBContext",
    "ContextNamespace": null,
    "FilterSchemas": false,
    "IncludeConnectionString": false,
-   "MinimumProductVersion": "2.6.1130",
+   "MinimumProductVersion": "2.6.1166",
    "ModelNamespace": null,
    "OutputContextPath": null,
    "OutputPath": "Models",
@@ -12,11 +12,15 @@
    "ProjectRootNamespace": "Backend",
    "Schemas": null,
    "SelectedHandlebarsLanguage": 2,
-   "SelectedToBeGenerated": 0,
+   "SelectedToBeGenerated": 2,
    "T4TemplatePath": null,
    "Tables": [
       {
          "Name": "[dbo].[lkpAttributes]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[LkpAttributesProducts]",
          "ObjectType": 0
       },
       {
@@ -32,15 +36,15 @@
          "ObjectType": 0
       },
       {
+         "Name": "[dbo].[LkpUnitMeasuresAttributes]",
+         "ObjectType": 0
+      },
+      {
          "Name": "[dbo].[LkpUnitOfMeasures]",
          "ObjectType": 0
       },
       {
-         "Name": "[dbo].[LkpUnitOfMeasuresAttributes]",
-         "ObjectType": 0
-      },
-      {
-         "Name": "[dbo].[TblAdresses]",
+         "Name": "[dbo].[TblAddresses]",
          "ObjectType": 0
       },
       {
@@ -60,11 +64,19 @@
          "ObjectType": 0
       },
       {
+         "Name": "[dbo].[TblProductDetails]",
+         "ObjectType": 0
+      },
+      {
          "Name": "[dbo].[TblProductImages]",
          "ObjectType": 0
       },
       {
          "Name": "[dbo].[TblProducts]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[TblProductsDetails]",
          "ObjectType": 0
       },
       {

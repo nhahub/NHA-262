@@ -9,7 +9,7 @@ public partial class TblInventory
 {
     public int InventoryId { get; set; }
 
-    public int ProductId { get; set; }
+    public int ProductDetailId { get; set; }
 
     public int QuantityAvailable { get; set; }
 
@@ -29,5 +29,9 @@ public partial class TblInventory
 
     public DateTime? DeletedDate { get; set; }
 
-    public virtual TblProduct Product { get; set; }
+    public virtual TblProductDetail ProductDetail { get; set; }
+
+    public virtual TblProductsDetail ProductDetailNavigation { get; set; }
+
+    public virtual ICollection<TblUserStore> TblUserStores { get; set; } = new List<TblUserStore>();
 }

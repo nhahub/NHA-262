@@ -43,7 +43,7 @@ public partial class TblUser
 
     public DateTime? DeletedDate { get; set; }
 
-    public virtual ICollection<TblAdress> TblAdresses { get; set; } = new List<TblAdress>();
+    public virtual ICollection<TblAddress> TblAddresses { get; set; } = new List<TblAddress>();
 
     public virtual ICollection<TblUserStore> TblUserStores { get; set; } = new List<TblUserStore>();
 

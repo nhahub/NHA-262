@@ -23,5 +23,5 @@ public partial class LkpUnitOfMeasure
 
     public DateTime? DeletedDate { get; set; }
 
-    public virtual ICollection<LkpUnitOfMeasuresAttribute> LkpUnitOfMeasuresAttributes { get; set; } = new List<LkpUnitOfMeasuresAttribute>();
+    public virtual ICollection<LkpUnitMeasuresAttribute> LkpUnitMeasuresAttributes { get; set; } = new List<LkpUnitMeasuresAttribute>();
 }

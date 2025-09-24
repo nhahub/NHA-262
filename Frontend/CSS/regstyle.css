@@ -277,7 +277,7 @@ p {
 /* ================================= */
 /* Address Dropdown                   */
 /* ================================= */
-#AddressType {
+/* #AddressType {
     color: gray;
     width: 100%;             
     padding: 10px;            
@@ -292,4 +292,11 @@ p {
     background-repeat: no-repeat;
     background-position: right 10px center;
     background-size: 12px;
-}
+} */
+
+/* .iti__search-icon{
+    padding-right: 50px;
+} */
+ #iti-0__search-input{
+    padding-left: 25px;
+ }

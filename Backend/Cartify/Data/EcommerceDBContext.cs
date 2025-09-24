@@ -8,16 +8,14 @@ namespace Backend.Models;
 
 public partial class EcommerceDBContext : DbContext
 {
-	public EcommerceDBContext()
-	{
-	}
-
-	public EcommerceDBContext(DbContextOptions<EcommerceDBContext> options)
+    public EcommerceDBContext(DbContextOptions<EcommerceDBContext> options)
         : base(options)
     {
     }
 
     public virtual DbSet<LkpAttribute> LkpAttributes { get; set; }
+
+    public virtual DbSet<LkpAttributesProduct> LkpAttributesProducts { get; set; }
 
     public virtual DbSet<LkpOrderStatue> LkpOrderStatues { get; set; }
 
@@ -25,11 +23,11 @@ public partial class EcommerceDBContext : DbContext
 
     public virtual DbSet<LkpShipementMethod> LkpShipementMethods { get; set; }
 
+    public virtual DbSet<LkpUnitMeasuresAttribute> LkpUnitMeasuresAttributes { get; set; }
+
     public virtual DbSet<LkpUnitOfMeasure> LkpUnitOfMeasures { get; set; }
 
-    public virtual DbSet<LkpUnitOfMeasuresAttribute> LkpUnitOfMeasuresAttributes { get; set; }
-
-    public virtual DbSet<TblAdress> TblAdresses { get; set; }
+    public virtual DbSet<TblAddress> TblAddresses { get; set; }
 
     public virtual DbSet<TblCategory> TblCategories { get; set; }
 
@@ -41,7 +39,11 @@ public partial class EcommerceDBContext : DbContext
 
     public virtual DbSet<TblProduct> TblProducts { get; set; }
 
+    public virtual DbSet<TblProductDetail> TblProductDetails { get; set; }
+
     public virtual DbSet<TblProductImage> TblProductImages { get; set; }
+
+    public virtual DbSet<TblProductsDetail> TblProductsDetails { get; set; }
 
     public virtual DbSet<TblRefund> TblRefunds { get; set; }
 
@@ -73,6 +75,24 @@ public partial class EcommerceDBContext : DbContext
             entity.Property(e => e.Name)
                 .IsRequired()
                 .HasMaxLength(50);
+        });
+
+        modelBuilder.Entity<LkpAttributesProduct>(entity =>
+        {
+            entity.HasKey(e => e.AttributeProductId);
+
+            entity.Property(e => e.AttributeProductId).ValueGeneratedNever();
+            entity.Property(e => e.IsDeleted).HasAnnotation("Relational:DefaultConstraintName", "DF_LkpAttributesProducts_IsDeleted");
+
+            entity.HasOne(d => d.Attripute).WithMany(p => p.LkpAttributesProducts)
+                .HasForeignKey(d => d.AttriputeId)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK_LkpAttributesProducts_lkpAttributes");
+
+            entity.HasOne(d => d.Product).WithMany(p => p.LkpAttributesProducts)
+                .HasForeignKey(d => d.ProductId)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK_LkpAttributesProducts_TblProducts");
         });
 
         modelBuilder.Entity<LkpOrderStatue>(entity =>
@@ -127,6 +147,24 @@ public partial class EcommerceDBContext : DbContext
                 .HasMaxLength(50);
         });
 
+        modelBuilder.Entity<LkpUnitMeasuresAttribute>(entity =>
+        {
+            entity.HasKey(e => e.UnitMeasureAttributeId);
+
+            entity.Property(e => e.UnitMeasureAttributeId).ValueGeneratedNever();
+            entity.Property(e => e.IsDeleted).HasAnnotation("Relational:DefaultConstraintName", "DF_LkpUnitOfMeasuresAttributes_IsDeleted1");
+
+            entity.HasOne(d => d.Attribute).WithMany(p => p.LkpUnitMeasuresAttributes)
+                .HasForeignKey(d => d.AttributeId)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK_LkpUnitOfMeasuresAttributes_lkpAttributes");
+
+            entity.HasOne(d => d.UnitOfMeasure).WithMany(p => p.LkpUnitMeasuresAttributes)
+                .HasForeignKey(d => d.UnitOfMeasureId)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK_LkpUnitOfMeasuresAttributes_LkpUnitOfMeasures");
+        });
+
         modelBuilder.Entity<LkpUnitOfMeasure>(entity =>
         {
             entity.HasKey(e => e.UnitOfMeasureId);
@@ -143,30 +181,7 @@ public partial class EcommerceDBContext : DbContext
                 .HasMaxLength(50);
         });
 
-        modelBuilder.Entity<LkpUnitOfMeasuresAttribute>(entity =>
-        {
-            entity.HasKey(e => e.UnitOfMeasurementAttributeId).HasName("PK_LkpUnitOfMeasuresAttributes_1");
-
-            entity.Property(e => e.UnitOfMeasurementAttributeId).ValueGeneratedNever();
-            entity.Property(e => e.CreatedDate1)
-                .HasDefaultValueSql("(getdate())")
-                .HasAnnotation("Relational:DefaultConstraintName", "DF_LkpUnitOfMeasuresAttributes_CreatedDate1")
-                .HasColumnType("datetime");
-            entity.Property(e => e.DeletedDate1).HasColumnType("datetime");
-            entity.Property(e => e.IsDeleted1).HasAnnotation("Relational:DefaultConstraintName", "DF_LkpUnitOfMeasuresAttributes_IsDeleted1");
-
-            entity.HasOne(d => d.Attribute).WithMany(p => p.LkpUnitOfMeasuresAttributes)
-                .HasForeignKey(d => d.AttributeId)
-                .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK_LkpUnitOfMeasuresAttributes_lkpAttributes");
-
-            entity.HasOne(d => d.UnitOfMeasure).WithMany(p => p.LkpUnitOfMeasuresAttributes)
-                .HasForeignKey(d => d.UnitOfMeasureId)
-                .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK_LkpUnitOfMeasuresAttributes_LkpUnitOfMeasures");
-        });
-
-        modelBuilder.Entity<TblAdress>(entity =>
+        modelBuilder.Entity<TblAddress>(entity =>
         {
             entity.HasKey(e => e.AddressId).HasName("PK_TblAdresses_1");
 
@@ -192,7 +207,7 @@ public partial class EcommerceDBContext : DbContext
                 .IsRequired()
                 .HasMaxLength(50);
 
-            entity.HasOne(d => d.User).WithMany(p => p.TblAdresses)
+            entity.HasOne(d => d.User).WithMany(p => p.TblAddresses)
                 .HasForeignKey(d => d.UserId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("FK_TblAdresses_TblUsers");
@@ -229,10 +244,15 @@ public partial class EcommerceDBContext : DbContext
             entity.Property(e => e.DeletedDate).HasColumnType("datetime");
             entity.Property(e => e.IsDeleted).HasAnnotation("Relational:DefaultConstraintName", "DF_TblInventory_IsDeleted_1");
 
-            entity.HasOne(d => d.Product).WithMany(p => p.TblInventories)
-                .HasForeignKey(d => d.ProductId)
+            entity.HasOne(d => d.ProductDetail).WithMany(p => p.TblInventories)
+                .HasForeignKey(d => d.ProductDetailId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK_TblInventory_TblProducts");
+                .HasConstraintName("FK_TblInventory_TblProductDetails");
+
+            entity.HasOne(d => d.ProductDetailNavigation).WithMany(p => p.TblInventories)
+                .HasForeignKey(d => d.ProductDetailId)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK_TblInventory_TblProductsDetails");
         });
 
         modelBuilder.Entity<TblOrder>(entity =>
@@ -300,7 +320,7 @@ public partial class EcommerceDBContext : DbContext
 
         modelBuilder.Entity<TblProduct>(entity =>
         {
-            entity.HasKey(e => e.PtoductId);
+            entity.HasKey(e => e.ProductId);
 
             entity.Property(e => e.CreatedDate)
                 .HasDefaultValueSql("(getdate())")
@@ -308,15 +328,9 @@ public partial class EcommerceDBContext : DbContext
                 .HasColumnType("datetime");
             entity.Property(e => e.DeletedDate).HasColumnType("datetime");
             entity.Property(e => e.IsDeleted).HasAnnotation("Relational:DefaultConstraintName", "DF_TblProducts_IsDeleted_1");
-            entity.Property(e => e.Price).HasColumnType("decimal(10, 2)");
             entity.Property(e => e.ProductName)
                 .IsRequired()
                 .HasMaxLength(50);
-
-            entity.HasOne(d => d.Attribute).WithMany(p => p.TblProducts)
-                .HasForeignKey(d => d.AttributeId)
-                .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK_TblProducts_lkpAttributes");
 
             entity.HasOne(d => d.Type).WithMany(p => p.TblProducts)
                 .HasForeignKey(d => d.TypeId)
@@ -327,6 +341,24 @@ public partial class EcommerceDBContext : DbContext
                 .HasForeignKey(d => d.UserStoreId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("FK_TblProducts_TblUserStore1");
+        });
+
+        modelBuilder.Entity<TblProductDetail>(entity =>
+        {
+            entity.HasKey(e => e.ProductDetailId);
+
+            entity.Property(e => e.ProductDetailId).ValueGeneratedNever();
+            entity.Property(e => e.Price).HasColumnType("decimal(18, 2)");
+
+            entity.HasOne(d => d.AttributeProduct).WithMany(p => p.TblProductDetails)
+                .HasForeignKey(d => d.AttributeProductId)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK_TblProductDetails_LkpAttributesProducts");
+
+            entity.HasOne(d => d.UnitMeasureAttribute).WithMany(p => p.TblProductDetails)
+                .HasForeignKey(d => d.UnitMeasureAttributeId)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK_TblProductDetails_LkpUnitMeasuresAttributes");
         });
 
         modelBuilder.Entity<TblProductImage>(entity =>
@@ -343,6 +375,25 @@ public partial class EcommerceDBContext : DbContext
                 .HasConstraintName("FK_TblProductImages_TblProducts");
         });
 
+        modelBuilder.Entity<TblProductsDetail>(entity =>
+        {
+            entity.HasKey(e => e.ProductDetailId);
+
+            entity.Property(e => e.ProductDetailId).ValueGeneratedNever();
+            entity.Property(e => e.Price).HasColumnType("decimal(18, 2)");
+            entity.Property(e => e.ProductId).HasColumnName("productId");
+
+            entity.HasOne(d => d.ProductDetail).WithOne(p => p.TblProductsDetail)
+                .HasForeignKey<TblProductsDetail>(d => d.ProductDetailId)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK_TblProductsDetails_TblProducts");
+
+            entity.HasOne(d => d.UnitMeasureAttribute).WithMany(p => p.TblProductsDetails)
+                .HasForeignKey(d => d.UnitMeasureAttributeId)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK_TblProductsDetails_LkpUnitMeasuresAttributes");
+        });
+
         modelBuilder.Entity<TblRefund>(entity =>
         {
             entity.HasNoKey();
@@ -355,6 +406,9 @@ public partial class EcommerceDBContext : DbContext
             entity.Property(e => e.Description).HasMaxLength(500);
             entity.Property(e => e.IsDeleted).HasAnnotation("Relational:DefaultConstraintName", "DF_TblRefunds_IsDeleted_1");
             entity.Property(e => e.RefundAmount).HasColumnType("decimal(18, 2)");
+            entity.Property(e => e.RefundStatues)
+                .IsRequired()
+                .HasMaxLength(50);
 
             entity.HasOne(d => d.OrderDetail).WithMany()
                 .HasForeignKey(d => d.OrderDetailId)
@@ -465,6 +519,11 @@ public partial class EcommerceDBContext : DbContext
             entity.Property(e => e.DeletedDate).HasColumnType("datetime");
             entity.Property(e => e.IsDeleted).HasAnnotation("Relational:DefaultConstraintName", "DF_TblUserStore_IsDeleted");
             entity.Property(e => e.StoreName).HasMaxLength(50);
+
+            entity.HasOne(d => d.Inventory).WithMany(p => p.TblUserStores)
+                .HasForeignKey(d => d.InventoryId)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK_TblUserStore_TblInventory");
 
             entity.HasOne(d => d.User).WithMany(p => p.TblUserStores)
                 .HasForeignKey(d => d.UserId)

@@ -14,31 +14,12 @@ namespace Backend.Controllers
 		{
 			_context = context;
 		}
-		[HttpPost("submit")]
+		[HttpPost("Register")]
 		public IActionResult Register([FromForm] RegisterForm form)
 		{
-			if (_context.TblUsers.Any(u => u.UserName == form.UserName))
+
+			var address = new TblAddress
 			{
-				return BadRequest("Username already exists");
-			}
-
-
-			var user = new TblUser
-			{
-				FirstName = form.FirstName,
-				LastName = form.LastName,
-				Email = form.Email,
-				Mobile = form.Telephone,
-				PasswordHash = form.Password,
-				Gender = (form.Gender == "Male") ? false : true,// false=Male, true=Female
-				BirthDate = form.BirthDate,
-
-
-
-			};
-			var address = new TblAdress
-			{
-				UserId = user.UserId,
 				City = form.City,
 				PostalCode = form.ZipCode,
 				Country = form.Country,
@@ -46,6 +27,23 @@ namespace Backend.Controllers
 
 
 			};
+			var user = new TblUser
+			{
+				Email = form.Email,
+				UserName=form.UserName,
+				PasswordHash = form.Password.GetHashCode().ToString(),
+				FirstName = form.FirstName,
+				LastName = form.LastName,
+				Gender = (form.Gender == "Male") ? false : true,// false=Male, true=Female
+				BirthDate = form.BirthDate,
+				Mobile = form.Telephone,
+				BackupMobile=form.Telephone
+
+
+			};
+			user.TblAddresses.Add(address);
+			_context.TblUsers.Add(user);
+			_context.SaveChanges();
 			return Ok();
 
 		}
@@ -55,7 +53,7 @@ namespace Backend.Controllers
 			var user = _context.TblUsers.FirstOrDefault(u => u.UserName == form.username);
 			if (user != null)
 			{
-				if (user.PasswordHash == form.password)
+				if (user.PasswordHash == form.password.GetHashCode().ToString())
 				{
 					return Ok();
 
@@ -67,7 +65,7 @@ namespace Backend.Controllers
 
 
 		}
-		[HttpPost("check")]
+		[HttpPost("CheckEmail")]
 		public IActionResult checkEmail([FromForm] string email)
 		{
 			bool check=_context.TblUsers.Any(u=>u.Email==email);
@@ -77,6 +75,29 @@ namespace Backend.Controllers
 			}
 			return NotFound();
 		}
+		[HttpPost("CheckUsername")]
+		public IActionResult CheckUsername([FromForm] string user)
+		{
+			bool check = _context.TblUsers.Any(u => u.UserName == user);
+			if (check)
+			{
+				return Ok();
+			}
+			return NotFound();
+		}
+		[HttpPost("Register/CheckEmail")]
+		public IActionResult RegistercheckEmail([FromForm] string email)
+		{
+			bool check = _context.TblUsers.Any(u => u.Email == email);
+			return Ok(new { exist = check });
 
+		}
+		[HttpPost("Register/CheckUsername")]
+		public IActionResult RegisterCheckUsername([FromForm] string user)
+		{
+			bool check = _context.TblUsers.Any(u => u.UserName == user);
+
+			return Ok(new {exist =check});
+		}
 	}
 }

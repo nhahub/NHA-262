@@ -13,6 +13,8 @@ public partial class TblUserStore
 
     public string StoreName { get; set; }
 
+    public int InventoryId { get; set; }
+
     public int CategoryId { get; set; }
 
     public int? CreatedBy { get; set; }
@@ -26,6 +28,8 @@ public partial class TblUserStore
     public int? DeletedBy { get; set; }
 
     public DateTime? DeletedDate { get; set; }
+
+    public virtual TblInventory Inventory { get; set; }
 
     public virtual ICollection<TblProduct> TblProducts { get; set; } = new List<TblProduct>();
 
