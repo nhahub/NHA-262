@@ -1,3 +1,18 @@
+/* Color Palette (Shared Variables)  */
+/* ================================= */
+:root {
+    --greenLight: #f0f6eb;
+    --greenLightHover: #e8f2e1;
+    --greenLightActive: #cfe4c0;
+    --greenNormal: #65a834;
+    --greenNormalHover: #5b972f;
+    --greenNormalActive: #51862a;
+    --greenDark: #4c7e27;
+    --greenDarkHover: #3d651f;
+    --greenDarkActive: #2d4c17;
+    --greenDarker: #233b12;
+}
+
 /* ================================= */
 /* Global Reset                      */
 /* ================================= */
