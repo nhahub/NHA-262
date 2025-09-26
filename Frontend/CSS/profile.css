@@ -1,60 +1,43 @@
-/* ================================= */
-/* Profile Page Styling              */
-/* ================================= */
-
-/* Tabs */
-.profile-tabs {
-    border-bottom: 2px solid var(--greenLightActive);
-    margin-bottom: 1rem;
-}
-.profile-tabs .nav-link {
+/* ================= PROFILE PAGE STYLES ================= */
+.section-title {
+    font-size: 28px;
+    font-weight: bold;
     color: var(--greenDark);
-    font-weight: 500;
-    transition: color 0.3s ease, border-color 0.3s ease;
+    margin: 20px 0;
+    font-family: 'Poppins', sans-serif;
 }
-.profile-tabs .nav-link.active {
-    border-bottom: 3px solid var(--greenNormal);
+
+.card-custom {
+    background: var(--greenLight);
+    border: 1px solid var(--greenNormal);
+    border-radius: 12px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+.card-custom h5 {
+    margin-bottom: 10px;
     color: var(--greenNormal);
 }
 
-/* Cards */
-.card-custom {
-    border: 1px solid var(--greenLightActive);
-    border-radius: 12px;
-    background-color: #fff;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.05);
-    padding: 1rem;
-    margin-bottom: 1rem;
+.small-muted {
+    color: #666;
+    font-size: 14px;
+    margin-bottom: 8px;
 }
 
-/* Buttons */
 .btn-green {
-    background-color: var(--greenNormal);
-    color: #fff;
+    padding: 10px 18px;
     border: none;
     border-radius: 8px;
-    padding: 0.5rem 1.2rem;
-    font-weight: 500;
-    transition: background-color 0.2s ease-in-out;
-}
-.btn-green:hover {
-    background-color: var(--greenNormalHover);
-}
-.btn-green:active {
-    background-color: var(--greenNormalActive);
-}
-
-/* Section Titles */
-.section-title {
-    color: var(--greenDark);
+    background: var(--greenNormal);
+    color: white;
     font-weight: bold;
-    margin-bottom: 1rem;
-    font-size: 1.2rem;
+    cursor: pointer;
+    transition: 0.3s ease;
 }
 
-/* Muted Text */
-.small-muted {
-    color: rgba(0,0,0,0.6);
-    font-size: 0.9rem;
+.btn-green:hover {
+    background: var(--greenDark);
 }
-
