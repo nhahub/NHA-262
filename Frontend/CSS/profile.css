@@ -1,1 +1,60 @@
+/* ================================= */
+/* Profile Page Styling              */
+/* ================================= */
+
+/* Tabs */
+.profile-tabs {
+    border-bottom: 2px solid var(--greenLightActive);
+    margin-bottom: 1rem;
+}
+.profile-tabs .nav-link {
+    color: var(--greenDark);
+    font-weight: 500;
+    transition: color 0.3s ease, border-color 0.3s ease;
+}
+.profile-tabs .nav-link.active {
+    border-bottom: 3px solid var(--greenNormal);
+    color: var(--greenNormal);
+}
+
+/* Cards */
+.card-custom {
+    border: 1px solid var(--greenLightActive);
+    border-radius: 12px;
+    background-color: #fff;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+    padding: 1rem;
+    margin-bottom: 1rem;
+}
+
+/* Buttons */
+.btn-green {
+    background-color: var(--greenNormal);
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    padding: 0.5rem 1.2rem;
+    font-weight: 500;
+    transition: background-color 0.2s ease-in-out;
+}
+.btn-green:hover {
+    background-color: var(--greenNormalHover);
+}
+.btn-green:active {
+    background-color: var(--greenNormalActive);
+}
+
+/* Section Titles */
+.section-title {
+    color: var(--greenDark);
+    font-weight: bold;
+    margin-bottom: 1rem;
+    font-size: 1.2rem;
+}
+
+/* Muted Text */
+.small-muted {
+    color: rgba(0,0,0,0.6);
+    font-size: 0.9rem;
+}
 
