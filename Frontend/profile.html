@@ -1,198 +1,52 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Profile & Settings</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>User Profile</title>
 
-  <!-- Bootstrap + shared style -->
-  <link rel="stylesheet" href="bootstrap-5.3.8-dist/css/bootstrap.min.css">
-  <link rel="stylesheet" href="style.css">
-  <!-- CSS -->
-<link rel="stylesheet" href="CSS/style.css">     <!-- الأساسي -->
-<link rel="stylesheet" href="CSS/Profile.css">  <!-- الخاص بالبروفايل -->
-
-
-  <style>
-    /* لو محتاج تعديل سريع محلي (خليها خفيفة لأن style.css هو الاساسي) */
-    body { background-color: var(--greenLight); font-family: "Segoe UI", Tahoma, sans-serif; }
-    .section-title { color: var(--greenDark); font-weight: 700; }
-    .small-muted { color: rgba(0,0,0,0.6); }
-  </style>
+  <!-- الملف الأساسي -->
+  <link rel="stylesheet" href="CSS/style.css">
+  <!-- الملف الخاص بالبروفايل -->
+  <link rel="stylesheet" href="CSS/Profile.css">
 </head>
 <body>
-  <div class="container mt-5 mb-5">
 
-    <h2 class="mb-4 text-center section-title">الملف الشخصي - الإعدادات</h2>
-
-    <div id="alertContainer"></div>
-
-    <!-- Tabs -->
-    <ul class="nav nav-tabs mb-4" id="profileTabs" role="tablist">
-      <li class="nav-item"><button class="nav-link active" data-bs-toggle="tab" data-bs-target="#info">البيانات</button></li>
-      <li class="nav-item"><button class="nav-link" data-bs-toggle="tab" data-bs-target="#address">العناوين</button></li>
-      <li class="nav-item"><button class="nav-link" data-bs-toggle="tab" data-bs-target="#payment">طرق الدفع</button></li>
-      <li class="nav-item"><button class="nav-link" data-bs-toggle="tab" data-bs-target="#security">الأمان</button></li>
-    </ul>
-
-    <div class="tab-content">
-
-      <!-- Profile Info -->
-      <div class="tab-pane fade show active" id="info">
-        <div class="card card-custom p-3">
-          <h5>معلومات الحساب</h5>
-          <p><strong>الاسم:</strong> <span id="userName">—</span></p>
-          <p><strong>الإيميل:</strong> <span id="userEmail">—</span></p>
-          <button id="btnEditProfile" class="btn btn-green" data-bs-toggle="modal" data-bs-target="#modalEditProfile">تعديل الملف</button>
-        </div>
-      </div>
-
-      <!-- Addresses -->
-      <div class="tab-pane fade" id="address">
-        <div class="card card-custom p-3">
-          <h5>عناوين الشحن المحفوظة</h5>
-          <ul id="addressesList" class="list-group mb-3"></ul>
-          <button id="btnAddAddress" class="btn btn-green" data-bs-toggle="modal" data-bs-target="#modalAddAddress">إضافة عنوان</button>
-        </div>
-      </div>
-
-      <!-- Payment -->
-      <div class="tab-pane fade" id="payment">
-        <div class="card card-custom p-3">
-          <h5>طرق الدفع</h5>
-          <ul id="paymentsList" class="list-group mb-3"></ul>
-          <button id="btnAddPayment" class="btn btn-green" data-bs-toggle="modal" data-bs-target="#modalAddPayment">إضافة طريقة دفع</button>
-        </div>
-      </div>
-
-      <!-- Security -->
-      <div class="tab-pane fade" id="security">
-        <div class="card card-custom p-3">
-          <h5>الأمان</h5>
-          <button id="btnChangePassword" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#modalChangePassword">تغيير كلمة المرور</button>
-        </div>
-      </div>
-
+  <!-- الهيدر (زي index.html) -->
+  <header class="headerr">
+    <div class="PageIcon">
+      <a href="index.html">
+        <img src="Icons/Untitled-ن2.png" alt="Carify Logo">
+      </a>
+      <nav>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="profile.html">Profile</a></li>
+        </ul>
+      </nav>
     </div>
-  </div>
-
-  <!-- Modals -->
-  <!-- Edit Profile Modal -->
-  <div class="modal fade" id="modalEditProfile" tabindex="-1">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <form id="editProfileForm">
-          <div class="modal-header">
-            <h5 class="modal-title">تعديل الملف</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-          </div>
-          <div class="modal-body">
-            <div class="mb-3">
-              <label class="form-label">الاسم</label>
-              <input type="text" id="editName" class="form-control" required>
-            </div>
-            <div class="mb-3">
-              <label class="form-label">الإيميل</label>
-              <input type="email" id="editEmail" class="form-control" required>
-            </div>
-          </div>
-          <div class="modal-footer">
-            <button type="submit" class="btn btn-green">حفظ</button>
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">إلغاء</button>
-          </div>
-        </form>
-      </div>
+    <div class="middle">
+      <input type="text" id="searchBar" placeholder="Search products...">
     </div>
-  </div>
-
-  <!-- Add Address Modal -->
-  <div class="modal fade" id="modalAddAddress" tabindex="-1">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <form id="addressForm">
-          <div class="modal-header">
-            <h5 class="modal-title">إضافة عنوان جديد</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-          </div>
-          <div class="modal-body">
-            <div class="mb-3">
-              <label class="form-label">العنوان (شارع - مدينة - دولة)</label>
-              <textarea id="addressLine" class="form-control" rows="2" required></textarea>
-            </div>
-          </div>
-          <div class="modal-footer">
-            <button type="submit" class="btn btn-green">حفظ العنوان</button>
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">إلغاء</button>
-          </div>
-        </form>
-      </div>
+    <div class="Login">
+      <a href=""><img src="Icons/cart.png" id="cart" alt="Cart"></a>
+      <a href="login.html" class="LOGIN">Login</a>
+      <a href="register.html" class="startforfree">Start for free</a>
     </div>
-  </div>
+  </header>
 
-  <!-- Add Payment Modal -->
-  <div class="modal fade" id="modalAddPayment" tabindex="-1">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <form id="paymentForm">
-          <div class="modal-header">
-            <h5 class="modal-title">إضافة طريقة دفع</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-          </div>
-          <div class="modal-body">
-            <div class="mb-3">
-              <label class="form-label">اسم صاحب البطاقة</label>
-              <input id="cardName" class="form-control" required>
-            </div>
-            <div class="mb-3">
-              <label class="form-label">رقم البطاقة (أرقام)</label>
-              <input id="cardNumber" class="form-control" inputmode="numeric" pattern="\d*" required>
-            </div>
-            <div class="row">
-              <div class="col-6 mb-3">
-                <label class="form-label">تاريخ الانتهاء (MM/YY)</label>
-                <input id="cardExpiry" class="form-control" required>
-              </div>
-              <div class="col-6 mb-3">
-                <label class="form-label">CVV</label>
-                <input id="cardCvv" class="form-control" inputmode="numeric" pattern="\d*" required>
-              </div>
-            </div>
-          </div>
-          <div class="modal-footer">
-            <button type="submit" class="btn btn-green">حفظ</button>
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">إلغاء</button>
-          </div>
-        </form>
-      </div>
+  <!-- المحتوى الخاص بالبروفايل -->
+  <main class="container">
+    <h2 class="section-title">My Profile</h2>
+
+    <div class="card-custom">
+      <h5>User Information</h5>
+      <p class="small-muted">Name: John Doe</p>
+      <p class="small-muted">Email: john@example.com</p>
+      <button class="btn-green">Edit Profile</button>
     </div>
-  </div>
+  </main>
 
-  <!-- Change Password Modal -->
-  <div class="modal fade" id="modalChangePassword" tabindex="-1">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <form id="changePasswordForm">
-          <div class="modal-header">
-            <h5 class="modal-title">تغيير كلمة المرور</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-          </div>
-          <div class="modal-body">
-            <div class="mb-3"><label class="form-label">كلمة المرور الحالية</label><input id="oldPassword" type="password" class="form-control" required></div>
-            <div class="mb-3"><label class="form-label">كلمة المرور الجديدة</label><input id="newPassword" type="password" class="form-control" required></div>
-            <div class="mb-3"><label class="form-label">تأكيد كلمة المرور</label><input id="confirmNewPassword" type="password" class="form-control" required></div>
-          </div>
-          <div class="modal-footer">
-            <button type="submit" class="btn btn-green">تحديث</button>
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">إلغاء</button>
-          </div>
-        </form>
-      </div>
-    </div>
-  </div>
-
-  <!-- Scripts -->
-  <script src="bootstrap-5.3.8-dist/js/bootstrap.bundle.min.js"></script>
-  <script src="js/profile.js"></script>
 </body>
 </html>
-
