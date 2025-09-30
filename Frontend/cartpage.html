@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shopping Cart</title>
+  <link rel="stylesheet" href="CSS/cartpage.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+  <!-- Header -->
+<header class="header">
+  <div class="PageIcon">
+    <a href="index.html"><img src="Icons/Untitled-ن2.png" alt="Logo"></a>
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="index.html#about">About</a></li>
+      </ul>
+    </nav>
+  </div>
+  <div class="middle">
+    <input type="text" name="search" id="searchBar">
+  </div>
+  
+
+</header>
+
+  <!-- Main Cart -->
+  <div class="container">
+    <h1 class="cart-title">
+      <i class="fas fa-shopping-cart"></i> Shopify Cart
+      <span class="cart-count">3 items</span>
+    </h1>
+
+    <div class="cart-content">
+      <div class="cart-items" id="cart-container"></div>
+
+      <div class="cart-summary">
+        <h2 class="summary-title">Order Summary</h2>
+        <div class="summary-row">
+          <span>Subtotal (3 items)</span>
+          <span id="subtotal">$259.97</span>
+        </div>
+        <div class="summary-row">
+          <span>Shipping</span>
+          <span id="shipping">$9.99</span>
+        </div>
+        <div class="summary-row">
+          <span>Tax</span>
+          <span id="tax">$25.00</span>
+        </div>
+        <div class="summary-row summary-total">
+          <span>Total</span>
+          <span id="total">$294.96</span>
+        </div>
+        <button class="checkout-btn">Proceed to Checkout</button>
+        <a href="#" class="continue-shopping">Continue Shopping</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="notification" id="notification"></div>
+
+  <script src="JS/cartpage.js"></script>
+</body>
+</html>
