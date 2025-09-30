@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Notifications</title>
+  <link rel="stylesheet" href="CSS/Notification.css">
+</head>
+<body>
+
+  <header>
+    <h2>Notifications</h2>
+    <div class="actions">
+      <button id="markAllRead">Mark All as Read</button>
+      <button id="clearAll">Clear All</button>
+    </div>
+  </header>
+
+  <main>
+    <div id="notificationsContainer" class="notifications-container">
+      <!-- Notifications will render here -->
+    </div>
+
+    <div id="emptyState" class="empty-state">
+      🎉 You’re all caught up! No new notifications.
+    </div>
+  </main>
+
+  <script src="JS/Notification.js"></script>
+</body>
+</html>

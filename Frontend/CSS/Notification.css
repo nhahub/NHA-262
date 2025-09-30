@@ -1,0 +1,105 @@
+/* Reset */
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #f9f9f9;
+  color: #333;
+}
+
+/* Header */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 20px;
+  background: linear-gradient(90deg, #66bb6a, #43a047, #2e7d32);
+  color: white;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+header h2 {
+  margin: 0;
+}
+
+header .actions button {
+  margin-left: 10px;
+  padding: 6px 12px;
+  border: none;
+  background: white;
+  color: #2e7d32;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+header .actions button:hover {
+  background: #e0e0e0;
+}
+
+/* Notifications */
+.notifications-container {
+  max-width: 700px;
+  margin: 20px auto;
+  padding: 0 15px;
+}
+
+.notification {
+  display: flex;
+  align-items: center;
+  background: white;
+  padding: 15px;
+  border-radius: 8px;
+  margin-bottom: 10px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+  transition: background 0.3s;
+}
+
+.notification.unread {
+  background: #e8f5e9;
+}
+
+.notification img {
+  width: 40px;
+  height: 40px;
+  margin-right: 15px;
+}
+
+.notification-content {
+  flex-grow: 1;
+}
+
+.notification-time {
+  font-size: 0.8rem;
+  color: #777;
+}
+
+.notification button {
+  margin-left: 10px;
+  padding: 5px 10px;
+  border: none;
+  background: #ef5350;
+  color: white;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.notification button:hover {
+  background: #d32f2f;
+}
+
+.notification .mark-read {
+  background: #66bb6a;
+}
+
+.notification .mark-read:hover {
+  background: #388e3c;
+}
+
+/* Empty state */
+.empty-state {
+  text-align: center;
+  margin-top: 50px;
+  font-size: 1.2rem;
+  color: #777;
+  display: none;
+}

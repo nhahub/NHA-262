@@ -1,0 +1,328 @@
+:root {
+  --greenLight: #f0f6eb;
+  --greenLightHover: #e8f2e1;
+  --greenLightActive: #cfe4c0;
+
+  --greenNormal: #65a834;
+  --greenNormalHover: #5b972f;
+  --greenNormalActive: #51862a;
+
+  --greenDark: #4c7e27;
+  --greenDarkHover: #3d651f;
+  --greenDarkActive: #2d4c17;
+
+  --greenDarker: #233b12;
+}
+
+body {
+  margin: 0;
+  background: linear-gradient(to right, #f9f9f9, #f0f6eb);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #333;
+  line-height: 1.6;
+}
+
+/* Header */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 80px;
+  background: var(--greenLight);
+  padding: 0 35px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.PageIcon {
+  display: flex;
+  align-items: center;
+}
+
+.PageIcon img {
+  height: 60px;
+}
+
+.PageIcon nav ul {
+  display: flex;
+  gap: 25px;
+  list-style: none;
+  margin-left: 20px;
+  padding: 0;
+}
+
+.PageIcon ul li a {
+  text-decoration: none;
+  color: var(--greenNormal);
+  font-weight: bold;
+  font-size: 16px;
+  transition: 0s ease;
+}
+
+.PageIcon ul li a:hover {
+  border-bottom: 2px solid var(--greenNormal);
+}
+
+.cart-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 20px;
+  background: linear-gradient(to right, var(--greenNormal), var(--greenDark));
+  border-radius: 30px;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 16px;
+  color: white;
+  transition: all 0s ease;
+}
+
+.cart-btn:hover {
+  background: linear-gradient(to right, var(--greenLight), var(--greenLightHover));
+  border: 2px solid var(--greenNormal);
+  color: var(--greenNormal);
+}
+
+.cart-btn img {
+  height: 20px;
+}
+
+/* Search */
+.middle {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+
+#searchBar {
+  width: 65%;
+  padding: 8px 12px;
+  border-radius: 5px;
+  border: none;
+  transition: 0.3s;
+}
+
+#searchBar:hover {
+  box-shadow: 0 0 8px var(--greenNormal);
+}
+
+#searchBar:focus {
+  box-shadow: 0 0 15px var(--greenDark);
+  outline: none;
+}
+
+/* Wishlist */
+.container {
+  max-width: 1200px;
+  margin: 30px auto;
+  padding: 0 20px;
+}
+
+.wishlist-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.wishlist-title {
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--greenDark);
+  display: flex;
+  align-items: center;
+}
+
+.wishlist-count {
+  background: linear-gradient(to right, var(--redNormal), var(--redDark));
+  color: white;
+  padding: 3px 10px;
+  border-radius: 20px;
+  font-size: 14px;
+  margin-left: 10px;
+}
+
+.wishlist-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 25px;
+}
+
+.wishlist-item {
+  background: white;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.wishlist-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+}
+
+.product-image {
+  height: 200px;
+  overflow: hidden;
+}
+
+.product-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: 0.5s ease;
+}
+
+.wishlist-item:hover .product-image img {
+  transform: scale(1.05);
+}
+
+.product-info {
+  padding: 20px;
+}
+
+.product-name {
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 10px;
+  color: #333;
+}
+
+.product-actions {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 15px;
+}
+
+.move-to-cart {
+  flex-grow: 1;
+  margin-right: 10px;
+  background: linear-gradient(to right, var(--greenNormal), var(--greenDark));
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.move-to-cart:hover {
+  background: linear-gradient(to right, #5b972f, #3d651f);
+}
+
+.remove-item {
+  width: 45px;
+  background: linear-gradient(to right, var(--redNormal), var(--redDark));
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.remove-item:hover {
+  background: linear-gradient(to right, #c23616, #a93226);
+}
+
+/* Empty Wishlist */
+.empty-wishlist {
+  text-align: center;
+  padding: 60px 20px;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+  margin: 40px 0;
+}
+
+.empty-wishlist i {
+  font-size: 80px;
+  color: #ddd;
+  margin-bottom: 20px;
+}
+
+.empty-wishlist h3 {
+  font-size: 24px;
+  color: #666;
+  margin-bottom: 15px;
+}
+
+.empty-wishlist p {
+  color: #888;
+  margin-bottom: 25px;
+}
+
+.empty-wishlist .continue-shopping {
+  display: inline-block;
+  padding: 10px 20px;
+  background: linear-gradient(to right, var(--greenNormal), var(--greenDark));
+  color: white;
+  text-decoration: none;
+  border-radius: 6px;
+  font-weight: 600;
+  transition: 0.3s ease;
+}
+
+.empty-wishlist .continue-shopping:hover {
+  background: linear-gradient(to right, #5b972f, #3d651f);
+}
+
+/* Notification */
+.notification {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  padding: 15px 25px;
+  border-radius: 8px;
+  color: white;
+  font-weight: 500;
+  opacity: 0;
+  transform: translateY(-20px);
+  transition: opacity 0.3s, transform 0.3s;
+  z-index: 1000;
+}
+
+.notification.success {
+  background: linear-gradient(to right, var(--greenNormal), var(--greenDark));
+}
+
+.notification.error {
+  background: linear-gradient(to right, var(--redNormal), var(--redDark));
+}
+
+.notification.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .header {
+    flex-direction: column;
+    height: auto;
+    padding: 15px;
+    text-align: center;
+  }
+
+  .PageIcon nav ul {
+    margin-top: 10px;
+    justify-content: center;
+  }
+
+  .wishlist-header {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .wishlist-title {
+    margin-bottom: 10px;
+  }
+
+  .product-actions {
+    flex-direction: column;
+  }
+
+  .move-to-cart {
+    margin-right: 0;
+    margin-bottom: 10px;
+  }
+}

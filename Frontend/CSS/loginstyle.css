@@ -1,177 +1,121 @@
-/* ================================= */
-/* Global Reset                      */
-/* ================================= */
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
 
-/* ================================= */
-/* Body Layout                       */
-/* ================================= */
-body {
-  display: flex;
-  height: 100vh;
-  align-items: center;
-  justify-content: center;
-  font-family: "Poppins", sans-serif;
-  color: #65a834;
-  margin: 0;
-}
+  body {
+    display: flex;
+    margin: 0;
+    height: 100vh;
+    align-items: center;
+    justify-content: center;
+    font-family: "Poppins", sans-serif;
+    color: #65a834;
+  }
 
-/* ================================= */
-/* Container Card                    */
-/* ================================= */
-.container {
-  background-color: #fff;
-  width: 300px;
-  height: auto;
-  border-radius: 15px;
-  padding: 15px;
-  box-shadow: 1px 1px 5px 5px rgb(180, 170, 170);
-}
-
-/* ================================= */
-/* Header                            */
-/* ================================= */
-header {
-  display: flex;
-  height: 50px;
-  border-radius: 5px;
-}
-
-header img {
-  display: flex;
-  height: 100%;
-}
-
-/* ================================= */
-/* Forms                             */
-/* ================================= */
-.form {
-  display: none;             /* hidden by default */
-  width: 100%;
-  height: 100%;
-  flex-direction: column;
-  gap: 30px;
-}
-
-.active {
-  display: flex;             /* show active form */
-}
-
-/* ================================= */
-/* Input Fields                      */
-/* ================================= */
+  .container {
+    background-color: #fff;
+    height: auto;
+    width: 300px;
+    border-radius: 15px;
+    padding: 15px;
+    box-shadow: 1px 1px 5px 5px rgb(180, 170, 170);
+  }
+  header {
+    display: flex;
+    height: 50px;
+    border-radius: 5px;
+    
+  }
+  
+  header img {
+    display: flex;
+    height: 100%;
+  }
+  
+  .form {
+    display: none;
+    width: 100%;
+    height: 100%;
+    flex-direction: column;
+    gap: 30px;
+  }
+  .active{
+    display: flex;
+  }
 .in {
-  background-color: #f1fcea;
-  border-radius: 5px;
-  border: none;
-  height: 40px;
-  width: 100%;
-  font-size: 16px;
-  font-family: "Poppins", sans-serif;
-  padding-left: 10px;
-  transition: all 0.3s ease;
-  outline: none;
-}
+      background-color: #f1fcea;
 
-/* Hover and focus effects */
-.in:hover {
-  box-shadow: 0 0 3px #4CAF50;
+    border-radius: 5px;
+    border: none;
+    height: 40px;
+    width: 100%;
+    font-size: 16px;
+    font-family: "Poppins", sans-serif;
+    padding-left: 10px;
+    transition: all 0.3s ease;
+    outline: none;
+  }
+  .in:hover {
+  box-shadow: 0 0 3px #4CAF50; 
 }
 
 .in:focus {
   box-shadow: 0 0 8px #4CAF50;
 }
 
-/* Specific inputs */
-#username,
-#password,
-#email {
-  background-color: #f1fcea;
-}
-
-/* Hidden input */
-#hidd {
+  #username,
+  #password,#email {
+    background-color: #f1fcea;
+  }
+#hidd{
   visibility: hidden;
 }
+  .form input::placeholder {
+    font-family: "Poppins", sans-serif;
+    padding-left: 5px;
+    font-size: 16px;
+  }
 
-/* Placeholder styling */
-.form input::placeholder {
-  font-family: "Poppins", sans-serif;
-  padding-left: 5px;
-  font-size: 16px;
-}
+  section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    margin-right: 50px;
+  }
 
-/* ================================= */
-/* Section Wrapper                   */
-/* ================================= */
-section {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  height: 100%;
-  margin-right: 50px;
-}
+  #btn,#sendpw,#confirm{
+    background-color: #65a834;
+    color: white;
+    font-family: "Poppins", sans-serif;
+    transition: all 0.5s ease;
+    font-weight: bold;
+    font-size: 16px;
+    cursor: pointer;
+  }
 
-/* ================================= */
-/* Buttons (Unified Style)           */
-/* ================================= */
-.btn-custom {
-  background-color: #65a834;
-  color: white;
-  font-family: "Poppins", sans-serif;
-  font-weight: bold;
-  font-size: 16px;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  border: none;
-  border-radius: 5px;
-  padding: 10px;
-  text-align: center;
-  width: 100%;
-  display: inline-block;
-}
+  #btn,#sendpw:hover {
+    filter: brightness(115%);
+  }
 
-/* Hover */
-.btn-custom:hover {
-  filter: brightness(115%);
-}
+  .remember-and-forget {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+  }
 
-/* Active/Pressed */
-.btn-custom:active {
-  filter: brightness(100%);
-}
+  .remember-and-forget .left {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
 
-/* Remove focus glow */
-.btn-custom:focus {
-  outline: none;
-  filter: brightness(100%);
-}
-
-/* ================================= */
-/* Remember & Forgot Section         */
-/* ================================= */
-.remember-and-forget {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%;
-}
-
-/* Left side (checkbox + text) */
-.remember-and-forget .left {
-  display: flex;
-  align-items: center;
-  gap: 5px;
-}
-
-/* Custom checkbox */
 .remember-and-forget input[type="checkbox"] {
-  appearance: none;
+  appearance: none;           /* يشيل الشكل الافتراضي */
   -webkit-appearance: none;
   width: 17px;
   height: 17px;
@@ -182,7 +126,7 @@ section {
   transition: all 0.3s ease;
 }
 
-/* Checkmark (hidden by default) */
+/* علامة الصح */
 .remember-and-forget input[type="checkbox"]::after {
   content: "";
   position: absolute;
@@ -197,7 +141,6 @@ section {
   transition: all 0.3s ease;
 }
 
-/* Checked state */
 .remember-and-forget input[type="checkbox"]:checked {
   background-color: #65a834;
 }
@@ -207,46 +150,55 @@ section {
   opacity: 1;
 }
 
-/* ================================= */
-/* Divider (OR line)                 */
-/* ================================= */
-.orr {
-  display: flex;
-  align-items: center;
-  width: 100%;
-  gap: 5px;
-}
+  .orr {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    gap: 5px;
+  }
 
-hr {
-  flex: 1;
-  background-color: #65a834;
-  height: 1px;
-}
+  hr {
+    flex: 1;
+    background-color: #65a834;
+    height: 1px;
+  }
 
-/* ================================= */
-/* Links                             */
-/* ================================= */
-.remember-and-forget a {
-  text-decoration: none;
-  color: #65a834;
-  border-bottom: 1px solid transparent;
-  transition: all 0.3s ease;
-}
+  .remember-and-forget a {
+    text-decoration: none;
+    color: #65a834;
+    border-bottom: 1px solid transparent;
+    transition: all 0.3s ease;
+  }
 
-.remember-and-forget a:hover {
-  border-bottom: 1px solid #88b16a;
-}
+  .remember-and-forget a:hover {
+    border-bottom: 1px solid #88b16a;
+  }
 
-/* ================================= */
-/* Error Message                     */
-/* ================================= */
-.erorr {
-  display: flex;
-  align-items: center;
-  height: 50px;
-}
+  .reg {
+    background-color: #65a834;
+    color: white;
+    font-family: "Poppins", sans-serif;
+    transition: all 0.5s ease;
+    font-weight: bold;
+    font-size: 16px;
+    cursor: pointer;
+  }
 
-p {
-  font-size: 14px;
-  color: red;
-}
+  .reg:hover {
+    filter: brightness(115%);
+  }
+
+  .regg {
+    display: flex;
+    width: 100%;
+    text-decoration: none;
+  }
+  .erorr{
+    display: flex;
+    align-items: center;
+    height: 50px;
+  }
+  p{
+    font-size: 14px;
+    color: red;
+  }
