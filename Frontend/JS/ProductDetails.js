@@ -27,26 +27,6 @@ function saveItem(key, item) {
   }
 }
 
-// Add to Cart
-addToCartBtn.addEventListener("click", () => {
-  saveItem("cart", product);
-  alert("Product added to cart!");
-  window.location.href = "cartpage.html"; // redirect
-});
-
-// Buy Now
-buyNowBtn.addEventListener("click", () => {
-  saveItem("cart", product);
-  window.location.href = "Checkout.html";
-});
-
-// Add to Wishlist
-wishlistBtn.addEventListener("click", () => {
-  saveItem("wishlist", product);
-  alert("Product added to your wishlist!");
-  window.location.href = "wishlistpage.html";
-});
-
 // Share
 shareBtn.addEventListener("click", () => {
   const productUrl = `${window.location.origin}/product.html?id=${product.id}`;

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Orders | StyleMart</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- استدعاء ملف CSS -->
+    <link rel="stylesheet" href="CSS/ordertracking.css">
+    <link rel="icon" href="Icons/favicon.ico" type="image/x-icon">
+
+</head>
+<body>
+      <!-- Header -->
+  <header class="header">
+    <div class="PageIcon">
+      <a href="index.html"><img src="Icons/Untitled-ن2.png" alt="Logo"></a>
+      <nav>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="#">About</a></li>
+        </ul>
+      </nav>
+    </div>
+    <div class="middle">
+      <input type="text" name="search" id="searchBar" placeholder="Search...">
+    </div>
+
+    <div class="Login">
+      <a href="cartpage.html" class="cart-btn">
+        <img src="Icons/cart.png" alt="Cart" id="cart">
+        <span>Go to Cart</span>
+      </a>
+    </div>
+  </header>
+    <div class="container">
+        <div class="orders-header">
+            <h1 class="orders-title">My Orders</h1>
+            <p class="orders-subtitle">Track and manage your orders</p>
+        </div>
+
+        <div class="order-tabs">
+            <div class="tab active" data-tab="all">All Orders</div>
+            <div class="tab" data-tab="active">Active</div>
+            <div class="tab" data-tab="completed">Completed</div>
+        </div>
+
+        <div class="orders-container" id="orders-container">
+            <!-- Orders will be dynamically added here -->
+        </div>
+    </div>
+
+    <div class="notification" id="notification"></div>
+
+    <!-- استدعاء ملف JS -->
+    <script src="JS/ordertracking.js"></script>
+</body>
+</html>

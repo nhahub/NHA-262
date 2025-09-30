@@ -5,48 +5,173 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>User Profile</title>
 
-  <!-- الملف الأساسي -->
-  <link rel="stylesheet" href="CSS/style.css">
-  <!-- الملف الخاص بالبروفايل -->
-  <link rel="stylesheet" href="CSS/Profile.css">
+  <!-- CSS -->
+  <link rel="stylesheet" href="CSS/profile.css">
+
+  <!-- Bootstrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
 
-  <!-- الهيدر (زي index.html) -->
-  <header class="headerr">
+  <!-- ===== HEADER ===== -->
+  <header class="header">
     <div class="PageIcon">
-      <a href="index.html">
-        <img src="Icons/Untitled-ن2.png" alt="Carify Logo">
-      </a>
+      <a href="index.html"><img src="Icons/Untitled-ن2.png" alt="Logo"></a>
       <nav>
         <ul>
           <li><a href="index.html">Home</a></li>
-          <li><a href="about.html">About</a></li>
-          <li><a href="profile.html">Profile</a></li>
+          <li><a href="#">About</a></li>
         </ul>
       </nav>
     </div>
     <div class="middle">
-      <input type="text" id="searchBar" placeholder="Search products...">
+      <input type="text" name="search" id="searchBar" placeholder="Search...">
     </div>
     <div class="Login">
-      <a href=""><img src="Icons/cart.png" id="cart" alt="Cart"></a>
-      <a href="login.html" class="LOGIN">Login</a>
-      <a href="register.html" class="startforfree">Start for free</a>
+      <a href="cartpage.html" class="cart-btn">
+        <img src="Icons/cart.png" alt="Cart" id="cart">
+        <span>Go to Cart</span>
+      </a>
     </div>
-  </header>
+  </header> 
 
-  <!-- المحتوى الخاص بالبروفايل -->
-  <main class="container">
+  <!-- ===== MAIN ===== -->
+  <main class="container py-4">
     <h2 class="section-title">My Profile</h2>
 
+    <!-- Alerts -->
+    <div id="alertContainer"></div>
+
+    <!-- User Info -->
     <div class="card-custom">
       <h5>User Information</h5>
-      <p class="small-muted">Name: John Doe</p>
-      <p class="small-muted">Email: john@example.com</p>
-      <button class="btn-green">Edit Profile</button>
+      <p class="small-muted">Name: <span id="userName"></span></p>
+      <p class="small-muted">Email: <span id="userEmail"></span></p>
+      <button class="btn-green" id="btnEditProfile">Edit Profile</button>
+      <button class="btn-green" data-bs-toggle="modal" data-bs-target="#modalChangePassword">Change Password</button>
+    </div>
+
+    <!-- Addresses -->
+    <div class="card-custom">
+      <h5>Addresses</h5>
+      <ul id="addressesList" class="list-group"></ul>
+      <button class="btn-green mt-3" data-bs-toggle="modal" data-bs-target="#modalAddAddress">Add Address</button>
+    </div>
+
+    <!-- Payment Methods -->
+    <div class="card-custom">
+      <h5>Payment Methods</h5>
+      <ul id="paymentsList" class="list-group"></ul>
+      <button class="btn-green mt-3" data-bs-toggle="modal" data-bs-target="#modalAddPayment">Add Payment Method</button>
     </div>
   </main>
 
+  <!-- ===== MODALS ===== -->
+
+  <!-- Edit Profile -->
+  <div class="modal fade" id="modalEditProfile" tabindex="-1">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <form id="formEditProfile">
+          <div class="modal-header">
+            <h5 class="modal-title">Edit Profile</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+          </div>
+          <div class="modal-body">
+            <label class="form-label">Name</label>
+            <input type="text" id="editName" class="form-control" required>
+            <label class="form-label mt-2">Email</label>
+            <input type="email" id="editEmail" class="form-control" required>
+          </div>
+          <div class="modal-footer">
+            <button type="submit" class="btn btn-success">Save</button>
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Add Address -->
+  <div class="modal fade" id="modalAddAddress" tabindex="-1">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <form id="formAddAddress">
+          <div class="modal-header">
+            <h5 class="modal-title">Add Address</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+          </div>
+          <div class="modal-body">
+            <label class="form-label">Address</label>
+            <input type="text" id="addressLine" class="form-control" required>
+            <label class="form-label mt-2">City</label>
+            <input type="text" id="city" class="form-control" required>
+            <label class="form-label mt-2">Zip Code</label>
+            <input type="text" id="zipCode" class="form-control" required>
+          </div>
+          <div class="modal-footer">
+            <button type="submit" class="btn btn-success">Save</button>
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Add Payment -->
+  <div class="modal fade" id="modalAddPayment" tabindex="-1">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <form id="formAddPayment">
+          <div class="modal-header">
+            <h5 class="modal-title">Add Payment Method</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+          </div>
+          <div class="modal-body">
+            <label class="form-label">Card Number</label>
+            <input type="text" id="cardNumber" class="form-control" required>
+            <label class="form-label mt-2">Expiry Date</label>
+            <input type="text" id="expiryDate" class="form-control" placeholder="MM/YY" required>
+            <label class="form-label mt-2">CVV</label>
+            <input type="text" id="cvv" class="form-control" required>
+          </div>
+          <div class="modal-footer">
+            <button type="submit" class="btn btn-success">Save</button>
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Change Password -->
+  <div class="modal fade" id="modalChangePassword" tabindex="-1">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <form id="formChangePassword">
+          <div class="modal-header">
+            <h5 class="modal-title">Change Password</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+          </div>
+          <div class="modal-body">
+            <label class="form-label">Current Password</label>
+            <input type="password" id="currentPassword" class="form-control" required>
+            <label class="form-label mt-2">New Password</label>
+            <input type="password" id="newPassword" class="form-control" required>
+            <label class="form-label mt-2">Confirm New Password</label>
+            <input type="password" id="confirmPassword" class="form-control" required>
+          </div>
+          <div class="modal-footer">
+            <button type="submit" class="btn btn-success">Update</button>
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== JS ===== -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="JS/profile.js"></script>
 </body>
 </html>
