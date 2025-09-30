@@ -5,8 +5,31 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Product Details</title>
   <link rel="stylesheet" href="CSS/ProductDetails.css">
+  <link rel="icon" href="Icons/favicon.ico" type="image/x-icon">
 </head>
 <body>
+    <!-- Header -->
+  <header class="header">
+    <div class="PageIcon">
+      <a href="index.html"><img src="Icons/Untitled-ن2.png" alt="Logo"></a>
+      <nav>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="#">About</a></li>
+        </ul>
+      </nav>
+    </div>
+    <div class="middle">
+      <input type="text" name="search" id="searchBar" placeholder="Search...">
+    </div>
+<div class="cart-section">
+  <a href="cartpage.html" class="cart-btn">
+    <img src="Icons/cart.png" alt="Cart" id="cart">
+    <span>Go to Cart</span>
+  </a>
+</div>
+
+  </header>
   <div class="product-details">
     <h1 class="product-title">Product Name</h1>
     <img src="product-image.jpg" alt="Product Image" class="product-image">
@@ -17,14 +40,20 @@
       This is a detailed description of the product. It includes features, specifications, and other useful information.
     </p>
 
+    <!-- Go to Cart زرار زي باقي الأزرار -->
     <div class="product-buttons">
-      <button class="btn btn-primary">Add to Cart</button>
-      <button class="btn btn-buy">Buy Now</button>
-      <button class="btn btn-secondary">Add to Wishlist</button>
-      <button class="btn btn-secondary">Share</button>
-      <button class="btn btn-secondary">Review & Rate</button>
+      <a href="cartpage.html" class="btn btn-primary">
+        <img src="Icons/cart.png" alt="Cart" class="btn-icon">
+        Go to Cart
+      </a>
+      <a href="cartpage.html" class="btn btn-primary">Add to Cart</a>
+      <a href="checkout.html" class="btn btn-buy">Buy Now</a>
+      <a href="wishlist.html" class="btn btn-secondary">Add to Wishlist</a>
+      <a href="share.html" class="btn btn-secondary">Share</a>
+      <a href="review.html" class="btn btn-secondary">Review & Rate</a>
     </div>
   </div>
+
   <script src="JS/ProductDetails.js"></script>
 </body>
 </html>

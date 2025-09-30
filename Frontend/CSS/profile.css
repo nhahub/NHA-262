@@ -1,43 +1,236 @@
 /* ================= PROFILE PAGE STYLES ================= */
+:root {
+  --greenLight: #f0f6eb;
+  --greenLightHover: #e8f2e1;
+  --greenLightActive: #cfe4c0;
+
+  --greenNormal: #65a834;
+  --greenNormalHover: #5b972f;
+  --greenNormalActive: #51862a;
+
+  --greenDark: #4c7e27;
+  --greenDarkHover: #3d651f;
+  --greenDarkActive: #2d4c17;
+
+  --greenDarker: #233b12;
+
+  --danger: #c62828;
+  --dangerHover: #a61c1c;
+}
+
+body {
+  margin: 0;
+  background: linear-gradient(to right, #f9f9f9, #f0f6eb);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #333;
+  line-height: 1.6;
+}
+
+/* Header */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 80px;
+  background: var(--greenLight);
+  padding: 0 35px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.PageIcon {
+  display: flex;
+  align-items: center;
+}
+
+.PageIcon img {
+  height: 60px;
+}
+
+.PageIcon nav ul {
+  display: flex;
+  gap: 25px;
+  list-style: none;
+  margin-left: 20px;
+  padding: 0;
+}
+
+.PageIcon ul li a {
+  text-decoration: none;
+  color: var(--greenNormal);
+  font-weight: bold;
+  font-size: 16px;
+  transition: 0.2s ease;
+}
+
+.PageIcon ul li a:hover {
+  border-bottom: 2px solid var(--greenNormal);
+}
+
+.cart-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 20px;
+  background: linear-gradient(to right, var(--greenNormal), var(--greenDark));
+  border-radius: 30px;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 16px;
+  color: white;
+  transition: all 0.3s ease;
+}
+
+.cart-btn:hover {
+  background: linear-gradient(to right, var(--greenLight), var(--greenLightHover));
+  border: 2px solid var(--greenNormal);
+  color: var(--greenNormal);
+}
+
+.cart-btn img {
+  height: 20px;
+}
+
+/* Search */
+.middle {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+
+#searchBar {
+  width: 65%;
+  padding: 8px 12px;
+  border-radius: 5px;
+  border: none;
+  transition: 0.3s;
+}
+
+#searchBar:hover {
+  box-shadow: 0 0 8px var(--greenNormal);
+}
+
+#searchBar:focus {
+  box-shadow: 0 0 15px var(--greenDark);
+  outline: none;
+}
+
+/* Profile section */
+.container {
+  max-width: 1000px;
+  margin: 30px auto;
+  padding: 0 20px;
+}
+
 .section-title {
-    font-size: 28px;
-    font-weight: bold;
-    color: var(--greenDark);
-    margin: 20px 0;
-    font-family: 'Poppins', sans-serif;
+  font-size: 28px;
+  font-weight: bold;
+  color: var(--greenDark);
+  margin: 20px 0;
+  font-family: 'Poppins', sans-serif;
 }
 
 .card-custom {
-    background: var(--greenLight);
-    border: 1px solid var(--greenNormal);
-    border-radius: 12px;
-    padding: 20px;
-    margin-bottom: 20px;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  background: #fff;
+  border: 2px solid var(--greenLightActive);
+  border-radius: 12px;
+  padding: 20px;
+  margin-bottom: 20px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
 }
 
 .card-custom h5 {
-    margin-bottom: 10px;
-    color: var(--greenNormal);
+  margin-bottom: 10px;
+  color: var(--greenDark);
+}
+.card-custom p {
+  margin: 0;
+  color: var(--greenDarker)
 }
 
 .small-muted {
-    color: #666;
-    font-size: 14px;
-    margin-bottom: 8px;
+  color: #666;
+  font-size: 14px;
+  margin-bottom: 8px;
 }
 
+/* Profile Card */
+.profile-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.profile-header {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.profile-pic {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  border: 3px solid var(--greenNormal);
+  object-fit: cover;
+}
+
+/* Buttons */
 .btn-green {
-    padding: 10px 18px;
-    border: none;
-    border-radius: 8px;
-    background: var(--greenNormal);
-    color: white;
-    font-weight: bold;
-    cursor: pointer;
-    transition: 0.3s ease;
+  padding: 10px 18px;
+  border: none;
+  border-radius: 8px;
+  background: var(--greenNormal);
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s ease;
 }
 
 .btn-green:hover {
-    background: var(--greenDark);
+  background: var(--greenDarkHover);
+}
+
+.btn-danger {
+  padding: 10px 18px;
+  border: none;
+  border-radius: 8px;
+  background: var(--danger);
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.btn-danger:hover {
+  background: var(--dangerHover);
+}
+
+/* Orders list */
+.order-list {
+  list-style: none;
+  padding: 0;
+  margin: 10px 0;
+}
+
+.order-list li {
+  padding: 8px 12px;
+  border-bottom: 1px solid #eee;
+  font-size: 15px;
+}
+
+.order-list li:last-child {
+  border-bottom: none;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .profile-card {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 15px;
+  }
+
+  #searchBar {
+    width: 90%;
+  }
 }

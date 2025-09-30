@@ -1,14 +1,37 @@
 /* ================================= */
 /* Global Reset                      */
 /* ================================= */
+:root {
+  --greenLight: #f0f6eb;
+  --greenLightHover: #e8f2e1;
+  --greenLightActive: #cfe4c0;
+
+  --greenNormal: #65a834;
+  --greenNormalHover: #5b972f;
+  --greenNormalActive: #51862a;
+
+  --greenDark: #4c7e27;
+  --greenDarkHover: #3d651f;
+  --greenDarkActive: #2d4c17;
+
+  --greenDarker: #233b12;
+
+  --danger: #c62828;
+  --dangerHover: #a61c1c;
+}
 * {
   box-sizing: border-box;
 }
 
 html,
+
+
 body {
-  height: 100%;
   margin: 0;
+  background: linear-gradient(to right, #f9f9f9, #f0f6eb);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #333;
+  line-height: 1.6;
 }
 
 /* ================================= */
@@ -25,7 +48,7 @@ body {
 #headerCard {
   max-height: 80px;
   border: none;
-  background-color: #ceffd0;
+  background-color: var(--greenLight);
 }
 
 #headerCard img {
@@ -40,7 +63,7 @@ body {
 }
 
 #sidebarMenu {
-  background-color: #a8c19a;
+  background-color: var(--greenDark);
   justify-content: center;
   min-height: 88.7vh;
   border-radius: 0px;
@@ -50,7 +73,7 @@ body {
 
 /* Navigation pills */
 .nav-pills .nav-link.active {
-  background-color: #65a834;
+  background-color: var(--greenDarkActive);
   color: white;
   border-radius: 0;
 }
@@ -62,7 +85,7 @@ body {
 }
 
 .nav-pills .nav-link:hover:not(.active) {
-  background-color: #a8c19a;
+  background-color: var(--greenDarkHover);
   filter: brightness(85%);
 }
 
