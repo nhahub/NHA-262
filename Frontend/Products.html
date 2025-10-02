@@ -1,27 +1,59 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Products</title>
   <link rel="shortcut icon" href="Icons/favicon.ico" type="image/x-icon">
   <link rel="stylesheet" href="CSS/Products.css">
 </head>
+
 <body>
   <!-- ===== HEADER ===== -->
   <header>
     <div class="PageIcon">
-      <img src="Icons/Untitled-ن2.png" id="image1">
-      <nav>
+      <img src="Icons/Untitled-ن2.png" id="image1" alt="Logo">
+
+      <nav class="nav-links">
         <div class="left">
-          <a href="#">Product</a>
-          <a href="#">Showcase</a>
-          <a href="#">Pricing</a>
+          <div>
+            <a href="#">Product</a>
+          </div>
+          <div>
+            <a href="#">Showcase</a>
+          </div>
+          <div>
+            <a href="#">Pricing</a>
+          </div>
         </div>
+
+        <div class="center">
+          <div>
+            <a href="cartpage.html" class="cart-btn">
+              <img src="Icons/cart.png" alt="Cart" class="icon">
+              <span>Go to Cart</span>
+            </a>
+          </div>
+          <div>
+            <a href="wishlist.html" class="wishlist-btn">
+              <img src="Icons/heart.png" alt="Wishlist" class="icon">
+              <span>Go to Wishlist</span>
+            </a>
+          </div>
+
+        </div>
+
         <div class="right">
-          <a href="#">Feature</a>
-          <a href="#">Blog</a>
-          <a href="#">Support</a>
+          <div>
+            <a href="#">Feature</a>
+          </div>
+          <div>
+            <a href="#">Blog</a>
+          </div>
+          <div>
+            <a href="#">Support</a>
+          </div>
         </div>
       </nav>
     </div>
@@ -44,7 +76,6 @@
 
       <!-- Products Grid -->
       <div class="cards-container" id="productsContainer"></div>
-
       <!-- Pagination -->
       <div class="pagination" id="pagination"></div>
     </div>
@@ -52,4 +83,5 @@
 
   <script src="JS/Products.js"></script>
 </body>
+
 </html>

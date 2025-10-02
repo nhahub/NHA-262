@@ -1,5 +1,5 @@
 // Dummy Products
-const products = Array.from({ length: 55 }, (_, i) => ({
+const products = Array.from({ length: 30 }, (_, i) => ({
   id: i + 1,
   name: `Product ${i + 1}`,
   price: Math.floor(Math.random() * 500) + 50,
@@ -14,6 +14,10 @@ const sortSelect = document.getElementById("sort");
 
 let currentPage = 1;
 const productsPerPage = 12;
+
+// LocalStorage for cart & wishlist
+let cart = JSON.parse(localStorage.getItem("cart")) || [];
+let wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
 
 function renderProducts() {
   // filter by search
@@ -42,26 +46,47 @@ function renderProducts() {
         <p class="text-muted">⭐ ${p.rating} / 5</p>
         <div class="d-flex justify-content-between align-items-center">
           <span class="price">$${p.price}</span>
+        </div>
+        <div class="actions">
           <button class="btn-custom add-to-cart">Add to Cart</button>
+          <button class="btn-wishlist">Add to Wishlist</button>
         </div>
       </div>
     </div>
   `).join("");
 
   // attach click listeners
-  document.querySelectorAll(".product-card").forEach(card => {
+  document.querySelectorAll(".product-card").forEach((card, idx) => {
     const productId = card.getAttribute("data-id");
+    const product = currentProducts[idx];
 
-    card.addEventListener("click", (e) => {
-      // لو الكليك على زرار Add to Cart متعملش redirect
-      if (e.target.classList.contains("add-to-cart")) {
-        alert(`Product ${productId} added to cart!`);
-        return;
-      }
-      // غير كده روح على صفحة التفاصيل
-      window.location.href = `ProductsDetails.html?id=${productId}`;
+    // Add to Cart
+    card.querySelector(".add-to-cart").addEventListener("click", (e) => {
+      e.stopPropagation();
+      cart.push(product);
+      localStorage.setItem("cart", JSON.stringify(cart));
+      alert(`${product.name} added to cart 🛒`);
     });
-  });
+
+    // Add to Wishlist
+    card.querySelector(".btn-wishlist").addEventListener("click", (e) => {
+      e.stopPropagation();
+      if (!wishlist.find(item => item.id === product.id)) {
+        wishlist.push(product);
+        localStorage.setItem("wishlist", JSON.stringify(wishlist));
+        alert(`${product.name} added to wishlist ❤️`);
+      } else {
+        alert(`${product.name} is already in wishlist ❗`);
+      }
+    });
+
+    // Click on card (details)
+    card.addEventListener("click", (e) => {
+      if (!e.target.classList.contains("add-to-cart") && !e.target.classList.contains("btn-wishlist")) {
+        window.location.href = `ProductsDetails.html?id=${productId}`;
+      }
+    });
+  }); 
 
   // render pagination
   const totalPages = Math.ceil(filtered.length / productsPerPage);

@@ -1,42 +1,145 @@
-/* Reset */
+:root {
+  /* Greens */
+  --greenLight: #f0f6eb;
+  --greenLightHover: #e8f2e1;
+  --greenLightActive: #cfe4c0;
+
+  --greenNormal: #65a834;
+  --greenNormalHover: #5b972f;
+  --greenNormalActive: #51862a;
+
+  --greenDark: #4c7e27;
+  --greenDarkHover: #3d651f;
+  --greenDarkActive: #2d4c17;
+
+  --greenDarker: #233b12;
+
+  /* Text */
+  --textDark: #333;
+  --textLight: #666;
+  --textMuted: #888;
+
+  /* UI */
+  --cardBg: #fff;
+  --borderLight: #ddd;
+
+  /* Status */
+  --successBg: #e8f5e8;
+  --successText: var(--greenDark);
+
+  --dangerBg: #ffebee;
+  --dangerText: #c62828;
+
+  /* Header */
+  --headerBg: var(--greenLight);
+  --headerText: var(--greenNormal);
+  --headerBtnBg: var(--greenNormal);
+  --headerBtnText: #fff;
+  --headerBtnHoverBg: var(--greenDark);
+}
 body {
   margin: 0;
-  font-family: Arial, sans-serif;
-  background: #f9f9f9;
+  background: linear-gradient(to right, #f9f9f9, #f0f6eb);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   color: #333;
+  line-height: 1.6;
 }
 
-/* Header */
-header {
+/* ===== Header ===== */
+.header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 15px 20px;
-  background: linear-gradient(90deg, #66bb6a, #43a047, #2e7d32);
-  color: white;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  flex-wrap: wrap; /* عشان الموبايل */
+  gap: 15px;
+  padding: 15px 30px;
+  background: var(--headerBg);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
-header h2 {
+.PageIcon {
+  display: flex;
+  align-items: center;
+}
+
+.PageIcon img {
+  height: 55px;
+}
+
+.PageIcon nav ul {
+  display: flex;
+  gap: 20px;
+  list-style: none;
+  margin-left: 20px;
+  padding: 0;
+}
+
+.PageIcon ul li a {
+  text-decoration: none;
+  color: var(--greenNormal);
+  font-weight: bold;
+  font-size: 16px;
+  transition: 0.2s ease;
+}
+
+.PageIcon ul li a:hover {
+  border-bottom: 2px solid var(--greenNormal);
+}
+
+/* Search */
+.middle {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  min-width: 200px;
+}
+
+#searchBar {
+  width: 70%;
+  padding: 8px 12px;
+  border-radius: 5px;
+  border: 1px solid var(--borderLight);
+  transition: 0.3s;
+}
+
+#searchBar:hover {
+  box-shadow: 0 0 8px var(--greenNormal);
+}
+
+#searchBar:focus {
+  box-shadow: 0 0 15px var(--greenDark);
+  outline: none;
+}
+
+/* Notifications title + buttons */
+.actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.actions h2 {
   margin: 0;
+  font-size: 20px;
+  color: var(--greenDark);
 }
 
-header .actions button {
-  margin-left: 10px;
+.actions button {
   padding: 6px 12px;
   border: none;
-  background: white;
-  color: #2e7d32;
+  background: var(--headerBtnBg);
+  color: var(--headerBtnText);
   border-radius: 4px;
   cursor: pointer;
   font-weight: bold;
+  transition: 0.3s;
 }
 
-header .actions button:hover {
-  background: #e0e0e0;
+.actions button:hover {
+  background: var(--headerBtnHoverBg);
 }
 
-/* Notifications */
+/* ===== Notifications List ===== */
 .notifications-container {
   max-width: 700px;
   margin: 20px auto;
@@ -46,7 +149,7 @@ header .actions button:hover {
 .notification {
   display: flex;
   align-items: center;
-  background: white;
+  background: var(--cardBg);
   padding: 15px;
   border-radius: 8px;
   margin-bottom: 10px;
@@ -55,7 +158,7 @@ header .actions button:hover {
 }
 
 .notification.unread {
-  background: #e8f5e9;
+  background: var(--successBg);
 }
 
 .notification img {
@@ -70,36 +173,37 @@ header .actions button:hover {
 
 .notification-time {
   font-size: 0.8rem;
-  color: #777;
+  color: var(--textMuted);
 }
 
 .notification button {
   margin-left: 10px;
   padding: 5px 10px;
   border: none;
-  background: #ef5350;
+  background: var(--dangerText);
   color: white;
   border-radius: 4px;
   cursor: pointer;
+  transition: 0.3s;
 }
 
 .notification button:hover {
-  background: #d32f2f;
+  background: #a61c1c;
 }
 
 .notification .mark-read {
-  background: #66bb6a;
+  background: var(--greenNormal);
 }
 
 .notification .mark-read:hover {
-  background: #388e3c;
+  background: var(--greenDark);
 }
 
-/* Empty state */
+/* ===== Empty state ===== */
 .empty-state {
   text-align: center;
   margin-top: 50px;
   font-size: 1.2rem;
-  color: #777;
+  color: var(--textMuted);
   display: none;
 }

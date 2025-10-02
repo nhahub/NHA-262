@@ -1,50 +1,209 @@
 :root {
-  --green-1: #2e7d32;
-  --green-2: #43a047;
-  --green-3: #66bb6a;
-  --green-4: #a5d6a7;
-  --green-5: #e8f5e9;
-  --header-1:#c3cbbd;
-  --gold: #f4c542;
-  --gray: #ccc;
+  --greenLight: #f0f6eb;
+  --greenLightHover: #e8f2e1;
+  --greenLightActive: #cfe4c0;
+
+  --greenNormal: #65a834;
+  --greenNormalHover: #5b972f;
+  --greenNormalActive: #51862a;
+
+  --greenDark: #4c7e27;
+  --greenDarkHover: #3d651f;
+  --greenDarkActive: #2d4c17;
+
+  --greenDarker: #233b12;
+
+  --green-1: #65a834;
+  --green-2: #4c7e27;
+  --green-3: #233b12;
 }
 
 body {
   margin: 0;
-  scroll-behavior: smooth;
-  font-family: 'Poppins', sans-serif;
-  background-color:var(--green-5);
+  background: linear-gradient(to right, #f9f9f9, #f0f6eb);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   color: #333;
+  line-height: 1.6;
 }
 
 * {
   box-sizing: border-box;
 }
 
+/* ===== HEADER ===== */
 header {
-  height: 80px;   /* كان 125px */
-  width: 100%;
-  background: black;
-  color: white;
+  display: flex;
+  align-items: center;     /* يخلي العناصر في النص عموديًا */
+  justify-content: space-between;
+  height: 80px;
+  background: var(--greenLight);
+  padding: 0 35px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
 .PageIcon {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  height: 100%;
-  padding: 0 40px;
+  align-items: center;     /* يخلي اللوجو + nav في النص */
+  gap: 40px;               /* مسافة بين اللوجو و الـ nav */
 }
 
 .PageIcon img {
-  height: 70px;
+  height: 60px;            /* صغر الصورة شوية */
 }
 
+/* ===== NAVIGATION ===== */
 nav {
   display: flex;
-  justify-content: space-between;
-  width: 82.5%;
+  align-items: center;     /* يخلي الروابط والأزرار في خط واحد */
+  gap: 30px;
 }
+
+nav .left,
+nav .right {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+/* الروابط */
+nav a {
+  text-decoration: none;
+  border-bottom: 3px solid transparent;
+  color: var(--greenNormal);
+  transition: all 0.3s ease;
+  font-weight: bold;
+  font-size: 16px;
+  line-height: 1;          /* يصلح مشكلة الطلوع لفوق */
+  padding: 5px 0;          /* يخليها متساوية الطول */
+}
+
+nav a:hover {
+  border-bottom: 3px solid var(--greenNormal);
+}
+
+.center {
+  display: flex;
+  align-items: center;
+  gap: 15px; 
+}
+
+/* ===== HEADER BUTTONS ===== */
+.cart-btn, .wishlist-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 8px 16px;
+  background: white;
+  border-radius: 25px;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 14px;
+  transition: all 0.3s ease;
+  height: 36px;
+}
+
+.cart-btn {
+  border: 2px solid var(--greenNormal);
+  color: var(--greenNormal);
+}
+.cart-btn:hover {
+  background: var(--greenNormal);
+  color: white;
+}
+
+.wishlist-btn {
+  border: 2px solid #ff4d4d;
+  color: #ff4d4d;
+}
+.wishlist-btn:hover {
+  background: #ff4d4d;
+  color: white;
+}
+
+.cart-btn img, .wishlist-btn img {
+  width: 18px;
+  height: 18px;
+}
+
+
+/* ========== PRODUCT CARD BUTTONS ========== */
+.actions {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 12px;
+}
+
+.btn-custom, .btn-wishlist {
+  flex: 1;
+  margin: 0 4px;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 20px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+/* Container for actions */
+.actions {
+  display: flex;
+  flex-direction: column;   /* خلي الأزرار تحت بعض */
+  gap: 10px;                /* مسافة بين الأزرار */
+  margin-top: 15px;
+}
+
+/* Base button style */
+.card-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px;
+  border: none;
+  border-radius: 30px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  width: 100%;
+}
+
+/* Add to Cart button */
+.btn-cart {
+  background: linear-gradient(135deg, var(--greenNormal), var(--greenDark));
+  color: white;
+  box-shadow: 0 4px 12px rgba(76, 126, 39, 0.3);
+}
+.btn-cart:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 16px rgba(76, 126, 39, 0.4);
+}
+
+/* Add to Wishlist button */
+.btn-wishlist {
+  background: linear-gradient(135deg, #ff4d4d, #ff1a75);
+  color: white;
+  box-shadow: 0 4px 12px rgba(255, 77, 77, 0.3);
+}
+.btn-wishlist:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 16px rgba(255, 77, 77, 0.4);
+}
+
+/* Icon inside button */
+.card-btn img {
+  width: 18px;
+  height: 18px;
+}
+
+
+.icon {
+  width: 18px;
+  height: 18px;
+}
+
 
 nav .left,
 nav .right {
@@ -55,15 +214,14 @@ nav .right {
 nav a {
   text-decoration: none;
   border-bottom: 3px solid transparent;
-  color: white;
+  color: var(--greenNormal);
   transition: all 0.3s ease;
   font-weight: bold;
   font-size: 16px;
 }
 
 nav a:hover {
-  border-bottom: 3px solid var(--green-2);
-  color: var(--green-3);
+  border-bottom: 3px solid var(--greenNormal);
 }
 
 /* ===== Main Layout ===== */
@@ -75,13 +233,6 @@ main {
 
 .main-content {
   flex: 1;
-}
-
-/* Breadcrumb */
-.breadcrumb {
-  margin: 20px 0;
-  font-size: 14px;
-  color: #555;
 }
 
 /* Controls */
@@ -97,6 +248,7 @@ main {
   border: 2px solid var(--green-2);
   border-radius: 6px;
   font-size: 14px;
+  transition: all 0.3s ease;
 }
 
 .controls input:focus,
@@ -152,8 +304,15 @@ main {
   color: var(--green-1);
 }
 
+/* Buttons */
+.actions {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+}
+
 .btn-custom {
-  background: linear-gradient(45deg, #3498db, #2ecc71);
+  background: linear-gradient(45deg, var(--greenNormal), var(--greenDark));
   border: none;
   padding: 6px 14px;
   color: white;
@@ -165,7 +324,23 @@ main {
 
 .btn-custom:hover {
   transform: translateX(5px);
-  box-shadow: -5px 5px 15px rgba(46, 204, 113, 0.3);
+  box-shadow: -5px 5px 15px rgba(76, 126, 39, 0.3);
+}
+
+.btn-wishlist {
+  background: linear-gradient(45deg, #ff4d4d, #ff1a75);
+  border: none;
+  padding: 6px 14px;
+  color: white;
+  border-radius: 20px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-wishlist:hover {
+  transform: translateX(-5px);
+  box-shadow: -5px 5px 15px rgba(255, 26, 117, 0.3);
 }
 
 /* Pagination */
@@ -173,19 +348,23 @@ main {
   text-align: center;
   margin: 30px 0;
 }
+
 .pagination button {
   margin: 0 5px;
   padding: 8px 14px;
-  border: 1px solid var(--green-3);
+  border: 1px solid var(--greenLightActive);
   border-radius: 5px;
   background: white;
+  color: var(--greenNormal);
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: background 0.3s ease, color 0.3s ease;
 }
+
 .pagination button:hover {
   background: var(--green-2);
   color: white;
 }
+
 .pagination button.active {
   background: var(--green-1);
   color: white;

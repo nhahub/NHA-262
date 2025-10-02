@@ -1,40 +1,40 @@
 :root {
-  --green-1: #2e7d32;
-  --green-2: #43a047;
-  --green-3: #66bb6a;
-  --green-4: #a5d6a7;
-  --green-5: #e8f5e9;
-  --gold: #f4c542;
-  --gray: #ccc;
+  --greenLight: #f0f6eb;
+  --greenNormal: #65a834;
+  --greenDark: #4c7e27;
 }
+
 * {
-      box-sizing: border-box;
+  box-sizing: border-box;
 }
+
 body {
   margin: 0;
   scroll-behavior: smooth;
   font-family: 'Poppins', sans-serif;
-  background-color: white;
+  background: linear-gradient(to right, #f9f9f9, #f0f6eb);
   color: #333;
 }
 
+h1, h2 {
+  text-align: center;
+  margin-bottom: 30px;
+}
 
-    h1, h2 {
-      text-align: center;
-      margin-bottom: 30px;
-    }
+/* Header */
+.header {
+  display: flex;
+  justify-content: space-between; /* توزيع العناصر */
+  align-items: center;
+  height: 80px;
+  background: var(--greenLight);
+  padding: 0 35px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  gap: 20px;
+}
 
-    /* Brand Section */
-    .category-section {
-      max-width: 1620px;
-      margin: 0 auto 40px auto;
-      overflow-x: auto;
-        padding-bottom: 20px;
- 
-    }
-    .category-section::-webkit-scrollbar {
-      padding-top: 10px;
-  height: 7px; /* السماكة الأفقية للـ scrollbar */
+.PageIcon img {
+  height: 60px;
 }
 
 header {
@@ -42,24 +42,37 @@ header {
   width: 100%;
   background: linear-gradient(90deg, black, #111, var(--green-1));
   color: white;
-}
-
-.PageIcon {
+=======
+/* Search Bar */
+.middle {
+  flex: 1;
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  height: 100%;
-  padding: 0 40px;
+  justify-content: center;
 }
 
-.PageIcon img {
-  height: 100px;
+#searchBar {
+  width: 65%;
+  padding: 8px 12px;
+  border-radius: 5px;
+  border: none;
+  transition: 0.3s;
 }
 
+#searchBar:hover {
+  box-shadow: 0 0 8px var(--greenNormal);
+}
+
+#searchBar:focus {
+  box-shadow: 0 0 15px var(--greenDark);
+  outline: none;
+}
+
+/* Navigation */
 nav {
   display: flex;
   justify-content: space-between;
-  width: 82.5%;
+  align-items: center;
+  gap: 40px;
 }
 
 nav .left,
@@ -70,152 +83,93 @@ nav .right {
 
 nav a {
   text-decoration: none;
-  border-bottom: 3px solid transparent;
-  color: white;
-  transition: all 0.3s ease;
+  color: var(--greenNormal);
   font-weight: bold;
   font-size: 16px;
 }
 
 nav a:hover {
-  border-bottom: 3px solid var(--green-2);
-  color: var(--green-3);
+  border-bottom: 3px solid var(--greenNormal);
 }
 
-.category-section::-webkit-scrollbar-thumb {
-  background: #888; /* لون الجزء اللي بيتحرك */
-  border-radius: 10px;
-  padding-top: 10px;
-}
-    .category {
-      display: flex;
-      flex-wrap: nowrap;
-      justify-content: flex-start;
-      gap: 20px;
-    }
-
-    .category-card {
-      background: #fff;
-      border-radius: 12px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-      padding: 20px;
-      width: 200px;
-      text-align: center;
-      cursor: pointer;
-      transition: transform 0.2s, box-shadow 0.2s;
-    }
-
-    .category-card:hover {
-      transform: translateY(-10px);
-      box-shadow: 0 4px 10px rgba(0,0,0,0.15);
-    }
-
-    .category-card img {
-      width: 120px;
-      height: 120px;
-      object-fit: contain;
-      margin-bottom: 10px;
-    }
-
-    .category-name {
-      font-size: 21px;
-      font-weight: bold;
-      color: #333;
-    }
-
- products-section {
-      max-width: 1620px;
-      margin: 0 auto;
-    }
-
-     .product-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-      gap: 20px;
-      max-width: 1200px;
-      margin: 30px auto;
-    }
-
-    .product-card {
-      background: #fff;
-      border-radius: 12px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-      overflow: hidden;
-      display: flex;
-      flex-direction: column;
-      transition: transform 0.2s;
-    }
-
-    .product-card:hover {
-      transform: translateY(-5px);
-    }
-
-    .product-card img {
-      width: 100%;
-      height: 220px;
-      object-fit: cover;
-    }
-
-    .product-info {
-      padding: 15px;
-      flex-grow: 1;
-    }
-
-    .product-name {
-      font-size: 18px;
-      font-weight: bold;
-      margin: 0 0 10px;
-    }
-
-    .product-price {
-      font-size: 16px;
-      color: green;
-      margin-bottom: 10px;
-    }
-
-    .reviews {
-      font-size: 14px;
-      color: #555;
-      margin-bottom: 15px;
-    }
-
-    .stars {
-      color: gold;
-      margin-right: 5px;
-    }
-
-    .btn {
-      display: block;
-      width: 100%;
-      padding: 10px;
-      background: #059669;
-      color: #fff;
-      text-align: center;
-      border: none;
-      border-radius: 6px;
-      cursor: pointer;
-      transition: background 0.2s;
-    }
-
-    .btn:hover {
-      background: #4CAF50;
-    }
-.offers{
+/* Category Section */
+.category-section {
   max-width: 1620px;
-  
-  padding-top: 20px;
- box-sizing: border-box;
-  
-}
-.offer-row{
-  display: flex;
-  padding-left: 20px;
+  margin: 0 auto 40px auto;
+  overflow-x: auto;
   padding-bottom: 20px;
-  gap: 20px;
- 
-  justify-content: center;
-  
 }
+
+.category {
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+  gap: 20px;
+}
+
+.category-card {
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  padding: 20px;
+  width: 200px;
+  text-align: center;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.category-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+}
+
+.category-card img {
+  width: 120px;
+  height: 120px;
+  object-fit: contain;
+  margin-bottom: 10px;
+}
+
+.category-name {
+  font-size: 21px;
+  font-weight: bold;
+  color: #333;
+}
+
+/* Offers Section */
+.offers {
+  max-width: 1620px;
+  padding-top: 20px;
+}
+
+.offer-row {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  padding: 20px;
+}
+
+.offer-card {
+  width: 360px;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  transition: transform 0.2s;
+}
+
+.offer-card:hover {
+  transform: scale(1.02);
+}
+
+.offer-card img {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+  border-radius: 12px;
+}
+
+/* General Links */
 a {
-      text-decoration: none;
-    }
+  text-decoration: none;
+}
