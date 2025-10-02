@@ -37,11 +37,10 @@ body {
   height: 7px; /* السماكة الأفقية للـ scrollbar */
 }
 
-
 header {
-  height: 80px;   /* كان 125px */
+  height: 125px;
   width: 100%;
-  background: black;
+  background: linear-gradient(90deg, black, #111, var(--green-1));
   color: white;
 }
 
