@@ -1,6 +1,7 @@
 ﻿using Backend.DTO;
 using Backend.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace Backend.Controllers
 {
@@ -15,7 +16,7 @@ namespace Backend.Controllers
 			_context = context;
 		}
 		[HttpPost("Register")]
-		public IActionResult Register([FromForm] RegisterForm form)
+		public async Task<ActionResult>Register([FromForm] RegisterForm form)
 		{
 
 			var address = new TblAddress
@@ -43,14 +44,14 @@ namespace Backend.Controllers
 			};
 			user.TblAddresses.Add(address);
 			_context.TblUsers.Add(user);
-			_context.SaveChanges();
+			await _context.SaveChangesAsync();
 			return Ok();
 
 		}
 		[HttpPost("login")]
-		public IActionResult Login([FromForm] LoginForm form)
+		public async Task<ActionResult> Login([FromForm] LoginForm form)
 		{
-			var user = _context.TblUsers.FirstOrDefault(u => u.UserName == form.username);
+			var user = await _context.TblUsers.FirstOrDefaultAsync(u => u.UserName == form.username);
 			if (user != null)
 			{
 				if (user.PasswordHash == form.password.GetHashCode().ToString())
@@ -66,9 +67,9 @@ namespace Backend.Controllers
 
 		}
 		[HttpPost("CheckEmail")]
-		public IActionResult checkEmail([FromForm] string email)
+		public async Task<ActionResult> checkEmail([FromForm] string email)
 		{
-			bool check=_context.TblUsers.Any(u=>u.Email==email);
+			bool check=await _context.TblUsers.AnyAsync(u=>u.Email==email);
 			if (check)
 			{
 				return Ok();
@@ -76,9 +77,9 @@ namespace Backend.Controllers
 			return NotFound();
 		}
 		[HttpPost("CheckUsername")]
-		public IActionResult CheckUsername([FromForm] string user)
+		public async Task<ActionResult> CheckUsername([FromForm] string user)
 		{
-			bool check = _context.TblUsers.Any(u => u.UserName == user);
+			bool check =await _context.TblUsers.AnyAsync(u => u.UserName == user);
 			if (check)
 			{
 				return Ok();
@@ -86,16 +87,16 @@ namespace Backend.Controllers
 			return NotFound();
 		}
 		[HttpPost("Register/CheckEmail")]
-		public IActionResult RegistercheckEmail([FromForm] string email)
+		public async Task<ActionResult> RegistercheckEmail([FromForm] string email)
 		{
-			bool check = _context.TblUsers.Any(u => u.Email == email);
+			bool check = await _context.TblUsers.AnyAsync(u => u.Email == email);
 			return Ok(new { exist = check });
 
 		}
 		[HttpPost("Register/CheckUsername")]
-		public IActionResult RegisterCheckUsername([FromForm] string user)
+		public async Task<ActionResult> RegisterCheckUsername([FromForm] string user)
 		{
-			bool check = _context.TblUsers.Any(u => u.UserName == user);
+			bool check = await _context.TblUsers.AnyAsync(u => u.UserName == user);
 
 			return Ok(new {exist =check});
 		}

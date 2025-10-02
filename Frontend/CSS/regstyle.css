@@ -1,9 +1,15 @@
+/* ================================= */
+/* Global Reset                      */
+/* ================================= */
 * {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
 }
 
+/* ================================= */
+/* Body Layout                       */
+/* ================================= */
 body {
     display: flex;
     margin: 0px;
@@ -14,6 +20,9 @@ body {
     color: #65a834;
 }
 
+/* ================================= */
+/* Container Card                    */
+/* ================================= */
 .Container {
     background-color: rgb(255, 255, 255);
     height: auto;
@@ -21,16 +30,17 @@ body {
     border-radius: 15px;
     padding: 15px;
     box-shadow: 1px 1px 5px 5px rgb(180, 170, 170);
-
 }
 
+/* ================================= */
+/* Header                            */
+/* ================================= */
 header {
     display: flex;
     height: 50px;
     border-radius: 5px;
     margin-bottom: 15px;
     align-items: center;
-    
 }
 
 header img {
@@ -38,6 +48,9 @@ header img {
     height: 40px;
 }
 
+/* ================================= */
+/* Forms                             */
+/* ================================= */
 .FORM {
     display: flex;
     width: 100%;
@@ -48,19 +61,18 @@ header img {
     gap: 30px;
 }
 
+/* ================================= */
+/* Input Fields                      */
+/* ================================= */
 .FORM input {
     border-radius: 5px;
     border: none;
     height: 40px;
     width: 100%;
     font-size: 16px;
-        font-family: 'Poppins', sans-serif;
-            padding-left: 10px;
-
-
-
+    font-family: 'Poppins', sans-serif;
+    padding-left: 10px;
 }
-
 
 .FORM input::placeholder {
     font-family: 'Poppins', sans-serif;
@@ -68,30 +80,52 @@ header img {
     font-size: 16px;
 }
 
-
-.btn ,.next ,.prev{
+/* ================================= */
+/* Buttons                            */
+/* ================================= */
+.btn, .next, .prev {
     background-color: #65a834;
     color: white;
     font-family: 'Poppins', sans-serif;
     transition: all 0.5s ease;
     font-weight: bold;
     font-size: 16px;
-        height: 40px;
+    height: 40px;
     border-radius: 5px;
     border: none;
-        cursor: pointer;
-        width: 100%;
-
-
+    cursor: pointer;
+    width: 100%;
 }
 
-.btn:hover,.next:hover ,.prev:hover {
+.btn:hover, .next:hover, .prev:hover {
     filter: brightness(115%);
-
 }
 
-.Rememberandforget {
+/* Registration Button */
+.reg {
+    background-color: #65a834;
+    color: white;
+    font-family: 'Poppins', sans-serif;
+    transition: all 0.5s ease;
+    font-weight: bold;
+    font-size: 16px;
+    cursor: pointer;
+}
 
+.reg:hover {
+    filter: brightness(115%);
+}
+
+.regg {
+    display: flex;
+    width: 100%;
+    text-decoration: none;
+}
+
+/* ================================= */
+/* Remember & Forget Section         */
+/* ================================= */
+.Rememberandforget {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -108,139 +142,161 @@ header img {
     width: 16px;
     cursor: pointer;
 }
-.orr{
+
+/* ================================= */
+/* Divider (OR line)                 */
+/* ================================= */
+.orr {
     display: flex;
     width: 100%;
     gap: 5px;
     align-items: center;
 }
-hr{
+
+hr {
     flex: 1;
     background-color: #65a834;
     height: 1px;
 }
-.Rememberandforget a{
+
+/* ================================= */
+/* Links                             */
+/* ================================= */
+.Rememberandforget a {
     text-decoration: none;
     color: #65a834;
     border-bottom: 1px solid transparent;
     transition: all 0.3s ease;
 }
-.Rememberandforget a:hover{
+
+.Rememberandforget a:hover {
     border-bottom: 1px solid #88b16a;
 }
-.reg {
-    background-color: #65a834;
-    color: white;
-    font-family: 'Poppins', sans-serif;
-    transition: all 0.5s ease;
-    font-weight: bold;
-    font-size: 16px;
-        cursor: pointer;
 
-
-}
-
-.reg:hover {
-    filter: brightness(115%);
-
-}
-.regg{
-    display:flex;
-    width: 100%;
-    text-decoration: none;
-}
-
+/* ================================= */
+/* User Input Styles                 */
+/* ================================= */
 .User {
     background-color: #f1fcea;
-  border: 0px solid #ccc;     
-  border-radius: 5px;
-  outline: none;              
-  transition: all 0.3s ease; 
+    border: 0px solid #ccc;     
+    border-radius: 5px;
+    outline: none;              
+    transition: all 0.3s ease; 
 }
+
 .User:hover {
-  box-shadow: 0 0 3px #4CAF50; /* توهج خفيف */
+    box-shadow: 0 0 3px #4CAF50; /* توهج خفيف */
 }
 
 .User:focus {
-  box-shadow: 0 0 8px #4CAF50; /* توهج خفيف */
+    box-shadow: 0 0 8px #4CAF50; /* توهج خفيف */
 }
-.radioo{
+
+/* ================================= */
+/* Radio Buttons                     */
+/* ================================= */
+.radioo {
     display: flex;
     justify-content: space-between;
     width: 100%;
-
-}
-.step {
-  display: none;
 }
 
-.step.active {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;  
-  gap: 20px;
-  width: 100%;
-  height: 100%;
-}
-.gend{
+.gend {
     display: flex;
     width: 100%;
     justify-content: center;
     align-items: center;
     gap: 5px;
 }
-.gend input[type="radio"]{
+
+.gend input[type="radio"] {
     display: none;
 }
-.gend label{
+
+.gend label {
     width: 100px;
-  padding: 10px 20px;
+    padding: 10px 20px;
     text-align: center;
-      cursor: pointer;
-  transition: all 0.3s ease;
-    background-color:#98be7d;
-    color: white;    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    background-color: #98be7d;
+    color: white;
+    border-radius: 5px;
 }
-.gend input[type="radio"]:checked + label{
+
+.gend input[type="radio"]:checked + label {
     background-color: #65a834;
 }
-.gend label:hover{
+
+.gend label:hover {
     filter: brightness(115%);
 }
-.btns{
+
+/* ================================= */
+/* Step Form Sections                */
+/* ================================= */
+.step {
+    display: none;
+}
+
+.step.active {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;  
+    gap: 20px;
+    width: 100%;
+    height: 100%;
+}
+
+/* ================================= */
+/* Buttons Wrapper                   */
+/* ================================= */
+.btns {
     display: flex;
     width: 100%;
     gap: 10px;
 }
 
-
+/* ================================= */
+/* Datepicker                        */
+/* ================================= */
 .ui-datepicker {
-    background: #f0f0f0;   /* اللون اللي تحبه */
-    border: 1px solid #aaa; /* حدود */
-    color: #333;            /* لون الخط */
+    background: #f0f0f0;   
+    border: 1px solid #aaa; 
+    color: #333;            
 }
-p{
+
+/* ================================= */
+/* Error Message                     */
+/* ================================= */
+p {
     color: red;
 }
 
-#AddressType {
+/* ================================= */
+/* Address Dropdown                   */
+/* ================================= */
+/* #AddressType {
     color: gray;
-  width: 100%;             
-  padding: 10px;            
-  border-radius: 5px;       
-  border: none;   
-  background-color: #f1fcea; 
-  font-size: 16px;          
-  appearance: none;         
-    transition: all 0.3s ease ;
-  cursor: pointer;
-}
+    width: 100%;             
+    padding: 10px;            
+    border-radius: 5px;       
+    border: none;   
+    background-color: #f1fcea; 
+    font-size: 16px;          
+    appearance: none;         
+    transition: all 0.3s ease;
+    cursor: pointer;
+    background-image: url('data:image/svg+xml;utf8,<svg fill="gray" height="20" viewBox="0 0 20 20" width="20" xmlns="http://www.w3.org/2000/svg"><polygon points="0,0 20,0 10,10"/></svg>');
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+    background-size: 12px;
+} */
 
-/* إضافة سهم مخصص للـ dropdown */
-#AddressType {
-  background-image: url('data:image/svg+xml;utf8,<svg fill="gray" height="20" viewBox="0 0 20 20" width="20" xmlns="http://www.w3.org/2000/svg"><polygon points="0,0 20,0 10,10"/></svg>');
-  background-repeat: no-repeat;
-  background-position: right 10px center;
-  background-size: 12px;
-}
+/* .iti__search-icon{
+    padding-right: 50px;
+} */
+ #iti-0__search-input{
+    padding-left: 25px;
+ }
