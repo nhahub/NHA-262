@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>📊 Dashboard</title>
+  <link rel="stylesheet" href="css.css">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+  <!-- Sidebar -->
+  <aside class="sidebar">
+    <nav class="sidebar-nav">
+      <ul>
+        <li>
+        <a href="#" class="logo" style="text-decoration: none;">
+        
+        <span class="title">Cartify Admin</span>
+        </a>
+        </li>
+        <li class="nav-item active"><a class="nav-link" href="/Dashboard/dashboard.html"><i class="fas fa-gauge"></i><span>Dashboard</span></a></li>
+        <li class="nav-item "><a class="nav-link" href="/User Managment/User.html"><i class="fas fa-users"></i><span>User Management</span></a></li>
+        <li class="nav-item"><a class="nav-link" href="Store.html"><i class="fas fa-store"></i><span>Store Management</span></a></li>
+        <li class="nav-item"><a class="nav-link" href="/Product/Prodcut.html"><i class="fas fa-box-open"></i><span>Product Management</span></a></li>
+        <li class="nav-item"><a class="nav-link" href="/Order/Order.html"><i class="fas fa-cart-shopping"></i><span>Order Management</span></a></li>
+        <li class="nav-item"><a class="nav-link" href="/Category/Category.html"><i class="fas fa-folder-tree"></i><span>Category Management</span></a></li>
+        <li class="nav-item"><a class="nav-link" href="/Reports/Reports.html"><i class="fas fa-chart-pie"></i><span>Reports & Analytics</span></a></li>
+        <li class="nav-item"><a class="nav-link" href="#"><i class="fas fa-gear"></i><span>Settings</span></a></li>
+        <li class="nav-item"><a class="nav-link" href="#"><i class="fas fa-right-from-bracket"></i><span>Logout</span></a></li>
+      </ul>
+    </nav>
+  </aside>
+
+  <!-- Main -->
+  <div class="main">
+    <h1>Dashboard</h1>
+
+    <!-- Top Cards -->
+    <div class="dashboard-cards">
+        <div class="card">
+        <h3>5,210</h3>
+        <p>Users</p>
+        </div>
+        <div class="card">
+        <h3>72</h3>
+        <p>Stores</p>
+        </div>
+        <div class="card">
+        <h3>1,560</h3>
+        <p>Products</p>
+      </div>
+      <div class="card">
+        <h3>$22,350</h3>
+        <p>Sales</p>
+      </div>
+    </div>
+
+    <!-- Charts -->
+    <div class="charts">
+      <div class="card">
+        <h3>Sales</h3>
+        <div class="chart-placeholder">[ Line Chart ]</div>
+      </div>
+      <div class="card">
+        <h3>Top Categories</h3>
+        <div class="chart-placeholder">[ Pie Chart ]</div>
+      </div>
+    </div>
+
+    <!-- Tables + Notifications -->
+   <div class="bottom-section">
+     <div class="box">
+        <h3>Latest Orders</h3>
+    <table>
+         <tr>
+        <th>Order ID</th>
+            <th>Date</th>
+            <th>Status</th>
+            </tr>
+             </tr>
+        
+            <tr>
+            <td>#1235</td>
+            <td>2025-09-17</td>
+            <td class="Pending">Pending</td>
+          </tr>
+            <tr>
+            <td>#1234</td>
+            <td>2025-09-15</td>
+            <td class="Shipped">Shipped</td>
+          </tr> 
+          <tr>
+            <td>#1233</td>
+            <td>2025-09-18</td>
+            <td class="Canceled">Canceled</td>
+          </tr>
+           <tr>
+            <td>#1232</td>
+            <td>2025-09-15</td>
+            <td class="Completed">Completed</td>
+    </table>
+    </div>
+   </div>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script src="js.js"></script>
+</body>
+</html>

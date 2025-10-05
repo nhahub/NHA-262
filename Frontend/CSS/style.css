@@ -1,3 +1,18 @@
+/* Color Palette (Shared Variables)  */
+/* ================================= */
+:root {
+    --greenLight: #f0f6eb;
+    --greenLightHover: #e8f2e1;
+    --greenLightActive: #cfe4c0;
+    --greenNormal: #65a834;
+    --greenNormalHover: #5b972f;
+    --greenNormalActive: #51862a;
+    --greenDark: #4c7e27;
+    --greenDarkHover: #3d651f;
+    --greenDarkActive: #2d4c17;
+    --greenDarker: #233b12;
+}
+
 /* ================================= */
 /* Global Reset                      */
 /* ================================= */
@@ -133,4 +148,93 @@ body {
 
 #searchBar:focus {
     box-shadow: 0px 0px 20px #4CAF50;
+}
+/* ================================= */
+/* Updated Navigation Buttons        */
+/* ================================= */
+.Login {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+/* Base button style for all navigation buttons */
+.nav-btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 15px;
+    text-decoration: none;
+    border-radius: 35px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: bold;
+    font-size: 16px;
+    transition: all 0.3s ease;
+    border: none;
+    cursor: pointer;
+}
+
+/* Cart Button - matches the login style */
+.cart-btn {
+    background: transparent;
+    color: #65a834;
+    border-bottom: 3px solid transparent;
+    padding: 5px 10px;
+}
+
+.cart-btn:hover {
+    border-bottom: 3px solid #65a834;
+}
+
+/* Profile Button - matches the login style */
+.profile-btn {
+    background: transparent;
+    color: #65a834;
+    border-bottom: 3px solid transparent;
+    padding: 5px 10px;
+}
+
+.profile-btn:hover {
+    border-bottom: 3px solid #65a834;
+}
+
+/* Login Button - keep existing style */
+.LOGIN {
+    color: #65a834;
+    font-weight: bold;
+    font-size: 16px;
+    text-decoration: none;
+    font-family: 'Poppins', sans-serif;
+    border-bottom: 3px solid transparent;
+    transition: all 0.3s;
+    padding: 5px 10px;
+}
+
+.LOGIN:hover {
+    border-bottom: 3px solid #65a834;
+}
+
+/* Start for Free Button - keep existing style */
+.startforfree {
+    display: flex;
+    padding: 10px 15px;
+    background-color: white;
+    text-decoration: none;
+    color: #65a834;
+    border-radius: 35px;
+    transition: all 0.3s ease;
+    font-weight: bold;
+    font-size: 16px;
+    font-family: 'Poppins', sans-serif;
+}
+
+.startforfree:hover {
+    background-color: #65a834;
+    color: white;
+}
+
+/* Cart icon styling */
+#cart {
+    height: 20px;
+    width: 20px;
 }

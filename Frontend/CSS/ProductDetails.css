@@ -1,4 +1,3 @@
-
 :root {
   --greenLight: #f0f6eb;
   --greenLightHover: #e8f2e1;
@@ -211,4 +210,3 @@ body {
 .btn-secondary:active {
   background: var(--greenLightActive);
 }
-

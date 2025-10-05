@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Store Management</title>
+  <link rel="stylesheet" href="store.css">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
+</head>
+<body>
+  
+ <aside class="sidebar">
+    <nav class="sidebar-nav">
+      <ul>
+        <li>
+        <a href="#" class="logo" style="text-decoration: none;">
+        
+        <span class="title">Cartify Admin</span>
+        </a>
+        </li>
+        <li class="nav-item"><a class="nav-link" href="/Dashboard/dashboard.html"><i class="fas fa-gauge"></i><span>Dashboard</span></a></li>
+        <li class="nav-item "><a class="nav-link" href="/User Managment/User.html"><i class="fas fa-users"></i><span>User Management</span></a></li>
+        <li class="nav-item active"><a class="nav-link" href="Store.html"><i class="fas fa-store"></i><span>Store Management</span></a></li>
+        <li class="nav-item"><a class="nav-link" href="/Product/Prodcut.html"><i class="fas fa-box-open"></i><span>Product Management</span></a></li>
+        <li class="nav-item"><a class="nav-link" href="/Order/Order.html"><i class="fas fa-cart-shopping"></i><span>Order Management</span></a></li>
+        <li class="nav-item"><a class="nav-link" href="/Category/Category.html"><i class="fas fa-folder-tree"></i><span>Category Management</span></a></li>
+        <li class="nav-item"><a class="nav-link" href="/Reports/Reports.html"><i class="fas fa-chart-pie"></i><span>Reports & Analytics</span></a></li>
+        <li class="nav-item"><a class="nav-link" href="#"><i class="fas fa-gear"></i><span>Settings</span></a></li>
+        <li class="nav-item"><a class="nav-link" href="#"><i class="fas fa-right-from-bracket"></i><span>Logout</span></a></li>
+      </ul>
+    </nav>
+  </aside>
+
+  <div class="main">
+    <div class="top-bar">
+      <h1>Store Management</h1>
+      <button class="btn btn-add">➕ Add Store</button>
+    </div>
+<div class="card">
+    <table>
+      <tr>
+        <th>Store ID</th>
+        <th>Name</th>
+        <th>Owner</th>
+        <th>Location</th>
+        <th>Category</th>
+        <th>Status</th>
+        <th>Actions</th>
+      </tr>
+
+      <tr>
+        <td>#S001</td>
+        <td>StyleStore</td>
+        <td>Mohamed Hassan</td>
+        <td>Cairo, Egypt</td>
+        <td>Fashion</td>
+        <td>Active</td>
+        <td>
+          <button class="btn btn-view"><a href="/Product/Prodcut.html?storeId=1" class="btn btn-view" style="text-decoration: none;">View Products</a></button>
+         <button class="btn btn-edit"><i class="fas fa-pen"></i></button>
+            <button class="btn btn-delete"><i class="fas fa-trash"></i></button>
+            <button class="btn btn-suspend"><i class="fas fa-ban"></i></button>
+        </td>
+      </tr>
+
+      <tr>
+        <td>#S002</td>
+        <td>Gadget World</td>
+        <td>Sarah Lee</td>
+        <td>New York, NY</td>
+        <td>Electronics</td>
+        <td class="Actions">Active</td>
+        <td>
+          <button class="btn btn-view"><a href="/Product/Prodcut.html?storeId=2" class="btn btn-view" style="text-decoration: none;">View Products</a></button>
+          <button class="btn btn-edit"><i class="fas fa-pen"></i></button>
+            <button class="btn btn-delete"><i class="fas fa-trash"></i></button>
+            <button class="btn btn-suspend"><i class="fas fa-ban"></i></button>
+        </td>
+      </tr>
+
+      <tr>
+        <td>#S003</td>
+        <td>TechZone</td>
+        <td>Ali Kamal</td>
+        <td>Dubai, UAE</td>
+        <td>Technology</td>
+        <td>Active</td>
+        <td>
+          <button class="btn btn-view"><a href="/Product/Prodcut.html?storeId=3" class="btn btn-view" style="text-decoration: none;">View Products</a></button>
+          <button class="btn btn-edit"><i class="fas fa-pen"></i></button>
+            <button class="btn btn-delete"><i class="fas fa-trash"></i></button>
+            <button class="btn btn-suspend"><i class="fas fa-ban"></i></button>
+        </td>
+      </tr>
+    </table>
+    </div>
+  </div>
+</body>
+</html>

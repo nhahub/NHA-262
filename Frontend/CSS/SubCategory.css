@@ -37,12 +37,6 @@ h1, h2 {
   height: 60px;
 }
 
-header {
-  height: 125px;
-  width: 100%;
-  background: linear-gradient(90deg, black, #111, var(--green-1));
-  color: white;
-=======
 /* Search Bar */
 .middle {
   flex: 1;

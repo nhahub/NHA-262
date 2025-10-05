@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Logout - Cartify Admin</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background: #f5f6fa;
+        }
+        .logout-container {
+            background: #fff;
+            padding: 40px 32px;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            text-align: center;
+        }
+        .logout-container h2 {
+            margin-bottom: 16px;
+            color: #333;
+        }
+        .logout-container p {
+            margin-bottom: 24px;
+            color: #666;
+        }
+        .logout-container button {
+            background: #007bff;
+            color: #fff;
+            border: none;
+            padding: 10px 24px;
+            border-radius: 5px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        .logout-container button:hover {
+            background: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="logout-container">
+        <h2>Logged Out</h2>
+        <p>You have been successfully logged out.</p>
+        <button onclick="window.location.href='home.html'">Return to Login</button> 
+         <!-- بتودي علي الصفحة الي تفي عملها  -->
+        
+    </div>
+    
+    <script>
+        // Clear authentication data on logout
+        localStorage.clear();
+        sessionStorage.clear();
+        // If you use cookies for auth, add code to clear them here as well
+    </script>
+</body>
+</html>

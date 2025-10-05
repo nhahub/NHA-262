@@ -1,177 +1,200 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>User Profile</title>
-
-  <!-- CSS -->
-  <link rel="stylesheet" href="CSS/profile.css">
-
-  <!-- Bootstrap -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Profile - Cartify</title>
+    <link rel="stylesheet" href="CSS/style.css">
+    <link rel="stylesheet" href="CSS/profile.css">
+    <link rel="icon" href="Icons/favicon.ico" type="image/x-icon">
 </head>
 <body>
+    <!-- ================= HEADER ================= -->
+    <header class="headerr">
+        <div class="PageIcon">
+            <a href="index.html"><img src="Icons/Untitled-ن2.png" alt="Logo"></a>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="#">About</a></li>
+                </ul>
+            </nav>
+        </div>
 
-  <!-- ===== HEADER ===== -->
-  <header class="header">
-    <div class="PageIcon">
-      <a href="index.html"><img src="Icons/Untitled-ن2.png" alt="Logo"></a>
-      <nav>
-        <ul>
-          <li><a href="index.html">Home</a></li>
-          <li><a href="#">About</a></li>
-        </ul>
-      </nav>
+        <div class="middle">
+            <input type="text" name="search" id="searchBar" placeholder="Search products...">
+        </div>
+
+        <div class="Login">
+            <a href="cartpage.html" class="nav-btn cart-btn">
+                <img src="Icons/cart.png" id="cart" alt="Cart">
+                <span>Go to Cart</span>
+            </a>
+            <a href="profile.html" class="nav-btn profile-btn">
+                <span>My Profile</span>
+            </a>
+            <a href="login.html" class="LOGIN">Login</a>
+            <a href="register.html" class="startforfree">Start for free</a>
+        </div>
+    </header>
+
+    <!-- ================= PROFILE CONTENT ================= -->
+    <div class="profile-container">
+        <!-- Sidebar -->
+        <div class="profile-sidebar">
+            <div class="user-info">
+                <div class="user-avatar">
+                    <img src="Icons/user.png" alt="Profile">
+                    <button class="change-avatar-btn">Change Photo</button>
+                </div>
+                <h2 class="user-name">John Doe</h2>
+                <p class="user-email">john.doe@example.com</p>
+            </div>
+
+            <div class="profile-nav">
+                <button class="nav-item active" data-tab="profile-info">Profile Information</button>
+                <button class="nav-item" data-tab="manage-addresses">Manage Addresses</button>
+                <button class="nav-item" data-tab="payment-methods">Payment Methods</button>
+                <button class="nav-item" data-tab="security">Security</button>
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="profile-content">
+            <!-- Profile Information Tab -->
+             <div class="tab-content active" id="profile-info"></div>
+                <div class="tab-header">
+                    <h2>Profile Information</h2>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>First Name</label>
+                        <input type="text" id="firstName" value="John" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Last Name</label>
+                        <input type="text" id="lastName" value="Doe" required>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Email Address</label>
+                    <input type="email" id="email" value="john.doe@example.com" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Phone Number</label>
+                    <input type="tel" id="phone" value="+20123456789" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Date of Birth</label>
+                    <input type="date" id="birthDate" value="1990-01-01" required>
+                </div>
+
+                <button type="submit" class="save-btn">Save Changes</button>
+            </form>
+
+            <!-- Manage Addresses Tab -->
+            <div class="tab-content" id="manage-addresses">
+                <div class="tab-header">
+                    <h2>Manage Addresses</h2>
+                    <button type="button" class="add-address-btn">+ Add New Address</button>
+                </div>
+
+                <div class="address-card">
+                    <div class="address-header">
+                        <h3>Home Address</h3>
+                        <span class="default-badge">Default</span>
+                    </div>
+                    <p>123 Main Street, Apt 4B</p>
+                    <p>Cairo, Egypt 12345</p>
+                    <div class="address-actions">
+                        <button type="button" class="edit-btn">Edit</button>
+                        <button type="button" class="delete-btn">Delete</button>
+                    </div>
+                </div>
+
+                <div class="address-card">
+                    <div class="address-header">
+                        <h3>Work Address</h3>
+                    </div>
+                    <p>456 Business District</p>
+                    <p>Giza, Egypt 67890</p>
+                    <div class="address-actions">
+                        <button type="button" class="edit-btn">Edit</button>
+                        <button type="button" class="delete-btn">Delete</button>
+                        <button type="button" class="set-default-btn">Set as Default</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Payment Methods Tab -->
+            <div class="tab-content" id="payment-methods">
+                <div class="tab-header">
+                    <h2>Payment Methods</h2>
+                    <button type="button" class="add-payment-btn">+ Add Payment Method</button>
+                </div>
+                
+                <div class="payment-card">
+                    <div class="payment-header">
+                        <h3>💳 Visa ending in 1234</h3>
+                        <span class="default-badge">Default</span>
+                    </div>
+                    <p>Expires 12/2025</p>
+                    <div class="payment-actions">
+                        <button type="button" class="edit-btn">Edit</button>
+                        <button type="button" class="delete-btn">Delete</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Security Tab -->
+             <div class="tab-content" id="security">
+                <div class="tab-header">
+                    <h2>Security Settings</h2>
+                </div>
+                
+                <div class="form-group">
+                    <label>Current Password</label>
+                    <input type="password" id="currentPassword" required>
+                </div>
+
+                <div class="form-group">
+                    <label>New Password</label>
+                    <input type="password" id="newPassword" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Confirm New Password</label>
+                    <input type="password" id="confirmPassword" required>
+                </div>
+
+                <button type="button"save-btn">Update Password</button>
+
+                <div class="security-options">
+                    <h3>Privacy Settings</h3>
+                    <div class="toggle-option">
+                        <span>Two-Factor Authentication</span>
+                        <label class="toggle-switch">
+                            <input type="checkbox">
+                            <span class="slider"></span>
+                        </label>
+                    </div>
+                    
+                    <div class="toggle-option">
+                        <span>Email Notifications</span>
+                        <label class="toggle-switch">
+                            <input type="checkbox" checked>
+                            <span class="slider"></span>
+                        </label>
+                    </div>
+                </div>
+            </form>
+        </div>
     </div>
-    <div class="middle">
-      <input type="text" name="search" id="searchBar" placeholder="Search...">
-    </div>
-    <div class="Login">
-      <a href="cartpage.html" class="cart-btn">
-        <img src="Icons/cart.png" alt="Cart" id="cart">
-        <span>Go to Cart</span>
-      </a>
-    </div>
-  </header> 
 
-  <!-- ===== MAIN ===== -->
-  <main class="container py-4">
-    <h2 class="section-title">My Profile</h2>
-
-    <!-- Alerts -->
-    <div id="alertContainer"></div>
-
-    <!-- User Info -->
-    <div class="card-custom">
-      <h5>User Information</h5>
-      <p class="small-muted">Name: <span id="userName"></span></p>
-      <p class="small-muted">Email: <span id="userEmail"></span></p>
-      <button class="btn-green" id="btnEditProfile">Edit Profile</button>
-      <button class="btn-green" data-bs-toggle="modal" data-bs-target="#modalChangePassword">Change Password</button>
-    </div>
-
-    <!-- Addresses -->
-    <div class="card-custom">
-      <h5>Addresses</h5>
-      <ul id="addressesList" class="list-group"></ul>
-      <button class="btn-green mt-3" data-bs-toggle="modal" data-bs-target="#modalAddAddress">Add Address</button>
-    </div>
-
-    <!-- Payment Methods -->
-    <div class="card-custom">
-      <h5>Payment Methods</h5>
-      <ul id="paymentsList" class="list-group"></ul>
-      <button class="btn-green mt-3" data-bs-toggle="modal" data-bs-target="#modalAddPayment">Add Payment Method</button>
-    </div>
-  </main>
-
-  <!-- ===== MODALS ===== -->
-
-  <!-- Edit Profile -->
-  <div class="modal fade" id="modalEditProfile" tabindex="-1">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <form id="formEditProfile">
-          <div class="modal-header">
-            <h5 class="modal-title">Edit Profile</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-          </div>
-          <div class="modal-body">
-            <label class="form-label">Name</label>
-            <input type="text" id="editName" class="form-control" required>
-            <label class="form-label mt-2">Email</label>
-            <input type="email" id="editEmail" class="form-control" required>
-          </div>
-          <div class="modal-footer">
-            <button type="submit" class="btn btn-success">Save</button>
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-          </div>
-        </form>
-      </div>
-    </div>
-  </div>
-
-  <!-- Add Address -->
-  <div class="modal fade" id="modalAddAddress" tabindex="-1">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <form id="formAddAddress">
-          <div class="modal-header">
-            <h5 class="modal-title">Add Address</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-          </div>
-          <div class="modal-body">
-            <label class="form-label">Address</label>
-            <input type="text" id="addressLine" class="form-control" required>
-            <label class="form-label mt-2">City</label>
-            <input type="text" id="city" class="form-control" required>
-            <label class="form-label mt-2">Zip Code</label>
-            <input type="text" id="zipCode" class="form-control" required>
-          </div>
-          <div class="modal-footer">
-            <button type="submit" class="btn btn-success">Save</button>
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-          </div>
-        </form>
-      </div>
-    </div>
-  </div>
-
-  <!-- Add Payment -->
-  <div class="modal fade" id="modalAddPayment" tabindex="-1">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <form id="formAddPayment">
-          <div class="modal-header">
-            <h5 class="modal-title">Add Payment Method</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-          </div>
-          <div class="modal-body">
-            <label class="form-label">Card Number</label>
-            <input type="text" id="cardNumber" class="form-control" required>
-            <label class="form-label mt-2">Expiry Date</label>
-            <input type="text" id="expiryDate" class="form-control" placeholder="MM/YY" required>
-            <label class="form-label mt-2">CVV</label>
-            <input type="text" id="cvv" class="form-control" required>
-          </div>
-          <div class="modal-footer">
-            <button type="submit" class="btn btn-success">Save</button>
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-          </div>
-        </form>
-      </div>
-    </div>
-  </div>
-
-  <!-- Change Password -->
-  <div class="modal fade" id="modalChangePassword" tabindex="-1">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <form id="formChangePassword">
-          <div class="modal-header">
-            <h5 class="modal-title">Change Password</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-          </div>
-          <div class="modal-body">
-            <label class="form-label">Current Password</label>
-            <input type="password" id="currentPassword" class="form-control" required>
-            <label class="form-label mt-2">New Password</label>
-            <input type="password" id="newPassword" class="form-control" required>
-            <label class="form-label mt-2">Confirm New Password</label>
-            <input type="password" id="confirmPassword" class="form-control" required>
-          </div>
-          <div class="modal-footer">
-            <button type="submit" class="btn btn-success">Update</button>
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-          </div>
-        </form>
-      </div>
-    </div>
-  </div>
-
-  <!-- ===== JS ===== -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-  <script src="JS/profile.js"></script>
+    <script src="JS/profile.js"></script>
 </body>
 </html>

@@ -1,4 +1,3 @@
-=======
 // Dummy product data (in real app => dynamic)
 const product = {
   id: 1,
