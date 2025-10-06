@@ -49,22 +49,20 @@ body {
   margin-left: 20px;
   padding: 0;
 }
+
 .PageIcon ul li a {
   text-decoration: none;
-  border-bottom: 3px solid transparent;
   color: var(--greenNormal);
-  transition: all 0.3s ease;
   font-weight: bold;
   font-size: 16px;
+  transition: 0s ease;
 }
 
 .PageIcon ul li a:hover {
-  border-bottom: 3px solid var(--greenNormal);
+  border-bottom: 2px solid var(--greenNormal);
 }
 
-
 .cart-btn {
-  
   display: inline-flex;
   align-items: center;
   gap: 8px;
@@ -75,12 +73,12 @@ body {
   font-weight: bold;
   font-size: 16px;
   color: white;
-  border: 2px solid var(--greenNormal);
-  transition: all 0.5s ease;
+  transition: all 0s ease;
 }
 
 .cart-btn:hover {
   background: linear-gradient(to right, var(--greenLight), var(--greenLightHover));
+  border: 2px solid var(--greenNormal);
   color: var(--greenNormal);
 }
 

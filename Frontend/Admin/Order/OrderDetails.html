@@ -1,0 +1,1904 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Notification Center</title>
+    
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>/* Admin Notification Center Styles */
+:root {
+    --primary-color: #059669;
+    --secondary-color: #6b7280;
+    --success-color: #10b981;
+    --warning-color: #f59e0b;
+    --danger-color: #ef4444;
+    --info-color: #3b82f6;
+    --bg-color: #f8fafc;
+    --card-bg: #ffffff;
+    --text-primary: #1f2937;
+    --text-secondary: #6b7280;
+    --border-color: #e5e7eb;
+    --shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    --sidebar-width: 280px;
+    --header-height: 70px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-primary);
+    line-height: 1.6;
+}
+
+/* Header Styles */
+.admin-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: var(--header-height);
+    background: var(--card-bg);
+    border-bottom: 1px solid var(--border-color);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 2rem;
+    z-index: 1000;
+    box-shadow: var(--shadow);
+}
+
+.header-left {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.sidebar-toggle {
+    background: none;
+    border: none;
+    font-size: 1.2rem;
+    color: var(--text-secondary);
+    cursor: pointer;
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+    transition: all 0.2s;
+}
+
+.sidebar-toggle:hover {
+    background-color: var(--bg-color);
+    color: var(--text-primary);
+}
+
+.admin-header h1 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.header-right {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.search-box {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.search-box i {
+    position: absolute;
+    left: 1rem;
+    color: var(--text-secondary);
+    z-index: 1;
+}
+
+.search-box input {
+    padding: 0.75rem 1rem 0.75rem 2.5rem;
+    border: 1px solid var(--border-color);
+    border-radius: 0.5rem;
+    background: var(--bg-color);
+    width: 300px;
+    font-size: 0.9rem;
+    transition: all 0.2s;
+}
+
+.search-box input:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(5, 150, 105, 0.1);
+}
+
+.admin-profile {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    cursor: pointer;
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+    transition: background-color 0.2s;
+}
+
+.admin-profile:hover {
+    background-color: var(--bg-color);
+}
+
+.admin-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.admin-name {
+    font-weight: 500;
+    color: var(--text-primary);
+}
+
+/* Sidebar Styles */
+.sidebar {
+    position: fixed;
+    top: var(--header-height);
+    left: 0;
+    width: var(--sidebar-width);
+    height: calc(100vh - var(--header-height));
+    background: var(--card-bg);
+    border-right: 1px solid var(--border-color);
+    z-index: 999;
+    transition: transform 0.3s ease;
+    overflow-y: auto;
+}
+
+.sidebar.collapsed {
+    transform: translateX(-100%);
+}
+
+.sidebar-nav ul {
+    list-style: none;
+    padding: 1rem 0;
+}
+
+.nav-item {
+    margin: 0.25rem 1rem;
+}
+
+.nav-link {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.75rem 1rem;
+    color: var(--text-secondary);
+    text-decoration: none;
+    border-radius: 0.5rem;
+    transition: all 0.2s;
+    position: relative;
+}
+
+.nav-link:hover {
+    background-color: var(--bg-color);
+    color: var(--text-primary);
+}
+
+.nav-item.active .nav-link {
+    background-color: rgba(5, 150, 105, 0.1);
+    color: var(--primary-color);
+    font-weight: 500;
+}
+
+.nav-link i {
+    width: 20px;
+    text-align: center;
+}
+
+.badge {
+    background-color: var(--danger-color);
+    color: white;
+    font-size: 0.75rem;
+    padding: 0.25rem 0.5rem;
+    border-radius: 1rem;
+    margin-left: auto;
+    min-width: 20px;
+    text-align: center;
+}
+
+/* Main Content */
+.main-content {
+    margin-left: var(--sidebar-width);
+    margin-top: var(--header-height);
+    padding: 2rem;
+    min-height: calc(100vh - var(--header-height));
+    transition: margin-left 0.3s ease;
+}
+
+.main-content.expanded {
+    margin-left: 0;
+}
+
+/* Notification Controls */
+.notification-controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+    padding: 1.5rem;
+    background: var(--card-bg);
+    border-radius: 1rem;
+    box-shadow: var(--shadow);
+}
+
+.controls-left {
+    display: flex;
+    align-items: center;
+}
+
+.filter-buttons {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.filter-btn {
+    padding: 0.5rem 1rem;
+    border: 1px solid var(--border-color);
+    background: var(--bg-color);
+    color: var(--text-secondary);
+    border-radius: 0.5rem;
+    cursor: pointer;
+    transition: all 0.2s;
+    font-size: 0.9rem;
+}
+
+.filter-btn:hover {
+    background-color: var(--primary-color);
+    color: white;
+    border-color: var(--primary-color);
+}
+
+.filter-btn.active {
+    background-color: var(--primary-color);
+    color: white;
+    border-color: var(--primary-color);
+}
+
+.controls-right {
+    display: flex;
+    gap: 0.75rem;
+}
+
+.action-btn {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1rem;
+    border: 1px solid var(--border-color);
+    background: var(--card-bg);
+    color: var(--text-secondary);
+    border-radius: 0.5rem;
+    cursor: pointer;
+    transition: all 0.2s;
+    font-size: 0.9rem;
+}
+
+.action-btn:hover {
+    background-color: var(--bg-color);
+    color: var(--text-primary);
+}
+
+.action-btn.primary {
+    background-color: var(--primary-color);
+    color: white;
+    border-color: var(--primary-color);
+}
+
+.action-btn.primary:hover {
+    background-color: #047857;
+}
+
+/* Notification Stats */
+.notification-stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.stat-card {
+    background: var(--card-bg);
+    padding: 1.5rem;
+    border-radius: 1rem;
+    box-shadow: var(--shadow);
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    transition: transform 0.2s;
+}
+
+.stat-card:hover {
+    transform: translateY(-2px);
+}
+
+.stat-icon {
+    width: 60px;
+    height: 60px;
+    border-radius: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    color: white;
+    background: linear-gradient(135deg, var(--primary-color), #047857);
+}
+
+.stat-icon.unread {
+    background: linear-gradient(135deg, var(--warning-color), #d97706);
+}
+
+.stat-icon.urgent {
+    background: linear-gradient(135deg, var(--danger-color), #dc2626);
+}
+
+.stat-icon.today {
+    background: linear-gradient(135deg, var(--info-color), #2563eb);
+}
+
+.stat-content h3 {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 0.25rem;
+}
+
+.stat-content p {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+}
+
+/* Notifications Container */
+.notifications-container {
+    background: var(--card-bg);
+    border-radius: 1rem;
+    box-shadow: var(--shadow);
+    overflow: hidden;
+}
+
+.notifications-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.notifications-header h2 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.sort-options select {
+    padding: 0.5rem 1rem;
+    border: 1px solid var(--border-color);
+    border-radius: 0.5rem;
+    background: var(--card-bg);
+    color: var(--text-primary);
+    cursor: pointer;
+}
+
+/* Notifications List */
+.notifications-list {
+    max-height: 600px;
+    overflow-y: auto;
+}
+
+.notification-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    padding: 1.5rem;
+    border-bottom: 1px solid var(--border-color);
+    transition: background-color 0.2s;
+    cursor: pointer;
+}
+
+.notification-item:hover {
+    background-color: var(--bg-color);
+}
+
+.notification-item.unread {
+    background-color: rgba(5, 150, 105, 0.05);
+    border-left: 4px solid var(--primary-color);
+}
+
+.notification-item.urgent {
+    background-color: rgba(239, 68, 68, 0.05);
+    border-left: 4px solid var(--danger-color);
+}
+
+.notification-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 0.75rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.25rem;
+    color: white;
+    flex-shrink: 0;
+}
+
+.notification-icon.order {
+    background: linear-gradient(135deg, var(--success-color), #059669);
+}
+
+.notification-icon.user {
+    background: linear-gradient(135deg, var(--info-color), #2563eb);
+}
+
+.notification-icon.system {
+    background: linear-gradient(135deg, var(--warning-color), #d97706);
+}
+
+.notification-content {
+    flex: 1;
+    min-width: 0;
+}
+
+.notification-title {
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 0.5rem;
+    font-size: 1rem;
+}
+
+.notification-message {
+    color: var(--text-secondary);
+    margin-bottom: 0.75rem;
+    line-height: 1.5;
+}
+
+.notification-meta {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+}
+
+.notification-time {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+}
+
+.notification-category {
+    background-color: var(--bg-color);
+    color: var(--text-secondary);
+    padding: 0.25rem 0.5rem;
+    border-radius: 0.25rem;
+    font-size: 0.75rem;
+    font-weight: 500;
+}
+
+.notification-actions {
+    display: flex;
+    gap: 0.5rem;
+    margin-left: auto;
+}
+
+.notification-action {
+    padding: 0.5rem;
+    border: none;
+    background: none;
+    color: var(--text-secondary);
+    cursor: pointer;
+    border-radius: 0.25rem;
+    transition: all 0.2s;
+}
+
+.notification-action:hover {
+    background-color: var(--bg-color);
+    color: var(--text-primary);
+}
+
+.notification-action.read:hover {
+    color: var(--success-color);
+}
+
+.notification-action.delete:hover {
+    color: var(--danger-color);
+}
+
+/* Pagination */
+.pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    margin-top: 2rem;
+    padding: 1.5rem;
+    background: var(--card-bg);
+    border-radius: 1rem;
+    box-shadow: var(--shadow);
+}
+
+.page-btn {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1rem;
+    border: 1px solid var(--border-color);
+    background: var(--card-bg);
+    color: var(--text-secondary);
+    border-radius: 0.5rem;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.page-btn:hover:not(:disabled) {
+    background-color: var(--primary-color);
+    color: white;
+    border-color: var(--primary-color);
+}
+
+.page-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.page-numbers {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.page-number {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid var(--border-color);
+    background: var(--card-bg);
+    color: var(--text-secondary);
+    border-radius: 0.5rem;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.page-number:hover {
+    background-color: var(--primary-color);
+    color: white;
+    border-color: var(--primary-color);
+}
+
+.page-number.active {
+    background-color: var(--primary-color);
+    color: white;
+    border-color: var(--primary-color);
+}
+
+/* Modal Styles */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 2000;
+    animation: fadeIn 0.3s ease;
+}
+
+.modal.show {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-content {
+    background: var(--card-bg);
+    border-radius: 1rem;
+    max-width: 600px;
+    width: 90%;
+    max-height: 80vh;
+    overflow-y: auto;
+    box-shadow: var(--shadow-lg);
+    animation: slideIn 0.3s ease;
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.modal-header h3 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.close-btn {
+    background: none;
+    border: none;
+    font-size: 1.25rem;
+    color: var(--text-secondary);
+    cursor: pointer;
+    padding: 0.5rem;
+    border-radius: 0.25rem;
+    transition: all 0.2s;
+}
+
+.close-btn:hover {
+    background-color: var(--bg-color);
+    color: var(--text-primary);
+}
+
+.modal-body {
+    padding: 1.5rem;
+}
+
+.modal-footer {
+    display: flex;
+    justify-content: flex-end;
+    gap: 1rem;
+    padding: 1.5rem;
+    border-top: 1px solid var(--border-color);
+}
+
+.btn {
+    padding: 0.75rem 1.5rem;
+    border: none;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    font-weight: 500;
+    transition: all 0.2s;
+}
+
+.btn-secondary {
+    background-color: var(--bg-color);
+    color: var(--text-secondary);
+    border: 1px solid var(--border-color);
+}
+
+.btn-secondary:hover {
+    background-color: var(--border-color);
+    color: var(--text-primary);
+}
+
+.btn-primary {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+.btn-primary:hover {
+    background-color: #047857;
+}
+
+/* Toast Notifications */
+.toast-container {
+    position: fixed;
+    top: 2rem;
+    right: 2rem;
+    z-index: 3000;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.toast {
+    background: var(--card-bg);
+    border-radius: 0.5rem;
+    padding: 1rem 1.5rem;
+    box-shadow: var(--shadow-lg);
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    min-width: 300px;
+    animation: slideInRight 0.3s ease;
+}
+
+.toast.success {
+    border-left: 4px solid var(--success-color);
+}
+
+.toast.error {
+    border-left: 4px solid var(--danger-color);
+}
+
+.toast.warning {
+    border-left: 4px solid var(--warning-color);
+}
+
+.toast.info {
+    border-left: 4px solid var(--info-color);
+}
+
+.toast-icon {
+    font-size: 1.25rem;
+}
+
+.toast.success .toast-icon {
+    color: var(--success-color);
+}
+
+.toast.error .toast-icon {
+    color: var(--danger-color);
+}
+
+.toast.warning .toast-icon {
+    color: var(--warning-color);
+}
+
+.toast.info .toast-icon {
+    color: var(--info-color);
+}
+
+.toast-content {
+    flex: 1;
+}
+
+.toast-title {
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 0.25rem;
+}
+
+.toast-message {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+}
+
+.toast-close {
+    background: none;
+    border: none;
+    color: var(--text-secondary);
+    cursor: pointer;
+    padding: 0.25rem;
+    border-radius: 0.25rem;
+    transition: all 0.2s;
+}
+
+.toast-close:hover {
+    background-color: var(--bg-color);
+    color: var(--text-primary);
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideInRight {
+    from {
+        opacity: 0;
+        transform: translateX(100%);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .sidebar {
+        transform: translateX(-100%);
+    }
+    
+    .main-content {
+        margin-left: 0;
+    }
+    
+    .admin-header {
+        padding: 0 1rem;
+    }
+    
+    .search-box input {
+        width: 200px;
+    }
+    
+    .notification-controls {
+        flex-direction: column;
+        gap: 1rem;
+        align-items: stretch;
+    }
+    
+    .controls-right {
+        justify-content: center;
+    }
+    
+    .notification-stats {
+        grid-template-columns: 1fr;
+    }
+    
+    .notifications-header {
+        flex-direction: column;
+        gap: 1rem;
+        align-items: stretch;
+    }
+    
+    .modal-content {
+        width: 95%;
+        margin: 1rem;
+    }
+    
+    .toast-container {
+        top: 1rem;
+        right: 1rem;
+        left: 1rem;
+    }
+    
+    .toast {
+        min-width: auto;
+    }
+}
+
+@media (max-width: 480px) {
+    .main-content {
+        padding: 1rem;
+    }
+    
+    .notification-item {
+        padding: 1rem;
+    }
+    
+    .notification-meta {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5rem;
+    }
+    
+    .filter-buttons {
+        flex-wrap: wrap;
+    }
+    
+    .controls-right {
+        flex-wrap: wrap;
+    }
+}
+</style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="admin-header">
+        <div class="header-left">
+            <button class="sidebar-toggle" id="sidebarToggle">
+                <i class="fas fa-bars"></i>
+            </button>
+            <h1><i class="fas fa-bell"></i> Notification Center</h1>
+        </div>
+        <div class="header-right">
+            <div class="search-box">
+                <i class="fas fa-search"></i>
+                <input type="text" placeholder="Search notifications..." id="searchInput">
+            </div>
+            <div class="admin-profile">
+                <img src="https://via.placeholder.com/40" alt="Admin Avatar" class="admin-avatar">
+                <span class="admin-name">Admin User</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Sidebar -->
+    <aside class="sidebar" id="sidebar">
+        <nav class="sidebar-nav">
+            <ul>
+                <li class="nav-item">
+                    <a href="/Dashboard/dashboard.html" class="nav-link">
+                        <i class="fas fa-gauge"></i>
+                        <span>Dashboard</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="/User Managment/User.html" class="nav-link">
+                        <i class="fas fa-user-gear"></i>
+                        <span>User Management</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="/Store/Store.html" class="nav-link">
+                        <i class="fas fa-store"></i>
+                        <span>Store Management</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="Product.html" class="nav-link">
+                        <i class="fas fa-box-open"></i>
+                        <span>Product Management</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="/Order/Order.html" class="nav-link">
+                        <i class="fas fa-cart-shopping"></i>
+                        <span>Order Management</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="/Category/Category.html" class="nav-link">
+                        <i class="fas fa-folder-tree"></i>
+                        <span>Category Management</span>
+                    </a>
+                </li>
+                <li class="nav-item active">
+                    <a href="#" class="nav-link">
+                        <i class="fas fa-chart-pie"></i>
+                        <span>Reports & Analytics</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        <i class="fas fa-bell"></i>
+                        <span>Notifications</span>
+                        <span class="badge" id="unreadCount">12</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        <i class="fas fa-gear"></i>
+                        <span>Settings</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        <i class="fas fa-right-from-bracket"></i>
+                        <span>Logout</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Notification Controls -->
+        <div class="notification-controls">
+            <div class="controls-left">
+                <div class="filter-buttons">
+                    <button class="filter-btn active" data-filter="all">All</button>
+                    <button class="filter-btn" data-filter="unread">Unread</button>
+                    <button class="filter-btn" data-filter="orders">Orders</button>
+                    <button class="filter-btn" data-filter="users">Users</button>
+                    <button class="filter-btn" data-filter="system">System</button>
+                </div>
+            </div>
+            <div class="controls-right">
+                <button class="action-btn" id="markAllRead">
+                    <i class="fas fa-check-double"></i>
+                    Mark All Read
+                </button>
+                <button class="action-btn" id="deleteAll">
+                    <i class="fas fa-trash"></i>
+                    Delete All
+                </button>
+                <button class="action-btn primary" id="refreshNotifications">
+                    <i class="fas fa-sync"></i>
+                    Refresh
+                </button>
+            </div>
+        </div>
+
+        <!-- Notification Stats -->
+        <div class="notification-stats">
+            <div class="stat-card">
+                <div class="stat-icon">
+                    <i class="fas fa-bell"></i>
+                </div>
+                <div class="stat-content">
+                    <h3 id="totalNotifications">24</h3>
+                    <p>Total Notifications</p>
+                </div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon unread">
+                    <i class="fas fa-exclamation-circle"></i>
+                </div>
+                <div class="stat-content">
+                    <h3 id="unreadNotifications">12</h3>
+                    <p>Unread</p>
+                </div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon urgent">
+                    <i class="fas fa-fire"></i>
+                </div>
+                <div class="stat-content">
+                    <h3 id="urgentNotifications">3</h3>
+                    <p>Urgent</p>
+                </div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon today">
+                    <i class="fas fa-calendar-day"></i>
+                </div>
+                <div class="stat-content">
+                    <h3 id="todayNotifications">8</h3>
+                    <p>Today</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Notifications List -->
+        <div class="notifications-container">
+            <div class="notifications-header">
+                <h2>Recent Notifications</h2>
+                <div class="sort-options">
+                    <select id="sortSelect">
+                        <option value="newest">Newest First</option>
+                        <option value="oldest">Oldest First</option>
+                        <option value="priority">Priority</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="notifications-list" id="notificationsList">
+                <!-- Notification items will be dynamically generated -->
+            </div>
+        </div>
+
+        <!-- Pagination -->
+        <div class="pagination">
+            <button class="page-btn" id="prevPage" disabled>
+                <i class="fas fa-chevron-left"></i>
+                Previous
+            </button>
+            <div class="page-numbers" id="pageNumbers">
+                <!-- Page numbers will be generated dynamically -->
+            </div>
+            <button class="page-btn" id="nextPage">
+                Next
+                <i class="fas fa-chevron-right"></i>
+            </button>
+        </div>
+    </main>
+
+    <!-- Notification Detail Modal -->
+    <div class="modal" id="notificationModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="modalTitle">Notification Details</h3>
+                <button class="close-btn" id="closeModal">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body" id="modalBody">
+                <!-- Notification details will be populated here -->
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" id="markAsRead">Mark as Read</button>
+                <button class="btn btn-primary" id="takeAction">Take Action</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Notifications -->
+    <div class="toast-container" id="toastContainer">
+        <!-- Toast notifications will appear here -->
+    </div>
+
+    <script >// Admin Notification Center JavaScript
+class NotificationCenter {
+    constructor() {
+        this.notifications = [];
+        this.currentFilter = 'all';
+        this.currentSort = 'newest';
+        this.currentPage = 1;
+        this.notificationsPerPage = 10;
+        this.isSidebarCollapsed = false;
+        
+        this.init();
+    }
+
+    init() {
+        this.generateSampleNotifications();
+        this.bindEvents();
+        this.renderNotifications();
+        this.updateStats();
+        this.startRealTimeUpdates();
+    }
+
+    generateSampleNotifications() {
+        const sampleNotifications = [
+            {
+                id: 1,
+                title: "New Order Received",
+                message: "Customer John Doe placed an order for iPhone 15 Pro Max. Order total: $1,199.00",
+                category: "orders",
+                priority: "high",
+                timestamp: new Date(Date.now() - 5 * 60 * 1000), // 5 minutes ago
+                read: false,
+                urgent: true,
+                icon: "fas fa-shopping-cart",
+                details: {
+                    orderId: "ORD-2024-001",
+                    customerName: "John Doe",
+                    customerEmail: "john.doe@email.com",
+                    items: ["iPhone 15 Pro Max (256GB)"],
+                    total: 1199.00,
+                    shippingAddress: "123 Main St, New York, NY 10001"
+                }
+            },
+            {
+                id: 2,
+                title: "User Registration",
+                message: "New user Sarah Wilson registered with email sarah.wilson@email.com",
+                category: "users",
+                priority: "medium",
+                timestamp: new Date(Date.now() - 15 * 60 * 1000), // 15 minutes ago
+                read: false,
+                urgent: false,
+                icon: "fas fa-user-plus",
+                details: {
+                    userId: "USR-2024-001",
+                    userName: "Sarah Wilson",
+                    userEmail: "sarah.wilson@email.com",
+                    registrationDate: new Date(),
+                    source: "Website"
+                }
+            },
+            {
+                id: 3,
+                title: "System Maintenance Scheduled",
+                message: "Scheduled maintenance will begin at 2:00 AM EST tomorrow. Expected downtime: 2 hours",
+                category: "system",
+                priority: "high",
+                timestamp: new Date(Date.now() - 30 * 60 * 1000), // 30 minutes ago
+                read: true,
+                urgent: false,
+                icon: "fas fa-tools",
+                details: {
+                    maintenanceType: "Database Update",
+                    scheduledTime: "2024-01-15 02:00:00 EST",
+                    expectedDuration: "2 hours",
+                    affectedServices: ["User Authentication", "Order Processing", "Payment Gateway"]
+                }
+            },
+            {
+                id: 4,
+                title: "Low Stock Alert",
+                message: "Product 'Samsung Galaxy S24' is running low on stock. Current quantity: 5 units",
+                category: "orders",
+                priority: "medium",
+                timestamp: new Date(Date.now() - 45 * 60 * 1000), // 45 minutes ago
+                read: false,
+                urgent: false,
+                icon: "fas fa-exclamation-triangle",
+                details: {
+                    productId: "PROD-2024-001",
+                    productName: "Samsung Galaxy S24",
+                    currentStock: 5,
+                    minimumStock: 10,
+                    lastRestocked: "2024-01-10"
+                }
+            },
+            {
+                id: 5,
+                title: "Payment Failed",
+                message: "Payment processing failed for order ORD-2024-002. Customer: Mike Johnson",
+                category: "orders",
+                priority: "high",
+                timestamp: new Date(Date.now() - 60 * 60 * 1000), // 1 hour ago
+                read: false,
+                urgent: true,
+                icon: "fas fa-credit-card",
+                details: {
+                    orderId: "ORD-2024-002",
+                    customerName: "Mike Johnson",
+                    failureReason: "Insufficient funds",
+                    amount: 899.99,
+                    retryAttempts: 2
+                }
+            },
+            {
+                id: 6,
+                title: "New Review Posted",
+                message: "Customer Emma Davis posted a 5-star review for 'MacBook Pro M3'",
+                category: "users",
+                priority: "low",
+                timestamp: new Date(Date.now() - 2 * 60 * 60 * 1000), // 2 hours ago
+                read: true,
+                urgent: false,
+                icon: "fas fa-star",
+                details: {
+                    reviewId: "REV-2024-001",
+                    customerName: "Emma Davis",
+                    productName: "MacBook Pro M3",
+                    rating: 5,
+                    reviewText: "Excellent laptop! Fast performance and great battery life."
+                }
+            },
+            {
+                id: 7,
+                title: "Security Alert",
+                message: "Multiple failed login attempts detected from IP address 192.168.1.100",
+                category: "system",
+                priority: "high",
+                timestamp: new Date(Date.now() - 3 * 60 * 60 * 1000), // 3 hours ago
+                read: false,
+                urgent: true,
+                icon: "fas fa-shield-alt",
+                details: {
+                    ipAddress: "192.168.1.100",
+                    attempts: 5,
+                    timeWindow: "10 minutes",
+                    blocked: true,
+                    affectedAccount: "admin@company.com"
+                }
+            },
+            {
+                id: 8,
+                title: "Inventory Update",
+                message: "Stock levels have been updated for 15 products after today's shipment",
+                category: "system",
+                priority: "low",
+                timestamp: new Date(Date.now() - 4 * 60 * 60 * 1000), // 4 hours ago
+                read: true,
+                urgent: false,
+                icon: "fas fa-boxes",
+                details: {
+                    shipmentId: "SHIP-2024-001",
+                    productsUpdated: 15,
+                    totalItems: 150,
+                    warehouse: "Main Warehouse"
+                }
+            }
+        ];
+
+        this.notifications = sampleNotifications;
+    }
+
+    bindEvents() {
+        // Sidebar toggle
+        document.getElementById('sidebarToggle').addEventListener('click', () => {
+            this.toggleSidebar();
+        });
+
+        // Filter buttons
+        document.querySelectorAll('.filter-btn').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                this.setFilter(e.target.dataset.filter);
+            });
+        });
+
+        // Sort dropdown
+        document.getElementById('sortSelect').addEventListener('change', (e) => {
+            this.setSort(e.target.value);
+        });
+
+        // Action buttons
+        document.getElementById('markAllRead').addEventListener('click', () => {
+            this.markAllAsRead();
+        });
+
+        document.getElementById('deleteAll').addEventListener('click', () => {
+            this.deleteAllNotifications();
+        });
+
+        document.getElementById('refreshNotifications').addEventListener('click', () => {
+            this.refreshNotifications();
+        });
+
+        // Search input
+        document.getElementById('searchInput').addEventListener('input', (e) => {
+            this.searchNotifications(e.target.value);
+        });
+
+        // Pagination
+        document.getElementById('prevPage').addEventListener('click', () => {
+            this.previousPage();
+        });
+
+        document.getElementById('nextPage').addEventListener('click', () => {
+            this.nextPage();
+        });
+
+        // Modal events
+        document.getElementById('closeModal').addEventListener('click', () => {
+            this.closeModal();
+        });
+
+        document.getElementById('markAsRead').addEventListener('click', () => {
+            this.markNotificationAsRead(this.currentNotificationId);
+        });
+
+        document.getElementById('takeAction').addEventListener('click', () => {
+            this.takeActionOnNotification(this.currentNotificationId);
+        });
+
+        // Close modal when clicking outside
+        document.getElementById('notificationModal').addEventListener('click', (e) => {
+            if (e.target.id === 'notificationModal') {
+                this.closeModal();
+            }
+        });
+    }
+
+    toggleSidebar() {
+        const sidebar = document.getElementById('sidebar');
+        const mainContent = document.querySelector('.main-content');
+        
+        this.isSidebarCollapsed = !this.isSidebarCollapsed;
+        
+        if (this.isSidebarCollapsed) {
+            sidebar.classList.add('collapsed');
+            mainContent.classList.add('expanded');
+        } else {
+            sidebar.classList.remove('collapsed');
+            mainContent.classList.remove('expanded');
+        }
+    }
+
+    setFilter(filter) {
+        this.currentFilter = filter;
+        this.currentPage = 1;
+        
+        // Update active filter button
+        document.querySelectorAll('.filter-btn').forEach(btn => {
+            btn.classList.remove('active');
+        });
+        document.querySelector(`[data-filter="${filter}"]`).classList.add('active');
+        
+        this.renderNotifications();
+    }
+
+    setSort(sort) {
+        this.currentSort = sort;
+        this.currentPage = 1;
+        this.renderNotifications();
+    }
+
+    searchNotifications(query) {
+        this.searchQuery = query.toLowerCase();
+        this.currentPage = 1;
+        this.renderNotifications();
+    }
+
+    getFilteredNotifications() {
+        let filtered = this.notifications;
+
+        // Apply search filter
+        if (this.searchQuery) {
+            filtered = filtered.filter(notification => 
+                notification.title.toLowerCase().includes(this.searchQuery) ||
+                notification.message.toLowerCase().includes(this.searchQuery)
+            );
+        }
+
+        // Apply category filter
+        if (this.currentFilter !== 'all') {
+            if (this.currentFilter === 'unread') {
+                filtered = filtered.filter(notification => !notification.read);
+            } else {
+                filtered = filtered.filter(notification => notification.category === this.currentFilter);
+            }
+        }
+
+        // Apply sorting
+        filtered.sort((a, b) => {
+            switch (this.currentSort) {
+                case 'newest':
+                    return b.timestamp - a.timestamp;
+                case 'oldest':
+                    return a.timestamp - b.timestamp;
+                case 'priority':
+                    const priorityOrder = { high: 3, medium: 2, low: 1 };
+                    return priorityOrder[b.priority] - priorityOrder[a.priority];
+                default:
+                    return 0;
+            }
+        });
+
+        return filtered;
+    }
+
+    renderNotifications() {
+        const filteredNotifications = this.getFilteredNotifications();
+        const startIndex = (this.currentPage - 1) * this.notificationsPerPage;
+        const endIndex = startIndex + this.notificationsPerPage;
+        const pageNotifications = filteredNotifications.slice(startIndex, endIndex);
+
+        const notificationsList = document.getElementById('notificationsList');
+        notificationsList.innerHTML = '';
+
+        if (pageNotifications.length === 0) {
+            notificationsList.innerHTML = `
+                <div class="empty-state">
+                    <i class="fas fa-bell-slash"></i>
+                    <h3>No notifications found</h3>
+                    <p>There are no notifications matching your current filters.</p>
+                </div>
+            `;
+            return;
+        }
+
+        pageNotifications.forEach(notification => {
+            const notificationElement = this.createNotificationElement(notification);
+            notificationsList.appendChild(notificationElement);
+        });
+
+        this.updatePagination(filteredNotifications.length);
+    }
+
+    createNotificationElement(notification) {
+        const notificationDiv = document.createElement('div');
+        notificationDiv.className = `notification-item ${!notification.read ? 'unread' : ''} ${notification.urgent ? 'urgent' : ''}`;
+        notificationDiv.dataset.notificationId = notification.id;
+
+        const timeAgo = this.getTimeAgo(notification.timestamp);
+        const priorityClass = notification.priority === 'high' ? 'urgent' : '';
+
+        notificationDiv.innerHTML = `
+            <div class="notification-icon ${notification.category}">
+                <i class="${notification.icon}"></i>
+            </div>
+            <div class="notification-content">
+                <div class="notification-title">${notification.title}</div>
+                <div class="notification-message">${notification.message}</div>
+                <div class="notification-meta">
+                    <div class="notification-time">
+                        <i class="fas fa-clock"></i>
+                        ${timeAgo}
+                    </div>
+                    <div class="notification-category">${notification.category}</div>
+                </div>
+            </div>
+            <div class="notification-actions">
+                <button class="notification-action read" onclick="event.stopPropagation(); notificationCenter.markNotificationAsRead(${notification.id})">
+                    <i class="fas fa-check"></i>
+                </button>
+                <button class="notification-action delete" onclick="event.stopPropagation(); notificationCenter.deleteNotification(${notification.id})">
+                    <i class="fas fa-trash"></i>
+                </button>
+            </div>
+        `;
+
+        notificationDiv.addEventListener('click', () => {
+            this.showNotificationDetails(notification.id);
+        });
+
+        return notificationDiv;
+    }
+
+    showNotificationDetails(notificationId) {
+        const notification = this.notifications.find(n => n.id === notificationId);
+        if (!notification) return;
+
+        this.currentNotificationId = notificationId;
+
+        const modal = document.getElementById('notificationModal');
+        const modalTitle = document.getElementById('modalTitle');
+        const modalBody = document.getElementById('modalBody');
+
+        modalTitle.textContent = notification.title;
+        
+        modalBody.innerHTML = `
+            <div class="notification-detail">
+                <div class="detail-section">
+                    <h4>Message</h4>
+                    <p>${notification.message}</p>
+                </div>
+                <div class="detail-section">
+                    <h4>Details</h4>
+                    <div class="detail-grid">
+                        ${Object.entries(notification.details).map(([key, value]) => `
+                            <div class="detail-item">
+                                <span class="detail-label">${this.formatDetailLabel(key)}:</span>
+                                <span class="detail-value">${this.formatDetailValue(value)}</span>
+                            </div>
+                        `).join('')}
+                    </div>
+                </div>
+                <div class="detail-section">
+                    <h4>Metadata</h4>
+                    <div class="detail-grid">
+                        <div class="detail-item">
+                            <span class="detail-label">Category:</span>
+                            <span class="detail-value">${notification.category}</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-label">Priority:</span>
+                            <span class="detail-value priority-${notification.priority}">${notification.priority}</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-label">Timestamp:</span>
+                            <span class="detail-value">${notification.timestamp.toLocaleString()}</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-label">Status:</span>
+                            <span class="detail-value">${notification.read ? 'Read' : 'Unread'}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        `;
+
+        modal.classList.add('show');
+        modal.style.display = 'flex';
+    }
+
+    closeModal() {
+        const modal = document.getElementById('notificationModal');
+        modal.classList.remove('show');
+        setTimeout(() => {
+            modal.style.display = 'none';
+        }, 300);
+    }
+
+    markNotificationAsRead(notificationId) {
+        const notification = this.notifications.find(n => n.id === notificationId);
+        if (notification && !notification.read) {
+            notification.read = true;
+            this.renderNotifications();
+            this.updateStats();
+            this.showToast('success', 'Notification marked as read');
+        }
+    }
+
+    markAllAsRead() {
+        const unreadCount = this.notifications.filter(n => !n.read).length;
+        this.notifications.forEach(notification => {
+            notification.read = true;
+        });
+        this.renderNotifications();
+        this.updateStats();
+        this.showToast('success', `${unreadCount} notifications marked as read`);
+    }
+
+    deleteNotification(notificationId) {
+        if (confirm('Are you sure you want to delete this notification?')) {
+            this.notifications = this.notifications.filter(n => n.id !== notificationId);
+            this.renderNotifications();
+            this.updateStats();
+            this.showToast('success', 'Notification deleted');
+        }
+    }
+
+    deleteAllNotifications() {
+        if (confirm('Are you sure you want to delete all notifications? This action cannot be undone.')) {
+            this.notifications = [];
+            this.renderNotifications();
+            this.updateStats();
+            this.showToast('success', 'All notifications deleted');
+        }
+    }
+
+    takeActionOnNotification(notificationId) {
+        const notification = this.notifications.find(n => n.id === notificationId);
+        if (!notification) return;
+
+        this.closeModal();
+        
+        // Simulate taking action based on notification type
+        switch (notification.category) {
+            case 'orders':
+                this.showToast('info', 'Redirecting to order management...');
+                break;
+            case 'users':
+                this.showToast('info', 'Redirecting to user management...');
+                break;
+            case 'system':
+                this.showToast('info', 'Redirecting to system settings...');
+                break;
+            default:
+                this.showToast('info', 'Action taken on notification');
+        }
+    }
+
+    refreshNotifications() {
+        // Simulate refreshing notifications
+        this.showToast('info', 'Refreshing notifications...');
+        
+        setTimeout(() => {
+            // Add a new notification to simulate real-time updates
+            const newNotification = {
+                id: Date.now(),
+                title: "System Status Update",
+                message: "All systems are running normally. Last health check: " + new Date().toLocaleTimeString(),
+                category: "system",
+                priority: "low",
+                timestamp: new Date(),
+                read: false,
+                urgent: false,
+                icon: "fas fa-heartbeat",
+                details: {
+                    status: "Healthy",
+                    uptime: "99.9%",
+                    lastCheck: new Date().toISOString()
+                }
+            };
+            
+            this.notifications.unshift(newNotification);
+            this.renderNotifications();
+            this.updateStats();
+            this.showToast('success', 'Notifications refreshed');
+        }, 1000);
+    }
+
+    updateStats() {
+        const total = this.notifications.length;
+        const unread = this.notifications.filter(n => !n.read).length;
+        const urgent = this.notifications.filter(n => n.urgent).length;
+        const today = this.notifications.filter(n => {
+            const today = new Date();
+            const notificationDate = new Date(n.timestamp);
+            return notificationDate.toDateString() === today.toDateString();
+        }).length;
+
+        document.getElementById('totalNotifications').textContent = total;
+        document.getElementById('unreadNotifications').textContent = unread;
+        document.getElementById('urgentNotifications').textContent = urgent;
+        document.getElementById('todayNotifications').textContent = today;
+        document.getElementById('unreadCount').textContent = unread;
+    }
+
+    updatePagination(totalNotifications) {
+        const totalPages = Math.ceil(totalNotifications / this.notificationsPerPage);
+        const prevBtn = document.getElementById('prevPage');
+        const nextBtn = document.getElementById('nextPage');
+        const pageNumbers = document.getElementById('pageNumbers');
+
+        prevBtn.disabled = this.currentPage === 1;
+        nextBtn.disabled = this.currentPage === totalPages;
+
+        pageNumbers.innerHTML = '';
+        
+        for (let i = 1; i <= totalPages; i++) {
+            const pageBtn = document.createElement('button');
+            pageBtn.className = `page-number ${i === this.currentPage ? 'active' : ''}`;
+            pageBtn.textContent = i;
+            pageBtn.addEventListener('click', () => {
+                this.currentPage = i;
+                this.renderNotifications();
+            });
+            pageNumbers.appendChild(pageBtn);
+        }
+    }
+
+    previousPage() {
+        if (this.currentPage > 1) {
+            this.currentPage--;
+            this.renderNotifications();
+        }
+    }
+
+    nextPage() {
+        const totalPages = Math.ceil(this.getFilteredNotifications().length / this.notificationsPerPage);
+        if (this.currentPage < totalPages) {
+            this.currentPage++;
+            this.renderNotifications();
+        }
+    }
+
+    startRealTimeUpdates() {
+        // Simulate real-time notifications every 30 seconds
+        setInterval(() => {
+            if (Math.random() > 0.7) { // 30% chance of new notification
+                this.addRandomNotification();
+            }
+        }, 30000);
+    }
+
+    addRandomNotification() {
+        const randomNotifications = [
+            {
+                title: "New Order Alert",
+                message: "A new order has been placed and requires immediate attention.",
+                category: "orders",
+                priority: "medium",
+                icon: "fas fa-shopping-cart",
+                details: { orderId: "ORD-" + Date.now(), amount: Math.floor(Math.random() * 1000) + 100 }
+            },
+            {
+                title: "User Activity",
+                message: "A user has logged in from a new device.",
+                category: "users",
+                priority: "low",
+                icon: "fas fa-user",
+                details: { userId: "USR-" + Date.now(), location: "New York, NY" }
+            },
+            {
+                title: "System Alert",
+                message: "Server response time is slower than usual.",
+                category: "system",
+                priority: "high",
+                icon: "fas fa-server",
+                details: { responseTime: "2.5s", threshold: "1s" }
+            }
+        ];
+
+        const randomNotification = randomNotifications[Math.floor(Math.random() * randomNotifications.length)];
+        const newNotification = {
+            id: Date.now(),
+            ...randomNotification,
+            timestamp: new Date(),
+            read: false,
+            urgent: randomNotification.priority === 'high'
+        };
+
+        this.notifications.unshift(newNotification);
+        this.renderNotifications();
+        this.updateStats();
+        this.showToast('info', 'New notification received');
+    }
+
+    showToast(type, message) {
+        const toastContainer = document.getElementById('toastContainer');
+        const toast = document.createElement('div');
+        toast.className = `toast ${type}`;
+        
+        const icons = {
+            success: 'fas fa-check-circle',
+            error: 'fas fa-exclamation-circle',
+            warning: 'fas fa-exclamation-triangle',
+            info: 'fas fa-info-circle'
+        };
+
+        toast.innerHTML = `
+            <div class="toast-icon">
+                <i class="${icons[type]}"></i>
+            </div>
+            <div class="toast-content">
+                <div class="toast-title">${type.charAt(0).toUpperCase() + type.slice(1)}</div>
+                <div class="toast-message">${message}</div>
+            </div>
+            <button class="toast-close">
+                <i class="fas fa-times"></i>
+            </button>
+        `;
+
+        toast.querySelector('.toast-close').addEventListener('click', () => {
+            toast.remove();
+        });
+
+        toastContainer.appendChild(toast);
+
+        // Auto remove after 5 seconds
+        setTimeout(() => {
+            if (toast.parentNode) {
+                toast.remove();
+            }
+        }, 5000);
+    }
+
+    getTimeAgo(timestamp) {
+        const now = new Date();
+        const diff = now - timestamp;
+        const minutes = Math.floor(diff / 60000);
+        const hours = Math.floor(diff / 3600000);
+        const days = Math.floor(diff / 86400000);
+
+        if (minutes < 1) return 'Just now';
+        if (minutes < 60) return `${minutes}m ago`;
+        if (hours < 24) return `${hours}h ago`;
+        return `${days}d ago`;
+    }
+
+    formatDetailLabel(key) {
+        return key.replace(/([A-Z])/g, ' $1').replace(/^./, str => str.toUpperCase());
+    }
+
+    formatDetailValue(value) {
+        if (value instanceof Date) {
+            return value.toLocaleString();
+        }
+        if (typeof value === 'object') {
+            return JSON.stringify(value, null, 2);
+        }
+        return value;
+    }
+}
+
+// Initialize the notification center when the page loads
+document.addEventListener('DOMContentLoaded', () => {
+    window.notificationCenter = new NotificationCenter();
+});
+
+// Add some additional CSS for the detail view
+const additionalStyles = `
+.detail-section {
+    margin-bottom: 1.5rem;
+}
+
+.detail-section h4 {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 0.75rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.detail-grid {
+    display: grid;
+    gap: 0.75rem;
+}
+
+.detail-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5rem 0;
+}
+
+.detail-label {
+    font-weight: 500;
+    color: var(--text-secondary);
+    min-width: 120px;
+}
+
+.detail-value {
+    color: var(--text-primary);
+    text-align: right;
+    flex: 1;
+}
+
+.detail-value.priority-high {
+    color: var(--danger-color);
+    font-weight: 600;
+}
+
+.detail-value.priority-medium {
+    color: var(--warning-color);
+    font-weight: 600;
+}
+
+.detail-value.priority-low {
+    color: var(--success-color);
+    font-weight: 600;
+}
+
+.empty-state {
+    text-align: center;
+    padding: 3rem 2rem;
+    color: var(--text-secondary);
+}
+
+.empty-state i {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    opacity: 0.5;
+}
+
+.empty-state h3 {
+    font-size: 1.25rem;
+    margin-bottom: 0.5rem;
+    color: var(--text-primary);
+}
+
+.empty-state p {
+    font-size: 0.9rem;
+}
+`;
+
+// Inject additional styles
+const styleSheet = document.createElement('style');
+styleSheet.textContent = additionalStyles;
+document.head.appendChild(styleSheet);
+</script>
+</body>
+</html>

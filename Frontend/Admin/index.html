@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Welcome | Admin</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <!-- Sidebar -->
+  <aside class="sidebar">
+    <nav class="sidebar-nav">
+      <ul>
+        <li class="nav-item active"><a class="nav-link" href="#"><i class="fas fa-house"></i><span>Welcome</span></a></li>
+        <li class="nav-item"><a class="nav-link" href="/Dashboard/dashboard.html"><i class="fas fa-gauge"></i><span>Dashboard</span></a></li>
+        <li class="nav-item"><a class="nav-link" href="/User Managment/User.html"><i class="fas fa-users"></i><span>Users</span></a></li>
+        <li class="nav-item"><a class="nav-link" href="/Order/Order.html"><i class="fas fa-cart-shopping"></i><span>Orders</span></a></li>
+        <li class="nav-item"><a class="nav-link" href="/Product/Product.html"><i class="fas fa-box-open"></i><span>Products</span></a></li>
+        <li class="nav-item"><a class="nav-link" href="/Reports/Reports.html"><i class="fas fa-chart-pie"></i><span>Reports</span></a></li>
+        <li class="nav-item"><a class="nav-link" href="/html.html"><i class="fas fa-bell"></i><span>Notifications</span><span class="badge">12</span></a></li>
+      </ul>
+    </nav>
+  </aside>
+
+  <!-- Main -->
+  <main class="main">
+    <div class="top-bar">
+      <div class="left">
+        <button id="sidebarToggle" class="icon-btn" aria-label="Toggle sidebar"><i class="fas fa-bars"></i></button>
+        <h1>Welcome, Admin</h1>
+      </div>
+      <div class="right">
+        <div class="profile">
+          <img src="https://i.pravatar.cc/72?img=8" alt="Avatar">
+        </div>
+      </div>
+    </div>
+
+    <!-- Greeting card -->
+    <section class="greeting card">
+      <div class="greeting-text">
+        <h2>Good to see you 👋</h2>
+        <p>Here's a quick overview to get you started today.</p>
+        <div class="quick-actions">
+          <a class="qa" href="/Order/Order.html"><i class="fas fa-cart-plus"></i> View Orders</a>
+          <a class="qa" href="/User Managment/User.html"><i class="fas fa-user-plus"></i> Add User</a>
+          <a class="qa" href="/Product/Product.html"><i class="fas fa-plus-square"></i> Add Product</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Quick stats + activity -->
+    <section class="grid">
+      <div class="kpi card">
+        <div class="kpi-icon revenue"><i class="fas fa-sack-dollar"></i></div>
+        <div>
+          <div class="kpi-title">Today Revenue</div>
+          <div class="kpi-value">$2,340</div>
+        </div>
+      </div>
+      <div class="kpi card">
+        <div class="kpi-icon orders"><i class="fas fa-cart-shopping"></i></div>
+        <div>
+          <div class="kpi-title">New Orders</div>
+          <div class="kpi-value">37</div>
+        </div>
+      </div>
+      <div class="kpi card">
+        <div class="kpi-icon users"><i class="fas fa-user"></i></div>
+        <div>
+          <div class="kpi-title">New Users</div>
+          <div class="kpi-value">12</div>
+        </div>
+      </div>
+      <div class="kpi card">
+        <div class="kpi-icon tickets"><i class="fas fa-ticket"></i></div>
+        <div>
+          <div class="kpi-title">Open Tickets</div>
+          <div class="kpi-value">5</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="cards">
+      <div class="card shortcuts">
+        <h3>Shortcuts</h3>
+        <div class="links">
+          <a href="/Reports/Reports.html"><i class="fas fa-chart-line"></i> Analytics</a>
+          <a href="/html.html"><i class="fas fa-bell"></i> Notifications</a>
+          <a href="/Category/Category.html"><i class="fas fa-folder-tree"></i> Categories</a>
+        </div>
+      </div>
+      <div class="card activity">
+        <h3>Recent Activity</h3>
+        <ul>
+          <li><i class="fas fa-check-circle"></i> Order #1023 completed</li>
+          <li><i class="fas fa-user-plus"></i> New seller registered</li>
+          <li><i class="fas fa-box"></i> 8 products restocked</li>
+          <li><i class="fas fa-exclamation-triangle"></i> Low stock alert for 3 items</li>
+        </ul>
+      </div>
+    </section>
+  </main>
+
+  <script src="../js.js"></script>
+</body>
+</html>
+
+
