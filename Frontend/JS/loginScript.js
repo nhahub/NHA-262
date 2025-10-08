@@ -7,13 +7,14 @@ $(document).ready(function () {
     var formdata = $(this).serialize();
     $.ajax({
       type: "post",
-      url: "http://localhost:5259/api/Users/login",
+      url: "https://localhost:7212/api/Users/Login",
       data: formdata,
       success: function (response) {
         window.location.href = "merchhome.html";
       },
       error: function (response) {
         $("#err").text("❌ Wrong username or password!");
+        
         $("#password").val("");
       },
     });
@@ -96,16 +97,6 @@ $(document).ready(function () {
     }
     return check;
   }
-   $(".form").submit(function (e) { 
-    e.preventDefault();
-    let user=$("#username").val();
-    let pw=$("#password").val();
-    if (user=="admin" && pw=="1234") {
-        window.location.href="merchhome.html";
-    }
-    else{
-        $("#err").text("❌ Wrong username or password!");
-    }
-   });
+  
 
 });
