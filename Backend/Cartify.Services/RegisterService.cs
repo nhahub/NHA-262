@@ -23,12 +23,12 @@ namespace Cartify.Services
 			var check = await _userRepository.GetByEmail(user.Email);
 			if (check != null)
 			{
-				return ResultService.Failure("email already exists!");
+				return ResultService.Failure("Email already exists!");
 			}
 			var check2 = await _userRepository.GetByUsername(user.UserName);
 			if (check2 != null)
 			{
-				return ResultService.Failure("username already exists!");
+				return ResultService.Failure("Username already exists!");
 			}
 			user.PasswordHash= await HashingPassword(user.PasswordHash);
 			user.TblAddresses.Add(address);
