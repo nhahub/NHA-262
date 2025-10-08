@@ -3,7 +3,23 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.14.36414.22
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cartify", "Cartify\Backend.csproj", "{B764ED18-1718-4A04-A741-305071ECBF72}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cartify.API", "Cartify.API\Cartify.API.csproj", "{1146826F-D206-4C22-91A0-F220B497E93E}"
+	ProjectSection(ProjectDependencies) = postProject
+		{946A0062-1FDD-454E-9108-66573A13216B} = {946A0062-1FDD-454E-9108-66573A13216B}
+		{E424F13C-4B45-4F84-9329-88C65413DE74} = {E424F13C-4B45-4F84-9329-88C65413DE74}
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cartify.Infrastructure", "Cartify.Infrastructure\Cartify.Infrastructure.csproj", "{E424F13C-4B45-4F84-9329-88C65413DE74}"
+	ProjectSection(ProjectDependencies) = postProject
+		{946A0062-1FDD-454E-9108-66573A13216B} = {946A0062-1FDD-454E-9108-66573A13216B}
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cartify.Core", "Cartify.Core\Cartify.Core.csproj", "{946A0062-1FDD-454E-9108-66573A13216B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cartify.Services", "Cartify.Services\Cartify.Services.csproj", "{06D47F96-E2DD-4B1F-A269-BB92A93C706B}"
+	ProjectSection(ProjectDependencies) = postProject
+		{946A0062-1FDD-454E-9108-66573A13216B} = {946A0062-1FDD-454E-9108-66573A13216B}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,19 +27,27 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{B764ED18-1718-4A04-A741-305071ECBF72}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{B764ED18-1718-4A04-A741-305071ECBF72}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{B764ED18-1718-4A04-A741-305071ECBF72}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{B764ED18-1718-4A04-A741-305071ECBF72}.Release|Any CPU.Build.0 = Release|Any CPU
-		{3B6723F5-6F3C-4970-8060-CC310752D00B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{3B6723F5-6F3C-4970-8060-CC310752D00B}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{3B6723F5-6F3C-4970-8060-CC310752D00B}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{3B6723F5-6F3C-4970-8060-CC310752D00B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1146826F-D206-4C22-91A0-F220B497E93E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1146826F-D206-4C22-91A0-F220B497E93E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1146826F-D206-4C22-91A0-F220B497E93E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1146826F-D206-4C22-91A0-F220B497E93E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E424F13C-4B45-4F84-9329-88C65413DE74}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E424F13C-4B45-4F84-9329-88C65413DE74}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E424F13C-4B45-4F84-9329-88C65413DE74}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E424F13C-4B45-4F84-9329-88C65413DE74}.Release|Any CPU.Build.0 = Release|Any CPU
+		{946A0062-1FDD-454E-9108-66573A13216B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{946A0062-1FDD-454E-9108-66573A13216B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{946A0062-1FDD-454E-9108-66573A13216B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{946A0062-1FDD-454E-9108-66573A13216B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{06D47F96-E2DD-4B1F-A269-BB92A93C706B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{06D47F96-E2DD-4B1F-A269-BB92A93C706B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{06D47F96-E2DD-4B1F-A269-BB92A93C706B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{06D47F96-E2DD-4B1F-A269-BB92A93C706B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {E376FA2B-A528-4335-9F5F-F17A189EFA17}
+		SolutionGuid = {613705E2-858E-4E4F-BB76-9943F4FF4EB5}
 	EndGlobalSection
 EndGlobal
