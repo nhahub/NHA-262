@@ -1,6 +1,6 @@
 ﻿using Cartify.Core.Models;
 
-namespace Cartify.Core.Interfaces
+namespace Cartify.Services.Interfaces
 {
 	public interface IRegisterService
 	{
