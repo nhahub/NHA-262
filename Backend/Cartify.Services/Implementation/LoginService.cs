@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Cartify.Services
+namespace Cartify.Services.Implementation
 {
 	public class LoginService : ILoginService
 	{
