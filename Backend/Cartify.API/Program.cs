@@ -2,7 +2,7 @@
 using Cartify.Core.Interfaces;
 using Cartify.Core.Models;
 using Cartify.Infrastructure.Repositories;
-using Cartify.Services;
+using Cartify.Services.Implementation;
 using Microsoft.EntityFrameworkCore;
 
 namespace Cartify.API
