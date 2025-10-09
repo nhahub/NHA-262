@@ -1,6 +1,6 @@
 ﻿using Cartify.API.Contracts;
-using Cartify.Core.Interfaces;
 using Cartify.Core.Models;
+using Cartify.Services.Interfaces;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
