@@ -6,9 +6,9 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Cartify.Domain.Models;
 
-public partial class AppDbContext : DbContext
+public partial class EcommerceDBContext : DbContext
 {
-    public AppDbContext(DbContextOptions<AppDbContext> options)
+    public EcommerceDBContext(DbContextOptions<EcommerceDBContext> options)
         : base(options)
     {
     }

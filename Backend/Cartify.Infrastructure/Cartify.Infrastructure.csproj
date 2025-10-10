@@ -16,7 +16,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Cartify.Core\Cartify.Core.csproj" />
+    <ProjectReference Include="..\Cartify.Application\Cartify.Application.csproj" />
   </ItemGroup>
 
 </Project>

@@ -1,5 +1,5 @@
-﻿using Cartify.Core.Interfaces;
-using Cartify.Core.Models;
+﻿using Cartify.Domain.Interfaces;
+using Cartify.Domain.Models;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;

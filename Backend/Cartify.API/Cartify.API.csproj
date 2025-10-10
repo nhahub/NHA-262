@@ -15,9 +15,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Cartify.Core\Cartify.Core.csproj" />
     <ProjectReference Include="..\Cartify.Infrastructure\Cartify.Infrastructure.csproj" />
-    <ProjectReference Include="..\Cartify.Services\Cartify.Services.csproj" />
   </ItemGroup>
 
 </Project>
