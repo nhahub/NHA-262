@@ -1,6 +1,6 @@
 ﻿namespace Cartify.Application.Implementation
 {
-	public class ResultService
+	public static class ResultService
 	{
 		public static string Failure(string message)
 		{

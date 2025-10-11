@@ -1,4 +1,4 @@
-﻿namespace Cartify.Application.Interfaces
+﻿namespace Cartify.Application.Interfaces.Service
 {
 	public interface ILoginService
 	{

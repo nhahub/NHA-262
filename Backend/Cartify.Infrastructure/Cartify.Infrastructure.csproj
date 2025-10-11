@@ -16,7 +16,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Cartify.Application\Cartify.Application.csproj" />
+    <ProjectReference Include="..\Cartify.Application\Cartify.Application.csproj" PrivateAssets="all" />
+    <ProjectReference Include="..\Cartify.Domain\Cartify.Domain.csproj" PrivateAssets="all" />
   </ItemGroup>
 
 </Project>

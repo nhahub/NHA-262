@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
 using Cartify.API.Contracts;
 using Cartify.Application.Contracts;
-using Cartify.Application.Interfaces;
+using Cartify.Application.Interfaces.Service;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Cartify.API.Controllers
@@ -10,14 +10,12 @@ namespace Cartify.API.Controllers
 	[ApiController]
 	public class UsersController : ControllerBase
 	{
-		private IRegisterService _registerService;
-		private ILoginService _loginService;
-		private IMapper _mapper;
+		private readonly IRegisterService _registerService;
+		private readonly ILoginService _loginService;
 		public UsersController( IRegisterService registerService, ILoginService loginService,IMapper mapper)
 		{
 			_registerService = registerService;
 			_loginService = loginService;
-			_mapper = mapper;
 		}
 		[HttpPost("Register")]
 		public async Task<ActionResult> Register([FromForm] RegisterForm form)

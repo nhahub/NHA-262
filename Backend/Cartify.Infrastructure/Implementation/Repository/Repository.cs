@@ -1,9 +1,9 @@
-﻿using Cartify.Domain.Interfaces;
+﻿using Cartify.Application.Interfaces.Repository;
 using Cartify.Infrastructure.Persistence;
 using Microsoft.EntityFrameworkCore;
 using System.Linq.Expressions;
 
-namespace Cartify.Infrastructure.Repositories
+namespace Cartify.Infrastructure.Implementation.Repository
 {
 	public class Repository<T> : IRepository<T> where T : class
 	{
@@ -28,7 +28,6 @@ namespace Cartify.Infrastructure.Repositories
 			var entity=await _entity.FindAsync(Id);
 			 _entity.Remove(entity);
 		}
-		public async Task<int> SaveChanges() => await _appDbContext.SaveChangesAsync();
 
 		public async ValueTask<T> Search(Expression<Func<T, bool>> predicate) => await _entity.FirstOrDefaultAsync(predicate);
 	}
