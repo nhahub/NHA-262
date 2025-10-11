@@ -1,8 +1,8 @@
-﻿using Cartify.Domain.Models;
-using Cartify.Application.Interfaces;
+﻿using Cartify.Application.Interfaces.Repository;
+using Cartify.Domain.Models;
 using Cartify.Infrastructure.Persistence;
 
-namespace Cartify.Infrastructure.Repositories
+namespace Cartify.Infrastructure.Implementation.Repository
 {
 	public class UserRepository : Repository<TblUser>, IUserRepository
 	{

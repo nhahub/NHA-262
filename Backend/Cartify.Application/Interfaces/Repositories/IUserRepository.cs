@@ -1,7 +1,6 @@
-﻿using Cartify.Domain.Interfaces;
-using Cartify.Domain.Models;
+﻿using Cartify.Domain.Models;
 
-namespace Cartify.Application.Interfaces
+namespace Cartify.Application.Interfaces.Repository
 {
 	public interface IUserRepository :IRepository<TblUser>
 	{

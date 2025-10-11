@@ -1,6 +1,6 @@
 ﻿using System.Linq.Expressions;
 
-namespace Cartify.Domain.Interfaces
+namespace Cartify.Application.Interfaces.Repository
 {
 	public interface IRepository<T> where T : class
 	{
@@ -10,7 +10,6 @@ namespace Cartify.Domain.Interfaces
 		void Update(T entity);
 		ValueTask DeleteAsync(int Id);
 		ValueTask<T> Search(Expression<Func<T,bool>> predicate);
-		Task<int> SaveChanges();
 
 	}
 }

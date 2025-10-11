@@ -20,9 +20,10 @@
     <PackageReference Include="Swashbuckle.AspNetCore.SwaggerUI" Version="9.0.6" />
   </ItemGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\Cartify.Application\Cartify.Application.csproj" />
-    <ProjectReference Include="..\Cartify.Infrastructure\Cartify.Infrastructure.csproj" />
-  </ItemGroup>
+	<ItemGroup>
+		<ProjectReference Include="..\Cartify.Application\Cartify.Application.csproj" PrivateAssets="all" />
+		<ProjectReference Include="..\Cartify.Infrastructure\Cartify.Infrastructure.csproj" PrivateAssets="all" />
+	</ItemGroup>
+
 
 </Project>

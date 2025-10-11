@@ -1,11 +1,12 @@
 using Cartify.Application.Implementation;
 using Cartify.Application.Interfaces;
+using Cartify.Application.Interfaces.Repository;
+using Cartify.Application.Interfaces.Service;
 using Cartify.Application.Mappings;
+using Cartify.Infrastructure.Implementation;
+using Cartify.Infrastructure.Implementation.Repository;
 using Cartify.Infrastructure.Persistence;
-using Cartify.Infrastructure.Repositories;
 using Microsoft.EntityFrameworkCore;
-using AutoMapper;
-using Microsoft.Extensions.DependencyInjection;
 namespace Cartify.API
 {
 	public class Program
@@ -28,7 +29,7 @@ namespace Cartify.API
 					});
 			});
 			builder.Services.AddDbContext<AppDbContext>(options=>options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
-			builder.Services.AddScoped<IUserRepository, UserRepository>();
+			builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 			builder.Services.AddScoped<ILoginService, LoginService>();
 			builder.Services.AddScoped<IRegisterService, RegisterService>();
 			builder.Services.AddAutoMapper(typeof(MappingProfile));

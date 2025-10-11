@@ -1,19 +1,21 @@
 ﻿using Cartify.Application.Interfaces;
+using Cartify.Application.Interfaces.Repository;
+using Cartify.Application.Interfaces.Service;
 
 namespace Cartify.Application.Implementation
 {
 	public class LoginService : ILoginService
 	{
-		private IUserRepository _userRepository;
-		public LoginService(IUserRepository repository)
+		private readonly IUnitOfWork _unitOfWork;
+		public LoginService(IUnitOfWork unitOfWork)
 		{
-			_userRepository = repository;
+			_unitOfWork = unitOfWork;
 		}
 
 
 		public async Task<bool> Login(string user, string password)
 		{
-			var username = await _userRepository.GetByUsername(user);
+			var username = await _unitOfWork.Users.GetByUsername(user);
 			if (username == null)
 			{
 				return false;
