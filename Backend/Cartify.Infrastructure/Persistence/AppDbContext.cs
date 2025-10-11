@@ -2,9 +2,10 @@
 #nullable disable
 using System;
 using System.Collections.Generic;
+using Cartify.Domain.Models;
 using Microsoft.EntityFrameworkCore;
 
-namespace Cartify.Domain.Models;
+namespace Cartify.Infrastructure.Persistence;
 
 public partial class AppDbContext : DbContext
 {
@@ -187,6 +188,7 @@ public partial class AppDbContext : DbContext
 
             entity.Property(e => e.City).HasMaxLength(50);
             entity.Property(e => e.Country).HasMaxLength(50);
+			entity.Property(e => e.StreetAddress).HasMaxLength(50);
             entity.Property(e => e.CreatedDate)
                 .HasDefaultValueSql("(getdate())")
                 .HasAnnotation("Relational:DefaultConstraintName", "DF_TblAdresses_CreatedDate")

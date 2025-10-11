@@ -1,11 +1,11 @@
+using Cartify.Application.Implementation;
 using Cartify.Application.Interfaces;
-using Cartify.Domain.Interfaces;
-using Cartify.Domain.Models;
+using Cartify.Application.Mappings;
+using Cartify.Infrastructure.Persistence;
 using Cartify.Infrastructure.Repositories;
-using Cartify.Services.Implementation;
-using Cartify.Services.Interfaces;
 using Microsoft.EntityFrameworkCore;
-
+using AutoMapper;
+using Microsoft.Extensions.DependencyInjection;
 namespace Cartify.API
 {
 	public class Program
@@ -31,6 +31,7 @@ namespace Cartify.API
 			builder.Services.AddScoped<IUserRepository, UserRepository>();
 			builder.Services.AddScoped<ILoginService, LoginService>();
 			builder.Services.AddScoped<IRegisterService, RegisterService>();
+			builder.Services.AddAutoMapper(typeof(MappingProfile));
 			// Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
 			builder.Services.AddOpenApi();
 			builder.Services.AddEndpointsApiExplorer();

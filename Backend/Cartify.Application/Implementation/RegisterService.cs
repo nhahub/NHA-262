@@ -1,26 +1,26 @@
-﻿using Cartify.Domain.Interfaces;
+﻿using AutoMapper;
+using Cartify.Application.Contracts;
+using Cartify.Application.Interfaces;
 using Cartify.Domain.Models;
-using Cartify.Services.Interfaces;
-using Microsoft.EntityFrameworkCore.Internal;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace Cartify.Services.Implementation
-{
+namespace Cartify.Application.Implementation
+{	
 	public class RegisterService : IRegisterService
 	{
 		private IUserRepository _userRepository;
-		public RegisterService(IUserRepository repository)
+		private IMapper _mapper;
+		public RegisterService(IUserRepository repository , IMapper mapper)
 		{
 			_userRepository = repository;
+			_mapper = mapper;
 		}
 		public async Task<string> HashingPassword(string pw) => await Task.FromResult(BCrypt.Net.BCrypt.HashPassword(pw));
 
-		public async Task<string> Register(TblUser user, TblAddress address)
+		public async Task<string> Register(dtoRegister register)
 		{
+			var user=_mapper.Map<TblUser>(register);
+			var address = _mapper.Map<TblAddress>(register);
+
 			var check = await _userRepository.GetByEmail(user.Email);
 			if (check != null)
 			{
