@@ -1,13 +1,6 @@
 ﻿using Cartify.Application.Interfaces;
-using Cartify.Domain.Interfaces;
-using Cartify.Domain.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace Cartify.Services.Implementation
+namespace Cartify.Application.Implementation
 {
 	public class LoginService : ILoginService
 	{

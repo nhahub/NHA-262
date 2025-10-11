@@ -1,11 +1,6 @@
 ﻿using Cartify.Domain.Models;
-using Cartify.Domain.Interfaces;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Microsoft.EntityFrameworkCore;
+using Cartify.Application.Interfaces;
+using Cartify.Infrastructure.Persistence;
 
 namespace Cartify.Infrastructure.Repositories
 {
@@ -18,12 +13,12 @@ namespace Cartify.Infrastructure.Repositories
 
 		public async Task<TblUser> GetByEmail(string email)
 		{
-			return await _appDbContext.TblUsers.FirstOrDefaultAsync(e=> e.Email== email);
+			return await Search(e=> e.Email== email);
 		}
 
 		public async Task<TblUser> GetByUsername(string username)
 		{
-			return await _appDbContext.TblUsers.FirstOrDefaultAsync(e => e.UserName == username);
+			return await Search(e => e.UserName == username);
 		}
 	}
 }

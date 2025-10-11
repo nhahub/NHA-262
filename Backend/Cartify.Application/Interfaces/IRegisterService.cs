@@ -1,10 +1,11 @@
-﻿using Cartify.Domain.Models;
+﻿using Cartify.Application.Contracts;
+using Cartify.Domain.Models;
 
-namespace Cartify.Services.Interfaces
+namespace Cartify.Application.Interfaces
 {
 	public interface IRegisterService
 	{
-		Task<string> Register(TblUser user, TblAddress address);
+		Task<string> Register(dtoRegister register);
 		Task<string> HashingPassword(string password);
 
 	}
