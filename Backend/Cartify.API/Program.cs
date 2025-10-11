@@ -1,10 +1,8 @@
 using Cartify.Application.Implementation;
 using Cartify.Application.Interfaces;
-using Cartify.Application.Interfaces.Repository;
 using Cartify.Application.Interfaces.Service;
 using Cartify.Application.Mappings;
 using Cartify.Infrastructure.Implementation;
-using Cartify.Infrastructure.Implementation.Repository;
 using Cartify.Infrastructure.Persistence;
 using Microsoft.EntityFrameworkCore;
 namespace Cartify.API

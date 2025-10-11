@@ -50,7 +50,12 @@ namespace Cartify.API.Controllers
 		[HttpPost("Login")]
 		public async Task<ActionResult> Login([FromForm] LoginForm form)
 		{
-			bool verify= await _loginService.Login(form.username, form.password);
+			var user = new dtoLogin
+			{
+				username = form.username,
+				password = form.password,
+			};
+			bool verify= await _loginService.Login(user);
 			if (verify)
 			{
 				return Ok("success!");
