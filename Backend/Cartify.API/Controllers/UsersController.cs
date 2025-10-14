@@ -17,6 +17,15 @@ namespace Cartify.API.Controllers
 			_registerService = registerService;
 			_loginService = loginService;
 		}
+		/// <summary>
+		/// Registers a new user using the provided form data.
+		/// </summary>
+		/// <param name="form">
+		/// The registration form containing user information such as email, username, password, and personal details.
+		/// </param>
+		/// <returns>
+		/// Returns 200 (OK) if the registration succeeds, or 400 (Bad Request) with an error message if it fails.
+		/// </returns>
 		[HttpPost("Register")]
 		public async Task<ActionResult> Register([FromForm] RegisterForm form)
 		{
@@ -47,7 +56,18 @@ namespace Cartify.API.Controllers
 
 
 		}
+		/// <summary>
+		/// Authenticates a user using the provided login credentials.
+		/// </summary>
+		/// <param name="form">
+		/// The login form containing the user's username and password.
+		/// </param>
+		/// <returns>
+		/// Returns 200 (OK) with a success message if authentication is successful, 
+		/// or 400 (Bad Request) if the username or password is incorrect.
+		/// </returns>
 		[HttpPost("Login")]
+
 		public async Task<ActionResult> Login([FromForm] LoginForm form)
 		{
 			var user = new dtoLogin

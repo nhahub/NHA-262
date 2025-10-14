@@ -5,6 +5,7 @@ using Cartify.Application.Mappings;
 using Cartify.Infrastructure.Implementation;
 using Cartify.Infrastructure.Persistence;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.OpenApi.Models;
 namespace Cartify.API
 {
 	public class Program
@@ -34,7 +35,26 @@ namespace Cartify.API
 			// Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
 			builder.Services.AddOpenApi();
 			builder.Services.AddEndpointsApiExplorer();
-			builder.Services.AddSwaggerGen();
+			builder.Services.AddSwaggerGen(doc => {
+				var filepath = Path.Combine(System.AppContext.BaseDirectory, "Cartify.API.xml");
+				doc.IncludeXmlComments(filepath);
+				doc.SwaggerDoc("v1",
+					
+				   new OpenApiInfo
+				   {
+					   Title = "Smart API For DEPI",
+					   Version = "v1",
+					   Description = " ASP .NET Core WebAPI Course ",
+					   TermsOfService = new Uri("http://tempuri.org/terms"),
+					   Contact = new OpenApiContact
+					   {
+						   Name = "Sayed Hawas",
+						   Email = "sout_2000@hotmail.com",
+					   },
+				   });
+			});
+
+			builder.Services.AddAuthentication();
 
 			var app = builder.Build();
 
@@ -48,6 +68,8 @@ namespace Cartify.API
 			}
 
 			app.UseHttpsRedirection();
+
+			app.UseAuthentication();
 
 			app.UseAuthorization();
 
