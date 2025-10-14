@@ -49,13 +49,13 @@ The project follows **clean architecture principles** and applies **design patte
 ### Frontend
 
 * **HTML, CSS, JavaScript**
-* **Bootstrap / Tailwind** (styling and responsive design)
+* **Bootstrap  (styling and responsive design)
 
 ### Backend
 
 * **ASP.NET Core** (RESTful APIs)
 * **Entity Framework Core** (ORM)
-* **PostgreSQL / SQL Server** (database)
+* ** SQL Server** (database)
 
 ### Architecture & Patterns
 
