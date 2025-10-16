@@ -1,6 +1,7 @@
 using Cartify.Application.Implementation;
 using Cartify.Application.Interfaces;
 using Cartify.Application.Interfaces.Service;
+using Cartify.Application.Interfaces.Services;
 using Cartify.Application.Mappings;
 using Cartify.Domain.Models;
 using Cartify.Infrastructure.Implementation;
@@ -43,6 +44,8 @@ namespace Cartify.API
 			builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 			builder.Services.AddScoped<ILoginService, LoginService>();
 			builder.Services.AddScoped<IRegisterService, RegisterService>();
+			builder.Services.AddScoped<ICreateJWTToken,CreateJWTToken>();
+			builder.Services.AddScoped<IUserService, UserService>();
 			builder.Services.AddAutoMapper(typeof(MappingProfile));
 			// Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
 			builder.Services.AddOpenApi();
