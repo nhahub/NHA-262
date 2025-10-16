@@ -12,12 +12,10 @@ namespace Cartify.Infrastructure.Implementation
 {
 	public class UnitOfWork : IUnitOfWork
 	{
-		public IUserRepository Users { get; }
 		private readonly AppDbContext _context;
 		public UnitOfWork(AppDbContext context)
 		{
 			_context = context;
-			Users=new UserRepository(_context);
 		}
 
 		public void Dispose()

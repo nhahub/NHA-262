@@ -21,7 +21,7 @@ public partial class TblUser :IdentityUser
 
     public bool IsDeleted { get; set; }
 
-    public DateTime CreatedDate { get; set; }
+    public DateTime? CreatedDate { get; set; }
 
     public int? UpdatedBy { get; set; }
 

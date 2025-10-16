@@ -10,6 +10,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="bin\**" />
+    <Content Remove="bin\**" />
+    <EmbeddedResource Remove="bin\**" />
+    <None Remove="bin\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="AutoMapper" Version="12.0.1" />
     <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="12.0.1" />
     <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="9.0.10" />

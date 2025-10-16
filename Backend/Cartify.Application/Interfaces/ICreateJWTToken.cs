@@ -1,4 +1,4 @@
-﻿using Cartify.Application.Interfaces.Repository;
+﻿using Cartify.Domain.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,9 +7,8 @@ using System.Threading.Tasks;
 
 namespace Cartify.Application.Interfaces
 {
-	public interface IUnitOfWork : IDisposable
+	public interface ICreateJWTToken
 	{
-		Task<int> SaveChanges();
-
+		string CreateToken(TblUser user,string Role);
 	}
 }

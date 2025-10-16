@@ -72,15 +72,15 @@ namespace Cartify.API.Controllers
 		{
 			var user = new dtoLogin
 			{
-				username = form.username,
+				Email = form.username,
 				password = form.password,
 			};
-			bool verify= await _loginService.Login(user);
-			if (verify)
+			string verify= await _loginService.Login(user);
+			if (verify.Equals("Username or password is wrong!"))
 			{
-				return Ok("success!");
+			return BadRequest(verify);
 			}
-			return BadRequest("Username or password is wrong!");
+				return Ok(verify);
 		}
 	}
 }
