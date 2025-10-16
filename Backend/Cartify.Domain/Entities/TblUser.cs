@@ -2,30 +2,16 @@
 #nullable disable
 using System;
 using System.Collections.Generic;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 
 namespace Cartify.Domain.Models;
 
-public partial class TblUser
+public partial class TblUser :IdentityUser
 {
-    public int UserId { get; set; }
-
-    public string UserName { get; set; }
-
     public string FirstName { get; set; }
 
     public string LastName { get; set; }
-
-    public string PasswordHash { get; set; }
-
-    public int UserTypeId { get; set; }
-
-    public string PermisionLevel { get; set; }
-
-    public string Email { get; set; }
-
-    public string Mobile { get; set; }
-
-    public string BackupMobile { get; set; }
 
     public DateOnly? BirthDate { get; set; }
 
@@ -47,5 +33,4 @@ public partial class TblUser
 
     public virtual ICollection<TblUserStore> TblUserStores { get; set; } = new List<TblUserStore>();
 
-    public virtual UserType UserType { get; set; }
 }

@@ -2,10 +2,16 @@ using Cartify.Application.Implementation;
 using Cartify.Application.Interfaces;
 using Cartify.Application.Interfaces.Service;
 using Cartify.Application.Mappings;
+using Cartify.Domain.Models;
 using Cartify.Infrastructure.Implementation;
 using Cartify.Infrastructure.Persistence;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
+using System.Text;
 namespace Cartify.API
 {
 	public class Program
@@ -28,6 +34,12 @@ namespace Cartify.API
 					});
 			});
 			builder.Services.AddDbContext<AppDbContext>(options=>options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+
+			builder.Services.AddIdentityCore<TblUser>()
+				.AddRoles<IdentityRole>()
+				.AddEntityFrameworkStores<AppDbContext>()
+				.AddDefaultTokenProviders();
+			
 			builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 			builder.Services.AddScoped<ILoginService, LoginService>();
 			builder.Services.AddScoped<IRegisterService, RegisterService>();
@@ -35,26 +47,69 @@ namespace Cartify.API
 			// Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
 			builder.Services.AddOpenApi();
 			builder.Services.AddEndpointsApiExplorer();
-			builder.Services.AddSwaggerGen(doc => {
+
+			builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(options =>
+			{
+				options.TokenValidationParameters = new TokenValidationParameters
+				{
+					ValidateAudience = true,
+					ValidateIssuer = true,
+					ValidateLifetime = true,
+					ValidateIssuerSigningKey = true,
+					ValidIssuer = builder.Configuration["Jwt:Issuer"],
+					ValidAudience = builder.Configuration["Jwt:Audience"],
+					IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["Jwt:Key"]))
+				};
+			});
+
+			builder.Services.AddSwaggerGen(option => {
 				var filepath = Path.Combine(System.AppContext.BaseDirectory, "Cartify.API.xml");
-				doc.IncludeXmlComments(filepath);
-				doc.SwaggerDoc("v1",
-					
+				option.IncludeXmlComments(filepath);
+				option.SwaggerDoc("v1",
 				   new OpenApiInfo
 				   {
-					   Title = "Smart API For DEPI",
+					   Title = "Cartify API",
 					   Version = "v1",
-					   Description = " ASP .NET Core WebAPI Course ",
+					   Description = " ASP.NET Core WebAPI for Ecommerce ",
 					   TermsOfService = new Uri("http://tempuri.org/terms"),
 					   Contact = new OpenApiContact
 					   {
-						   Name = "Sayed Hawas",
-						   Email = "sout_2000@hotmail.com",
+						   Name = "Taqeyy Eldeen",
+						   Email = "atakieeldeen@gmail.com",
 					   },
 				   });
+				option.AddSecurityDefinition(JwtBearerDefaults.AuthenticationScheme, new OpenApiSecurityScheme
+				{
+					Name="Authorization",
+					In=ParameterLocation.Header,
+					Type=SecuritySchemeType.ApiKey,
+					Scheme=JwtBearerDefaults.AuthenticationScheme
+				});
+
+				option.AddSecurityRequirement(new OpenApiSecurityRequirement
+				{
+					{
+						new OpenApiSecurityScheme
+						{
+							Reference=new OpenApiReference
+							{
+								Type=ReferenceType.SecurityScheme,
+								Id=JwtBearerDefaults.AuthenticationScheme
+
+							},
+
+							In=ParameterLocation.Header,
+							Scheme="Oauth2",
+							Name="Authorization"
+							
+
+
+						},new List<string>()
+					}
+
+				});
 			});
 
-			builder.Services.AddAuthentication();
 
 			var app = builder.Build();
 
