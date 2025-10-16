@@ -9,7 +9,7 @@ public partial class TblAddress
 {
     public int AddressId { get; set; }
 
-    public int UserId { get; set; }
+    public string UserId { get; set; }
 
     public string City { get; set; }
 

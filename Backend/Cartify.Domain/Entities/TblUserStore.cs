@@ -9,7 +9,7 @@ public partial class TblUserStore
 {
     public int UserStorId { get; set; }
 
-    public int UserId { get; set; }
+    public string UserId { get; set; }
 
     public string StoreName { get; set; }
 
