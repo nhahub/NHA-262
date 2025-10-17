@@ -1,12 +1,7 @@
 ﻿using Cartify.Application.Interfaces.Services;
 using Cartify.Domain.Models;
 using Microsoft.AspNetCore.Identity;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-namespace Cartify.Infrastructure.Implementation
+namespace Cartify.Infrastructure.Implementation.Services
 {
 	public class UserService : IUserService
 	{

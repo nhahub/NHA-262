@@ -1,4 +1,4 @@
-﻿using Cartify.Application.Interfaces.Repository;
+﻿using Cartify.Domain.Interfaces.Repositories;
 using Cartify.Infrastructure.Persistence;
 using Microsoft.EntityFrameworkCore;
 using System.Linq.Expressions;

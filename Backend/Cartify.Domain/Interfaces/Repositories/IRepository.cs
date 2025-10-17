@@ -1,6 +1,6 @@
 ﻿using System.Linq.Expressions;
 
-namespace Cartify.Application.Interfaces.Repository
+namespace Cartify.Domain.Interfaces.Repositories
 {
 	public interface IRepository<T> where T : class
 	{

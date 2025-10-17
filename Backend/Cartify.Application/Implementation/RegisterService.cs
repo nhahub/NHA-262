@@ -1,11 +1,8 @@
 ﻿using AutoMapper;
 using Cartify.Application.Contracts;
-using Cartify.Application.Interfaces;
-using Cartify.Application.Interfaces.Repository;
 using Cartify.Application.Interfaces.Service;
 using Cartify.Application.Interfaces.Services;
 using Cartify.Domain.Models;
-using Microsoft.AspNetCore.Identity;
 
 namespace Cartify.Application.Implementation
 {	

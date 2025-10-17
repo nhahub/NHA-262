@@ -1,14 +1,7 @@
-﻿using Cartify.Application.Interfaces;
-using Cartify.Application.Interfaces.Repository;
-using Cartify.Infrastructure.Implementation.Repository;
+﻿using Cartify.Domain.Interfaces.Repositories;
 using Cartify.Infrastructure.Persistence;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace Cartify.Infrastructure.Implementation
+namespace Cartify.Infrastructure.Implementation.Services
 {
 	public class UnitOfWork : IUnitOfWork
 	{

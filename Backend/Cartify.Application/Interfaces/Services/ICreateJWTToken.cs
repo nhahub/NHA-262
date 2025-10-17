@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Cartify.Application.Interfaces
+namespace Cartify.Application.Interfaces.Services
 {
 	public interface ICreateJWTToken
 	{
