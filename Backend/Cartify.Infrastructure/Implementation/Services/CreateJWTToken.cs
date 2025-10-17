@@ -1,13 +1,12 @@
-﻿using Cartify.Application.Interfaces;
+﻿using Cartify.Application.Interfaces.Services;
 using Cartify.Domain.Models;
-using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
 
-namespace Cartify.Infrastructure.Implementation
+namespace Cartify.Infrastructure.Implementation.Services
 {
 	public class CreateJWTToken : ICreateJWTToken
 	{

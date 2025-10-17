@@ -1,15 +1,14 @@
 using Cartify.Application.Implementation;
-using Cartify.Application.Interfaces;
 using Cartify.Application.Interfaces.Service;
 using Cartify.Application.Interfaces.Services;
 using Cartify.Application.Mappings;
+using Cartify.Domain.Interfaces.Repositories;
 using Cartify.Domain.Models;
-using Cartify.Infrastructure.Implementation;
+using Cartify.Infrastructure.Implementation.Services;
 using Cartify.Infrastructure.Persistence;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using System.Text;
