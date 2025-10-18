@@ -6,6 +6,7 @@ using Cartify.Domain.Interfaces.Repositories;
 using Cartify.Domain.Models;
 using Cartify.Infrastructure.Implementation.Repository;
 using Cartify.Infrastructure.Implementation.Services;
+using Cartify.Infrastructure.Implementation.Services.Helper;
 using Cartify.Infrastructure.Persistence;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
@@ -48,10 +49,18 @@ namespace Cartify.API
 			builder.Services.AddScoped<ICreateJWTToken,CreateJWTToken>();
 			builder.Services.AddScoped<IUserService, UserService>();
 			builder.Services.AddAutoMapper(typeof(MappingProfile));
+<<<<<<< HEAD
             // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
             builder.Services.AddScoped<ICategoryRepository, CategoryRepository>();
             builder.Services.AddScoped<ISubCategoryRepository, SubCategoryRepository>();
             builder.Services.AddOpenApi();
+=======
+			builder.Services.Configure<JWTSettings>(builder.Configuration.GetSection("Jwt"));
+			builder.Services.AddHttpContextAccessor();
+
+			// Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
+			builder.Services.AddOpenApi();
+>>>>>>> baceba16fcfcb5bd3eba71eaa67c91ca151cfb8b
 			builder.Services.AddEndpointsApiExplorer();
 
 			builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(options =>
@@ -64,7 +73,8 @@ namespace Cartify.API
 					ValidateIssuerSigningKey = true,
 					ValidIssuer = builder.Configuration["Jwt:Issuer"],
 					ValidAudience = builder.Configuration["Jwt:Audience"],
-					IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["Jwt:Key"]))
+					IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["Jwt:Key"])),
+					ClockSkew=TimeSpan.Zero
 				};
 			});
 

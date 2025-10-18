@@ -4,8 +4,8 @@ namespace Cartify.Application.Interfaces.Service
 {
 	public interface ILoginService
 	{
-		Task<string> Login(dtoLogin login);
-
+		Task<dtoTokenResult> Login(dtoLogin login);
+		Task<dtoTokenResult> RefreshToken(string  token);
 
 	}
 }

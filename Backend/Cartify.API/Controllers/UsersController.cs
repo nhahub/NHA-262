@@ -2,7 +2,9 @@
 using Cartify.API.Contracts;
 using Cartify.Application.Contracts;
 using Cartify.Application.Interfaces.Service;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using System.Net;
 
 namespace Cartify.API.Controllers
 {
@@ -12,7 +14,7 @@ namespace Cartify.API.Controllers
 	{
 		private readonly IRegisterService _registerService;
 		private readonly ILoginService _loginService;
-		public UsersController( IRegisterService registerService, ILoginService loginService,IMapper mapper)
+		public UsersController(IRegisterService registerService, ILoginService loginService, IMapper mapper)
 		{
 			_registerService = registerService;
 			_loginService = loginService;
@@ -29,12 +31,12 @@ namespace Cartify.API.Controllers
 		[HttpPost("Register")]
 		public async Task<ActionResult> Register([FromForm] RegisterForm form)
 		{
-				
+
 			var user = new dtoRegister
 			{
 				Email = form.Email,
 				UserName = form.UserName,
-				Password =form.Password,
+				Password = form.Password,
 				FirstName = form.FirstName,
 				LastName = form.LastName,
 				Gender = form.Gender, // false=Male, true=Female
@@ -75,12 +77,28 @@ namespace Cartify.API.Controllers
 				Email = form.username,
 				password = form.password,
 			};
-			string verify= await _loginService.Login(user);
-			if (verify.Equals("Username or password is wrong!"))
+			var tokens = await _loginService.Login(user);
+			if (!tokens.Success)
 			{
-			return BadRequest(verify);
+				return BadRequest(tokens.ErrorMessage);
 			}
-				return Ok(verify);
+			return Ok(new TokenResult { Jwt=tokens.Jwt,JwtExpiry=tokens.JwtExpiry});
+		}
+		[HttpPost("RefreshToken")]
+		public async Task<IActionResult> RefreshToken()
+		{
+			var Token = Request.Cookies["refreshToken"];
+			var tokens = await _loginService.RefreshToken(Token);
+			if (!tokens.Success)
+				return BadRequest(tokens.ErrorMessage);
+
+			return Ok(new { Jwt = tokens.Jwt, JwtExpiry = tokens.JwtExpiry });
+		}
+		[HttpPost("test")]
+		[Authorize]
+		public async Task<IActionResult> test()
+		{
+			return Ok();
 		}
 	}
 }
