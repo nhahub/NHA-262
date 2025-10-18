@@ -16,5 +16,7 @@ namespace Cartify.Application.Interfaces.Services
 		Task<IEnumerable<string>> GetRolesAsync(TblUser user);
 		Task<bool> CheckPassword(TblUser user,string password);
 		Task<TblUser?> GetByUsername(string username);
+		Task UpdateAsync(TblUser user);
+		Task<TblUser> GetUserByToken(string token);
 	}
 }

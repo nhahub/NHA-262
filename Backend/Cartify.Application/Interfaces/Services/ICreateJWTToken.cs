@@ -1,4 +1,6 @@
-﻿using Cartify.Domain.Models;
+﻿using Cartify.Application.Contracts;
+using Cartify.Domain.Entities;
+using Cartify.Domain.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,6 +11,7 @@ namespace Cartify.Application.Interfaces.Services
 {
 	public interface ICreateJWTToken
 	{
-		string CreateToken(TblUser user,string Role);
+		dtoTokenResult CreateToken(TblUser user,string Role);
+		RefreshToken CreateRefreshToken();
 	}
 }
