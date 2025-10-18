@@ -1,6 +1,7 @@
 ﻿using Cartify.Application.Interfaces.Services;
 using Cartify.Domain.Models;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 namespace Cartify.Infrastructure.Implementation.Services
 {
 	public class UserService : IUserService
@@ -38,6 +39,17 @@ namespace Cartify.Infrastructure.Implementation.Services
 		public async Task<IEnumerable<string>> GetRolesAsync(TblUser user)
 		{
 			return await _userManager.GetRolesAsync(user);
+		}
+
+		public async Task UpdateAsync(TblUser user)
+		{
+		await _userManager.UpdateAsync(user);
+		}
+
+		public async Task<TblUser> GetUserByToken(string token)
+		{
+			return await _userManager.Users
+				.SingleOrDefaultAsync(x => x.RefreshTokens != null && x.RefreshTokens.Any(rt => rt.Token == token));
 		}
 	}
 }

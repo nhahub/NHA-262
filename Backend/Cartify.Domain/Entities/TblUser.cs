@@ -2,6 +2,7 @@
 #nullable disable
 using System;
 using System.Collections.Generic;
+using Cartify.Domain.Entities;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 
@@ -32,5 +33,7 @@ public partial class TblUser :IdentityUser
     public virtual ICollection<TblAddress> TblAddresses { get; set; } = new List<TblAddress>();
 
     public virtual ICollection<TblUserStore> TblUserStores { get; set; } = new List<TblUserStore>();
+
+	public List<RefreshToken>? RefreshTokens { get; set; }
 
 }
