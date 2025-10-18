@@ -5,10 +5,15 @@ namespace Cartify.Infrastructure.Implementation.Services
 {
 	public class UnitOfWork : IUnitOfWork
 	{
+
 		private readonly AppDbContext _context;
-		public UnitOfWork(AppDbContext context)
+		public ICategoryRepository CategoryRepository { get; }
+		public ISubCategoryRepository SubCategoryRepository { get; }
+        public UnitOfWork(AppDbContext context, ISubCategoryRepository SubCategoryRepository, ICategoryRepository CategoryRepository)
 		{
 			_context = context;
+			this.CategoryRepository = CategoryRepository;
+			this.SubCategoryRepository = SubCategoryRepository;
 		}
 
 		public void Dispose()

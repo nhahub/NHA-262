@@ -4,6 +4,7 @@ using Cartify.Application.Interfaces.Services;
 using Cartify.Application.Mappings;
 using Cartify.Domain.Interfaces.Repositories;
 using Cartify.Domain.Models;
+using Cartify.Infrastructure.Implementation.Repository;
 using Cartify.Infrastructure.Implementation.Services;
 using Cartify.Infrastructure.Persistence;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
@@ -47,8 +48,10 @@ namespace Cartify.API
 			builder.Services.AddScoped<ICreateJWTToken,CreateJWTToken>();
 			builder.Services.AddScoped<IUserService, UserService>();
 			builder.Services.AddAutoMapper(typeof(MappingProfile));
-			// Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
-			builder.Services.AddOpenApi();
+            // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
+            builder.Services.AddScoped<ICategoryRepository, CategoryRepository>();
+            builder.Services.AddScoped<ISubCategoryRepository, SubCategoryRepository>();
+            builder.Services.AddOpenApi();
 			builder.Services.AddEndpointsApiExplorer();
 
 			builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(options =>
