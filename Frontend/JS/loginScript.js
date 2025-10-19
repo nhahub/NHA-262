@@ -1,5 +1,4 @@
 $(document).ready(function () {
-
   $("#err").text("");
   $("#step1").submit(function (e) {
     e.preventDefault();
@@ -10,11 +9,22 @@ $(document).ready(function () {
       url: "https://localhost:7212/api/Users/Login",
       data: formdata,
       success: function (response) {
+        const rememberMe = $("#rememberMe").is(":checked");
+        const data={
+          jwt:response.jwt,
+          jwtExpiry:response.jwtExpiry
+        };
+        if (rememberMe) {
+          localStorage.setItem("Auth",JSON.stringify(data));
+        } else {
+          sessionStorage.setItem("Auth", JSON.stringify(data));
+        }
         window.location.href = "merchhome.html";
       },
+
       error: function (response) {
         $("#err").text("❌ Wrong username or password!");
-        
+
         $("#password").val("");
       },
     });
@@ -44,38 +54,64 @@ $(document).ready(function () {
       $("#err").text("Enter Valid email");
       return;
     }
-    dataform=$("#step2").serialize();
-    $.ajax({
-      type: "post",
-      url: "http://localhost:5259/api/Users/check",
-      data:dataform,
-      success: function (response) {
-        
-        $("#step2").removeClass("active");
-    
-        $("#step3").addClass("active");
-        $("#err").text("A message has been sent to your email!");
-      },
-      error: function (response) { 
-      $("#err").text("Enter Valid email");
 
-       }
-    });
+$.ajax({
+    type: "post",
+    url: "https://localhost:7212/api/Users/ResetPassword/CheckEmailAndGenerateCode",
+    data: JSON.stringify(email), 
+    contentType: "application/json",
+    success: function (response) {
+        $("#step2").removeClass("active");
+        $("#step3").addClass("active");
+        $("#err").text("✅ A message has been sent to your email!");
+    },
+    error: function (response) {
+        $("#err").text("❌ Enter valid email or server error");
+        console.log(response.responseText);
+    }
+});
+
   });
 
-  $("#step3").submit(function (e) {
+$("#step3").submit(function (e) {
     e.preventDefault();
     $("#err").text("");
-    if ($("#Code").val() === "") {
-      $("#err").text("Enter valid code");
-      return;
+
+    let code = $("#Code").val().trim();
+    if (code === "") {
+        $("#err").text("Enter valid code");
+        return;
     }
-    if (validatePW()) {
-      $("#err").text("");
-      $("#step3").removeClass("active");
-      $("#step1").addClass("active");
-    }
-  });
+
+    // تحقق من الباسورد
+    if (!validatePW()) return;
+
+    // تحضير البيانات لإرسالها للـ API
+    let dataform = JSON.stringify({
+        Code: code,
+        Password: $("#password1").val(),
+    });
+
+    $.ajax({
+        type: "post",
+        url: "https://localhost:7212/api/Users/ResetPassword/CheckCodeAndChangePassword",
+        data: dataform,
+        contentType: "application/json",
+        success: function (response) {
+            $("#err").text("✅ Password changed successfully!");
+            $("#step3").removeClass("active");
+            $("#step1").addClass("active");
+            // إعادة ضبط الفورمز
+            $("#step3")[0].reset();
+            $("#step1")[0].reset();
+        },
+        error: function (response) {
+            $("#err").text("❌ Invalid code or password error");
+            console.log(response.responseText);
+        }
+    });
+});
+
   function validatePW() {
     let pw = $("#password1").val();
     let confpw = $("#password2").val();
@@ -97,6 +133,4 @@ $(document).ready(function () {
     }
     return check;
   }
-  
-
 });
