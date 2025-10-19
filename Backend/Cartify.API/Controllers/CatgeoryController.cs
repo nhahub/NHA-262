@@ -1,4 +1,4 @@
-﻿using Cartify.Application.Interfaces.Services;
+﻿using Cartify.Application.Services.Interfaces;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 

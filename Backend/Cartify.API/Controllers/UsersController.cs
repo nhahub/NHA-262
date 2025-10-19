@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
 using Cartify.API.Contracts;
 using Cartify.Application.Contracts;
-using Cartify.Application.Interfaces.Service;
+using Cartify.Application.Services.Interfaces.Authentication;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Net;
@@ -14,10 +14,13 @@ namespace Cartify.API.Controllers
 	{
 		private readonly IRegisterService _registerService;
 		private readonly ILoginService _loginService;
-		public UsersController(IRegisterService registerService, ILoginService loginService, IMapper mapper)
+		private readonly IResetPassword _resetPassword;
+
+		public UsersController(IRegisterService registerService, ILoginService loginService, IMapper mapper,IResetPassword resetPassword)
 		{
 			_registerService = registerService;
 			_loginService = loginService;
+			_resetPassword = resetPassword;
 		}
 		/// <summary>
 		/// Registers a new user using the provided form data.
@@ -98,6 +101,29 @@ namespace Cartify.API.Controllers
 		[Authorize]
 		public async Task<IActionResult> test()
 		{
+			return Ok();
+		}
+		[HttpPost("ResetPassword/CheckEmailAndGenerateCode")]
+		public async Task<IActionResult> ResetPassword([FromBody]string Email)
+		{
+			var result=await _resetPassword.Reset(new dtoSendEmail { ToEmail=Email});
+			if (!result.Result)
+			{
+				return BadRequest(result.Message);
+			}
+
+			return Ok();
+		}
+		[HttpPost("ResetPassword/CheckCodeAndChangePassword")]
+		public async Task<IActionResult> ResetPassword2([FromBody]ResetPW resetPW)
+		{
+			var result=await _resetPassword.CheckCode(resetPW.Code, resetPW.Password);
+
+			if (!result.Result)
+			{
+				return BadRequest(result.Message);
+			}
+
 			return Ok();
 		}
 	}

@@ -1,4 +1,4 @@
-﻿using Cartify.Application.Interfaces.Services;
+﻿using Cartify.Application.Services.Interfaces;
 using Cartify.Domain.Interfaces.Repositories;
 using Cartify.Domain.Models;
 using System;
@@ -7,14 +7,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Cartify.Application.Implementation
+namespace Cartify.Application.Services.Implementation
 {
     public class ProductServices : IProductServices
     {
         private readonly IUnitOfWork _unitOfWork;
         public ProductServices(IUnitOfWork UnitOfWork)
         {
-            this._unitOfWork = UnitOfWork;  
+			_unitOfWork = UnitOfWork;  
         }
 
         public async Task<IEnumerable<TblProduct>> GetAllProductsAsync()

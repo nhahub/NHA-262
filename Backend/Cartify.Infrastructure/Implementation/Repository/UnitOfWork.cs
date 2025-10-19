@@ -1,24 +1,27 @@
-﻿using Cartify.Domain.Interfaces.Repositories;
+﻿using Cartify.Domain.Entities;
+using Cartify.Domain.Interfaces.Repositories;
 using Cartify.Infrastructure.Persistence;
 
 namespace Cartify.Infrastructure.Implementation.Services
 {
-    public class UnitOfWork : IUnitOfWork
+	public class UnitOfWork : IUnitOfWork
 	{
 
 		private readonly AppDbContext _context;
 		public ICategoryRepository CategoryRepository { get; }
 		public ISubCategoryRepository SubCategoryRepository { get; }
 
-        public IProductRepository ProductRepository {  get; }
+		public IProductRepository ProductRepository { get; }
 
+		public IRepository<PasswordResetCodes> PasswordResetCodess { get; }
 
-        public UnitOfWork(AppDbContext context, ISubCategoryRepository SubCategoryRepository, ICategoryRepository CategoryRepository, IProductRepository ProductRepository)
+		public UnitOfWork(AppDbContext context, ISubCategoryRepository SubCategoryRepository, ICategoryRepository CategoryRepository, IProductRepository ProductRepository, IRepository<PasswordResetCodes> passwordResetCodess)
 		{
 			_context = context;
 			this.CategoryRepository = CategoryRepository;
 			this.SubCategoryRepository = SubCategoryRepository;
 			this.ProductRepository = ProductRepository;
+			PasswordResetCodess = passwordResetCodess;
 		}
 
 		public void Dispose()
@@ -29,7 +32,7 @@ namespace Cartify.Infrastructure.Implementation.Services
 		public async Task<int> SaveChanges()
 		{
 			return await _context.SaveChangesAsync();
-			
+
 		}
 	}
 }

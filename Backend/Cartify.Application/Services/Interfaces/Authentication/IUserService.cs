@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Cartify.Application.Interfaces.Services
+namespace Cartify.Application.Services.Interfaces.Authentication
 {
 	public interface IUserService
 	{
@@ -18,5 +18,7 @@ namespace Cartify.Application.Interfaces.Services
 		Task<TblUser?> GetByUsername(string username);
 		Task UpdateAsync(TblUser user);
 		Task<TblUser> GetUserByToken(string token);
+		Task<IdentityResult> ChangePassword(TblUser user, string newPassword);
+		Task<TblUser?> GetById(string Id);
 	}
 }

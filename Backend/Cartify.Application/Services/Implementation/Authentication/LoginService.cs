@@ -1,10 +1,9 @@
 ﻿using Cartify.Application.Contracts;
-using Cartify.Application.Interfaces.Service;
-using Cartify.Application.Interfaces.Services;
 using Cartify.Domain.Models;
 using Cartify.Domain.Entities;
 using Microsoft.AspNetCore.Http;
-namespace Cartify.Application.Implementation
+using Cartify.Application.Services.Interfaces.Authentication;
+namespace Cartify.Application.Services.Implementation.Authentication
 {
 	public class LoginService : ILoginService
 	{

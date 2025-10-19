@@ -1,4 +1,4 @@
-﻿namespace Cartify.Application.Implementation
+﻿namespace Cartify.Application.Services.Implementation.Helper
 {
 	public static class ResultService
 	{

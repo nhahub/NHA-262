@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Cartify.Application.Interfaces.Services
+namespace Cartify.Application.Services.Interfaces
 {
     public interface ICategoryService
     {

@@ -1,10 +1,10 @@
 ﻿using AutoMapper;
 using Cartify.Application.Contracts;
-using Cartify.Application.Interfaces.Service;
-using Cartify.Application.Interfaces.Services;
+using Cartify.Application.Services.Implementation.Helper;
+using Cartify.Application.Services.Interfaces.Authentication;
 using Cartify.Domain.Models;
 
-namespace Cartify.Application.Implementation
+namespace Cartify.Application.Services.Implementation.Authentication
 {	
 	public class RegisterService : IRegisterService
 	{

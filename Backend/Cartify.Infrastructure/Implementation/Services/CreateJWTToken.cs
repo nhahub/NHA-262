@@ -1,5 +1,4 @@
-﻿using Cartify.Application.Interfaces.Services;
-using Cartify.Domain.Models;
+﻿using Cartify.Domain.Models;
 using Cartify.Infrastructure.Implementation.Services.Helper;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Options;
@@ -11,6 +10,7 @@ using System.Security.Cryptography;
 using Cartify.Application.Contracts;
 
 using Cartify.Domain.Entities;
+using Cartify.Application.Services.Interfaces.Authentication;
 namespace Cartify.Infrastructure.Implementation.Services
 {
 
@@ -35,7 +35,7 @@ namespace Cartify.Infrastructure.Implementation.Services
 				audience: _options.Value.Audience,
 				claims: claims,
 				notBefore: DateTime.UtcNow,
-				expires: DateTime.UtcNow.AddMinutes(1),
+				expires: DateTime.UtcNow.AddMinutes(15),
 				signingCredentials: credentials
 			);
 

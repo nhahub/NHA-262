@@ -1,7 +1,7 @@
 ﻿using Cartify.Application.Contracts;
 using Cartify.Domain.Models;
 
-namespace Cartify.Application.Interfaces.Service
+namespace Cartify.Application.Services.Interfaces.Authentication
 {
 	public interface IRegisterService
 	{
