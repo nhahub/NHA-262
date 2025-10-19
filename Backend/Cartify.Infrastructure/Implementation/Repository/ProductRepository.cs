@@ -31,13 +31,25 @@ namespace Cartify.Infrastructure.Implementation.Repository
           .Include(p => p.Type)
               .ThenInclude(t => t.Category)
           .Include(p => p.TblProductImages)
-          .Include(p => p.ProductDetails)
-              .ThenInclude(d => d.AttributeProduct)
+          .Include(p => p.TblProductsDetail)
+              .ThenInclude(d => d.ProductDetail)
+              .ThenInclude(p=>p.LkpAttributesProducts)
                   .ThenInclude(a => a.Attripute)
                       .ThenInclude(u => u.LkpUnitMeasuresAttributes)
+                      .ThenInclude(u=>u.UnitOfMeasure)
           .AsNoTracking()
           .FirstOrDefaultAsync(p => p.ProductId == id);
 
+        }
+
+        public Task<IEnumerable<TblProduct>> GetProductsByCategoryIdAsync(int categoryId)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<IEnumerable<TblProduct>> GetProductsBySubCategoryIdAsync(int subCategoryId)
+        {
+            throw new NotImplementedException();
         }
     }
 }
