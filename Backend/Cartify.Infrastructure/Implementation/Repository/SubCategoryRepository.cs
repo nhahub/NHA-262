@@ -18,5 +18,10 @@ namespace Cartify.Infrastructure.Implementation.Repository
         {
             return await _context.TblTypes.AsNoTracking().ToListAsync();
         }
+
+        public Task<IEnumerable<TblType>> GetSubCategoriesByCategoryIdAsync(int categoryId)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
