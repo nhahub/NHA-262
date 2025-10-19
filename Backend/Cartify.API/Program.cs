@@ -49,18 +49,23 @@ namespace Cartify.API
 			builder.Services.AddScoped<ICreateJWTToken,CreateJWTToken>();
 			builder.Services.AddScoped<IUserService, UserService>();
 			builder.Services.AddAutoMapper(typeof(MappingProfile));
-<<<<<<< HEAD
             // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
             builder.Services.AddScoped<ICategoryRepository, CategoryRepository>();
             builder.Services.AddScoped<ISubCategoryRepository, SubCategoryRepository>();
+
+            builder.Services.AddScoped<IProductRepository, ProductRepository>();
+
+			builder.Services.AddScoped<IProductServices, ProductServices>();
+
+			builder.Services.AddScoped<ISubCategoryService, SubCategoryService>();
+            builder.Services.AddScoped<ICategoryService, CategoryService>();
+
             builder.Services.AddOpenApi();
-=======
 			builder.Services.Configure<JWTSettings>(builder.Configuration.GetSection("Jwt"));
 			builder.Services.AddHttpContextAccessor();
 
 			// Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
 			builder.Services.AddOpenApi();
->>>>>>> baceba16fcfcb5bd3eba71eaa67c91ca151cfb8b
 			builder.Services.AddEndpointsApiExplorer();
 
 			builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(options =>

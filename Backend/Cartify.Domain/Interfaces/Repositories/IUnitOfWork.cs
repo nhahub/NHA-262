@@ -4,6 +4,12 @@ public interface IUnitOfWork : IDisposable
 	public ICategoryRepository CategoryRepository { get; }
 	public ISubCategoryRepository SubCategoryRepository { get; }
 
-	Task<int> SaveChanges();
+    public IProductRepository ProductRepository { get; }
+
+
+
+
+
+    Task<int> SaveChanges();
 
 }
