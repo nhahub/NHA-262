@@ -673,5 +673,21 @@ $(document).ready(function () {
       $container.append(row);
     }
   });
+// -------------------- [Logout Handler] --------------------
+$("#logoutBtn").click(function (e) {
+  e.preventDefault();
+
+  // امسح التوكن من التخزين المحلي
+  localStorage.removeItem("Auth");
+  sessionStorage.removeItem("Auth");
+
+  // // لو حابب كمان تمسح بيانات المستخدم
+  // localStorage.removeItem("userData");
+  // sessionStorage.removeItem("userData");
+
+  // بعد كده redirect لصفحة اللوجين
+  window.location.href = "login.html";
+});
+
 
 });
