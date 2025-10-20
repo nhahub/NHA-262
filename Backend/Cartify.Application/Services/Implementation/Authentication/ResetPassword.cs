@@ -34,9 +34,26 @@ namespace Cartify.Application.Services.Implementation.Authentication
 			}
 			dto.ToName=user.FirstName;
 			dto.Subject = "Reset Password";
-			var code = await GenerateResetCodeAsync(user);
-			dto.TextContent = $"Your reset code is: {code.Code}";
+			var Code = await GenerateResetCodeAsync(user);
+			string code = Code.Code;
+			string basePath = AppDomain.CurrentDomain.BaseDirectory;
+			string path = Path.Combine(basePath, @"..\..\..\..\Cartify.Application\Templates\ResetPassword.html");
+			string htmlTemplate = File.ReadAllText(path);
+			string codeHtml = "";
+			foreach (var item in code)
+			{
+				codeHtml += $@"
+        <div style=""display:inline-block; width:35px; height:40px; text-align:center; 
+                    border-radius:8px; background-color:#37474f; color:#d6f8f2; 
+                    font-size:18px; line-height:40px; user-select:all; 
+                    margin-right:10px;"">{item}</div>";
+			}
+			// لو تحب آخر مربع ميبقاش عنده margin:
+			codeHtml = codeHtml.TrimEnd();
 
+			htmlTemplate = htmlTemplate.Replace("{code}", codeHtml);
+
+			dto.TextContent = htmlTemplate;
 			_sender.SendEmail(
 				senderName: dto.SenderName,
 				senderEmail: dto.SenderEmail,
