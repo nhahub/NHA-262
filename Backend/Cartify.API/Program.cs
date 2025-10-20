@@ -1,6 +1,7 @@
 using Cartify.Application.Mappings;
 using Cartify.Application.Services.Implementation;
 using Cartify.Application.Services.Implementation.Authentication;
+using Cartify.Application.Services.Implementation.Category;
 using Cartify.Application.Services.Interfaces;
 using Cartify.Application.Services.Interfaces.Authentication;
 using Cartify.Domain.Interfaces.Repositories;
