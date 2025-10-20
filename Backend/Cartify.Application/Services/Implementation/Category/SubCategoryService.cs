@@ -2,7 +2,7 @@
 using Cartify.Domain.Interfaces.Repositories;
 using Cartify.Domain.Models;
 
-namespace Cartify.Application.Services.Implementation.Authentication
+namespace Cartify.Application.Services.Implementation.Category
 {
     public class SubCategoryService : ISubCategoryService
     {
@@ -16,5 +16,6 @@ namespace Cartify.Application.Services.Implementation.Authentication
         {
             return await _unitOfWork.SubCategoryRepository.GetAllSubCategories();
         }
+
     }
 }

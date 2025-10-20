@@ -2,7 +2,7 @@
 using Cartify.Domain.Interfaces.Repositories;
 using Cartify.Domain.Models;
 
-namespace Cartify.Application.Services.Implementation
+namespace Cartify.Application.Services.Implementation.Category
 {
     public class CategoryService : ICategoryService
     {
