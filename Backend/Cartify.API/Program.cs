@@ -30,14 +30,16 @@ namespace Cartify.API
 			builder.Services.AddControllers();
 			builder.Services.AddCors(options =>
 			{
-				options.AddPolicy("AllowAll",
+				options.AddPolicy("AllowFrontend",
 					policy =>
 					{
-						policy.AllowAnyOrigin()   
-							  .AllowAnyMethod()   
-							  .AllowAnyHeader();
+						policy.WithOrigins("http://127.0.0.1:5500") 
+							  .AllowAnyMethod()
+							  .AllowAnyHeader()
+							  .AllowCredentials(); 
 					});
 			});
+
 			builder.Services.AddDbContext<AppDbContext>(options=>options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
 			builder.Services.AddIdentityCore<TblUser>()
@@ -152,6 +154,8 @@ namespace Cartify.API
 			}
 
 			app.UseHttpsRedirection();
+			app.UseCors("AllowFrontend");
+
 
 			app.UseAuthentication();
 

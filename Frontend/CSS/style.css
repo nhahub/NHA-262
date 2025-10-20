@@ -25,179 +25,6 @@ body {
 /* Header Section                    */
 /* ================================= */
 
-.nav-link {
-    display: flex;
-    text-decoration: none;
-    border-bottom: 3px solid transparent;
-    color: #65a834;
-    transition: all 0.3s ease;
-    font-weight: bold;
-    font-size: 16px;
-    font-family: 'Poppins', sans-serif;
-}
-
-.nav-link:hover {
-        color: #65a834;
-
-    border-bottom: 3px solid #65a834;
-}
-
-/* ================================= */
-/* Login Section                     */
-/* ================================= */
-/* .Login {
-    display: flex;
-    align-items: center;
-    gap: 15px;
-}
-
-.startforfree {
-    display: flex;
-    padding: 10px;
-    background-color: white;
-    text-decoration: none;
-    color: #65a834;
-    border-radius: 35px;
-    transition: all 0.3s ease;
-    font-weight: bold;
-    font-size: 16px;
-    font-family: 'Poppins', sans-serif;
-}
-
-.startforfree:hover {
-    background-color: #65a834;
-    color: white;
-} */
-
-.LOGIN {
-    color: #65a834;
-    font-weight: bold;
-    font-size: 16px;
-    text-decoration: none;
-    font-family: 'Poppins', sans-serif;
-    border-bottom: 3px solid transparent;
-    transition: all 0.3s;
-    padding-top: 5px;
-}
-
-.LOGIN:hover {
-    border-bottom: 3px solid #65a834;
-}
-
-/* ================================= */
-/* Cart Icon                         */
-/* ================================= */
-
-/* ================================= */
-/* Middle / Search Bar Section       */
-/* ================================= */
-/* .middle {
-    display: flex;
-    flex: 1;
-    justify-content: center;
-    align-items: center;
-}
-
-#searchBar {
-    height: 35%;
-    width: 65%;
-    border-radius: 5px;
-    outline: none;
-    border: none;
-    transition: all 0.3s ease;
-}
-
-#searchBar:hover {
-    box-shadow: 0px 0px 8px #4CAF50;
-}
-
-#searchBar:focus {
-    box-shadow: 0px 0px 20px #4CAF50;
-} */
-/* ================================= */
-/* Updated Navigation Buttons        */
-/* ================================= */
-/* .Login {
-    display: flex;
-    align-items: center;
-    gap: 15px;
-} */
-
-/* Base button style for all navigation buttons */
-/* .nav-btn {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    padding: 10px 15px;
-    text-decoration: none;
-    border-radius: 35px;
-    font-family: 'Poppins', sans-serif;
-    font-weight: bold;
-    font-size: 16px;
-    transition: all 0.3s ease;
-    border: none;
-    cursor: pointer;
-} */
-
-/* Cart Button - matches the login style */
-/* .cart-btn {
-    background: transparent;
-    color: #65a834;
-    border-bottom: 3px solid transparent;
-    padding: 5px 10px;
-}
-
-.cart-btn:hover {
-    border-bottom: 3px solid #65a834;
-}
-
-/* Profile Button - matches the login style */
-.profile-btn {
-    background: transparent;
-    color: #65a834;
-    border-bottom: 3px solid transparent;
-    padding: 5px 10px;
-}
-
-.profile-btn:hover {
-    border-bottom: 3px solid #65a834;
-} */
-
-/* Login Button - keep existing style */
-.LOGIN {
-    color: #65a834;
-    font-weight: bold;
-    font-size: 16px;
-    text-decoration: none;
-    font-family: 'Poppins', sans-serif;
-    border-bottom: 3px solid transparent;
-    transition: all 0.3s;
-    padding: 5px 10px;
-}
-
-.LOGIN:hover {
-    border-bottom: 3px solid #65a834;
-}
-
-/* Start for Free Button - keep existing style */
-.startforfree {
-    display: flex;
-    padding: 10px 15px;
-    background-color: white;
-    text-decoration: none;
-    color: #65a834;
-    border-radius: 35px;
-    transition: all 0.3s ease;
-    font-weight: bold;
-    font-size: 16px;
-    font-family: 'Poppins', sans-serif;
-}
-
-.startforfree:hover {
-    background-color: #65a834;
-    color: white;
-}
-
 /* جعل القائمة قريبة من الصورة */
 .btn-group .dropdown-menu {
   margin-top: 5px !important; /* قلل المسافة بين الصورة والقائمة */
@@ -220,4 +47,41 @@ body {
 }
 #drop{
     display: none;
+}
+
+#login {
+    display: inline-block; /* مش لازم flex هنا */
+    text-decoration: none;
+    border-bottom: 3px solid transparent;
+    color: #65a834;
+    transition: all 0.3s ease;
+    font-weight: bold;
+    font-size: 16px;
+    font-family: 'Poppins', sans-serif;
+  padding: 0px; /* 🔹 قلل البادينج فوق وتحت */
+    line-height: 1.3;  /* 🔹 قلل المسافة بين النص والخط */
+}
+
+#login:hover {
+    color: #65a834;
+    border-bottom: 3px solid #65a834;
+}
+
+.navbar-nav .nav-link {
+  display: inline-block;
+  text-decoration: none;
+  border-bottom: 3px solid transparent;
+  color: #65a834;
+  transition: all 0.3s ease;
+  font-weight: bold;
+  font-size: 16px;
+  font-family: 'Poppins', sans-serif;
+  padding: 0px; /* 🔹 قلل البادينج فوق وتحت */
+  line-height: 1.3; /* 🔹 قلل المسافة بين النص والخط */
+  margin-top: 4px; /* 🔹 يوازن العمود الرأسي مع باقي العناصر */
+}
+
+.navbar-nav .nav-link:hover {
+  color: #65a834;
+  border-bottom: 3px solid #65a834;
 }
