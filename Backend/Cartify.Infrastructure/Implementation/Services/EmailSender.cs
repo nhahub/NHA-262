@@ -21,7 +21,7 @@ namespace Cartify.Infrastructure.Implementation.Services
 			message.From.Add(new MailboxAddress(senderName, senderEmail));
 			message.To.Add(new MailboxAddress(toName, toEmail));
 			message.Subject = subject;
-			message.Body = new TextPart("plain")
+			message.Body = new TextPart("html")
 			{
 				Text = textContext
 			};
