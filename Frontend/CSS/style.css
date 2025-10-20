@@ -24,42 +24,8 @@ body {
 /* ================================= */
 /* Header Section                    */
 /* ================================= */
-.headerr {
-    display: flex;
-    justify-content: space-between;
-    height: 80px;
-    background-color: #ceffd0;
-    padding-right: 35px;
-}
 
-/* ================================= */
-/* Page Icon / Navigation            */
-/* ================================= */
-.PageIcon {
-    display: flex;
-}
-
-.PageIcon img {
-    display: flex;
-    height: 100%;
-}
-
-.PageIcon nav {
-    display: flex;
-    align-items: center;
-}
-
-.PageIcon ul {
-    display: flex;
-    gap: 25px;
-}
-
-.PageIcon ul li {
-    display: flex;
-    text-decoration: none;
-}
-
-.PageIcon ul li a {
+.nav-link {
     display: flex;
     text-decoration: none;
     border-bottom: 3px solid transparent;
@@ -70,14 +36,16 @@ body {
     font-family: 'Poppins', sans-serif;
 }
 
-.PageIcon ul li a:hover {
+.nav-link:hover {
+        color: #65a834;
+
     border-bottom: 3px solid #65a834;
 }
 
 /* ================================= */
 /* Login Section                     */
 /* ================================= */
-.Login {
+/* .Login {
     display: flex;
     align-items: center;
     gap: 15px;
@@ -99,7 +67,7 @@ body {
 .startforfree:hover {
     background-color: #65a834;
     color: white;
-}
+} */
 
 .LOGIN {
     color: #65a834;
@@ -119,14 +87,11 @@ body {
 /* ================================= */
 /* Cart Icon                         */
 /* ================================= */
-#cart {
-    height: 30px;
-}
 
 /* ================================= */
 /* Middle / Search Bar Section       */
 /* ================================= */
-.middle {
+/* .middle {
     display: flex;
     flex: 1;
     justify-content: center;
@@ -148,18 +113,18 @@ body {
 
 #searchBar:focus {
     box-shadow: 0px 0px 20px #4CAF50;
-}
+} */
 /* ================================= */
 /* Updated Navigation Buttons        */
 /* ================================= */
-.Login {
+/* .Login {
     display: flex;
     align-items: center;
     gap: 15px;
-}
+} */
 
 /* Base button style for all navigation buttons */
-.nav-btn {
+/* .nav-btn {
     display: flex;
     align-items: center;
     gap: 8px;
@@ -172,10 +137,10 @@ body {
     transition: all 0.3s ease;
     border: none;
     cursor: pointer;
-}
+} */
 
 /* Cart Button - matches the login style */
-.cart-btn {
+/* .cart-btn {
     background: transparent;
     color: #65a834;
     border-bottom: 3px solid transparent;
@@ -196,7 +161,7 @@ body {
 
 .profile-btn:hover {
     border-bottom: 3px solid #65a834;
-}
+} */
 
 /* Login Button - keep existing style */
 .LOGIN {
@@ -233,8 +198,26 @@ body {
     color: white;
 }
 
-/* Cart icon styling */
-#cart {
-    height: 20px;
-    width: 20px;
+/* جعل القائمة قريبة من الصورة */
+.btn-group .dropdown-menu {
+  margin-top: 5px !important; /* قلل المسافة بين الصورة والقائمة */
+  transform: translateY(-5px); /* تقربها أكتر لو عايز */
+}
+
+/* ظبط شكل المنيو تحت الصورة بالضبط */
+.btn-group {
+  position: relative;
+}
+
+.btn-img.dropdown-toggle::after {
+  display: none; /* يشيل السهم اللي بيظهر تحت الصورة */
+}
+
+/* ممكن كمان تضبط عرض المنيو لو كانت بعيدة على المحور الأفقي */
+.dropdown-menu-end {
+  right: 0;
+  left: auto;
+}
+#drop{
+    display: none;
 }

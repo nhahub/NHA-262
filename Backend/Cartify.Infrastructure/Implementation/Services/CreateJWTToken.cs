@@ -22,12 +22,16 @@ namespace Cartify.Infrastructure.Implementation.Services
 		{
 			_options = options;
 		}
-		public dtoTokenResult CreateToken(TblUser user, string Role)
+		public dtoTokenResult CreateToken(TblUser user, List<string> Roles)
 		{
 			var claims = new List<Claim>();
 			claims.Add(new Claim(JwtRegisteredClaimNames.Email,user.Email));
 			claims.Add(new Claim(JwtRegisteredClaimNames.Sub, user.Id));
-			claims.Add(new Claim(ClaimTypes.Role, Role));
+			foreach (var role in Roles)
+			{
+				
+			claims.Add(new Claim(ClaimTypes.Role, role));
+			}
 			var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_options.Value.Key));
 			var credentials = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
 			var jwtToken = new JwtSecurityToken(

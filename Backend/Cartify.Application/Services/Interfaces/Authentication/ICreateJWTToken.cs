@@ -11,7 +11,7 @@ namespace Cartify.Application.Services.Interfaces.Authentication
 {
 	public interface ICreateJWTToken
 	{
-		dtoTokenResult CreateToken(TblUser user,string Role);
+		dtoTokenResult CreateToken(TblUser user, List<string> Roles);
 		RefreshToken CreateRefreshToken();
 	}
 }
