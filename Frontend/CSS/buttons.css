@@ -1,0 +1,17 @@
+@import url('style.css'); /* علشان يقرأ الـ :root variables من الملف الأساسي */
+
+.gradient-btn {
+  background: linear-gradient(135deg, var(--greenNormal), var(--greenDark));
+  color: #fff !important;
+  border: none;
+  transition: all 0.3s ease;
+}
+
+.gradient-btn:hover {
+    filter: brightness(115%);
+}
+
+.gradient-btn:active {
+  /* background: linear-gradient(135deg, var(--greenNormalActive), var(--greenDarkActive)); */
+  transform: scale(0.97);
+}

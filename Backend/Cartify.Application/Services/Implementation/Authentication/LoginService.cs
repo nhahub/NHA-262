@@ -69,7 +69,7 @@ namespace Cartify.Application.Services.Implementation.Authentication
 
 
 			dtoTokenResult Tokens = new dtoTokenResult();
-			var jwtTokens = _createJWTToken.CreateToken(user, Roles.FirstOrDefault());
+			var jwtTokens = _createJWTToken.CreateToken(user, Roles.ToList());
 			Tokens.Jwt = jwtTokens.Jwt;
 			Tokens.JwtExpiry = jwtTokens.JwtExpiry;
 			return Tokens;
@@ -101,7 +101,7 @@ namespace Cartify.Application.Services.Implementation.Authentication
 			user.RefreshTokens.Add(newRefreshToken);
 
 			var roles = await _userService.GetRolesAsync(user);
-			var newAccessToken = _createJWTToken.CreateToken(user, roles.FirstOrDefault());
+			var newAccessToken = _createJWTToken.CreateToken(user, roles.ToList());
 			var cookieOptions = new CookieOptions
 			{
 				HttpOnly = true,
