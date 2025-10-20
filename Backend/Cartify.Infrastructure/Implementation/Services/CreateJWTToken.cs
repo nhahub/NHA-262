@@ -39,7 +39,7 @@ namespace Cartify.Infrastructure.Implementation.Services
 				audience: _options.Value.Audience,
 				claims: claims,
 				notBefore: DateTime.UtcNow,
-				expires: DateTime.UtcNow.AddMinutes(15),
+				expires: DateTime.UtcNow.AddMinutes(1),
 				signingCredentials: credentials
 			);
 
