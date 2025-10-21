@@ -20,6 +20,4 @@ public partial class LkpAttributesProduct
     public virtual LkpAttribute Attripute { get; set; }
 
     public virtual TblProduct Product { get; set; }
-
-    public virtual ICollection<TblProductDetail> TblProductDetails { get; set; } = new List<TblProductDetail>();
 }

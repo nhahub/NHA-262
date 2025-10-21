@@ -1,6 +1,6 @@
 ﻿{
    "CodeGenerationMode": 5,
-   "ContextClassName": "EcommerceDBContext",
+   "ContextClassName": "AppDbContext",
    "ContextNamespace": null,
    "FilterSchemas": false,
    "IncludeConnectionString": false,
@@ -9,7 +9,7 @@
    "OutputContextPath": null,
    "OutputPath": "Models",
    "PreserveCasingWithRegex": true,
-   "ProjectRootNamespace": "CleanArchitecture.Core",
+   "ProjectRootNamespace": "Cartify.Domain",
    "Schemas": null,
    "SelectedHandlebarsLanguage": 2,
    "SelectedToBeGenerated": 0,
@@ -24,11 +24,19 @@
          "ObjectType": 0
       },
       {
+         "Name": "[dbo].[LkpMeasureUnites]",
+         "ObjectType": 0
+      },
+      {
          "Name": "[dbo].[LkpOrderStatues]",
          "ObjectType": 0
       },
       {
          "Name": "[dbo].[LkpPaymentTypes]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[LkpProductDetailsAttributes]",
          "ObjectType": 0
       },
       {
@@ -40,7 +48,11 @@
          "ObjectType": 0
       },
       {
-         "Name": "[dbo].[LkpUnitOfMeasures]",
+         "Name": "[dbo].[PasswordResetCodes]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[RefreshToken]",
          "ObjectType": 0
       },
       {
@@ -92,15 +104,7 @@
          "ObjectType": 0
       },
       {
-         "Name": "[dbo].[TblUsers]",
-         "ObjectType": 0
-      },
-      {
          "Name": "[dbo].[TblUserStore]",
-         "ObjectType": 0
-      },
-      {
-         "Name": "[dbo].[UserType]",
          "ObjectType": 0
       }
    ],

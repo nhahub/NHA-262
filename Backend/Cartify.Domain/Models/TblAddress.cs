@@ -15,9 +15,9 @@ public partial class TblAddress
 
     public string State { get; set; }
 
-	public string StreetAddress { get; set; }
+    public string StreetAddress { get; set; }
 
-	public string PostalCode { get; set; }
+    public string PostalCode { get; set; }
 
     public string Country { get; set; }
 
@@ -34,6 +34,4 @@ public partial class TblAddress
     public int? DeletedBy { get; set; }
 
     public DateTime? DeletedDate { get; set; }
-
-    public virtual TblUser User { get; set; }
 }

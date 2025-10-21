@@ -1,8 +1,8 @@
 ﻿using Cartify.Application.Contracts;
 using Cartify.Domain.Models;
-using Cartify.Domain.Entities;
 using Microsoft.AspNetCore.Http;
 using Cartify.Application.Services.Interfaces.Authentication;
+using Cartify.Domain.Entities;
 namespace Cartify.Application.Services.Implementation.Authentication
 {
 	public class LoginService : ILoginService
@@ -45,6 +45,7 @@ namespace Cartify.Application.Services.Implementation.Authentication
 
 
 			RefreshToken refreshToken;
+
 
 			if (user.RefreshTokens.Any(e => e.IsActive))
 			{

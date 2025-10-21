@@ -19,9 +19,7 @@ public partial class LkpUnitMeasuresAttribute
 
     public virtual LkpAttribute Attribute { get; set; }
 
-    public virtual ICollection<TblProductDetail> TblProductDetails { get; set; } = new List<TblProductDetail>();
-
     public virtual ICollection<TblProductsDetail> TblProductsDetails { get; set; } = new List<TblProductsDetail>();
 
-    public virtual LkpUnitOfMeasure UnitOfMeasure { get; set; }
+    public virtual LkpMeasureUnite UnitOfMeasure { get; set; }
 }

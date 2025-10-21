@@ -5,11 +5,17 @@ using System.Collections.Generic;
 
 namespace Cartify.Domain.Models;
 
-public partial class LkpUnitOfMeasure
+public partial class TblUserStore
 {
-    public int UnitOfMeasureId { get; set; }
+    public int UserStorId { get; set; }
 
-    public string Name { get; set; }
+    public string UserId { get; set; }
+
+    public string StoreName { get; set; }
+
+    public int InventoryId { get; set; }
+
+    public int CategoryId { get; set; }
 
     public int? CreatedBy { get; set; }
 
@@ -23,5 +29,7 @@ public partial class LkpUnitOfMeasure
 
     public DateTime? DeletedDate { get; set; }
 
-    public virtual ICollection<LkpUnitMeasuresAttribute> LkpUnitMeasuresAttributes { get; set; } = new List<LkpUnitMeasuresAttribute>();
+    public virtual TblInventory Inventory { get; set; }
+
+    public virtual ICollection<TblProduct> TblProducts { get; set; } = new List<TblProduct>();
 }

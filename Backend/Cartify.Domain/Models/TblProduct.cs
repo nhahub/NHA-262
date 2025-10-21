@@ -11,8 +11,6 @@ public partial class TblProduct
 
     public int TypeId { get; set; }
 
-    public int AttributeId { get; set; }
-
     public int UserStoreId { get; set; }
 
     public string ProductName { get; set; }
@@ -34,6 +32,8 @@ public partial class TblProduct
     public virtual ICollection<LkpAttributesProduct> LkpAttributesProducts { get; set; } = new List<LkpAttributesProduct>();
 
     public virtual ICollection<TblOrderDetail> TblOrderDetails { get; set; } = new List<TblOrderDetail>();
+
+    public virtual ICollection<TblProductDetail> TblProductDetails { get; set; } = new List<TblProductDetail>();
 
     public virtual ICollection<TblProductImage> TblProductImages { get; set; } = new List<TblProductImage>();
 
