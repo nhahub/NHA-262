@@ -22,7 +22,7 @@ namespace Cartify.Infrastructure.Implementation.Repository
             .Include(p => p.Type.Category)
             .Include(p => p.TblProductImages)
             .AsNoTracking()
-            .ToListAsync();
+            .ToHashSetAsync();
         }
 
         public async Task<TblProduct?> GetProductDetailsAsync(int id)
@@ -42,14 +42,28 @@ namespace Cartify.Infrastructure.Implementation.Repository
 
         }
 
-        public Task<IEnumerable<TblProduct>> GetProductsByCategoryIdAsync(int categoryId)
+        public async Task<IEnumerable<TblProduct>> GetProductsByCategoryIdAsync(int categoryId)
         {
-            throw new NotImplementedException();
+            return await _context.TblProducts
+                .Include(p => p.Type)
+                .Include(p => p.TblProductImages)
+                .Include(p => p.TblProductsDetail)
+                .ThenInclude(d => d.Price)
+                .Where(p => p.Type.CategoryId == categoryId)
+                .AsNoTracking()
+                .ToHashSetAsync();
         }
 
-        public Task<IEnumerable<TblProduct>> GetProductsBySubCategoryIdAsync(int subCategoryId)
+
+        public async Task<IEnumerable<TblProduct>> GetProductsBySubCategoryIdAsync(int subCategoryId)
         {
-            throw new NotImplementedException();
+            return await _context.TblProducts
+               .Include(p => p.TypeId == subCategoryId)
+               .Include(p => p.TblProductImages)
+               .Include(p => p.TblProductsDetail)
+               .ThenInclude(d => d.Price)
+               .AsNoTracking()
+               .ToHashSetAsync();
         }
     }
 }

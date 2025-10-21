@@ -1,7 +1,9 @@
-using Cartify.Application.Implementation;
-using Cartify.Application.Interfaces.Service;
-using Cartify.Application.Interfaces.Services;
 using Cartify.Application.Mappings;
+using Cartify.Application.Services.Implementation;
+using Cartify.Application.Services.Implementation.Authentication;
+using Cartify.Application.Services.Implementation.Category;
+using Cartify.Application.Services.Interfaces;
+using Cartify.Application.Services.Interfaces.Authentication;
 using Cartify.Domain.Interfaces.Repositories;
 using Cartify.Domain.Models;
 using Cartify.Infrastructure.Implementation.Repository;
@@ -28,14 +30,16 @@ namespace Cartify.API
 			builder.Services.AddControllers();
 			builder.Services.AddCors(options =>
 			{
-				options.AddPolicy("AllowAll",
+				options.AddPolicy("AllowFrontend",
 					policy =>
 					{
-						policy.AllowAnyOrigin()   
-							  .AllowAnyMethod()   
-							  .AllowAnyHeader();
+						policy.WithOrigins("http://127.0.0.1:5500") 
+							  .AllowAnyMethod()
+							  .AllowAnyHeader()
+							  .AllowCredentials(); 
 					});
 			});
+
 			builder.Services.AddDbContext<AppDbContext>(options=>options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
 			builder.Services.AddIdentityCore<TblUser>()
@@ -49,7 +53,6 @@ namespace Cartify.API
 			builder.Services.AddScoped<ICreateJWTToken,CreateJWTToken>();
 			builder.Services.AddScoped<IUserService, UserService>();
 			builder.Services.AddAutoMapper(typeof(MappingProfile));
-            // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
             builder.Services.AddScoped<ICategoryRepository, CategoryRepository>();
             builder.Services.AddScoped<ISubCategoryRepository, SubCategoryRepository>();
 
@@ -59,9 +62,16 @@ namespace Cartify.API
 
 			builder.Services.AddScoped<ISubCategoryService, SubCategoryService>();
             builder.Services.AddScoped<ICategoryService, CategoryService>();
+			builder.Services.AddScoped<IEmailSender,EmailSender>();
+			builder.Services.AddScoped<IResetPassword, ResetPassword>();
+			builder.Services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
 
-            builder.Services.AddOpenApi();
+			// Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
+
+			builder.Services.AddOpenApi();
 			builder.Services.Configure<JWTSettings>(builder.Configuration.GetSection("Jwt"));
+			builder.Services.Configure<SMTPSettings>(builder.Configuration.GetSection("Smtp"));
+
 			builder.Services.AddHttpContextAccessor();
 
 			// Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
@@ -144,6 +154,8 @@ namespace Cartify.API
 			}
 
 			app.UseHttpsRedirection();
+			app.UseCors("AllowFrontend");
+
 
 			app.UseAuthentication();
 

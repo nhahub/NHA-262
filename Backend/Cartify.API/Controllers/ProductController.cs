@@ -1,6 +1,4 @@
-﻿using Cartify.Application.Implementation;
-using Cartify.Application.Interfaces.Services;
-using Microsoft.AspNetCore.Http;
+﻿using Cartify.Application.Services.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Cartify.API.Controllers

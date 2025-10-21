@@ -22,6 +22,35 @@ namespace Cartify.Infrastructure.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
+            modelBuilder.Entity("Cartify.Domain.Entities.PasswordResetCodes", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Code")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("Expiration")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("IsUsed")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("UserId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("PasswordResetCodes");
+                });
+
             modelBuilder.Entity("Cartify.Domain.Models.LkpAttribute", b =>
                 {
                     b.Property<int>("AttributeId")
@@ -1157,6 +1186,17 @@ namespace Cartify.Infrastructure.Migrations
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
+            modelBuilder.Entity("Cartify.Domain.Entities.PasswordResetCodes", b =>
+                {
+                    b.HasOne("Cartify.Domain.Models.TblUser", "User")
+                        .WithMany("PasswordResetCodes")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("User");
+                });
+
             modelBuilder.Entity("Cartify.Domain.Models.LkpAttributesProduct", b =>
                 {
                     b.HasOne("Cartify.Domain.Models.LkpAttribute", "Attripute")
@@ -1564,6 +1604,8 @@ namespace Cartify.Infrastructure.Migrations
 
             modelBuilder.Entity("Cartify.Domain.Models.TblUser", b =>
                 {
+                    b.Navigation("PasswordResetCodes");
+
                     b.Navigation("TblAddresses");
 
                     b.Navigation("TblUserStores");

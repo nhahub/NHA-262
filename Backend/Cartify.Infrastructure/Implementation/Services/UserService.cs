@@ -1,4 +1,4 @@
-﻿using Cartify.Application.Interfaces.Services;
+﻿using Cartify.Application.Services.Interfaces.Authentication;
 using Cartify.Domain.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
@@ -50,6 +50,16 @@ namespace Cartify.Infrastructure.Implementation.Services
 		{
 			return await _userManager.Users
 				.SingleOrDefaultAsync(x => x.RefreshTokens != null && x.RefreshTokens.Any(rt => rt.Token == token));
+		}
+		public async Task<IdentityResult> ChangePassword(TblUser user,string newPassword)
+		{
+			var token=await _userManager.GeneratePasswordResetTokenAsync(user);
+			var result=await _userManager.ResetPasswordAsync(user,token, newPassword);
+			return result;
+		}
+		public async Task<TblUser?> GetById(string Id)
+		{
+			return await _userManager.FindByIdAsync(Id);
 		}
 	}
 }
