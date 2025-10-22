@@ -1,5 +1,16 @@
 $(document).ready(function () {
 
+  $("#logout1").click(function (e) {
+  e.preventDefault();
+
+  // امسح التوكن من التخزين المحلي
+  localStorage.removeItem("Auth");
+  sessionStorage.removeItem("Auth");
+
+
+  // بعد كده redirect لصفحة اللوجين
+  window.location.href = "login.html";
+});
   // -------------------- [Initial Content Load] --------------------
   $("#dynamicContentContainer").html("<p>Home</p>");
 
@@ -674,20 +685,7 @@ $(document).ready(function () {
     }
   });
 // -------------------- [Logout Handler] --------------------
-$("#logoutBtn").click(function (e) {
-  e.preventDefault();
 
-  // امسح التوكن من التخزين المحلي
-  localStorage.removeItem("Auth");
-  sessionStorage.removeItem("Auth");
-
-  // // لو حابب كمان تمسح بيانات المستخدم
-  // localStorage.removeItem("userData");
-  // sessionStorage.removeItem("userData");
-
-  // بعد كده redirect لصفحة اللوجين
-  window.location.href = "login.html";
-});
 
 
 });
