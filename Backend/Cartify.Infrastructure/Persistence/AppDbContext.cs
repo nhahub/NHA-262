@@ -419,7 +419,8 @@ public partial class AppDbContext : IdentityDbContext<TblUser>
 
             entity.HasOne(d => d.Inventory).WithMany(p => p.TblUserStores)
                 .HasForeignKey(d => d.InventoryId)
-                .OnDelete(DeleteBehavior.ClientSetNull)
+				.IsRequired(false)
+				.OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("FK_TblUserStore_TblInventory");
         });
 
@@ -439,20 +440,19 @@ public partial class AppDbContext : IdentityDbContext<TblUser>
 
 
 
-
-
-
-
-
-
-
-
-
-
         modelBuilder.Entity<TblUser>(entity =>
         {
-
-            entity.Property(e => e.CreatedDate)
+			entity.OwnsMany(u => u.RefreshTokens, rt =>
+			{
+				rt.WithOwner().HasForeignKey("UserId");
+				rt.Property<int>("Id");
+				rt.HasKey("Id");
+				rt.Property(t => t.Token).IsRequired();
+				rt.Property(t => t.ExpiresOn).IsRequired();
+				rt.Property(t => t.CreatedOn).IsRequired();
+				rt.Property(t => t.RevokedOn);
+			});
+			entity.Property(e => e.CreatedDate)
                 .HasDefaultValueSql("(getdate())")
                 .HasAnnotation("Relational:DefaultConstraintName", "DF_TblUsers_CreatedDate")
                 .HasColumnType("datetime");
