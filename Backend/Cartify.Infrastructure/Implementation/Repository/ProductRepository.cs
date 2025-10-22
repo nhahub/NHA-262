@@ -17,7 +17,6 @@ namespace Cartify.Infrastructure.Implementation.Repository
             _context = context;
         }
 
-        // جلب منتج باستخدام الـ ProductId
         public async Task<TblProduct?> GetProductByIdAsync(int productId)
         {
             return await _context.TblProducts
@@ -28,7 +27,6 @@ namespace Cartify.Infrastructure.Implementation.Repository
                 .FirstOrDefaultAsync(p => p.ProductId == productId);
         }
 
-        // جلب كل المنتجات
         public async Task<IEnumerable<TblProduct>> GetAllProductsAsync()
         {
             return await _context.TblProducts
@@ -39,7 +37,6 @@ namespace Cartify.Infrastructure.Implementation.Repository
                 .ToListAsync();
         }
 
-        // جلب المنتجات حسب CategoryId
         public async Task<IEnumerable<TblProduct>> GetProductsByCategoryIdAsync(int categoryId)
         {
             return await _context.TblProducts
@@ -50,7 +47,6 @@ namespace Cartify.Infrastructure.Implementation.Repository
                 .ToListAsync();
         }
 
-        // جلب المنتجات حسب SubCategoryId
         public async Task<IEnumerable<TblProduct>> GetProductsBySubCategoryIdAsync(int subCategoryId)
         {
             return await _context.TblProducts
