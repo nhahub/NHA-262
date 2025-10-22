@@ -13,6 +13,7 @@ $(document).ready(function () {
         const data = {
           jwt: response.jwt,
           jwtExpiry: response.jwtExpiry,
+          rememberMe: rememberMe   // ← حفظ حالة Remember Me
         };
 
         // تخزين الـ token

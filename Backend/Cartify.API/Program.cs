@@ -64,6 +64,7 @@ namespace Cartify.API
             builder.Services.AddScoped<ICategoryService, CategoryService>();
 			builder.Services.AddScoped<IEmailSender,EmailSender>();
 			builder.Services.AddScoped<IResetPassword, ResetPassword>();
+			builder.Services.AddScoped<ICreateMerchantProfile, CreateMerchantProfile>();
 			builder.Services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
 
 			// Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi

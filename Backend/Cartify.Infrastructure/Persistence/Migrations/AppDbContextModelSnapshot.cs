@@ -48,7 +48,7 @@ namespace Cartify.Infrastructure.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("PasswordResetCodes");
+                    b.ToTable("PasswordResetCodes", (string)null);
                 });
 
             modelBuilder.Entity("Cartify.Domain.Models.LkpAttribute", b =>
@@ -112,7 +112,7 @@ namespace Cartify.Infrastructure.Migrations
 
                     b.HasIndex("ProductId");
 
-                    b.ToTable("LkpAttributesProducts");
+                    b.ToTable("LkpAttributesProducts", (string)null);
                 });
 
             modelBuilder.Entity("Cartify.Domain.Models.LkpOrderStatue", b =>
@@ -156,7 +156,7 @@ namespace Cartify.Infrastructure.Migrations
 
                     b.HasKey("OrderStatuesId");
 
-                    b.ToTable("LkpOrderStatues");
+                    b.ToTable("LkpOrderStatues", (string)null);
                 });
 
             modelBuilder.Entity("Cartify.Domain.Models.LkpPaymentType", b =>
@@ -201,7 +201,7 @@ namespace Cartify.Infrastructure.Migrations
                     b.HasKey("PaymentId")
                         .HasName("PK_TblPayment");
 
-                    b.ToTable("LkpPaymentTypes");
+                    b.ToTable("LkpPaymentTypes", (string)null);
                 });
 
             modelBuilder.Entity("Cartify.Domain.Models.LkpShipementMethod", b =>
@@ -249,7 +249,7 @@ namespace Cartify.Infrastructure.Migrations
 
                     b.HasKey("ShipementMethodId");
 
-                    b.ToTable("LkpShipementMethods");
+                    b.ToTable("LkpShipementMethods", (string)null);
                 });
 
             modelBuilder.Entity("Cartify.Domain.Models.LkpUnitMeasuresAttribute", b =>
@@ -276,7 +276,7 @@ namespace Cartify.Infrastructure.Migrations
 
                     b.HasIndex("UnitOfMeasureId");
 
-                    b.ToTable("LkpUnitMeasuresAttributes");
+                    b.ToTable("LkpUnitMeasuresAttributes", (string)null);
                 });
 
             modelBuilder.Entity("Cartify.Domain.Models.LkpUnitOfMeasure", b =>
@@ -313,7 +313,7 @@ namespace Cartify.Infrastructure.Migrations
 
                     b.HasKey("UnitOfMeasureId");
 
-                    b.ToTable("LkpUnitOfMeasures");
+                    b.ToTable("LkpUnitOfMeasures", (string)null);
                 });
 
             modelBuilder.Entity("Cartify.Domain.Models.TblAddress", b =>
@@ -380,7 +380,7 @@ namespace Cartify.Infrastructure.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("TblAddresses");
+                    b.ToTable("TblAddresses", (string)null);
                 });
 
             modelBuilder.Entity("Cartify.Domain.Models.TblCategory", b =>
@@ -421,7 +421,7 @@ namespace Cartify.Infrastructure.Migrations
 
                     b.HasKey("CategoryId");
 
-                    b.ToTable("TblCategories");
+                    b.ToTable("TblCategories", (string)null);
                 });
 
             modelBuilder.Entity("Cartify.Domain.Models.TblInventory", b =>
@@ -536,7 +536,7 @@ namespace Cartify.Infrastructure.Migrations
 
                     b.HasIndex("ShipmentMethodId");
 
-                    b.ToTable("TblOrders");
+                    b.ToTable("TblOrders", (string)null);
                 });
 
             modelBuilder.Entity("Cartify.Domain.Models.TblOrderDetail", b =>
@@ -592,7 +592,7 @@ namespace Cartify.Infrastructure.Migrations
 
                     b.HasIndex("ProductId");
 
-                    b.ToTable("TblOrderDetails");
+                    b.ToTable("TblOrderDetails", (string)null);
                 });
 
             modelBuilder.Entity("Cartify.Domain.Models.TblProduct", b =>
@@ -648,7 +648,7 @@ namespace Cartify.Infrastructure.Migrations
 
                     b.HasIndex("UserStoreId");
 
-                    b.ToTable("TblProducts");
+                    b.ToTable("TblProducts", (string)null);
                 });
 
             modelBuilder.Entity("Cartify.Domain.Models.TblProductDetail", b =>
@@ -671,7 +671,7 @@ namespace Cartify.Infrastructure.Migrations
 
                     b.HasIndex("UnitMeasureAttributeId");
 
-                    b.ToTable("TblProductDetails");
+                    b.ToTable("TblProductDetails", (string)null);
                 });
 
             modelBuilder.Entity("Cartify.Domain.Models.TblProductImage", b =>
@@ -702,7 +702,7 @@ namespace Cartify.Infrastructure.Migrations
 
                     b.HasIndex("ProductId");
 
-                    b.ToTable("TblProductImages");
+                    b.ToTable("TblProductImages", (string)null);
                 });
 
             modelBuilder.Entity("Cartify.Domain.Models.TblProductsDetail", b =>
@@ -724,7 +724,7 @@ namespace Cartify.Infrastructure.Migrations
 
                     b.HasIndex("UnitMeasureAttributeId");
 
-                    b.ToTable("TblProductsDetails");
+                    b.ToTable("TblProductsDetails", (string)null);
                 });
 
             modelBuilder.Entity("Cartify.Domain.Models.TblRefund", b =>
@@ -771,7 +771,7 @@ namespace Cartify.Infrastructure.Migrations
 
                     b.HasIndex("OrderDetailId");
 
-                    b.ToTable("TblRefunds");
+                    b.ToTable("TblRefunds", (string)null);
                 });
 
             modelBuilder.Entity("Cartify.Domain.Models.TblReview", b =>
@@ -821,7 +821,7 @@ namespace Cartify.Infrastructure.Migrations
 
                     b.HasIndex("OrderDetailsId");
 
-                    b.ToTable("TblReviews");
+                    b.ToTable("TblReviews", (string)null);
                 });
 
             modelBuilder.Entity("Cartify.Domain.Models.TblType", b =>
@@ -868,7 +868,7 @@ namespace Cartify.Infrastructure.Migrations
 
                     b.HasIndex("CategoryId");
 
-                    b.ToTable("TblTypes");
+                    b.ToTable("TblTypes", (string)null);
                 });
 
             modelBuilder.Entity("Cartify.Domain.Models.TblUser", b =>
@@ -1439,7 +1439,7 @@ namespace Cartify.Infrastructure.Migrations
 
                             b1.HasKey("TblUserId", "Id");
 
-                            b1.ToTable("RefreshToken");
+                            b1.ToTable("RefreshToken", (string)null);
 
                             b1.WithOwner()
                                 .HasForeignKey("TblUserId");

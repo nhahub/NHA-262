@@ -21,12 +21,12 @@ function isTokenExpired(tokenData) {
 // دالة لتحديث JWT باستخدام Refresh Token الموجود في HttpOnly Cookie
 function refreshToken() {
     return $.ajax({
-url: "https://localhost:7212/api/Users/RefreshToken",
+        url: "https://localhost:7212/api/Users/RefreshToken",
         method: 'POST',
         xhrFields: { withCredentials: true }, // مهم لإرسال الكوكي تلقائي
         success: function(data) {
             if (data.jwt && data.jwtExpiry) {
-                // حدث JWT و jwtExpiry فقط في التخزين
+                // تحديث JWT و jwtExpiry فقط في التخزين
                 localStorage.setItem('Auth', JSON.stringify({
                     jwt: data.jwt,
                     jwtExpiry: data.jwtExpiry
@@ -34,7 +34,7 @@ url: "https://localhost:7212/api/Users/RefreshToken",
             }
         },
         error: function() {
-            console.log('Refresh token failed');
+            console.log('❌ Refresh token failed');
         }
     });
 }
@@ -43,18 +43,34 @@ url: "https://localhost:7212/api/Users/RefreshToken",
 $(document).ready(function() {
     var tokenData = getAuthTokens();
 
+    // 🧩 تحديد إذا كانت الصفحة محمية
+    // بدل ما تعتمد على data-protected، نحددها بناءً على اسم الصفحة أو المسار
+    var protectedPages = [
+        '/merchhome.html',
+        '/cartpage.html',
+        '/ordertracking.html',
+        '/checkout.html',
+        '/wishlist.html'
+    ];
+
+    var currentPath = window.location.pathname.toLowerCase();
+    var isProtectedPage = protectedPages.some(page => currentPath.endsWith(page));
+
     if (!tokenData) {
-        // لو مش موجود JWT، ارجع للـ login
-        window.location.href = '/login.html';
+        if (isProtectedPage) {
+            console.warn('🔒 Protected page - redirecting to login...');
+            window.location.href = '/login.html';
+        } else {
+            console.log('👤 Browsing as guest...');
+        }
         return;
     }
 
     if (isTokenExpired(tokenData)) {
-        // لو التوكن انتهت صلاحيته حاول تعمل refresh
         refreshToken().done(function() {
             var newTokenData = getAuthTokens();
-            if (!newTokenData || isTokenExpired(newTokenData)) {
-                // لو فشل الريفرش أو التوكن الجديدة انتهت
+            if ((!newTokenData || isTokenExpired(newTokenData)) && isProtectedPage) {
+                console.warn('🔑 Token refresh failed or expired - redirecting to login...');
                 window.location.href = '/login.html';
             }
         });

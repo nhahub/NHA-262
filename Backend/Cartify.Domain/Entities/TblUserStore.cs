@@ -13,9 +13,9 @@ public partial class TblUserStore
 
     public string StoreName { get; set; }
 
-    public int InventoryId { get; set; }
+    public int? InventoryId { get; set; }
 
-    public int CategoryId { get; set; }
+    public int? CategoryId { get; set; }
 
     public int? CreatedBy { get; set; }
 
@@ -29,9 +29,9 @@ public partial class TblUserStore
 
     public DateTime? DeletedDate { get; set; }
 
-    public virtual TblInventory Inventory { get; set; }
+    public virtual TblInventory? Inventory { get; set; }
 
-    public virtual ICollection<TblProduct> TblProducts { get; set; } = new List<TblProduct>();
+    public virtual ICollection<TblProduct>? TblProducts { get; set; } = new List<TblProduct>();
 
     public virtual TblUser User { get; set; }
 }

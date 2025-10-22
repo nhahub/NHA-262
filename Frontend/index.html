@@ -28,53 +28,57 @@
 
 <body>
     <nav class="navbar bg-body-tertiary">
-        <div class="container-fluid d-flex align-items-center justify-content-between flex-wrap">
-            <!-- Logo -->
-            <a class="navbar-brand" href="#">
-                <img src="Icons/Untitled-ن2.png" alt="Bootstrap" height="70">
-            </a>
+  <div class="container-fluid d-flex align-items-center justify-content-between flex-wrap">
 
-            <!-- Left side -->
-            <ul class="navbar-nav d-flex flex-row me-auto mb-2 mb-lg-0 gap-2">
-                <li class="nav-item"><a class="nav-link" href="#">Home</a></li>
-                <li class="nav-item"><a class="nav-link" href="#">About</a></li>
-            </ul>
+    <!-- Logo ثابت -->
+    <div class="navbar-logo">
+      <a class="navbar-brand" href="#">
+        <img src="Icons/Untitled-ن2.png" alt="Bootstrap" height="70">
+      </a>
+    </div>
 
-            <!-- Center: Search -->
-            <form class="d-flex mx-auto" role="search" style="width: 40%;">
-                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn gradient-btn" type="submit">Search</button>
-            </form>
+    <!-- Left links -->
+    <ul class="navbar-left navbar-nav d-flex flex-row gap-2">
+      <li class="nav-item"><a class="nav-link" href="#">Home</a></li>
+      <li class="nav-item"><a class="nav-link" href="#">About</a></li>
+    </ul>
 
-            <!-- Right side -->
-            <div class="d-flex align-items-center ms-auto gap-1">
-                <a href="login.html" class="nav-link" id="login">Login</a>
-                <a href="register.html" class="btn gradient-btn ms-2" id="register">Start for free</a>
+    <!-- Center: search -->
+    <div class="navbar-center" style="flex:1; display:flex; justify-content:center;">
+      <form class="d-flex" role="search" style="width: 100%; max-width: 400px;">
+        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn gradient-btn" type="submit">Search</button>
+      </form>
+    </div>
 
-                <!-- Image Dropdown -->
-                <div class="btn-group ms-3" id="drop">
-                    <a href="#" class="btn-img img dropdown-toggle rounded-circle" data-bs-toggle="dropdown"
-                        aria-expanded="false"
-                        style="background-image: url('images/user.png'); width:50px; height:50px;">
-                    </a>
-                    <div class="dropdown-menu dropdown-menu-end me-3" id="dropdown1">
-                        <a class="dropdown-item d-flex align-items-center" href="#">
-                            <div class="icon d-flex align-items-center justify-content-center me-3">
-                                <span class="ion-ios-settings"></span>
-                            </div>
-                            Settings
-                        </a>
-                        <a class="dropdown-item d-flex align-items-center" id="logout" href="#">
-                            <div class="icon d-flex align-items-center justify-content-center me-3">
-                                <span class="ion-ios-power"></span>
-                            </div>
-                            Log Out
-                        </a>
-                    </div>
-                </div>
+    <!-- Right side -->
+    <div class="navbar-right d-flex align-items-center gap-1">
+      <a href="login.html" class="nav-link" id="login">Login</a>
+      <a href="register.html" class="btn gradient-btn ms-2" id="register">Start for free</a>
+      <div class="btn-group ms-3" id="drop">
+        <a href="#" class="btn-img img dropdown-toggle rounded-circle" data-bs-toggle="dropdown"
+           aria-expanded="false" style="background-image: url('images/user.png'); width:50px; height:50px;">
+        </a>
+        <div class="dropdown-menu dropdown-menu-end me-3">
+          <a class="dropdown-item d-flex align-items-center" href="#">
+            <div class="icon d-flex align-items-center justify-content-center me-3">
+              <span class="ion-ios-settings"></span>
             </div>
+            Settings
+          </a>
+          <a class="dropdown-item d-flex align-items-center" id="logout" href="#">
+            <div class="icon d-flex align-items-center justify-content-center me-3">
+              <span class="ion-ios-power"></span>
+            </div>
+            Log Out
+          </a>
         </div>
-    </nav>
+      </div>
+    </div>
+
+  </div>
+</nav>
+
 
     <!-- ================= MAIN CONTENT ================= -->
     <section>

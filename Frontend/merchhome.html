@@ -12,12 +12,20 @@
 
     <!-- Bootstrap FileInput CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/kartik-v/bootstrap-fileinput@5.5.0/css/fileinput.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/4.5.6/css/ionicons.min.css">
+    <link rel="stylesheet" href="CSS/dropdown.css">
     <link rel="stylesheet" href="CSS/merchhome.css">
+    <link rel="stylesheet" href="CSS/style.css">
+    <link rel="stylesheet" href="CSS/buttons.css">
 
     <!-- JS Libraries -->
-    <script src="JS/jquery.js"></script>
+
     <script src="bootstrap-5.3.8-dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/gh/kartik-v/bootstrap-fileinput@5.5.0/js/fileinput.min.js"></script>
+
+    <script src="JS/jquery.js"></script>
+    <script src="JS/Auth.js"></script>
     <script src="JS/merchant.js"></script>
 
     <title>Home</title>
@@ -25,24 +33,49 @@
 
 <body>
     <!-- ================= HEADER ================= -->
-    <div class="card" id="headerCard">
-        <div class="d-flex justify-content-between align-items-center" id="headerFlex">
+    <nav class="navbar bg-body-tertiary">
+  <div class="container-fluid d-flex align-items-center justify-content-between flex-wrap">
 
-            <!-- Logo -->
-            <img src="Icons/Untitled-ن2.png" class="img-fluid rounded-start" alt="Card title" />
-
-            <!-- User Dropdown -->
-            <div class="dropdown">
-                <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown"
-                    aria-expanded="false">Welcome User</button>
-                <ul class="dropdown-menu dropdown-menu-end">
-                    <li><a class="dropdown-item" href="#">Settings</a></li>
-                    <li><a class="dropdown-item" href="#">Switch to user</a></li>
-                    <li><a class="dropdown-item" id="logoutBtn" href="#">Sign out</a></li>
-                </ul>
-            </div>
-        </div>
+    <!-- Logo ثابت -->
+    <div class="navbar-logo">
+      <a class="navbar-brand" href="#">
+        <img src="Icons/Untitled-ن2.png" alt="Bootstrap" height="70">
+      </a>
     </div>
+
+    <!-- Right side -->
+    <div class="navbar-right d-flex align-items-center gap-1">
+      <div class="btn-group">
+        <a href="#" class="btn-img img dropdown-toggle rounded-circle" data-bs-toggle="dropdown"
+           aria-expanded="false" style="background-image: url('images/user.png'); width:50px; height:50px;">
+        </a>
+        <div class="dropdown-menu dropdown-menu-end me-3">
+          <a class="dropdown-item d-flex align-items-center" id="switchRole" href="/index.html">
+            <div class="icon d-flex align-items-center justify-content-center me-3">
+              <span class="ion-ios-sync"></span>
+            </div>
+            Switch Role
+          </a>
+          <a class="dropdown-item d-flex align-items-center" href="#">
+            <div class="icon d-flex align-items-center justify-content-center me-3">
+              <span class="ion-ios-settings"></span>
+            </div>
+            Settings
+          </a>
+          <a class="dropdown-item d-flex align-items-center" id="logout" href="#">
+            <div class="icon d-flex align-items-center justify-content-center me-3">
+              <span class="ion-ios-power"></span>
+            </div>
+            Log Out
+          </a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</nav>
+
+
 
     <div class="container-fluid">
 
@@ -94,8 +127,7 @@
                             </div>
                             <div class="col">
                                 <label for="price" class="form-label">Price</label>
-                                <input type="text" class="form-control" name="price" id="price"
-                                    placeholder="Price" />
+                                <input type="text" class="form-control" name="price" id="price" placeholder="Price" />
                             </div>
                         </div>
 

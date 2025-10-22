@@ -4,7 +4,9 @@ using Cartify.Application.Contracts;
 using Cartify.Application.Services.Interfaces.Authentication;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.IdentityModel.JsonWebTokens;
 using System.Net;
+using System.Security.Claims;
 
 namespace Cartify.API.Controllers
 {
@@ -15,12 +17,14 @@ namespace Cartify.API.Controllers
 		private readonly IRegisterService _registerService;
 		private readonly ILoginService _loginService;
 		private readonly IResetPassword _resetPassword;
+		private readonly ICreateMerchantProfile _profile;
 
-		public UsersController(IRegisterService registerService, ILoginService loginService, IMapper mapper,IResetPassword resetPassword)
+		public UsersController(IRegisterService registerService, ILoginService loginService, IMapper mapper,IResetPassword resetPassword, ICreateMerchantProfile profile)
 		{
 			_registerService = registerService;
 			_loginService = loginService;
 			_resetPassword = resetPassword;
+			_profile = profile;
 		}
 		/// <summary>
 		/// Registers a new user using the provided form data.
@@ -125,6 +129,16 @@ namespace Cartify.API.Controllers
 			}
 
 			return Ok();
+		}
+		[HttpPost("CreateMerchantProfile")]
+		[Authorize(Roles ="User")]
+		public async Task<IActionResult> CreateMerchantProfile([FromBody]string StoreName)
+		{
+
+
+			var Email = User.FindFirst(ClaimTypes.Email)?.Value;
+			var token=await _profile.CreateProfile(Email, StoreName);
+			return Ok(new TokenResult { Jwt = token.Jwt, JwtExpiry = token.JwtExpiry });
 		}
 	}
 }

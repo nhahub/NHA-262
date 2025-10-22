@@ -47,7 +47,7 @@ $(document).ready(function () {
 
         $("#switchRole").click(function (e) {
           e.preventDefault();
-          alert("Switch Role clicked! هنا تعمل تحديث للـ JWT");
+          window.location.href="/merchhome.html"
         });
       }
     } else {
@@ -68,6 +68,7 @@ $(document).ready(function () {
     $("#drop").css("display", "none");
   }
 });
+
 
 // ===================== دالة parseJwt =====================
 function parseJwt(token) {
