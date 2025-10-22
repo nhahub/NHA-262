@@ -14,10 +14,10 @@ namespace Cartify.Infrastructure.Implementation.Services
 
 		public IProductRepository ProductRepository { get; }
 
-		public IRepository<PasswordResetCodes> PasswordResetCodess { get; }
+		public IRepository<PasswordResetCode> PasswordResetCodess { get; }
 
 		public IRepository<TblUserStore> UserStorerepository { get; }
-		public UnitOfWork(AppDbContext context, ISubCategoryRepository SubCategoryRepository, ICategoryRepository CategoryRepository, IProductRepository ProductRepository, IRepository<PasswordResetCodes> passwordResetCodess)
+		public UnitOfWork(AppDbContext context, ISubCategoryRepository SubCategoryRepository, ICategoryRepository CategoryRepository, IProductRepository ProductRepository, IRepository<PasswordResetCode> passwordResetCodess)
 		{
 			_context = context;
 			this.CategoryRepository = CategoryRepository;

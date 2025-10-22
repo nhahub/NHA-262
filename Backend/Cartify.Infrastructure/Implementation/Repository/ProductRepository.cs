@@ -28,27 +28,18 @@ namespace Cartify.Infrastructure.Implementation.Repository
         public async Task<TblProduct?> GetProductDetailsAsync(int id)
         {
             return await _context.TblProducts
-          .Include(p => p.Type)
-              .ThenInclude(t => t.Category)
-          .Include(p => p.TblProductImages)
-          .Include(p => p.TblProductsDetail)
-              .ThenInclude(d => d.ProductDetail)
-              .ThenInclude(p=>p.LkpAttributesProducts)
-                  .ThenInclude(a => a.Attripute)
-                      .ThenInclude(u => u.LkpUnitMeasuresAttributes)
-                      .ThenInclude(u=>u.UnitOfMeasure)
-          .AsNoTracking()
-          .FirstOrDefaultAsync(p => p.ProductId == id);
-
+                .AsNoTracking()
+                .Include(p => p.TblProductDetails) 
+                .FirstOrDefaultAsync(p => p.ProductId == id);
         }
+
+
 
         public async Task<IEnumerable<TblProduct>> GetProductsByCategoryIdAsync(int categoryId)
         {
             return await _context.TblProducts
                 .Include(p => p.Type)
                 .Include(p => p.TblProductImages)
-                .Include(p => p.TblProductsDetail)
-                .ThenInclude(d => d.Price)
                 .Where(p => p.Type.CategoryId == categoryId)
                 .AsNoTracking()
                 .ToHashSetAsync();
@@ -60,8 +51,6 @@ namespace Cartify.Infrastructure.Implementation.Repository
             return await _context.TblProducts
                .Include(p => p.TypeId == subCategoryId)
                .Include(p => p.TblProductImages)
-               .Include(p => p.TblProductsDetail)
-               .ThenInclude(d => d.Price)
                .AsNoTracking()
                .ToHashSetAsync();
         }

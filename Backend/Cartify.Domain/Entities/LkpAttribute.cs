@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 namespace Cartify.Domain.Models;
 
-public partial class LkpAttribute
+public partial class lkpAttribute
 {
     public int AttributeId { get; set; }
 
@@ -23,7 +23,5 @@ public partial class LkpAttribute
 
     public DateTime? DeletedDate { get; set; }
 
-    public virtual ICollection<LkpAttributesProduct> LkpAttributesProducts { get; set; } = new List<LkpAttributesProduct>();
-
-    public virtual ICollection<LkpUnitMeasuresAttribute> LkpUnitMeasuresAttributes { get; set; } = new List<LkpUnitMeasuresAttribute>();
+    public virtual ICollection<LkpProductDetailsAttribute> LkpProductDetailsAttributes { get; set; } = new List<LkpProductDetailsAttribute>();
 }

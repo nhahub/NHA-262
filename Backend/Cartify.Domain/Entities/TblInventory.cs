@@ -31,7 +31,5 @@ public partial class TblInventory
 
     public virtual TblProductDetail ProductDetail { get; set; }
 
-    public virtual TblProductsDetail ProductDetailNavigation { get; set; }
-
     public virtual ICollection<TblUserStore> TblUserStores { get; set; } = new List<TblUserStore>();
 }

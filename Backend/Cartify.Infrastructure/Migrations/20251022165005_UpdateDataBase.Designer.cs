@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Cartify.Infrastructure.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20251019145246_anything")]
-    partial class anything
+    [Migration("20251022165005_UpdateDataBase")]
+    partial class UpdateDataBase
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -25,9 +25,9 @@ namespace Cartify.Infrastructure.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
-            modelBuilder.Entity("Cartify.Domain.Models.LkpAttribute", b =>
+            modelBuilder.Entity("Cartify.Domain.Models.LkpMeasureUnite", b =>
                 {
-                    b.Property<int>("AttributeId")
+                    b.Property<int>("UnitOfMeasureId")
                         .HasColumnType("int");
 
                     b.Property<int?>("CreatedBy")
@@ -36,8 +36,7 @@ namespace Cartify.Infrastructure.Migrations
                     b.Property<DateTime>("CreatedDate")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime")
-                        .HasDefaultValueSql("(getdate())")
-                        .HasAnnotation("Relational:DefaultConstraintName", "DF_lkpAttributes_CreatedDate");
+                        .HasDefaultValueSql("(getdate())");
 
                     b.Property<int?>("DeletedBy")
                         .HasColumnType("int");
@@ -46,8 +45,7 @@ namespace Cartify.Infrastructure.Migrations
                         .HasColumnType("datetime");
 
                     b.Property<bool>("IsDeleted")
-                        .HasColumnType("bit")
-                        .HasAnnotation("Relational:DefaultConstraintName", "DF_lkpAttributes_IsDeleted_1");
+                        .HasColumnType("bit");
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -57,36 +55,10 @@ namespace Cartify.Infrastructure.Migrations
                     b.Property<int?>("UpdatedBy")
                         .HasColumnType("int");
 
-                    b.HasKey("AttributeId");
+                    b.HasKey("UnitOfMeasureId")
+                        .HasName("PK_LkpUnitOfMeasures");
 
-                    b.ToTable("lkpAttributes", (string)null);
-                });
-
-            modelBuilder.Entity("Cartify.Domain.Models.LkpAttributesProduct", b =>
-                {
-                    b.Property<int>("AttributeProductId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("AttriputeId")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("CreatedBy")
-                        .HasColumnType("int");
-
-                    b.Property<bool>("IsDeleted")
-                        .HasColumnType("bit")
-                        .HasAnnotation("Relational:DefaultConstraintName", "DF_LkpAttributesProducts_IsDeleted");
-
-                    b.Property<int>("ProductId")
-                        .HasColumnType("int");
-
-                    b.HasKey("AttributeProductId");
-
-                    b.HasIndex("AttriputeId");
-
-                    b.HasIndex("ProductId");
-
-                    b.ToTable("LkpAttributesProducts");
+                    b.ToTable("LkpMeasureUnites");
                 });
 
             modelBuilder.Entity("Cartify.Domain.Models.LkpOrderStatue", b =>
@@ -103,8 +75,7 @@ namespace Cartify.Infrastructure.Migrations
                     b.Property<DateTime>("CreatedDate")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime")
-                        .HasDefaultValueSql("(getdate())")
-                        .HasAnnotation("Relational:DefaultConstraintName", "DF_LkpOrderStatues_CreatedDate");
+                        .HasDefaultValueSql("(getdate())");
 
                     b.Property<int?>("DeletedBy")
                         .HasColumnType("int");
@@ -117,8 +88,7 @@ namespace Cartify.Infrastructure.Migrations
                         .HasColumnType("nvarchar(500)");
 
                     b.Property<bool>("IsDeleted")
-                        .HasColumnType("bit")
-                        .HasAnnotation("Relational:DefaultConstraintName", "DF_LkpOrderStatues_IsDeleted_1");
+                        .HasColumnType("bit");
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -147,8 +117,7 @@ namespace Cartify.Infrastructure.Migrations
                     b.Property<DateTime>("CreatedDate")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime")
-                        .HasDefaultValueSql("(getdate())")
-                        .HasAnnotation("Relational:DefaultConstraintName", "DF_LkpPaymentTypes_CreatedDate");
+                        .HasDefaultValueSql("(getdate())");
 
                     b.Property<int?>("DeletedBy")
                         .HasColumnType("int");
@@ -161,8 +130,7 @@ namespace Cartify.Infrastructure.Migrations
                         .HasColumnType("nvarchar(500)");
 
                     b.Property<bool>("IsDeleted")
-                        .HasColumnType("bit")
-                        .HasAnnotation("Relational:DefaultConstraintName", "DF_LkpPaymentTypes_IsDeleted");
+                        .HasColumnType("bit");
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -178,6 +146,58 @@ namespace Cartify.Infrastructure.Migrations
                     b.ToTable("LkpPaymentTypes");
                 });
 
+            modelBuilder.Entity("Cartify.Domain.Models.LkpProductDetailsAttribute", b =>
+                {
+                    b.Property<int>("ProductDetailAttributeId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ProductDetailAttributeId"));
+
+                    b.Property<int>("AttributeId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("MeasureUnitId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("ProductDetailId")
+                        .HasColumnType("int");
+
+                    b.HasKey("ProductDetailAttributeId");
+
+                    b.HasIndex("AttributeId");
+
+                    b.HasIndex("MeasureUnitId");
+
+                    b.HasIndex("ProductDetailId");
+
+                    b.ToTable("LkpProductDetailsAttributes");
+                });
+
+            modelBuilder.Entity("Cartify.Domain.Models.LkpPromotion", b =>
+                {
+                    b.Property<int>("PromotionId")
+                        .HasColumnType("int");
+
+                    b.Property<decimal>("DiscountPercentage")
+                        .HasColumnType("decimal(9, 2)");
+
+                    b.Property<DateTime>("EndDate")
+                        .HasColumnType("datetime");
+
+                    b.Property<string>("PromotionName")
+                        .IsRequired()
+                        .HasMaxLength(200)
+                        .HasColumnType("nvarchar(200)");
+
+                    b.Property<DateTime>("StartDate")
+                        .HasColumnType("datetime");
+
+                    b.HasKey("PromotionId");
+
+                    b.ToTable("LkpPromotions");
+                });
+
             modelBuilder.Entity("Cartify.Domain.Models.LkpShipementMethod", b =>
                 {
                     b.Property<int>("ShipementMethodId")
@@ -189,8 +209,7 @@ namespace Cartify.Infrastructure.Migrations
                     b.Property<DateTime>("CreatedDate")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime")
-                        .HasDefaultValueSql("(getdate())")
-                        .HasAnnotation("Relational:DefaultConstraintName", "DF_LkpShipementMethods_CreatedDate");
+                        .HasDefaultValueSql("(getdate())");
 
                     b.Property<int?>("DeletedBy")
                         .HasColumnType("int");
@@ -210,8 +229,7 @@ namespace Cartify.Infrastructure.Migrations
                         .HasColumnType("decimal(9, 2)");
 
                     b.Property<bool>("IsDeleted")
-                        .HasColumnType("bit")
-                        .HasAnnotation("Relational:DefaultConstraintName", "DF_LkpShipementMethods_IsDeleted");
+                        .HasColumnType("bit");
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -226,68 +244,38 @@ namespace Cartify.Infrastructure.Migrations
                     b.ToTable("LkpShipementMethods");
                 });
 
-            modelBuilder.Entity("Cartify.Domain.Models.LkpUnitMeasuresAttribute", b =>
+            modelBuilder.Entity("Cartify.Domain.Models.PasswordResetCode", b =>
                 {
-                    b.Property<int>("UnitMeasureAttributeId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("AttributeId")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("CreatedBy")
-                        .HasColumnType("int");
-
-                    b.Property<bool>("IsDeleted")
-                        .HasColumnType("bit")
-                        .HasAnnotation("Relational:DefaultConstraintName", "DF_LkpUnitOfMeasuresAttributes_IsDeleted1");
-
-                    b.Property<int>("UnitOfMeasureId")
-                        .HasColumnType("int");
-
-                    b.HasKey("UnitMeasureAttributeId");
-
-                    b.HasIndex("AttributeId");
-
-                    b.HasIndex("UnitOfMeasureId");
-
-                    b.ToTable("LkpUnitMeasuresAttributes");
-                });
-
-            modelBuilder.Entity("Cartify.Domain.Models.LkpUnitOfMeasure", b =>
-                {
-                    b.Property<int>("UnitOfMeasureId")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("CreatedBy")
-                        .HasColumnType("int");
-
-                    b.Property<DateTime>("CreatedDate")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("datetime")
-                        .HasDefaultValueSql("(getdate())")
-                        .HasAnnotation("Relational:DefaultConstraintName", "DF_LkpUnitOfMeasures_CreatedDate");
-
-                    b.Property<int?>("DeletedBy")
                         .HasColumnType("int");
 
-                    b.Property<DateTime?>("DeletedDate")
-                        .HasColumnType("datetime");
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<bool>("IsDeleted")
-                        .HasColumnType("bit")
-                        .HasAnnotation("Relational:DefaultConstraintName", "DF_LkpUnitOfMeasures_IsDeleted");
-
-                    b.Property<string>("Name")
+                    b.Property<string>("Code")
                         .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
+                        .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("UpdatedBy")
-                        .HasColumnType("int");
+                    b.Property<DateTime>("Expiration")
+                        .HasColumnType("datetime2");
 
-                    b.HasKey("UnitOfMeasureId");
+                    b.Property<bool>("IsUsed")
+                        .HasColumnType("bit");
 
-                    b.ToTable("LkpUnitOfMeasures");
+                    b.Property<string>("TblUserId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("UserId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("TblUserId");
+
+                    b.HasIndex(new[] { "UserId" }, "IX_PasswordResetCodes_UserId");
+
+                    b.ToTable("PasswordResetCodes");
                 });
 
             modelBuilder.Entity("Cartify.Domain.Models.TblAddress", b =>
@@ -312,8 +300,7 @@ namespace Cartify.Infrastructure.Migrations
                     b.Property<DateTime>("CreatedDate")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime")
-                        .HasDefaultValueSql("(getdate())")
-                        .HasAnnotation("Relational:DefaultConstraintName", "DF_TblAdresses_CreatedDate");
+                        .HasDefaultValueSql("(getdate())");
 
                     b.Property<int?>("DeletedBy")
                         .HasColumnType("int");
@@ -324,12 +311,10 @@ namespace Cartify.Infrastructure.Migrations
                     b.Property<bool?>("IsDefault")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("bit")
-                        .HasDefaultValue(false)
-                        .HasAnnotation("Relational:DefaultConstraintName", "DF_TblAdresses_IsDefault");
+                        .HasDefaultValue(false);
 
                     b.Property<bool>("IsDeleted")
-                        .HasColumnType("bit")
-                        .HasAnnotation("Relational:DefaultConstraintName", "DF_TblAdresses_IsDeleted_1");
+                        .HasColumnType("bit");
 
                     b.Property<string>("PostalCode")
                         .HasMaxLength(50)
@@ -343,6 +328,9 @@ namespace Cartify.Infrastructure.Migrations
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
 
+                    b.Property<string>("TblUserId")
+                        .HasColumnType("nvarchar(450)");
+
                     b.Property<int?>("UpdatedBy")
                         .HasColumnType("int");
 
@@ -352,7 +340,9 @@ namespace Cartify.Infrastructure.Migrations
                     b.HasKey("AddressId")
                         .HasName("PK_TblAdresses_1");
 
-                    b.HasIndex("UserId");
+                    b.HasIndex("TblUserId");
+
+                    b.HasIndex(new[] { "UserId" }, "IX_TblAddresses_UserId");
 
                     b.ToTable("TblAddresses");
                 });
@@ -377,8 +367,7 @@ namespace Cartify.Infrastructure.Migrations
                     b.Property<DateTime>("CreatedDate")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime")
-                        .HasDefaultValueSql("(getdate())")
-                        .HasAnnotation("Relational:DefaultConstraintName", "DF_TblCategories_CreatedDate");
+                        .HasDefaultValueSql("(getdate())");
 
                     b.Property<int?>("DeletedBy")
                         .HasColumnType("int");
@@ -387,8 +376,7 @@ namespace Cartify.Infrastructure.Migrations
                         .HasColumnType("datetime");
 
                     b.Property<bool>("IsDeleted")
-                        .HasColumnType("bit")
-                        .HasAnnotation("Relational:DefaultConstraintName", "DF_TblCategories_IsDeleted_1");
+                        .HasColumnType("bit");
 
                     b.Property<int?>("UpdatedBy")
                         .HasColumnType("int");
@@ -409,8 +397,7 @@ namespace Cartify.Infrastructure.Migrations
                     b.Property<DateTime>("CreatedDate")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime")
-                        .HasDefaultValueSql("(getdate())")
-                        .HasAnnotation("Relational:DefaultConstraintName", "DF_TblInventory_CreatedDate");
+                        .HasDefaultValueSql("(getdate())");
 
                     b.Property<int?>("DeletedBy")
                         .HasColumnType("int");
@@ -419,8 +406,7 @@ namespace Cartify.Infrastructure.Migrations
                         .HasColumnType("datetime");
 
                     b.Property<bool>("IsDeleted")
-                        .HasColumnType("bit")
-                        .HasAnnotation("Relational:DefaultConstraintName", "DF_TblInventory_IsDeleted_1");
+                        .HasColumnType("bit");
 
                     b.Property<int>("ProductDetailId")
                         .HasColumnType("int");
@@ -439,7 +425,7 @@ namespace Cartify.Infrastructure.Migrations
 
                     b.HasKey("InventoryId");
 
-                    b.HasIndex("ProductDetailId");
+                    b.HasIndex(new[] { "ProductDetailId" }, "IX_TblInventory_ProductDetailId");
 
                     b.ToTable("TblInventory", (string)null);
                 });
@@ -456,8 +442,7 @@ namespace Cartify.Infrastructure.Migrations
                     b.Property<DateTime>("CreatedDate")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime")
-                        .HasDefaultValueSql("(getdate())")
-                        .HasAnnotation("Relational:DefaultConstraintName", "DF_TblOrders_CreatedDate");
+                        .HasDefaultValueSql("(getdate())");
 
                     b.Property<int>("CustomerId")
                         .HasColumnType("int");
@@ -472,14 +457,12 @@ namespace Cartify.Infrastructure.Migrations
                         .HasColumnType("decimal(18, 2)");
 
                     b.Property<bool>("IsDeleted")
-                        .HasColumnType("bit")
-                        .HasAnnotation("Relational:DefaultConstraintName", "DF_TblOrders_IsDeleted_1");
+                        .HasColumnType("bit");
 
                     b.Property<DateTime>("OrderDate")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime")
-                        .HasDefaultValueSql("(getdate())")
-                        .HasAnnotation("Relational:DefaultConstraintName", "DF_TblOrders_OrderDate");
+                        .HasDefaultValueSql("(getdate())");
 
                     b.Property<int>("OrderStatuesId")
                         .HasColumnType("int");
@@ -504,11 +487,11 @@ namespace Cartify.Infrastructure.Migrations
 
                     b.HasKey("OrderId");
 
-                    b.HasIndex("OrderStatuesId");
+                    b.HasIndex(new[] { "OrderStatuesId" }, "IX_TblOrders_OrderStatuesId");
 
-                    b.HasIndex("PaymentTypeId");
+                    b.HasIndex(new[] { "PaymentTypeId" }, "IX_TblOrders_PaymentTypeId");
 
-                    b.HasIndex("ShipmentMethodId");
+                    b.HasIndex(new[] { "ShipmentMethodId" }, "IX_TblOrders_ShipmentMethodId");
 
                     b.ToTable("TblOrders");
                 });
@@ -527,8 +510,7 @@ namespace Cartify.Infrastructure.Migrations
                     b.Property<DateTime>("CreatedDate")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime")
-                        .HasDefaultValueSql("(getdate())")
-                        .HasAnnotation("Relational:DefaultConstraintName", "DF_TblOrderDetails_CreatedDate");
+                        .HasDefaultValueSql("(getdate())");
 
                     b.Property<int?>("DeletedBy")
                         .HasColumnType("int");
@@ -540,8 +522,7 @@ namespace Cartify.Infrastructure.Migrations
                         .HasColumnType("decimal(9, 2)");
 
                     b.Property<bool>("IsDeleted")
-                        .HasColumnType("bit")
-                        .HasAnnotation("Relational:DefaultConstraintName", "DF_TblOrderDetails_IsDeleted_1");
+                        .HasColumnType("bit");
 
                     b.Property<string>("OrderId")
                         .IsRequired()
@@ -562,9 +543,9 @@ namespace Cartify.Infrastructure.Migrations
 
                     b.HasKey("OrderDetailId");
 
-                    b.HasIndex("OrderId");
+                    b.HasIndex(new[] { "OrderId" }, "IX_TblOrderDetails_OrderId");
 
-                    b.HasIndex("ProductId");
+                    b.HasIndex(new[] { "ProductId" }, "IX_TblOrderDetails_ProductId");
 
                     b.ToTable("TblOrderDetails");
                 });
@@ -572,12 +553,6 @@ namespace Cartify.Infrastructure.Migrations
             modelBuilder.Entity("Cartify.Domain.Models.TblProduct", b =>
                 {
                     b.Property<int>("ProductId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ProductId"));
-
-                    b.Property<int>("AttributeId")
                         .HasColumnType("int");
 
                     b.Property<int?>("CreatedBy")
@@ -587,7 +562,7 @@ namespace Cartify.Infrastructure.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime")
                         .HasDefaultValueSql("(getdate())")
-                        .HasAnnotation("Relational:DefaultConstraintName", "DF_TblProducts_CreatedDate");
+                        .HasAnnotation("Relational:DefaultConstraintName", "DF__TblProduc__Creat__18EBB532");
 
                     b.Property<int?>("DeletedBy")
                         .HasColumnType("int");
@@ -596,8 +571,7 @@ namespace Cartify.Infrastructure.Migrations
                         .HasColumnType("datetime");
 
                     b.Property<bool>("IsDeleted")
-                        .HasColumnType("bit")
-                        .HasAnnotation("Relational:DefaultConstraintName", "DF_TblProducts_IsDeleted_1");
+                        .HasColumnType("bit");
 
                     b.Property<string>("ProductDescription")
                         .HasColumnType("nvarchar(max)");
@@ -618,9 +592,9 @@ namespace Cartify.Infrastructure.Migrations
 
                     b.HasKey("ProductId");
 
-                    b.HasIndex("TypeId");
+                    b.HasIndex(new[] { "TypeId" }, "IX_TblProducts_TypeId");
 
-                    b.HasIndex("UserStoreId");
+                    b.HasIndex(new[] { "UserStoreId" }, "IX_TblProducts_UserStoreId");
 
                     b.ToTable("TblProducts");
                 });
@@ -630,20 +604,25 @@ namespace Cartify.Infrastructure.Migrations
                     b.Property<int>("ProductDetailId")
                         .HasColumnType("int");
 
-                    b.Property<int>("AttributeProductId")
-                        .HasColumnType("int");
+                    b.Property<string>("Description")
+                        .HasMaxLength(255)
+                        .HasColumnType("nvarchar(255)");
 
                     b.Property<decimal>("Price")
                         .HasColumnType("decimal(18, 2)");
 
-                    b.Property<int>("UnitMeasureAttributeId")
+                    b.Property<int>("ProductId")
                         .HasColumnType("int");
+
+                    b.Property<string>("SerialNumber")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .IsUnicode(false)
+                        .HasColumnType("varchar(50)");
 
                     b.HasKey("ProductDetailId");
 
-                    b.HasIndex("AttributeProductId");
-
-                    b.HasIndex("UnitMeasureAttributeId");
+                    b.HasIndex("ProductId");
 
                     b.ToTable("TblProductDetails");
                 });
@@ -659,12 +638,11 @@ namespace Cartify.Infrastructure.Migrations
                     b.Property<int>("CreatedBy")
                         .HasColumnType("int");
 
-                    b.Property<string>("ImageUrl")
+                    b.Property<string>("ImageURL")
                         .IsRequired()
                         .HasMaxLength(255)
                         .IsUnicode(false)
-                        .HasColumnType("varchar(255)")
-                        .HasColumnName("ImageURL");
+                        .HasColumnType("varchar(255)");
 
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");
@@ -674,43 +652,23 @@ namespace Cartify.Infrastructure.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("ProductId");
+                    b.HasIndex(new[] { "ProductId" }, "IX_TblProductImages_ProductId");
 
                     b.ToTable("TblProductImages");
                 });
 
-            modelBuilder.Entity("Cartify.Domain.Models.TblProductsDetail", b =>
-                {
-                    b.Property<int>("ProductDetailId")
-                        .HasColumnType("int");
-
-                    b.Property<decimal>("Price")
-                        .HasColumnType("decimal(18, 2)");
-
-                    b.Property<int>("ProductId")
-                        .HasColumnType("int")
-                        .HasColumnName("productId");
-
-                    b.Property<int>("UnitMeasureAttributeId")
-                        .HasColumnType("int");
-
-                    b.HasKey("ProductDetailId");
-
-                    b.HasIndex("UnitMeasureAttributeId");
-
-                    b.ToTable("TblProductsDetails");
-                });
-
             modelBuilder.Entity("Cartify.Domain.Models.TblRefund", b =>
                 {
+                    b.Property<int>("RefundId")
+                        .HasColumnType("int");
+
                     b.Property<int?>("CreatedBy")
                         .HasColumnType("int");
 
                     b.Property<DateTime>("CreatedDate")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime")
-                        .HasDefaultValueSql("(getdate())")
-                        .HasAnnotation("Relational:DefaultConstraintName", "DF_TblRefunds_CreatedDate");
+                        .HasDefaultValueSql("(getdate())");
 
                     b.Property<int?>("DeletedBy")
                         .HasColumnType("int");
@@ -723,17 +681,13 @@ namespace Cartify.Infrastructure.Migrations
                         .HasColumnType("nvarchar(500)");
 
                     b.Property<bool>("IsDeleted")
-                        .HasColumnType("bit")
-                        .HasAnnotation("Relational:DefaultConstraintName", "DF_TblRefunds_IsDeleted_1");
+                        .HasColumnType("bit");
 
                     b.Property<int>("OrderDetailId")
                         .HasColumnType("int");
 
                     b.Property<decimal>("RefundAmount")
                         .HasColumnType("decimal(18, 2)");
-
-                    b.Property<int>("RefundId")
-                        .HasColumnType("int");
 
                     b.Property<string>("RefundStatues")
                         .IsRequired()
@@ -743,7 +697,9 @@ namespace Cartify.Infrastructure.Migrations
                     b.Property<int?>("UpdatedBy")
                         .HasColumnType("int");
 
-                    b.HasIndex("OrderDetailId");
+                    b.HasKey("RefundId");
+
+                    b.HasIndex(new[] { "OrderDetailId" }, "IX_TblRefunds_OrderDetailId");
 
                     b.ToTable("TblRefunds");
                 });
@@ -762,8 +718,7 @@ namespace Cartify.Infrastructure.Migrations
                     b.Property<DateTime>("CreatedDate")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime")
-                        .HasDefaultValueSql("(getdate())")
-                        .HasAnnotation("Relational:DefaultConstraintName", "DF_TblReviews_CreatedDate");
+                        .HasDefaultValueSql("(getdate())");
 
                     b.Property<int?>("DeletedBy")
                         .HasColumnType("int");
@@ -772,8 +727,7 @@ namespace Cartify.Infrastructure.Migrations
                         .HasColumnType("datetime");
 
                     b.Property<bool>("IsDeleted")
-                        .HasColumnType("bit")
-                        .HasAnnotation("Relational:DefaultConstraintName", "DF_TblReviews_IsDeleted_1");
+                        .HasColumnType("bit");
 
                     b.Property<int>("OrderDetailsId")
                         .HasColumnType("int");
@@ -793,7 +747,7 @@ namespace Cartify.Infrastructure.Migrations
 
                     b.HasKey("ReviewId");
 
-                    b.HasIndex("OrderDetailsId");
+                    b.HasIndex(new[] { "OrderDetailsId" }, "IX_TblReviews_OrderDetailsId");
 
                     b.ToTable("TblReviews");
                 });
@@ -812,8 +766,7 @@ namespace Cartify.Infrastructure.Migrations
                     b.Property<DateTime>("CreatedDate")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime")
-                        .HasDefaultValueSql("(getdate())")
-                        .HasAnnotation("Relational:DefaultConstraintName", "DF_TblTypes_CreatedDate");
+                        .HasDefaultValueSql("(getdate())");
 
                     b.Property<int?>("DeletedBy")
                         .HasColumnType("int");
@@ -822,8 +775,7 @@ namespace Cartify.Infrastructure.Migrations
                         .HasColumnType("datetime");
 
                     b.Property<bool>("IsDeleted")
-                        .HasColumnType("bit")
-                        .HasAnnotation("Relational:DefaultConstraintName", "DF_TblTypes_IsDeleted_1");
+                        .HasColumnType("bit");
 
                     b.Property<string>("TypeDescription")
                         .IsRequired()
@@ -840,7 +792,7 @@ namespace Cartify.Infrastructure.Migrations
 
                     b.HasKey("TypeId");
 
-                    b.HasIndex("CategoryId");
+                    b.HasIndex(new[] { "CategoryId" }, "IX_TblTypes_CategoryId");
 
                     b.ToTable("TblTypes");
                 });
@@ -969,8 +921,7 @@ namespace Cartify.Infrastructure.Migrations
                     b.Property<DateTime>("CreatedDate")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime")
-                        .HasDefaultValueSql("(getdate())")
-                        .HasAnnotation("Relational:DefaultConstraintName", "DF_TblUserStore_CreatedDate");
+                        .HasDefaultValueSql("(getdate())");
 
                     b.Property<int?>("DeletedBy")
                         .HasColumnType("int");
@@ -982,12 +933,14 @@ namespace Cartify.Infrastructure.Migrations
                         .HasColumnType("int");
 
                     b.Property<bool>("IsDeleted")
-                        .HasColumnType("bit")
-                        .HasAnnotation("Relational:DefaultConstraintName", "DF_TblUserStore_IsDeleted");
+                        .HasColumnType("bit");
 
                     b.Property<string>("StoreName")
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
+
+                    b.Property<string>("TblUserId")
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<int?>("UpdatedBy")
                         .HasColumnType("int");
@@ -997,11 +950,63 @@ namespace Cartify.Infrastructure.Migrations
 
                     b.HasKey("UserStorId");
 
-                    b.HasIndex("InventoryId");
+                    b.HasIndex("TblUserId");
 
-                    b.HasIndex("UserId");
+                    b.HasIndex(new[] { "InventoryId" }, "IX_TblUserStore_InventoryId");
+
+                    b.HasIndex(new[] { "UserId" }, "IX_TblUserStore_UserId");
 
                     b.ToTable("TblUserStore", (string)null);
+                });
+
+            modelBuilder.Entity("Cartify.Domain.Models.lkpAttribute", b =>
+                {
+                    b.Property<int>("AttributeId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("CreatedBy")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("CreatedDate")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("datetime")
+                        .HasDefaultValueSql("(getdate())");
+
+                    b.Property<int?>("DeletedBy")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime?>("DeletedDate")
+                        .HasColumnType("datetime");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<int?>("UpdatedBy")
+                        .HasColumnType("int");
+
+                    b.HasKey("AttributeId");
+
+                    b.ToTable("lkpAttributes");
+                });
+
+            modelBuilder.Entity("LkpPromotionTblProductDetail", b =>
+                {
+                    b.Property<int>("ProductDetailsProductDetailId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("PromotionsPromotionId")
+                        .HasColumnType("int");
+
+                    b.HasKey("ProductDetailsProductDetailId", "PromotionsPromotionId");
+
+                    b.HasIndex("PromotionsPromotionId");
+
+                    b.ToTable("LkpPromotionTblProductDetail");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
@@ -1160,52 +1165,45 @@ namespace Cartify.Infrastructure.Migrations
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
-            modelBuilder.Entity("Cartify.Domain.Models.LkpAttributesProduct", b =>
+            modelBuilder.Entity("Cartify.Domain.Models.LkpProductDetailsAttribute", b =>
                 {
-                    b.HasOne("Cartify.Domain.Models.LkpAttribute", "Attripute")
-                        .WithMany("LkpAttributesProducts")
-                        .HasForeignKey("AttriputeId")
-                        .IsRequired()
-                        .HasConstraintName("FK_LkpAttributesProducts_lkpAttributes");
-
-                    b.HasOne("Cartify.Domain.Models.TblProduct", "Product")
-                        .WithMany("LkpAttributesProducts")
-                        .HasForeignKey("ProductId")
-                        .IsRequired()
-                        .HasConstraintName("FK_LkpAttributesProducts_TblProducts");
-
-                    b.Navigation("Attripute");
-
-                    b.Navigation("Product");
-                });
-
-            modelBuilder.Entity("Cartify.Domain.Models.LkpUnitMeasuresAttribute", b =>
-                {
-                    b.HasOne("Cartify.Domain.Models.LkpAttribute", "Attribute")
-                        .WithMany("LkpUnitMeasuresAttributes")
+                    b.HasOne("Cartify.Domain.Models.lkpAttribute", "Attribute")
+                        .WithMany("LkpProductDetailsAttributes")
                         .HasForeignKey("AttributeId")
                         .IsRequired()
-                        .HasConstraintName("FK_LkpUnitOfMeasuresAttributes_lkpAttributes");
+                        .HasConstraintName("FK_LkpProductDetailsAttributes_lkpAttributes");
 
-                    b.HasOne("Cartify.Domain.Models.LkpUnitOfMeasure", "UnitOfMeasure")
-                        .WithMany("LkpUnitMeasuresAttributes")
-                        .HasForeignKey("UnitOfMeasureId")
+                    b.HasOne("Cartify.Domain.Models.LkpMeasureUnite", "MeasureUnit")
+                        .WithMany("LkpProductDetailsAttributes")
+                        .HasForeignKey("MeasureUnitId")
                         .IsRequired()
-                        .HasConstraintName("FK_LkpUnitOfMeasuresAttributes_LkpUnitOfMeasures");
+                        .HasConstraintName("FK_LkpProductDetailsAttributes_LkpMeasureUnites");
+
+                    b.HasOne("Cartify.Domain.Models.TblProductDetail", "ProductDetail")
+                        .WithMany("LkpProductDetailsAttributes")
+                        .HasForeignKey("ProductDetailId")
+                        .IsRequired()
+                        .HasConstraintName("FK_LkpProductDetailsAttributes_TblProductDetails");
 
                     b.Navigation("Attribute");
 
-                    b.Navigation("UnitOfMeasure");
+                    b.Navigation("MeasureUnit");
+
+                    b.Navigation("ProductDetail");
+                });
+
+            modelBuilder.Entity("Cartify.Domain.Models.PasswordResetCode", b =>
+                {
+                    b.HasOne("Cartify.Domain.Models.TblUser", null)
+                        .WithMany("PasswordResetCodes")
+                        .HasForeignKey("TblUserId");
                 });
 
             modelBuilder.Entity("Cartify.Domain.Models.TblAddress", b =>
                 {
-                    b.HasOne("Cartify.Domain.Models.TblUser", "User")
+                    b.HasOne("Cartify.Domain.Models.TblUser", null)
                         .WithMany("TblAddresses")
-                        .HasForeignKey("UserId")
-                        .HasConstraintName("FK_TblAdresses_TblUsers");
-
-                    b.Navigation("User");
+                        .HasForeignKey("TblUserId");
                 });
 
             modelBuilder.Entity("Cartify.Domain.Models.TblInventory", b =>
@@ -1214,17 +1212,9 @@ namespace Cartify.Infrastructure.Migrations
                         .WithMany("TblInventories")
                         .HasForeignKey("ProductDetailId")
                         .IsRequired()
-                        .HasConstraintName("FK_TblInventory_TblProductDetails");
-
-                    b.HasOne("Cartify.Domain.Models.TblProductsDetail", "ProductDetailNavigation")
-                        .WithMany("TblInventories")
-                        .HasForeignKey("ProductDetailId")
-                        .IsRequired()
-                        .HasConstraintName("FK_TblInventory_TblProductsDetails");
+                        .HasConstraintName("FK_TblInventory_TblProductDetails1");
 
                     b.Navigation("ProductDetail");
-
-                    b.Navigation("ProductDetailNavigation");
                 });
 
             modelBuilder.Entity("Cartify.Domain.Models.TblOrder", b =>
@@ -1294,21 +1284,13 @@ namespace Cartify.Infrastructure.Migrations
 
             modelBuilder.Entity("Cartify.Domain.Models.TblProductDetail", b =>
                 {
-                    b.HasOne("Cartify.Domain.Models.LkpAttributesProduct", "AttributeProduct")
+                    b.HasOne("Cartify.Domain.Models.TblProduct", "Product")
                         .WithMany("TblProductDetails")
-                        .HasForeignKey("AttributeProductId")
+                        .HasForeignKey("ProductId")
                         .IsRequired()
-                        .HasConstraintName("FK_TblProductDetails_LkpAttributesProducts");
+                        .HasConstraintName("FK_TblProductDetails_TblProducts");
 
-                    b.HasOne("Cartify.Domain.Models.LkpUnitMeasuresAttribute", "UnitMeasureAttribute")
-                        .WithMany("TblProductDetails")
-                        .HasForeignKey("UnitMeasureAttributeId")
-                        .IsRequired()
-                        .HasConstraintName("FK_TblProductDetails_LkpUnitMeasuresAttributes");
-
-                    b.Navigation("AttributeProduct");
-
-                    b.Navigation("UnitMeasureAttribute");
+                    b.Navigation("Product");
                 });
 
             modelBuilder.Entity("Cartify.Domain.Models.TblProductImage", b =>
@@ -1322,29 +1304,10 @@ namespace Cartify.Infrastructure.Migrations
                     b.Navigation("Product");
                 });
 
-            modelBuilder.Entity("Cartify.Domain.Models.TblProductsDetail", b =>
-                {
-                    b.HasOne("Cartify.Domain.Models.TblProduct", "ProductDetail")
-                        .WithOne("TblProductsDetail")
-                        .HasForeignKey("Cartify.Domain.Models.TblProductsDetail", "ProductDetailId")
-                        .IsRequired()
-                        .HasConstraintName("FK_TblProductsDetails_TblProducts");
-
-                    b.HasOne("Cartify.Domain.Models.LkpUnitMeasuresAttribute", "UnitMeasureAttribute")
-                        .WithMany("TblProductsDetails")
-                        .HasForeignKey("UnitMeasureAttributeId")
-                        .IsRequired()
-                        .HasConstraintName("FK_TblProductsDetails_LkpUnitMeasuresAttributes");
-
-                    b.Navigation("ProductDetail");
-
-                    b.Navigation("UnitMeasureAttribute");
-                });
-
             modelBuilder.Entity("Cartify.Domain.Models.TblRefund", b =>
                 {
                     b.HasOne("Cartify.Domain.Models.TblOrderDetail", "OrderDetail")
-                        .WithMany()
+                        .WithMany("TblRefunds")
                         .HasForeignKey("OrderDetailId")
                         .IsRequired()
                         .HasConstraintName("FK_TblRefunds_TblOrderDetails");
@@ -1419,14 +1382,26 @@ namespace Cartify.Infrastructure.Migrations
                         .IsRequired()
                         .HasConstraintName("FK_TblUserStore_TblInventory");
 
-                    b.HasOne("Cartify.Domain.Models.TblUser", "User")
+                    b.HasOne("Cartify.Domain.Models.TblUser", null)
                         .WithMany("TblUserStores")
-                        .HasForeignKey("UserId")
-                        .HasConstraintName("FK_TblUserStore_TblUsers");
+                        .HasForeignKey("TblUserId");
 
                     b.Navigation("Inventory");
+                });
 
-                    b.Navigation("User");
+            modelBuilder.Entity("LkpPromotionTblProductDetail", b =>
+                {
+                    b.HasOne("Cartify.Domain.Models.TblProductDetail", null)
+                        .WithMany()
+                        .HasForeignKey("ProductDetailsProductDetailId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Cartify.Domain.Models.LkpPromotion", null)
+                        .WithMany()
+                        .HasForeignKey("PromotionsPromotionId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -1480,16 +1455,9 @@ namespace Cartify.Infrastructure.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("Cartify.Domain.Models.LkpAttribute", b =>
+            modelBuilder.Entity("Cartify.Domain.Models.LkpMeasureUnite", b =>
                 {
-                    b.Navigation("LkpAttributesProducts");
-
-                    b.Navigation("LkpUnitMeasuresAttributes");
-                });
-
-            modelBuilder.Entity("Cartify.Domain.Models.LkpAttributesProduct", b =>
-                {
-                    b.Navigation("TblProductDetails");
+                    b.Navigation("LkpProductDetailsAttributes");
                 });
 
             modelBuilder.Entity("Cartify.Domain.Models.LkpOrderStatue", b =>
@@ -1505,18 +1473,6 @@ namespace Cartify.Infrastructure.Migrations
             modelBuilder.Entity("Cartify.Domain.Models.LkpShipementMethod", b =>
                 {
                     b.Navigation("TblOrders");
-                });
-
-            modelBuilder.Entity("Cartify.Domain.Models.LkpUnitMeasuresAttribute", b =>
-                {
-                    b.Navigation("TblProductDetails");
-
-                    b.Navigation("TblProductsDetails");
-                });
-
-            modelBuilder.Entity("Cartify.Domain.Models.LkpUnitOfMeasure", b =>
-                {
-                    b.Navigation("LkpUnitMeasuresAttributes");
                 });
 
             modelBuilder.Entity("Cartify.Domain.Models.TblCategory", b =>
@@ -1536,27 +1492,24 @@ namespace Cartify.Infrastructure.Migrations
 
             modelBuilder.Entity("Cartify.Domain.Models.TblOrderDetail", b =>
                 {
+                    b.Navigation("TblRefunds");
+
                     b.Navigation("TblReviews");
                 });
 
             modelBuilder.Entity("Cartify.Domain.Models.TblProduct", b =>
                 {
-                    b.Navigation("LkpAttributesProducts");
-
                     b.Navigation("TblOrderDetails");
 
-                    b.Navigation("TblProductImages");
+                    b.Navigation("TblProductDetails");
 
-                    b.Navigation("TblProductsDetail");
+                    b.Navigation("TblProductImages");
                 });
 
             modelBuilder.Entity("Cartify.Domain.Models.TblProductDetail", b =>
                 {
-                    b.Navigation("TblInventories");
-                });
+                    b.Navigation("LkpProductDetailsAttributes");
 
-            modelBuilder.Entity("Cartify.Domain.Models.TblProductsDetail", b =>
-                {
                     b.Navigation("TblInventories");
                 });
 
@@ -1567,6 +1520,8 @@ namespace Cartify.Infrastructure.Migrations
 
             modelBuilder.Entity("Cartify.Domain.Models.TblUser", b =>
                 {
+                    b.Navigation("PasswordResetCodes");
+
                     b.Navigation("TblAddresses");
 
                     b.Navigation("TblUserStores");
@@ -1575,6 +1530,11 @@ namespace Cartify.Infrastructure.Migrations
             modelBuilder.Entity("Cartify.Domain.Models.TblUserStore", b =>
                 {
                     b.Navigation("TblProducts");
+                });
+
+            modelBuilder.Entity("Cartify.Domain.Models.lkpAttribute", b =>
+                {
+                    b.Navigation("LkpProductDetailsAttributes");
                 });
 #pragma warning restore 612, 618
         }

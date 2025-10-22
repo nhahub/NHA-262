@@ -11,7 +11,7 @@ public partial class TblProductImage
 
     public int ProductId { get; set; }
 
-    public string ImageUrl { get; set; }
+    public string ImageURL { get; set; }
 
     public bool IsDeleted { get; set; }
 

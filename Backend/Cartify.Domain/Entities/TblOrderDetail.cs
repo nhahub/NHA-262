@@ -35,5 +35,7 @@ public partial class TblOrderDetail
 
     public virtual TblProduct Product { get; set; }
 
+    public virtual ICollection<TblRefund> TblRefunds { get; set; } = new List<TblRefund>();
+
     public virtual ICollection<TblReview> TblReviews { get; set; } = new List<TblReview>();
 }

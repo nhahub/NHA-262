@@ -9,15 +9,18 @@ public partial class TblProductDetail
 {
     public int ProductDetailId { get; set; }
 
-    public int UnitMeasureAttributeId { get; set; }
+    public string SerialNumber { get; set; }
 
-    public int AttributeProductId { get; set; }
+    public int ProductId { get; set; }
 
     public decimal Price { get; set; }
 
-    public virtual LkpAttributesProduct AttributeProduct { get; set; }
+    public string Description { get; set; }
+
+    public virtual ICollection<LkpProductDetailsAttribute> LkpProductDetailsAttributes { get; set; } = new List<LkpProductDetailsAttribute>();
+    public virtual ICollection<LkpPromotion> Promotions { get; set; } = new List<LkpPromotion>();
+
+    public virtual TblProduct Product { get; set; }
 
     public virtual ICollection<TblInventory> TblInventories { get; set; } = new List<TblInventory>();
-
-    public virtual LkpUnitMeasuresAttribute UnitMeasureAttribute { get; set; }
 }

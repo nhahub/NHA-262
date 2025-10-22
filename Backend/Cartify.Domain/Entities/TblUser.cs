@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 
 namespace Cartify.Domain.Models;
 
-public partial class TblUser :IdentityUser
+public partial class TblUser : IdentityUser
 {
     public string FirstName { get; set; }
 
@@ -35,5 +35,5 @@ public partial class TblUser :IdentityUser
     public virtual ICollection<TblUserStore> TblUserStores { get; set; } = new List<TblUserStore>();
 
 	public List<RefreshToken>? RefreshTokens { get; set; }
-	public List<PasswordResetCodes>? PasswordResetCodes { get; set; } = new List<PasswordResetCodes>();
+	public List<PasswordResetCode>? PasswordResetCodes { get; set; } = new List<PasswordResetCode>();
 }

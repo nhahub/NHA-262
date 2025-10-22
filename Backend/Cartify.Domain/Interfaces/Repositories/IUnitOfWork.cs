@@ -6,7 +6,7 @@ public interface IUnitOfWork : IDisposable
 {
 	public ICategoryRepository CategoryRepository { get; }
 	public ISubCategoryRepository SubCategoryRepository { get; }
-	public IRepository<PasswordResetCodes> PasswordResetCodess { get; }
+	public IRepository<PasswordResetCode> PasswordResetCodess { get; }
 	public IRepository<TblUserStore> UserStorerepository { get; }
 
 

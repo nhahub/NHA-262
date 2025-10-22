@@ -64,11 +64,11 @@ namespace Cartify.Application.Services.Implementation.Authentication
 			);
 			return new dtoResult { Message = "success", Result = true };
 		}
-		public async Task<PasswordResetCodes> GenerateResetCodeAsync(TblUser user)
+		public async Task<PasswordResetCode> GenerateResetCodeAsync(TblUser user)
 		{
 			var code = Convert.ToInt32(RandomNumberGenerator.GetInt32(100000, 1000000)).ToString();
 
-			var ResetCode =new PasswordResetCodes { Code = code,Expiration=DateTime.UtcNow.AddMinutes(10),IsUsed=false};
+			var ResetCode =new PasswordResetCode { Code = code,Expiration=DateTime.UtcNow.AddMinutes(10),IsUsed=false};
 			user.PasswordResetCodes.Add(ResetCode);
 			await _userService.UpdateAsync(user);
 			return ResetCode;
