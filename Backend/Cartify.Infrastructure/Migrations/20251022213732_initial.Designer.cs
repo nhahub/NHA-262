@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Cartify.Infrastructure.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20251022165005_UpdateDataBase")]
-    partial class UpdateDataBase
+    [Migration("20251022213732_initial")]
+    partial class initial
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -24,6 +24,35 @@ namespace Cartify.Infrastructure.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
+
+            modelBuilder.Entity("Cartify.Domain.Entities.PasswordResetCode", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Code")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("Expiration")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("IsUsed")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("UserId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex(new[] { "UserId" }, "IX_PasswordResetCodes_UserId");
+
+                    b.ToTable("PasswordResetCodes");
+                });
 
             modelBuilder.Entity("Cartify.Domain.Models.LkpMeasureUnite", b =>
                 {
@@ -242,40 +271,6 @@ namespace Cartify.Infrastructure.Migrations
                     b.HasKey("ShipementMethodId");
 
                     b.ToTable("LkpShipementMethods");
-                });
-
-            modelBuilder.Entity("Cartify.Domain.Models.PasswordResetCode", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<string>("Code")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime>("Expiration")
-                        .HasColumnType("datetime2");
-
-                    b.Property<bool>("IsUsed")
-                        .HasColumnType("bit");
-
-                    b.Property<string>("TblUserId")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<string>("UserId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(450)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("TblUserId");
-
-                    b.HasIndex(new[] { "UserId" }, "IX_PasswordResetCodes_UserId");
-
-                    b.ToTable("PasswordResetCodes");
                 });
 
             modelBuilder.Entity("Cartify.Domain.Models.TblAddress", b =>
@@ -1165,6 +1160,17 @@ namespace Cartify.Infrastructure.Migrations
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
+            modelBuilder.Entity("Cartify.Domain.Entities.PasswordResetCode", b =>
+                {
+                    b.HasOne("Cartify.Domain.Models.TblUser", "User")
+                        .WithMany("PasswordResetCodes")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("User");
+                });
+
             modelBuilder.Entity("Cartify.Domain.Models.LkpProductDetailsAttribute", b =>
                 {
                     b.HasOne("Cartify.Domain.Models.lkpAttribute", "Attribute")
@@ -1190,13 +1196,6 @@ namespace Cartify.Infrastructure.Migrations
                     b.Navigation("MeasureUnit");
 
                     b.Navigation("ProductDetail");
-                });
-
-            modelBuilder.Entity("Cartify.Domain.Models.PasswordResetCode", b =>
-                {
-                    b.HasOne("Cartify.Domain.Models.TblUser", null)
-                        .WithMany("PasswordResetCodes")
-                        .HasForeignKey("TblUserId");
                 });
 
             modelBuilder.Entity("Cartify.Domain.Models.TblAddress", b =>
@@ -1341,9 +1340,6 @@ namespace Cartify.Infrastructure.Migrations
                 {
                     b.OwnsMany("Cartify.Domain.Entities.RefreshToken", "RefreshTokens", b1 =>
                         {
-                            b1.Property<string>("TblUserId")
-                                .HasColumnType("nvarchar(450)");
-
                             b1.Property<int>("Id")
                                 .ValueGeneratedOnAdd()
                                 .HasColumnType("int");
@@ -1363,12 +1359,18 @@ namespace Cartify.Infrastructure.Migrations
                                 .IsRequired()
                                 .HasColumnType("nvarchar(max)");
 
-                            b1.HasKey("TblUserId", "Id");
+                            b1.Property<string>("UserId")
+                                .IsRequired()
+                                .HasColumnType("nvarchar(450)");
+
+                            b1.HasKey("Id");
+
+                            b1.HasIndex("UserId");
 
                             b1.ToTable("RefreshToken");
 
                             b1.WithOwner()
-                                .HasForeignKey("TblUserId");
+                                .HasForeignKey("UserId");
                         });
 
                     b.Navigation("RefreshTokens");
@@ -1379,7 +1381,6 @@ namespace Cartify.Infrastructure.Migrations
                     b.HasOne("Cartify.Domain.Models.TblInventory", "Inventory")
                         .WithMany("TblUserStores")
                         .HasForeignKey("InventoryId")
-                        .IsRequired()
                         .HasConstraintName("FK_TblUserStore_TblInventory");
 
                     b.HasOne("Cartify.Domain.Models.TblUser", null)

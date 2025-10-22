@@ -5,11 +5,13 @@ $(document).ready(function () {
     title(1);
 
     // ---------- Datepicker ----------
-    $("#datepicker").datepicker({
-        changeMonth: true,
-        changeYear: true,
-        yearRange: "-100:+0",
-    });
+$("#datepicker").datepicker({
+    changeMonth: true,
+    changeYear: true,
+    yearRange: "-100:+0",
+    maxDate: "-18Y" // يمنع اختيار تاريخ ميلاد أقل من 18 سنة
+});
+
 
     // ---------- Telephone ----------
     var input = $("#telephone");
