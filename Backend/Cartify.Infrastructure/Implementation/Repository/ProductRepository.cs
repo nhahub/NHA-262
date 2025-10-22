@@ -2,39 +2,44 @@
 using Cartify.Domain.Models;
 using Cartify.Infrastructure.Persistence;
 using Microsoft.EntityFrameworkCore;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace Cartify.Infrastructure.Implementation.Repository
 {
-    public class ProductRepository :Repository<TblProduct> , IProductRepository
+    public class ProductRepository : Repository<TblProduct>, IProductRepository
     {
         private readonly AppDbContext _context;
-        public ProductRepository(AppDbContext context):base(context) => _context = context;
 
+        public ProductRepository(AppDbContext context) : base(context)
+        {
+            _context = context;
+        }
+
+        // جلب منتج باستخدام الـ ProductId
+        public async Task<TblProduct?> GetProductByIdAsync(int productId)
+        {
+            return await _context.TblProducts
+                .Include(p => p.Type)
+                .Include(p => p.Type.Category)
+                .Include(p => p.TblProductImages)
+                .AsNoTracking()
+                .FirstOrDefaultAsync(p => p.ProductId == productId);
+        }
+
+        // جلب كل المنتجات
         public async Task<IEnumerable<TblProduct>> GetAllProductsAsync()
         {
             return await _context.TblProducts
-            .Include(p => p.Type)
-            .Include(p => p.Type.Category)
-            .Include(p => p.TblProductImages)
-            .AsNoTracking()
-            .ToHashSetAsync();
-        }
-
-        public async Task<TblProduct?> GetProductDetailsAsync(int id)
-        {
-            return await _context.TblProducts
+                .Include(p => p.Type)
+                .Include(p => p.Type.Category)
+                .Include(p => p.TblProductImages)
                 .AsNoTracking()
-                .Include(p => p.TblProductDetails) 
-                .FirstOrDefaultAsync(p => p.ProductId == id);
+                .ToListAsync();
         }
 
-
-
+        // جلب المنتجات حسب CategoryId
         public async Task<IEnumerable<TblProduct>> GetProductsByCategoryIdAsync(int categoryId)
         {
             return await _context.TblProducts
@@ -42,17 +47,18 @@ namespace Cartify.Infrastructure.Implementation.Repository
                 .Include(p => p.TblProductImages)
                 .Where(p => p.Type.CategoryId == categoryId)
                 .AsNoTracking()
-                .ToHashSetAsync();
+                .ToListAsync();
         }
 
-
+        // جلب المنتجات حسب SubCategoryId
         public async Task<IEnumerable<TblProduct>> GetProductsBySubCategoryIdAsync(int subCategoryId)
         {
             return await _context.TblProducts
-               .Include(p => p.TypeId == subCategoryId)
-               .Include(p => p.TblProductImages)
-               .AsNoTracking()
-               .ToHashSetAsync();
+                .Include(p => p.Type)
+                .Include(p => p.TblProductImages)
+                .Where(p => p.Type.CategoryId == subCategoryId)
+                .AsNoTracking()
+                .ToListAsync();
         }
     }
 }
