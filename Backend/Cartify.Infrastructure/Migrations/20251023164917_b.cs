@@ -11,7 +11,7 @@ namespace Cartify.Infrastructure.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.AlterColumn<int>(
-                name: "InventoryId",
+                name: "CategoryId",
                 table: "TblUserStore",
                 type: "int",
                 nullable: true,
@@ -23,7 +23,7 @@ namespace Cartify.Infrastructure.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.AlterColumn<int>(
-                name: "InventoryId",
+                name: "CategoryId",
                 table: "TblUserStore",
                 type: "int",
                 nullable: false,
