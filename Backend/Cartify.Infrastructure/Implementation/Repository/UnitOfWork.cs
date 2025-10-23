@@ -11,19 +11,18 @@ namespace Cartify.Infrastructure.Implementation.Services
 		private readonly AppDbContext _context;
 		public ICategoryRepository CategoryRepository { get; }
 		public ISubCategoryRepository SubCategoryRepository { get; }
-
 		public IProductRepository ProductRepository { get; }
-
 		public IRepository<PasswordResetCode> PasswordResetCodess { get; }
-
-		public IRepository<TblUserStore> UserStorerepository { get; }
-		public UnitOfWork(AppDbContext context, ISubCategoryRepository SubCategoryRepository, ICategoryRepository CategoryRepository, IProductRepository ProductRepository, IRepository<PasswordResetCode> passwordResetCodess)
+        public IProfileRepository ProfileRepository { get; }
+        public IRepository<TblUserStore> UserStorerepository { get; }
+		public UnitOfWork(AppDbContext context, ISubCategoryRepository SubCategoryRepository, ICategoryRepository CategoryRepository, IProductRepository ProductRepository, IRepository<PasswordResetCode> passwordResetCodess, IProfileRepository ProfileRepository)
 		{
 			_context = context;
 			this.CategoryRepository = CategoryRepository;
 			this.SubCategoryRepository = SubCategoryRepository;
 			this.ProductRepository = ProductRepository;
-			PasswordResetCodess = passwordResetCodess;
+			this.PasswordResetCodess = passwordResetCodess;
+			this.ProfileRepository = ProfileRepository;
 		}
 
 		public void Dispose()

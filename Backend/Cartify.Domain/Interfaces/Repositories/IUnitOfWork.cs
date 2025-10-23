@@ -8,12 +8,8 @@ public interface IUnitOfWork : IDisposable
 	public ISubCategoryRepository SubCategoryRepository { get; }
 	public IRepository<PasswordResetCode> PasswordResetCodess { get; }
 	public IRepository<TblUserStore> UserStorerepository { get; }
-
-
 	public IProductRepository ProductRepository { get; }
-
-
-
+    public IProfileRepository ProfileRepository { get; }
 
 
     Task<int> SaveChanges();

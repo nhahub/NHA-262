@@ -15,6 +15,7 @@ public partial class TblUser : IdentityUser
     public string LastName { get; set; }
 
     public DateOnly? BirthDate { get; set; }
+    public string ImgUrl { get; set; }
 
     public bool? Gender { get; set; }
 

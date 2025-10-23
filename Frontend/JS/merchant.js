@@ -686,6 +686,4 @@ $(document).ready(function () {
   });
 // -------------------- [Logout Handler] --------------------
 
-
-
 });
