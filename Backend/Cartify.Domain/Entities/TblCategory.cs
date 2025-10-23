@@ -16,7 +16,7 @@ public partial class TblCategory
     public int? CreatedBy { get; set; }
 
     public bool IsDeleted { get; set; }
-
+    public string ImageUrl { get; set; }
     public DateTime CreatedDate { get; set; }
 
     public int? UpdatedBy { get; set; }

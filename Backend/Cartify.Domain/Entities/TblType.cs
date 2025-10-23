@@ -14,6 +14,7 @@ public partial class TblType
     public string TypeName { get; set; }
 
     public string TypeDescription { get; set; }
+    public string ImageUrl { get; set; }
 
     public int? CreatedBy { get; set; }
 
