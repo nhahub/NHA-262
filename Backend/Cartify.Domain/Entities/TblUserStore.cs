@@ -15,7 +15,7 @@ public partial class TblUserStore
 
     public int? InventoryId { get; set; }
 
-    public int CategoryId { get; set; }
+    public int? CategoryId { get; set; }
 
     public int? CreatedBy { get; set; }
 

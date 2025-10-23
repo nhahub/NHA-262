@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Cartify.Infrastructure.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20251022221554_hmmm")]
-    partial class hmmm
+    [Migration("20251023164739_a")]
+    partial class a
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -369,6 +369,9 @@ namespace Cartify.Infrastructure.Migrations
 
                     b.Property<DateTime?>("DeletedDate")
                         .HasColumnType("datetime");
+
+                    b.Property<string>("ImageUrl")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");
@@ -768,6 +771,9 @@ namespace Cartify.Infrastructure.Migrations
 
                     b.Property<DateTime?>("DeletedDate")
                         .HasColumnType("datetime");
+
+                    b.Property<string>("ImageUrl")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");
