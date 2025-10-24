@@ -22,8 +22,4 @@
     <ProjectReference Include="..\Cartify.Domain\Cartify.Domain.csproj" PrivateAssets="all" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Migrations\" />
-  </ItemGroup>
-
 </Project>
