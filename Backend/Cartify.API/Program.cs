@@ -2,6 +2,7 @@ using Cartify.Application.Mappings;
 using Cartify.Application.Services.Implementation;
 using Cartify.Application.Services.Implementation.Authentication;
 using Cartify.Application.Services.Implementation.Category;
+using Cartify.Application.Services.Implementation.Profile;
 using Cartify.Application.Services.Interfaces;
 using Cartify.Application.Services.Interfaces.Authentication;
 using Cartify.Domain.Interfaces.Repositories;
@@ -65,7 +66,11 @@ namespace Cartify.API
 			builder.Services.AddScoped<IEmailSender,EmailSender>();
 			builder.Services.AddScoped<IResetPassword, ResetPassword>();
 			builder.Services.AddScoped<ICreateMerchantProfile, CreateMerchantProfile>();
-			builder.Services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
+
+            builder.Services.AddScoped<IProfileRepository, ProfileRepository>();
+            builder.Services.AddScoped<IProfileServices, ProfileServices>();
+
+            builder.Services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
 
 			// Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
 
