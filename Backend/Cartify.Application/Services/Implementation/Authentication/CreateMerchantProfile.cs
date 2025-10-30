@@ -29,7 +29,7 @@ namespace Cartify.Application.Services.Implementation.Authentication
 			var userStore=new TblUserStore { StoreName = storeName };
 			var user =await _userService.GetByEmail(Email);
 			await _userService.AddRoleToUserAsync(user, "Merchant");
-			user.TblUserStores.Add(userStore);
+			user.StoresPurchasedFrom.Add(userStore);
 			await _userService.UpdateAsync(user);
 			var roles=(await _userService.GetRolesAsync(user)).ToList();
 			dtoTokenResult Tokens = new dtoTokenResult();
