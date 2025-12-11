@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Cartify is an all-in-one eCommerce platform to create, customize, and grow your online store with ease. Manage products, accept secure payments, and scale your business.">
+    <link rel="icon" href="Icons/favicon.ico" type="image/x-icon">
+    <title>Carify</title>
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="bootstrap-5.3.8-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.min.css">
+
+    <!-- Dropdown custom design -->
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/4.5.6/css/ionicons.min.css">
+    <link rel="stylesheet" href="CSS/dropdown.css">
+
+    <!-- General styles -->
+    <link rel="stylesheet" href="CSS/style.css">
+    <link rel="stylesheet" href="CSS/buttons.css">
+    <link rel="stylesheet" href="CSS/navigation.css">
+    <link rel="stylesheet" href="CSS/index.css">
+
+
+
+</head>
+
+<body class="index-page">
+    <nav class="navbar bg-body-tertiary">
+  <div class="container-fluid d-flex align-items-center justify-content-between flex-wrap">
+
+    <!-- Logo ثابت -->
+    <div class="navbar-logo">
+      <a class="navbar-brand" href="index.html" id="cartifyLogo">
+        <img src="Icons/Untitled-ن2.png" alt="Cartify">
+      </a>
+    </div>
+
+
+    <!-- Center: search -->
+    <div class="navbar-center" style="flex:1; display:flex; justify-content:center;">
+      <form class="d-flex" role="search" style="width: 100%; max-width: 400px;">
+        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn gradient-btn" type="submit">Search</button>
+      </form>
+    </div>
+
+    <!-- Right side -->
+    <div class="navbar-right d-flex align-items-center gap-1">
+ 
+      <a href="login.html" class="nav-link" id="login">Login</a>
+      <a href="register.html" class="btn gradient-btn ms-2" id="register">Start for free</a>
+      <button type="button" class="menu-toggle-btn" id="menuToggle" aria-label="Open navigation menu">
+        <span class="hamburger">
+          <span></span>
+          <span></span>
+          <span></span>
+        </span>
+      </button>
+      <div class="btn-group ms-3" id="drop">
+        <a href="#" class="btn-img img dropdown-toggle rounded-circle" data-bs-toggle="dropdown"
+           aria-expanded="false" style="background-image: url('images/user.png'); width:50px; height:50px;">
+        </a>
+        <div class="dropdown-menu dropdown-menu-end me-3">
+          <a class="dropdown-item d-flex align-items-center" href="#">
+            <div class="icon d-flex align-items-center justify-content-center me-3">
+              <span class="ion-ios-settings"></span>
+            </div>
+            Settings
+          </a>
+          <a class="dropdown-item d-flex align-items-center" id="logout" href="#">
+            <div class="icon d-flex align-items-center justify-content-center me-3">
+              <span class="ion-ios-power"></span>
+            </div>
+            Log Out
+          </a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</nav>
+
+    <!-- ================= NAVIGATION MENU (in header) ================= -->
+    <div class="nav-menu" id="navMenu">
+        <div class="nav-menu-header">
+            <h3>All Pages</h3>
+            <button class="menu-close-btn" id="menuClose" aria-label="Close menu">
+                <i class="bi bi-x-lg"></i>
+            </button>
+        </div>
+        
+        <div class="nav-menu-content">
+            <!-- User Pages -->
+            <div class="nav-menu-group">
+                <h4 class="nav-menu-group-title">User Pages</h4>
+                <div class="nav-buttons">
+                    <a href="login.html" class="nav-btn">Login</a>
+                    <a href="register.html" class="nav-btn">Register</a>
+                    <a href="profile.html" class="nav-btn">Profile</a>
+                </div>
+            </div>
+
+            <!-- Shopping Pages -->
+            <div class="nav-menu-group">
+                <h4 class="nav-menu-group-title">Shopping</h4>
+                <div class="nav-buttons">
+                    <a href="Products.html" class="nav-btn">Products</a>
+                    <a href="ProductsDetails.html" class="nav-btn">Product Details</a>
+                    <a href="Category.html" class="nav-btn">Categories</a>
+                    <a href="Sub-Category.html" class="nav-btn">Sub Categories</a>
+                </div>
+            </div>
+
+            <!-- Cart & Orders -->
+            <div class="nav-menu-group">
+                <h4 class="nav-menu-group-title">Cart & Orders</h4>
+                <div class="nav-buttons">
+                    <a href="cartpage.html" class="nav-btn">Cart</a>
+                    <a href="Checkout.html" class="nav-btn">Checkout</a>
+                    <a href="ordertracking.html" class="nav-btn">Order Tracking</a>
+                </div>
+            </div>
+
+            <!-- Wishlist & Notifications -->
+            <div class="nav-menu-group">
+                <h4 class="nav-menu-group-title">Account</h4>
+                <div class="nav-buttons">
+                    <a href="wishlist.html" class="nav-btn">Wishlist</a>
+                </div>
+            </div>
+
+            <!-- Support & Help -->
+            <div class="nav-menu-group">
+                <h4 class="nav-menu-group-title">Support</h4>
+                <div class="nav-buttons">
+                    <a href="help_page.html" class="nav-btn">Help & Support</a>
+                </div>
+            </div>
+
+            <!-- Merchant Pages -->
+            <div class="nav-menu-group">
+                <h4 class="nav-menu-group-title">Merchant</h4>
+                <div class="nav-buttons">
+                    <a href="merchant-signup.html" class="nav-btn">Merchant Signup</a>
+                    <a href="merchhome.html" class="nav-btn">Merchant Home</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ================= MAIN CONTENT ================= -->
+    <!-- Hero Video Section -->
+    <section class="hero-video-section">
+        <div class="hero-video-container">
+            <video class="hero-video" autoplay muted loop playsinline>
+                <source src="videos/one.mp4" type="video/mp4">
+            </video>
+            <div class="hero-overlay">
+                <div class="hero-content">
+                    <h1 class="hero-title">Welcome to Cartify</h1>
+                    <p class="hero-subtitle">Your all-in-one eCommerce platform to create, customize, and grow your online store with ease</p>
+                    <a href="register.html" class="hero-cta-btn">Get Started</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Promotional Videos Section -->
+    <section class="promotional-section">
+        <div class="container-promo">
+            <h2 class="section-title">Our Features</h2>
+            <p class="section-subtitle">Discover what makes Cartify the perfect choice for your online business</p>
+            
+            <div class="videos-grid">
+                <div class="video-card">
+                    <div class="video-wrapper">
+                        <video class="promo-video" autoplay muted loop playsinline>
+                            <source src="videos/two.mp4" type="video/mp4">
+                        </video>
+                    </div>
+                    <div class="video-content">
+                        <h3 class="video-title">Easy Management</h3>
+                        <p class="video-description">Manage your products, inventory, and orders with our intuitive dashboard.</p>
+                    </div>
+                </div>
+                
+                <div class="video-card">
+                    <div class="video-wrapper">
+                        <video class="promo-video" autoplay muted loop playsinline>
+                            <source src="videos/three.mp4" type="video/mp4">
+                        </video>
+                    </div>
+                    <div class="video-content">
+                        <h3 class="video-title">Secure Payments</h3>
+                        <p class="video-description">Accept secure payments from customers worldwide with multiple payment options.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Partners/Sponsors Section -->
+    <section class="partners-section">
+        <div class="partners-container">
+            <div class="partner-card">
+                <div class="partner-logo-wrapper">
+                    <div class="partner-logo-circle">
+                        <div class="partner-logo-text">
+                            <span class="logo-main">CARTIFY</span>
+                            <span class="logo-sub">STORE</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="partner-content">
+                    <p class="partner-label">Lead Partner</p>
+                    <p class="partner-description">Complete eCommerce Platform • Product Management • Shopping Cart • Order Tracking • User Profiles • Wishlist • Secure Checkout • Payment Integration</p>
+                </div>
+            </div>
+            
+            <div class="partner-card">
+                <div class="partner-logo-wrapper">
+                    <div class="partner-icon-wrapper">
+                        <i class="bi bi-shop"></i>
+                    </div>
+                </div>
+                <div class="partner-content">
+                    <p class="partner-label">Official Partner</p>
+                    <p class="partner-description">Categories & Sub-Categories • Product Details • Search & Filter • Notifications • Help & Support • Merchant Dashboard • Responsive Design • Modern UI/UX</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Menu Overlay -->
+    <div class="menu-overlay" id="menuOverlay"></div>
+    
+    <script src="bootstrap-5.3.8-dist/js/bootstrap.bundle.min.js"></script>
+    <script src="JS/jquery.js"></script>
+    <script src="JS/Auth.js"></script>
+    <script src="JS/intdex.js"></script>
+    <script>
+        // Menu Toggle Functionality
+        const menuToggle = document.getElementById('menuToggle');
+        const menuClose = document.getElementById('menuClose');
+        const navMenu = document.getElementById('navMenu');
+        const menuOverlay = document.getElementById('menuOverlay');
+
+        menuToggle.addEventListener('click', () => {
+            navMenu.classList.add('active');
+            menuOverlay.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        });
+
+        function closeMenu() {
+            navMenu.classList.remove('active');
+            menuOverlay.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        menuClose.addEventListener('click', closeMenu);
+        menuOverlay.addEventListener('click', closeMenu);
+
+        // Close menu on escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && navMenu.classList.contains('active')) {
+                closeMenu();
+            }
+        });
+    </script>
+</body>
+
+</html>

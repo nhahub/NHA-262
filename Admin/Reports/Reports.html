@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Reports & Analytics</title>
+  <link rel="stylesheet" href="reports.css">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <!-- Sidebar -->
+  <aside class="sidebar">
+    <nav class="sidebar-nav">
+      <ul>
+        <li>
+        <a href="#" class="logo" style="text-decoration: none;">
+        
+        <span class="title">Cartify Admin</span>
+        </a>
+        </li>
+        <li class="nav-item"><a class="nav-link" href="/Dashboard/dashboard.html"><i class="fas fa-gauge"></i><span>Dashboard</span></a></li>
+        <li class="nav-item "><a class="nav-link" href="/User Managment/User.html"><i class="fas fa-users"></i><span>User Management</span></a></li>
+        <li class="nav-item "><a class="nav-link" href="Store.html"><i class="fas fa-store"></i><span>Store Management</span></a></li>
+        <li class="nav-item"><a class="nav-link" href="/Product/Prodcut.html"><i class="fas fa-box-open"></i><span>Product Management</span></a></li>
+        <li class="nav-item"><a class="nav-link" href="/Order/Order.html"><i class="fas fa-cart-shopping"></i><span>Order Management</span></a></li>
+        <li class="nav-item"><a class="nav-link" href="/Category/Category.html"><i class="fas fa-folder-tree"></i><span>Category Management</span></a></li>
+        <li class="nav-item active"><a class="nav-link" href="/Reports/Reports.html"><i class="fas fa-chart-pie"></i><span>Reports & Analytics</span></a></li>
+        <li class="nav-item"><a class="nav-link" href="#"><i class="fas fa-gear"></i><span>Settings</span></a></li>
+        <li class="nav-item"><a class="nav-link" href="#"><i class="fas fa-right-from-bracket"></i><span>Logout</span></a></li>
+      </ul>
+    </nav>
+  </aside>
+
+  <!-- Main -->
+  <main class="main">
+    <div class="top-bar">
+      <h1>Reports & Analytics</h1>
+      <div class="filters">
+        <select id="rangeSelect">
+          <option value="7d">Last 7 days</option>
+          <option value="30d" selected>Last 30 days</option>
+          <option value="90d">Last 90 days</option>
+        </select>
+        <button id="exportBtn" class="btn btn-export"><i class="fas fa-file-export"></i> Export</button>
+      </div>
+    </div>
+
+    <!-- KPI Cards -->
+    <section class="kpis">
+      <div class="kpi">
+        <div class="kpi-icon revenue"><i class="fas fa-sack-dollar"></i></div>
+        <div class="kpi-content">
+          <div class="kpi-title">Revenue</div>
+          <div class="kpi-value" id="kpiRevenue">$42,350</div>
+          <div class="kpi-trend up"><i class="fas fa-arrow-up"></i> 12.4%</div>
+        </div>
+      </div>
+      <div class="kpi">
+        <div class="kpi-icon orders"><i class="fas fa-cart-shopping"></i></div>
+        <div class="kpi-content">
+          <div class="kpi-title">Orders</div>
+          <div class="kpi-value" id="kpiOrders">1,284</div>
+          <div class="kpi-trend up"><i class="fas fa-arrow-up"></i> 5.2%</div>
+        </div>
+      </div>
+      <div class="kpi">
+        <div class="kpi-icon customers"><i class="fas fa-users"></i></div>
+        <div class="kpi-content">
+          <div class="kpi-title">Customers</div>
+          <div class="kpi-value" id="kpiCustomers">892</div>
+          <div class="kpi-trend down"><i class="fas fa-arrow-down"></i> 1.1%</div>
+        </div>
+      </div>
+      <div class="kpi">
+        <div class="kpi-icon conversion"><i class="fas fa-percent"></i></div>
+        <div class="kpi-content">
+          <div class="kpi-title">Conversion</div>
+          <div class="kpi-value" id="kpiConversion">2.74%</div>
+          <div class="kpi-trend up"><i class="fas fa-arrow-up"></i> 0.3%</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Charts Grid -->
+    <section class="charts">
+      <div class="card">
+        <div class="card-header"><h2>Revenue Trend</h2></div>
+        <canvas id="revenueChart" height="120"></canvas>
+      </div>
+      <div class="card">
+        <div class="card-header"><h2>Orders by Status</h2></div>
+        <canvas id="statusChart" height="120"></canvas>
+      </div>
+      <div class="card">
+        <div class="card-header"><h2>Top Categories</h2></div>
+        <canvas id="categoriesChart" height="120"></canvas>
+      </div>
+      <div class="card">
+        <div class="card-header"><h2>Geography</h2></div>
+        <canvas id="geoChart" height="120"></canvas>
+      </div>
+    </section>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="reports.js"></script>
+</body>
+</html>
+

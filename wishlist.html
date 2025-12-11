@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Wishlist</title>
+  <link rel="stylesheet" href="CSS/wishlist.css">
+  <link rel="stylesheet" href="CSS/navigation.css">
+  <script src="https://kit.fontawesome.com/a2e0f1f0a2.js" crossorigin="anonymous"></script>
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="header">
+    <div class="PageIcon">
+      <a href="index.html"><img src="Icons/Untitled-ن2.png" alt="Logo"></a>
+    </div>
+    <div class="middle">
+      <form class="d-flex search-form" role="search" style="width: 100%; max-width: 400px;">
+        <input type="text" name="search" id="searchBar" placeholder="Search..." aria-label="Search">
+        <button class="btn gradient-btn" type="submit">Search</button>
+      </form>
+    </div>
+
+    <div class="Login">
+      <button type="button" class="menu-toggle-btn" id="menuToggle" aria-label="Open navigation menu">
+        <span class="hamburger">
+          <span></span>
+          <span></span>
+          <span></span>
+        </span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Wishlist -->
+  <main class="container">
+    <div class="wishlist-header">
+      <h2 class="wishlist-title">
+        My Wishlist <span class="wishlist-count">0</span>
+      </h2>
+    </div>
+
+    <div class="wishlist-grid" id="wishlistGrid"></div>
+
+    <!-- Empty State -->
+    <div class="empty-wishlist" id="emptyWishlist">
+      <i class="fas fa-heart-broken"></i>
+      <h3>Your wishlist is empty</h3>
+      <p>Start adding products to your wishlist and they’ll appear here.</p>
+      <a href="index.html" class="continue-shopping">Continue Shopping</a>
+    </div>
+  </main>
+
+  <!-- Notification -->
+  <div id="notification" class="notification"></div>
+
+  <!-- Navigation Menu -->
+  <section class="navigation-section">
+    <div class="container">
+      <div class="nav-menu" id="navMenu">
+        <div class="nav-menu-header">
+          <h3>All Pages</h3>
+          <button class="menu-close-btn" id="menuClose" aria-label="Close menu">
+            <i class="bi bi-x-lg"></i>
+          </button>
+        </div>
+        
+        <div class="nav-menu-content">
+          <!-- User Pages -->
+          <div class="nav-menu-group">
+            <h4 class="nav-menu-group-title">User Pages</h4>
+            <div class="nav-buttons">
+              <a href="login.html" class="nav-btn">Login</a>
+              <a href="register.html" class="nav-btn">Register</a>
+              <a href="profile.html" class="nav-btn">Profile</a>
+            </div>
+          </div>
+
+          <!-- Shopping Pages -->
+          <div class="nav-menu-group">
+            <h4 class="nav-menu-group-title">Shopping</h4>
+            <div class="nav-buttons">
+              <a href="Products.html" class="nav-btn">Products</a>
+              <a href="ProductsDetails.html" class="nav-btn">Product Details</a>
+              <a href="Category.html" class="nav-btn">Categories</a>
+              <a href="Sub-Category.html" class="nav-btn">Sub Categories</a>
+            </div>
+          </div>
+
+          <!-- Cart & Orders -->
+          <div class="nav-menu-group">
+            <h4 class="nav-menu-group-title">Cart & Orders</h4>
+            <div class="nav-buttons">
+              <a href="cartpage.html" class="nav-btn">Cart</a>
+              <a href="Checkout.html" class="nav-btn">Checkout</a>
+              <a href="ordertracking.html" class="nav-btn">Order Tracking</a>
+            </div>
+          </div>
+
+          <!-- Wishlist & Notifications -->
+          <div class="nav-menu-group">
+            <h4 class="nav-menu-group-title">Account</h4>
+            <div class="nav-buttons">
+              <a href="wishlist.html" class="nav-btn">Wishlist</a>
+            </div>
+          </div>
+
+          <!-- Support & Help -->
+          <div class="nav-menu-group">
+            <h4 class="nav-menu-group-title">Support</h4>
+            <div class="nav-buttons">
+              <a href="help_page.html" class="nav-btn">Help & Support</a>
+            </div>
+          </div>
+
+          <!-- Merchant Pages -->
+          <div class="nav-menu-group">
+            <h4 class="nav-menu-group-title">Merchant</h4>
+            <div class="nav-buttons">
+              <a href="merchant-signup.html" class="nav-btn">Merchant Signup</a>
+              <a href="merchhome.html" class="nav-btn">Merchant Home</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Menu Overlay -->
+  <div class="menu-overlay" id="menuOverlay"></div>
+
+  <script src="JS/wishlist.js"></script>
+  <script src="JS/menu.js"></script>
+</body>
+</html>

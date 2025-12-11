@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>📦 Product Management</title>
+  <link rel="stylesheet" href="product.css">
+   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
+</head>
+<body>
+   <aside class="sidebar">
+    <nav class="sidebar-nav">
+      <ul>
+        <li>
+        <a href="#" class="logo" style="text-decoration: none;">
+        
+        <span class="title">Cartify Admin</span>
+        </a>
+        </li>
+        <li class="nav-item active"><a class="nav-link" href="/Dashboard/dashboard.html"><i class="fas fa-gauge"></i><span>Dashboard</span></a></li>
+        <li class="nav-item "><a class="nav-link" href="/User Managment/User.html"><i class="fas fa-users"></i><span>User Management</span></a></li>
+        <li class="nav-item"><a class="nav-link" href="Store.html"><i class="fas fa-store"></i><span>Store Management</span></a></li>
+        <li class="nav-item"><a class="nav-link" href="/Product/Prodcut.html"><i class="fas fa-box-open"></i><span>Product Management</span></a></li>
+        <li class="nav-item"><a class="nav-link" href="/Order/Order.html"><i class="fas fa-cart-shopping"></i><span>Order Management</span></a></li>
+        <li class="nav-item"><a class="nav-link" href="/Category/Category.html"><i class="fas fa-folder-tree"></i><span>Category Management</span></a></li>
+        <li class="nav-item"><a class="nav-link" href="/Reports/Reports.html"><i class="fas fa-chart-pie"></i><span>Reports & Analytics</span></a></li>
+        <li class="nav-item"><a class="nav-link" href="#"><i class="fas fa-gear"></i><span>Settings</span></a></li>
+        <li class="nav-item"><a class="nav-link" href="#"><i class="fas fa-right-from-bracket"></i><span>Logout</span></a></li>
+      </ul>
+    </nav>
+  </aside>
+
+  <div class="main">
+    <div class="top-bar">
+      <h1 id="page-title">Product Management</h1>
+      <button class="btn btn-add">➕ Add Product</button>
+    </div>
+<div class="card">
+    <table id="product-table">
+      <thead>
+        <tr>
+          <th>Product ID</th>
+          <th>Name</th>
+          <th>Price</th>
+          <th>Stock</th>
+          <th>Store</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- JS هيضيف الصفوف هنا -->
+      </tbody>
+    </table>
+  </div>
+
+  <script>
+    // بيانات تجريبية للمتاجر والمنتجات
+    const stores = {
+      1: "StyleStore",
+      2: "Gadget World",
+      3: "TechZone"
+    };
+
+    const products = [
+      {id: "P001", name: "T-Shirt", price: "$20", stock: 100, storeId: 1},
+      {id: "P002", name: "Jeans", price: "$45", stock: 50, storeId: 1},
+      {id: "P003", name: "Smartphone", price: "$500", stock: 30, storeId: 2},
+      {id: "P004", name: "Laptop", price: "$1200", stock: 10, storeId: 2},
+      {id: "P005", name: "Headphones", price: "$80", stock: 70, storeId: 3},
+    ];
+
+    // نقرأ storeId من الرابط
+    const urlParams = new URLSearchParams(window.location.search);
+    const storeId = urlParams.get("storeId");
+
+    const tableBody = document.querySelector("#product-table tbody");
+    const pageTitle = document.getElementById("page-title");
+
+    let filteredProducts = products;
+
+    if (storeId) {
+      filteredProducts = products.filter(p => p.storeId == storeId);
+      pageTitle.textContent = `Products - ${stores[storeId] || "Unknown Store"}`;
+    }
+
+    // نعرض المنتجات
+    filteredProducts.forEach(product => {
+      const row = document.createElement("tr");
+      row.innerHTML = `
+        <td>${product.id}</td>
+        <td>${product.name}</td>
+        <td>${product.price}</td>
+        <td>${product.stock}</td>
+        <td>${stores[product.storeId]}</td>
+        <td>
+          <button class="btn btn-edit"><i class="fas fa-pen"></i></button>
+            <button class="btn btn-delete"><i class="fas fa-trash"></i></button>
+        </td>
+      `;
+      tableBody.appendChild(row);
+    });
+  </script>
+</body>
+</html>

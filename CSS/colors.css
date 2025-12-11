@@ -1,0 +1,63 @@
+/* ================================= */
+/* Unified Color Palette             */
+/* ================================= */
+:root {
+  /* Primary Green Colors - Enhanced & Professional */
+  --greenLight: #f0f9f4;
+  --greenLightHover: #e6f5ed;
+  --greenLightActive: #d4ede0;
+  
+  --greenNormal: #22c55e;
+  --greenNormalHover: #16a34a;
+  --greenNormalActive: #15803d;
+  
+  --greenDark: #15803d;
+  --greenDarkHover: #166534;
+  --greenDarkActive: #14532d;
+  
+  --greenDarker: #14532d;
+
+  /* Secondary Colors */
+  --redNormal: #ff6b6b;
+  --redHover: #e63939;
+  --redDark: #c23616;
+  --redDarker: #a93226;
+
+  /* Background & Surface Colors */
+  --bg: #f4f6f8;
+  --bgGradient: linear-gradient(to right, #f9f9f9, #f0f9f4);
+  --card: #ffffff;
+  --glass: rgba(255, 255, 255, 0.7);
+  --border: #e5e7eb;
+
+  /* Text Colors */
+  --textPrimary: #333;
+  --textSecondary: #6b7280;
+  --textMuted: #6b7280;
+  --textDark: #0f172a;
+
+  /* Status Colors */
+  --success: #10b981;
+  --danger: #ef4444;
+  --warning: #f59e0b;
+  --info: #3b82f6;
+
+  /* UI Elements */
+  --radius: 8px;
+  --radiusLarge: 12px;
+  --radiusSmall: 6px;
+  --pad: 22px;
+  --shadow: 0 6px 22px rgba(12, 18, 23, 0.06);
+  --shadowLarge: 0 8px 28px rgba(12, 18, 23, 0.08);
+}
+
+/* ================================= */
+/* Color Aliases for Compatibility  */
+/* ================================= */
+:root {
+  --accent: var(--greenNormal);
+  --green-1: var(--greenNormal);
+  --green-2: var(--greenDark);
+  --green-3: var(--greenDarker);
+}
+

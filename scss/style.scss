@@ -1,0 +1,137 @@
+@import 'bootstrap/bootstrap';
+@import 'bootstrap/variables';
+@import 'bootstrap/mixins';
+
+$font-primary: 'Poppins',Arial, sans-serif;
+$primary: #a3f7bf;
+
+body{
+	font-family: $font-primary;
+	font-size: 14px;
+	line-height: 1.8;
+	font-weight: normal;
+	background: #fafafa;
+	color: lighten($black,50%);
+}
+a {
+	transition: .3s all ease;
+	color: $primary;
+	&:hover, &:focus {
+		text-decoration: none !important;
+		outline: none !important;
+		box-shadow: none;
+	}
+}
+button {
+	transition: .3s all ease;
+	&:hover, &:focus {
+		text-decoration: none !important;
+		outline: none !important;
+		box-shadow: none !important;
+	}
+}
+h1, h2, h3, h4, h5,
+.h1, .h2, .h3, .h4, .h5 {
+	line-height: 1.5;
+	font-weight: 400;
+	font-family: $font-primary;
+	color: $black;
+}
+
+
+.ftco-section{
+	padding: 7em 0;
+}
+
+.ftco-no-pt{
+	padding-top: 0;
+}
+.ftco-no-pb{
+	padding-bottom: 0;
+}
+//HEADING SECTION
+.heading-section{
+	font-size: 28px;
+	color: $black;
+	small{
+		font-size: 18px;
+	}
+}
+
+//COVER BG
+.img{
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-position: center center;
+}
+
+
+.btn-img{
+	width: 100px;
+	height: 100px;
+	-webkit-box-shadow: 0px 10px 34px -20px rgba(0,0,0,0.41) !important;
+	-moz-box-shadow: 0px 10px 34px -20px rgba(0,0,0,0.41) !important;
+	box-shadow: 0px 10px 34px -20px rgba(0,0,0,0.41) !important;
+}
+
+.dropdown-toggle::after {
+  display: none;
+}
+
+.btn-group{
+	.dropdown-menu{
+		border: none;
+		background: $white;
+		-webkit-box-shadow: 0px 10px 34px -20px rgba(0,0,0,0.41);
+		-moz-box-shadow: 0px 10px 34px -20px rgba(0,0,0,0.41);
+		box-shadow: 0px 10px 34px -20px rgba(0,0,0,0.41);
+		padding: 0;
+		width: 280px;
+		left: 50% !important;
+		transform: translateX(-50%) !important;
+		margin-top: 120px;
+		&:after, &:before{
+			content: ' ';
+		  display: block;
+		  border-style: solid;
+		  border-width: 0 .7em .8em .7em;
+		  border-color: transparent;
+		  position: absolute;
+		  left: 50%;
+		  margin-left: -.7em;
+		  z-index: -1;
+		}
+		&:before{
+			top: -.8em;
+		  border-bottom-color: rgba(0,0,0,.02);
+		}
+		&:after{
+			top: -.7em;
+	    border-bottom-color: #fff;
+		}
+		.dropdown-item{
+			font-size: 16px;
+			color: rgba(0,0,0,.7);
+			font-weight: 400;
+			padding: 0 30px 0 0;
+			no-wrap: normal;
+			.icon{
+				width: 60px;
+				height: 60px;
+				background: $primary;
+				@include transition(.3s);
+				span{
+					font-size: 24px;
+					color: $white;
+				}
+			}
+			&:hover, &:focus{
+				background: $primary;
+				color: $white;
+				.icon{
+					background: darken($primary,10%);
+				}
+			}
+		}
+	}
+}

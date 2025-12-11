@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>🛒 Order Management</title>
+  <link rel="stylesheet" href="CSS/order.css">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
+</head>
+<tbody>
+  <!-- Sidebar -->
+  <aside class="sidebar">
+    <nav class="sidebar-nav">
+      <ul>
+        <li>
+        <a href="#" class="logo" style="text-decoration: none;">
+        
+        <span class="title">Cartify Admin</span>
+        </a>
+        </li>
+        <li class="nav-item"><a class="nav-link" href="/Dashboard/dashboard.html"><i class="fas fa-gauge"></i><span>Dashboard</span></a></li>
+        <li class="nav-item "><a class="nav-link" href="/User Managment/User.html"><i class="fas fa-users"></i><span>User Management</span></a></li>
+        <li class="nav-item active"><a class="nav-link" href="Store.html"><i class="fas fa-store"></i><span>Store Management</span></a></li>
+        <li class="nav-item"><a class="nav-link" href="/Product/Prodcut.html"><i class="fas fa-box-open"></i><span>Product Management</span></a></li>
+        <li class="nav-item"><a class="nav-link" href="/Order/Order.html"><i class="fas fa-cart-shopping"></i><span>Order Management</span></a></li>
+        <li class="nav-item"><a class="nav-link" href="/Category/Category.html"><i class="fas fa-folder-tree"></i><span>Category Management</span></a></li>
+        <li class="nav-item"><a class="nav-link" href="/Reports/Reports.html"><i class="fas fa-chart-pie"></i><span>Reports & Analytics</span></a></li>
+        <li class="nav-item"><a class="nav-link" href="#"><i class="fas fa-gear"></i><span>Settings</span></a></li>
+        <li class="nav-item"><a class="nav-link" href="#"><i class="fas fa-right-from-bracket"></i><span>Logout</span></a></li>
+      </ul>
+    </nav>
+  </aside>
+
+
+  <!-- Main -->
+  <div class="main">
+    <div class="top-bar">
+      <h1>Order Management</h1>
+      <button class="btn btn-add">➕ Add Order</button>
+    </div>
+<div class="card">
+    <table>
+      <tr>
+        <th>Order ID</th>
+        <th>Customer</th>
+        <th>Date</th>
+        <th>Total</th>
+        <th>Status</th>
+        <th>Actions</th>
+      </tr>
+      <tr>
+        <td>#1001</td>
+        <td>Ahmed Ali</td>
+        <td>2025-09-15</td>
+        <td>$150.00</td>
+        <td class="Pending">Pending</td>
+        <td>
+             <a href="/Order/Order.html?orderId=1001"><button class="btn btn-view"><i class="fas fa-eye"></i></button></a>
+          
+          <button class="btn btn-cancel"><i class="fas fa-trash"></i></button>
+        </td>
+      </tr>
+      <tr>
+        <td>#1002</td>
+        <td>Sarah Lee</td>
+        <td>2025-09-16</td>
+        <td>$220.00</td>
+        <td class="Shipped">Shipped</td>
+          <td>
+             <a href="/Order/Order.html?orderId=1002"><button class="btn btn-view"><i class="fas fa-eye"></i></button></a>
+          
+          <button class="btn btn-cancel"><i class="fas fa-trash"></i></button>
+        </td>
+      </tr>
+      <tr>
+        <td>#1003</td>
+        <td>Mohamed Hassan</td>
+        <td>2025-09-17</td>
+        <td>$85.00</td>
+        <td class="Completed">Completed</td>
+         <td>
+             <a href="/Order/Order.html?orderId=1003"><button class="btn btn-view"><i class="fas fa-eye"></i></button></a>
+          
+          <button class="btn btn-cancel"><i class="fas fa-trash"></i></button>
+        </td>
+      </tr>
+      <tr>
+        <td>#1004</td>
+        <td>Laila Mostafa</td>
+        <td>2025-09-18</td>
+        <td>$50.00</td>
+        <td class="Canceled">Canceled</td>
+         <td>
+             <a href="/Order/Order.html?orderId=1004"><button class="btn btn-view"><i class="fas fa-eye"></i></button></a>
+          
+          <button class="btn btn-cancel"><i class="fas fa-trash"></i></button>
+        </td>
+      </tr>
+    </table>
+  </div>
+  </div>
+<tbody>
+ 
+</html>

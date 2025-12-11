@@ -1,0 +1,157 @@
+/* Merchant API integration panel */
+.merchant-api-panel {
+  padding: 2rem 1rem 3rem;
+  background: linear-gradient(180deg, #f7fafc 0%, #f0f5f8 100%);
+}
+
+.merchant-api-panel .section-heading {
+  font-weight: 700;
+  font-size: 1.5rem;
+  color: #0f172a;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.merchant-api-panel .section-heading i {
+  color: #16a34a;
+}
+
+.merchant-api-panel .api-card {
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 14px;
+  box-shadow: 0 10px 30px rgba(15, 23, 42, 0.08);
+  padding: 1.5rem;
+  height: 100%;
+}
+
+.merchant-api-panel .api-card h3 {
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  color: #111827;
+}
+
+.merchant-api-panel .api-card p {
+  color: #6b7280;
+  margin-bottom: 1.25rem;
+}
+
+.merchant-api-panel .form-group {
+  margin-bottom: 1rem;
+}
+
+.merchant-api-panel label {
+  font-weight: 600;
+  color: #1f2937;
+  margin-bottom: 0.35rem;
+  display: block;
+}
+
+.merchant-api-panel input,
+.merchant-api-panel select,
+.merchant-api-panel textarea {
+  width: 100%;
+  border: 1.5px solid #e5e7eb;
+  border-radius: 10px;
+  padding: 0.65rem 0.75rem;
+  font-size: 0.95rem;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  background: #fff;
+}
+
+.merchant-api-panel input:focus,
+.merchant-api-panel select:focus,
+.merchant-api-panel textarea:focus {
+  outline: none;
+  border-color: #16a34a;
+  box-shadow: 0 0 0 3px rgba(22, 163, 74, 0.12);
+}
+
+.merchant-api-panel select[multiple] {
+  min-height: 140px;
+}
+
+.merchant-api-panel .btn-primary {
+  background: linear-gradient(135deg, #22c55e 0%, #15803d 100%);
+  border: none;
+  color: #fff;
+  font-weight: 700;
+  padding: 0.75rem 1rem;
+  border-radius: 10px;
+  width: 100%;
+  transition: transform 0.1s ease, box-shadow 0.2s ease;
+}
+
+.merchant-api-panel .btn-primary:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 8px 20px rgba(22, 163, 74, 0.25);
+}
+
+.merchant-api-panel .helper {
+  font-size: 0.875rem;
+  color: #6b7280;
+}
+
+.merchant-api-panel .status-message {
+  margin-top: 1rem;
+  padding: 0.75rem 1rem;
+  border-radius: 10px;
+  display: none;
+  font-weight: 600;
+  border: 1px solid transparent;
+}
+
+.merchant-api-panel .status-success {
+  display: block;
+  background: #ecfdf3;
+  border-color: #bbf7d0;
+  color: #166534;
+}
+
+.merchant-api-panel .status-error {
+  display: block;
+  background: #fef2f2;
+  border-color: #fecdd3;
+  color: #b91c1c;
+}
+
+.merchant-api-panel .status-info {
+  display: block;
+  background: #eff6ff;
+  border-color: #bfdbfe;
+  color: #1d4ed8;
+}
+
+.merchant-api-panel .list-group {
+  max-height: 260px;
+  overflow-y: auto;
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+}
+
+.merchant-api-panel .list-group-item {
+  border: none;
+  border-bottom: 1px solid #e5e7eb;
+  font-weight: 600;
+  color: #111827;
+}
+
+.merchant-api-panel .list-group-item small {
+  display: block;
+  color: #6b7280;
+  font-weight: 500;
+}
+
+@media (max-width: 768px) {
+  .merchant-api-panel {
+    padding: 1.25rem 0.75rem;
+  }
+
+  .merchant-api-panel .api-card {
+    margin-bottom: 1rem;
+  }
+}
+

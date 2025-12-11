@@ -1,0 +1,361 @@
+/* ================================= */
+/* Navigation Menu Styles            */
+/* ================================= */
+/* Import Unified Color Palette */
+@import url('colors.css');
+/* Import Unified Button Styles */
+@import url('buttons.css');
+
+.navigation-section {
+  padding: 60px 20px;
+  background: var(--bgGradient);
+  min-height: 100vh;
+}
+
+.navigation-section .container {
+  max-width: 1400px;
+  margin: 0 auto;
+  position: relative;
+}
+
+/* Menu Toggle Button in Header */
+.navbar .menu-toggle-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  background: transparent;
+  color: var(--greenNormal);
+  border: none;
+  border-radius: 0;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: none;
+  font-family: 'Poppins', sans-serif;
+  white-space: nowrap;
+}
+
+.navbar .menu-toggle-btn:hover {
+  color: var(--greenDark);
+  transform: none;
+  box-shadow: none;
+}
+
+.navbar .menu-toggle-btn span:last-child {
+  color: var(--greenNormal);
+  font-weight: 600;
+}
+
+.navbar .menu-toggle-btn:hover span:last-child {
+  color: var(--greenDark);
+}
+
+/* Hamburger Icon - 3 lines */
+.hamburger {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  width: 20px;
+  height: 16px;
+}
+
+.hamburger span {
+  display: block;
+  width: 100%;
+  height: 2.5px;
+  background: var(--greenNormal);
+  border-radius: 2px;
+  transition: all 0.3s ease;
+}
+
+.navbar .menu-toggle-btn:hover .hamburger span {
+  background: var(--greenDark);
+}
+
+/* Navigation Menu */
+.nav-menu {
+  position: fixed;
+  top: 0;
+  right: -450px;
+  width: 450px;
+  height: 100vh;
+  background: linear-gradient(180deg, var(--greenLight) 0%, #ffffff 10%, #f8f9fa 100%);
+  box-shadow: -4px 0 20px rgba(0, 0, 0, 0.15);
+  transition: right 0.3s ease;
+  z-index: 1000;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Menu toggle button in header */
+header.header .menu-toggle-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 12px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-left: 12px;
+}
+
+header.header .hamburger {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  width: 22px;
+  height: 18px;
+  justify-content: center;
+  align-items: center;
+}
+
+header.header .hamburger span {
+  display: block;
+  width: 100%;
+  height: 3px;
+  background: var(--greenNormal);
+  border-radius: 2px;
+  transition: all 0.3s ease;
+}
+
+header.header .menu-toggle-btn:hover .hamburger span {
+  background: var(--greenDark);
+}
+
+.nav-menu.active {
+  right: 0;
+}
+
+.nav-menu-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 25px 30px;
+  border-bottom: 3px solid var(--greenNormal);
+  background: linear-gradient(135deg, var(--greenNormal), var(--greenDark));
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.nav-menu-header h3 {
+  margin: 0;
+  font-size: 24px;
+  font-weight: 700;
+  color: white;
+  font-family: 'Poppins', sans-serif;
+}
+
+.menu-close-btn {
+  background: rgba(255, 255, 255, 0.25);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: none;
+  font-size: 24px;
+  color: white;
+  cursor: pointer;
+  padding: 10px 20px;
+  border-radius: 50px;
+  transition: all 0.3s ease;
+  width: auto;
+  min-width: 60px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  font-weight: 700;
+  font-family: 'Poppins', sans-serif;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+}
+
+.menu-close-btn i {
+  display: none;
+}
+
+.menu-close-btn::before {
+  content: '✕';
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.menu-close-btn:hover {
+  background: rgba(255, 255, 255, 0.35);
+  transform: scale(1.05);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+}
+
+.menu-close-btn:active {
+  transform: scale(0.95);
+}
+
+.nav-menu-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 25px 30px;
+  border-bottom: 3px solid var(--greenNormal);
+  background: linear-gradient(135deg, var(--greenNormal), var(--greenDark));
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+/* Special style for index.html - keep original button style */
+body.index-page .menu-close-btn {
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+  border: none;
+  font-size: 24px;
+  color: white;
+  cursor: pointer;
+  padding: 8px 12px;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  width: auto;
+  min-width: auto;
+  box-shadow: none;
+  font-weight: 700;
+}
+
+body.index-page .menu-close-btn i {
+  display: none;
+}
+
+body.index-page .menu-close-btn::before {
+  content: '✕';
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 1;
+}
+
+body.index-page .menu-close-btn:hover {
+  background: rgba(255, 255, 255, 0.3);
+  transform: rotate(90deg);
+  box-shadow: none;
+}
+
+.nav-menu-content {
+  padding: 30px;
+  flex: 1;
+  overflow-y: auto;
+  background: #ffffff;
+}
+
+.nav-menu-group {
+  margin-bottom: 35px;
+}
+
+.nav-menu-group-title {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--greenDark);
+  margin-bottom: 15px;
+  padding-bottom: 10px;
+  border-bottom: 2px solid var(--greenLight);
+  font-family: 'Poppins', sans-serif;
+  padding-left: 5px;
+}
+
+.nav-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.nav-btn {
+  display: block;
+  padding: 12px 16px;
+  text-decoration: none;
+  font-weight: 400;
+  font-size: 15px;
+  transition: all 0.3s ease;
+  border: none;
+  cursor: pointer;
+  font-family: 'Poppins', sans-serif;
+  color: var(--greenNormal);
+  background: transparent;
+  box-shadow: none;
+  border-radius: 0;
+  margin-bottom: 4px;
+  border-left: none;
+}
+
+.nav-btn:hover {
+  color: var(--greenDark);
+  background: transparent;
+  transform: translateX(8px);
+  padding-left: 20px;
+  border-left: none;
+  font-weight: 500;
+}
+
+/* Overlay when menu is open */
+.menu-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.5);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+  z-index: 999;
+}
+
+.menu-overlay.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .navigation-section {
+    padding: 40px 15px;
+  }
+
+  .navbar .menu-toggle-btn {
+    padding: 8px 14px;
+    font-size: 13px;
+  }
+  
+  .navbar .menu-toggle-btn span:last-child {
+    display: none;
+  }
+
+  .nav-menu {
+    width: 100%;
+    right: -100%;
+  }
+
+  .nav-menu-content {
+    padding: 20px;
+  }
+
+  .nav-menu-header {
+    padding: 20px;
+  }
+
+  .nav-menu-header h3 {
+    font-size: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .menu-toggle-btn {
+    padding: 12px 24px;
+    font-size: 15px;
+  }
+
+  .nav-btn {
+    padding: 8px 0;
+    font-size: 14px;
+  }
+}
+

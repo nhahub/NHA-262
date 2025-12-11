@@ -1,0 +1,112 @@
+/* Import Unified Color Palette */
+@import url('colors.css');
+/* Import Unified Header Styles */
+@import url('header.css');
+/* Import Unified Button Styles */
+@import url('buttons.css');
+
+/* General styles */
+body {
+  margin: 0;
+  padding-top: 100px;
+  background: var(--bgGradient);
+  font-family: 'Poppins', sans-serif;
+  color: var(--textDark);
+  line-height: 1.6;
+  padding-bottom: 60px;
+  padding-left: 20px;
+  padding-right: 20px;
+  min-height: 100vh;
+}
+
+/* Header is already fixed in header.css */
+
+.product-details {
+  background: var(--cardBg);
+  padding: 50px;
+  max-width: 1000px;
+  margin: 0 auto;
+  border-radius: 20px;
+  box-shadow: var(--shadow);
+  border: 1px solid rgba(34, 197, 94, 0.1);
+}
+
+.product-title {
+  margin-bottom: 25px;
+  font-size: 32px;
+  font-weight: 700;
+  color: var(--greenDarker);
+  font-family: 'Poppins', sans-serif;
+}
+
+.product-image {
+  width: 100%;
+  border-radius: 16px;
+  margin-bottom: 30px;
+  max-height: 500px;
+  object-fit: cover;
+}
+
+.product-price {
+  color: var(--greenNormal);
+  font-size: 32px;
+  font-weight: 700;
+  margin-bottom: 15px;
+  font-family: 'Poppins', sans-serif;
+}
+
+.product-stock {
+  color: var(--greenDark);
+  font-size: 18px;
+  margin-bottom: 20px;
+  font-weight: 600;
+  font-family: 'Poppins', sans-serif;
+}
+
+.product-description {
+  margin: 30px 0;
+  line-height: 1.8;
+  color: var(--textLight);
+  font-size: 16px;
+  font-family: 'Poppins', sans-serif;
+}
+
+/* Buttons */
+.product-buttons {
+  margin-top: 40px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  justify-content: flex-start;
+}
+
+.product-buttons .btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 14px 28px;
+  font-size: 16px;
+  font-weight: 600;
+  min-width: 160px;
+  border-radius: 12px;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.product-buttons .btn-icon {
+  width: 20px;
+  height: 20px;
+  object-fit: contain;
+  flex-shrink: 0;
+}
+
+.product-buttons .btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+}
+
+.product-buttons .btn:active {
+  transform: translateY(0) scale(0.98);
+}

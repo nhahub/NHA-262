@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Profile - Cartify</title>
+    <link rel="stylesheet" href="CSS/style.css">
+    <link rel="stylesheet" href="CSS/profile.css">
+    <link rel="stylesheet" href="CSS/navigation.css">
+    <link rel="icon" href="Icons/favicon.ico" type="image/x-icon">
+</head>
+<body>
+    <!-- ================= HEADER ================= -->
+    <header class="header">
+        <div class="PageIcon">
+            <a href="index.html"><img src="Icons/Untitled-ن2.png" alt="Logo"></a>
+        </div>
+
+        <div class="middle">
+            <form class="d-flex search-form" role="search" style="width: 100%; max-width: 400px;">
+                <input type="text" name="search" id="searchBar" placeholder="Search products..." aria-label="Search">
+                <button class="btn gradient-btn" type="submit">Search</button>
+            </form>
+        </div>
+
+        <div class="Login">
+            <a href="cartpage.html" class="cart-btn">
+                <img src="Icons/cart.png" id="cart" alt="Cart">
+                <span>Go to Cart</span>
+            </a>
+            <button type="button" class="menu-toggle-btn" id="menuToggle" aria-label="Open navigation menu">
+                <span class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </span>
+            </button>
+        </div>
+    </header>
+
+    <!-- ================= PROFILE CONTENT ================= -->
+    <div class="profile-container">
+        <!-- Sidebar -->
+        <div class="profile-sidebar">
+            <div class="user-info">
+                <div class="user-avatar">
+                    <img src="Icons/user.png" alt="Profile">
+                    <button class="change-avatar-btn">Change Photo</button>
+                </div>
+                <h2 class="user-name">John Doe</h2>
+                <p class="user-email">john.doe@example.com</p>
+            </div>
+
+            <div class="profile-nav">
+                <button class="nav-item active" data-tab="profile-info">Profile Information</button>
+                <button class="nav-item" data-tab="manage-addresses">Manage Addresses</button>
+                <button class="nav-item" data-tab="payment-methods">Payment Methods</button>
+                <button class="nav-item" data-tab="security">Security</button>
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="profile-content">
+            <!-- Profile Information Tab -->
+             <div class="tab-content active" id="profile-info"></div>
+                <div class="tab-header">
+                    <h2>Profile Information</h2>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>First Name</label>
+                        <input type="text" id="firstName" value="John" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Last Name</label>
+                        <input type="text" id="lastName" value="Doe" required>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Email Address</label>
+                    <input type="email" id="email" value="john.doe@example.com" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Phone Number</label>
+                    <input type="tel" id="phone" value="+20123456789" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Date of Birth</label>
+                    <input type="date" id="birthDate" value="1990-01-01" required>
+                </div>
+
+                <button type="submit" class="save-btn btn btn-primary">Save Changes</button>
+            </form>
+
+            <!-- Manage Addresses Tab -->
+            <div class="tab-content" id="manage-addresses">
+                <div class="tab-header">
+                    <h2>Manage Addresses</h2>
+                    <button type="button" class="add-address-btn btn btn-primary">+ Add New Address</button>
+                </div>
+
+                <div class="address-card">
+                    <div class="address-header">
+                        <h3>Home Address</h3>
+                        <span class="default-badge">Default</span>
+                    </div>
+                    <p>123 Main Street, Apt 4B</p>
+                    <p>Cairo, Egypt 12345</p>
+                    <div class="address-actions">
+                        <button type="button" class="edit-btn btn btn-secondary">Edit</button>
+                        <button type="button" class="delete-btn btn btn-danger">Delete</button>
+                    </div>
+                </div>
+
+                <div class="address-card">
+                    <div class="address-header">
+                        <h3>Work Address</h3>
+                    </div>
+                    <p>456 Business District</p>
+                    <p>Giza, Egypt 67890</p>
+                    <div class="address-actions">
+                        <button type="button" class="edit-btn btn btn-secondary">Edit</button>
+                        <button type="button" class="delete-btn btn btn-danger">Delete</button>
+                        <button type="button" class="set-default-btn btn btn-secondary">Set as Default</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Payment Methods Tab -->
+            <div class="tab-content" id="payment-methods">
+                <div class="tab-header">
+                    <h2>Payment Methods</h2>
+                    <button type="button" class="add-payment-btn btn btn-primary">+ Add Payment Method</button>
+                </div>
+                
+                <div class="payment-card">
+                    <div class="payment-header">
+                        <h3>💳 Visa ending in 1234</h3>
+                        <span class="default-badge">Default</span>
+                    </div>
+                    <p>Expires 12/2025</p>
+                    <div class="payment-actions">
+                        <button type="button" class="edit-btn btn btn-secondary">Edit</button>
+                        <button type="button" class="delete-btn btn btn-danger">Delete</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Security Tab -->
+             <div class="tab-content" id="security">
+                <div class="tab-header">
+                    <h2>Security Settings</h2>
+                </div>
+                
+                <div class="form-group">
+                    <label>Current Password</label>
+                    <input type="password" id="currentPassword" required>
+                </div>
+
+                <div class="form-group">
+                    <label>New Password</label>
+                    <input type="password" id="newPassword" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Confirm New Password</label>
+                    <input type="password" id="confirmPassword" required>
+                </div>
+
+                <button type="button" class="save-btn btn btn-primary">Update Password</button>
+
+                <div class="security-options">
+                    <h3>Privacy Settings</h3>
+                    <div class="toggle-option">
+                        <span>Two-Factor Authentication</span>
+                        <label class="toggle-switch">
+                            <input type="checkbox">
+                            <span class="slider"></span>
+                        </label>
+                    </div>
+                    
+                    <div class="toggle-option">
+                        <span>Email Notifications</span>
+                        <label class="toggle-switch">
+                            <input type="checkbox" checked>
+                            <span class="slider"></span>
+                        </label>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Navigation Menu -->
+    <section class="navigation-section">
+        <div class="container">
+            <div class="nav-menu" id="navMenu">
+                <div class="nav-menu-header">
+                    <h3>All Pages</h3>
+                    <button class="menu-close-btn" id="menuClose" aria-label="Close menu">
+                        <i class="bi bi-x-lg"></i>
+                    </button>
+                </div>
+                
+                <div class="nav-menu-content">
+                    <div class="nav-menu-group">
+                        <h4 class="nav-menu-group-title">User Pages</h4>
+                        <div class="nav-buttons">
+                            <a href="login.html" class="nav-btn">Login</a>
+                            <a href="register.html" class="nav-btn">Register</a>
+                            <a href="profile.html" class="nav-btn">Profile</a>
+                        </div>
+                    </div>
+                    <div class="nav-menu-group">
+                        <h4 class="nav-menu-group-title">Shopping</h4>
+                        <div class="nav-buttons">
+                            <a href="Products.html" class="nav-btn">Products</a>
+                            <a href="ProductsDetails.html" class="nav-btn">Product Details</a>
+                            <a href="Category.html" class="nav-btn">Categories</a>
+                            <a href="Sub-Category.html" class="nav-btn">Sub Categories</a>
+                        </div>
+                    </div>
+                    <div class="nav-menu-group">
+                        <h4 class="nav-menu-group-title">Cart & Orders</h4>
+                        <div class="nav-buttons">
+                            <a href="cartpage.html" class="nav-btn">Cart</a>
+                            <a href="Checkout.html" class="nav-btn">Checkout</a>
+                            <a href="ordertracking.html" class="nav-btn">Order Tracking</a>
+                        </div>
+                    </div>
+                    <div class="nav-menu-group">
+                        <h4 class="nav-menu-group-title">Account</h4>
+                        <div class="nav-buttons">
+                            <a href="wishlist.html" class="nav-btn">Wishlist</a>
+                        </div>
+                    </div>
+                    <div class="nav-menu-group">
+                        <h4 class="nav-menu-group-title">Support</h4>
+                        <div class="nav-buttons">
+                            <a href="help_page.html" class="nav-btn">Help & Support</a>
+                        </div>
+                    </div>
+                    <div class="nav-menu-group">
+                        <h4 class="nav-menu-group-title">Merchant</h4>
+                        <div class="nav-buttons">
+                            <a href="merchant-signup.html" class="nav-btn">Merchant Signup</a>
+                            <a href="merchhome.html" class="nav-btn">Merchant Home</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <div class="menu-overlay" id="menuOverlay"></div>
+    <script src="JS/profile.js"></script>
+    <script src="JS/menu.js"></script>
+</body>
+</html>

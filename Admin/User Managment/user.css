@@ -1,0 +1,73 @@
+/* Advanced User Management Theme */
+:root{--bg:#f4f6f8;--card:#ffffff;--muted:#6b7280;--accent:#059669;--danger:#ef4444;--warning:#f59e0b;--success:#10b981;--radius:14px;--shadow:0 8px 28px rgba(12,18,23,.08);--glass:rgba(255,255,255,.7);--border:#e5e7eb}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:Inter,system-ui,Segoe UI,Roboto,'Helvetica Neue',Arial;background:radial-gradient(1200px 600px at 20% -10%, #ffffff 0%, #eef2f6 40%, var(--bg) 100%);color:#0f172a}
+
+/* Sidebar */
+.sidebar{position:fixed;top:0;left:0;width:260px;height:100vh;background:var(--glass);backdrop-filter: blur(8px);-webkit-backdrop-filter: blur(8px);box-shadow:var(--shadow);border-right:1px solid var(--border);overflow-y:auto}
+.sidebar-nav ul{list-style:none;padding:16px}
+.nav-item{margin-bottom:6px}
+.nav-link{display:flex;align-items:center;gap:10px;padding:12px 14px;border-radius:10px;color:#374151;text-decoration:none;transition:.25s}
+.nav-link:hover{background:rgba(2,6,23,.06);color:#111827;transform:translateY(-1px)}
+.nav-item.active .nav-link{background:linear-gradient(135deg, rgba(5,150,105,.14), rgba(5,150,105,.06));color:var(--accent);font-weight:700;border:1px solid rgba(5,150,105,.25)}
+.nav-link i{width:20px;text-align:center}
+
+/* Main */
+.main{margin-left:260px;padding:28px 28px 40px}
+.badge{margin-left:auto;background:#ef4444;color:#fff;border-radius:12px;padding:2px 8px;font-size:12px}
+.top-bar{display:flex;align-items:center;justify-content:space-between;margin-bottom:20px}
+.top-bar .left{display:flex;align-items:center;gap:10px}
+.top-bar .right{display:flex;align-items:center;gap:12px}
+.icon-btn{width:40px;height:40px;display:inline-flex;align-items:center;justify-content:center;border:1px solid var(--border);border-radius:10px;background:#fff;cursor:pointer}
+.icon-btn i{font-size:18px;color:#374151}
+.profile img{width:40px;height:40px;border-radius:50%;object-fit:cover;box-shadow:0 2px 8px rgba(0,0,0,.08)}
+
+/* Buttons */
+.btn{padding:8px 12px;margin:2px;border:0;border-radius:10px;cursor:pointer;font-size:14px;font-weight:700;transition:.2s}
+.btn:hover{transform:translateY(-1px)}
+.btn-add{background:#059669;color:#fff}
+.btn-edit{background:#3b82f6;color:#fff}
+.btn-delete{background:#ef4444;color:#fff}
+.btn-suspend{background:#f59e0b;color:#fff}
+.btn-view{background:#111827;color:#fff}
+
+/* Card + Table */
+.card{background:var(--glass);backdrop-filter: blur(6px);-webkit-backdrop-filter: blur(6px);border-radius:var(--radius);box-shadow:var(--shadow);padding:16px;border:1px solid var(--border)}
+.users-table{width:100%;border-collapse:collapse;background:#fff;box-shadow:0 2px 6px rgba(0,0,0,.1)}
+.users-table thead th{background:#f8fafc;text-align:left;font-weight:700;color:#111827;padding:12px;border-bottom:1px solid #e5e7eb}
+.users-table tbody td{padding:12px;border-bottom:1px solid #f1f5f9;color:#374151}
+.users-table tr:hover td{background:#f9fafb}
+
+/* Modal */
+.modal{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,.5);justify-content:center;align-items:center;z-index:9999}
+.modal.show{display:flex}
+.modal-content{background:#fff;width:70%;max-width:600px;padding:20px;border-radius:12px;position:relative;transform:translateY(50px);transition:opacity .35s ease, transform .35s ease, box-shadow .2s ease;box-shadow:var(--shadow)}
+.modal.show .modal-content{opacity:1;transform:translateY(0)}
+.close{position:absolute;top:10px;right:15px;font-size:20px;width:36px;height:36px;border-radius:8px;border:1px solid var(--border);display:flex;align-items:center;justify-content:center;background:#fff;cursor:pointer;color:#374151}
+.close:hover{background:#f3f4f6}
+
+/* Tabs */
+.tabs{display:flex;margin-top:15px;border-bottom:2px solid #eee;gap:8px}
+.tab-btn{flex:1;padding:10px;background:#f3f4f6;border:0;cursor:pointer;border-radius:8px 8px 0 0;font-weight:700}
+.tab-btn.active{background:#059669;color:#fff}
+.tab-content{display:none;padding:10px}
+.tab-content.active{display:block}
+
+/* Responsive */
+@media (max-width: 900px){.sidebar{width:220px}.main{margin-left:220px}}
+@media (max-width: 700px){.sidebar{position:static;width:auto;height:auto}.main{margin-left:0}}
+
+/* Forced bright theme: remove dark-mode overrides */
+/* Collapsible sidebar utility classes */
+.sidebar.collapsed{width:72px}
+.sidebar.collapsed .nav-link{justify-content:center}
+.sidebar.collapsed .nav-link span{display:none}
+.main.expanded{margin-left:72px}
+.title{
+text-decoration: none;
+  font-size: 24px;
+  font-weight: 700;
+  color: #059669;
+  text-align: center;
+  padding: 20px;
+}

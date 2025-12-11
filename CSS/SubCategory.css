@@ -1,0 +1,367 @@
+/* Import Unified Color Palette */
+@import url('colors.css');
+/* Import Unified Header Styles */
+@import url('header.css');
+/* Import Unified Button Styles */
+@import url('buttons.css');
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  scroll-behavior: smooth;
+  font-family: 'Poppins', sans-serif;
+  background: var(--bgGradient);
+  color: var(--textDark);
+  padding-top: 100px;
+}
+
+/* ================================= */
+/* Page Titles - Modern Styling      */
+/* ================================= */
+h1, h2 {
+  text-align: center;
+  margin-bottom: 30px;
+  font-family: 'Poppins', sans-serif;
+}
+
+h1 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--textDark);
+  margin-top: 40px;
+  margin-bottom: 10px;
+}
+
+h2 {
+  font-size: 1.5rem;
+  font-weight: 500;
+  color: var(--textSecondary);
+  margin-bottom: 50px;
+}
+
+/* ================================= */
+/* Category Section - Modern Grid    */
+/* ================================= */
+.category-section {
+  max-width: 1620px;
+  margin: 0 auto 60px auto;
+  overflow-x: auto;
+  padding: 40px 20px;
+  padding-bottom: 30px;
+}
+
+.category {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 30px;
+  padding: 20px 0;
+  justify-items: center;
+}
+
+/* ================================= */
+/* Category Card - Modern Design     */
+/* ================================= */
+.category-card {
+  background: white;
+  border-radius: 16px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+  padding: 30px 20px;
+  width: 100%;
+  max-width: 280px;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+  border: 2px solid transparent;
+  animation: fadeIn 0.5s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.category-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 35px rgba(34, 197, 94, 0.2);
+  border-color: var(--greenNormal);
+}
+
+.category-card:active {
+  transform: translateY(-4px);
+}
+
+.category-card a {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+  width: 100%;
+  height: 100%;
+  position: relative;
+  z-index: 2;
+}
+
+.category-card {
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+}
+
+.category-card a {
+  pointer-events: auto;
+  cursor: pointer;
+}
+
+/* ================================= */
+/* Image Wrapper - Modern            */
+/* ================================= */
+.category-card .image-wrapper {
+  position: relative;
+  width: 140px;
+  height: 140px;
+  margin: 0 auto 20px;
+  background: linear-gradient(135deg, var(--greenLight), var(--greenLightHover));
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(34, 197, 94, 0.15);
+}
+
+.category-card:hover .image-wrapper {
+  transform: scale(1.05);
+  box-shadow: 0 6px 18px rgba(34, 197, 94, 0.2);
+}
+
+.category-card img {
+  width: 100px;
+  height: 100px;
+  object-fit: contain;
+  transition: all 0.3s ease;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
+  position: relative;
+  z-index: 1;
+}
+
+.category-card:hover img {
+  transform: scale(1.1);
+}
+
+/* ================================= */
+/* Category Name - Modern            */
+/* ================================= */
+.category-name {
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--textDark);
+  margin-top: 12px;
+  transition: all 0.3s ease;
+  position: relative;
+  z-index: 1;
+  line-height: 1.4;
+  font-family: 'Poppins', sans-serif;
+}
+
+.category-card:hover .category-name {
+  color: var(--greenDark);
+}
+
+/* ================================= */
+/* Shop Now Badge - Modern           */
+/* ================================= */
+.category-card .shop-now-badge {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background: linear-gradient(135deg, var(--greenNormal), var(--greenDark));
+  color: white;
+  padding: 6px 12px;
+  border-radius: 10px;
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  opacity: 0;
+  transition: all 0.3s ease;
+  z-index: 3;
+  box-shadow: 0 4px 12px rgba(34, 197, 94, 0.4);
+  pointer-events: none;
+  font-family: 'Poppins', sans-serif;
+}
+
+.category-card:hover .shop-now-badge {
+  opacity: 1;
+}
+
+/* ================================= */
+/* Offers Section - Modern Grid      */
+/* ================================= */
+.offers {
+  max-width: 1620px;
+  margin: 0 auto;
+  padding: 40px 20px;
+}
+
+.offer-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 30px;
+  padding: 20px;
+  justify-items: center;
+}
+
+/* ================================= */
+/* Offer Card - Modern Design        */
+/* ================================= */
+.offer-card {
+  width: 100%;
+  max-width: 500px;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  animation: fadeIn 0.5s ease;
+  border: 2px solid transparent;
+}
+
+.offer-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 35px rgba(34, 197, 94, 0.2);
+  border-color: var(--greenNormal);
+}
+
+.offer-card:active {
+  transform: translateY(-3px);
+}
+
+.offer-card img {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.offer-card:hover img {
+  transform: scale(1.05);
+}
+
+/* ================================= */
+/* General Links                     */
+/* ================================= */
+a {
+  text-decoration: none;
+}
+
+/* ================================= */
+/* Responsive Design                 */
+/* ================================= */
+@media (max-width: 1200px) {
+  .category {
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 25px;
+  }
+
+  .offer-row {
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 25px;
+  }
+}
+
+@media (max-width: 768px) {
+  body {
+    padding-top: 120px;
+  }
+
+  h1 {
+    font-size: 2rem;
+    margin-top: 20px;
+  }
+
+  h2 {
+    font-size: 1.25rem;
+    margin-bottom: 30px;
+  }
+
+  .category-section {
+    padding: 20px 15px;
+  }
+
+  .category {
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    gap: 20px;
+  }
+
+  .category-card {
+    padding: 20px 15px;
+    max-width: 100%;
+  }
+
+  .category-card .image-wrapper {
+    width: 120px;
+    height: 120px;
+  }
+
+  .category-card img {
+    width: 80px;
+    height: 80px;
+  }
+
+  .offer-row {
+    grid-template-columns: 1fr;
+    gap: 20px;
+    padding: 10px;
+  }
+
+  .offer-card {
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  h1 {
+    font-size: 1.75rem;
+  }
+
+  h2 {
+    font-size: 1.1rem;
+  }
+
+  .category {
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    gap: 15px;
+  }
+
+  .category-card {
+    padding: 15px 10px;
+  }
+
+  .category-card .image-wrapper {
+    width: 100px;
+    height: 100px;
+    margin-bottom: 15px;
+  }
+
+  .category-card img {
+    width: 70px;
+    height: 70px;
+  }
+
+  .category-name {
+    font-size: 16px;
+  }
+}
